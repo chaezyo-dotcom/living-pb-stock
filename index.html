@@ -179,6 +179,417 @@
 <script>
 // ====== DATA ======
 const DATA = [
+  {gc:"3764924",gn:"[2개입 추가할인] 뽀글 퍼 겨울 슬리퍼 실내화 거실화 3colors,M/L",oc:"28047482",on:"(오감리뷰용) 극세사 양털 후리스 담요 100*150 브라운핑크",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3764924",gn:"[2개입 추가할인] 뽀글 퍼 겨울 슬리퍼 실내화 거실화 3colors,M/L",oc:"28047483",on:"(오감리뷰용) 극세사 양털 후리스 담요 100*150 브라운그",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3764924",gn:"[2개입 추가할인] 뽀글 퍼 겨울 슬리퍼 실내화 거실화 3colors,M/L",oc:"28044868",on:"스트라이프 + 브라운 L",sku:"SKU0000012010",avail:0,verdict:"재고없음"},
+  {gc:"3764924",gn:"[2개입 추가할인] 뽀글 퍼 겨울 슬리퍼 실내화 거실화 3colors,M/L",oc:"28044869",on:"레드 M",sku:"SKU0000012011",avail:0,verdict:"재고없음"},
+  {gc:"3764924",gn:"[2개입 추가할인] 뽀글 퍼 겨울 슬리퍼 실내화 거실화 3colors,M/L",oc:"28513456",on:"[이달의 혜택] 스트라이프 + 브라운 L",sku:"SKU0000012010",avail:0,verdict:"재고없음"},
+  {gc:"3764924",gn:"[2개입 추가할인] 뽀글 퍼 겨울 슬리퍼 실내화 거실화 3colors,M/L",oc:"28513457",on:"[이달의 혜택] 레드 M",sku:"SKU0000012011",avail:0,verdict:"재고없음"},
+  {gc:"3612611",gn:"[시즌오프] 1+1 소프트워싱 파자마 쇼츠 2sizes - 4colors",oc:"27135249",on:"[30%할인] 헤어밴드 스크런치 스트라이프아이보리",sku:"SKU0000012143",avail:161,verdict:"재고있음"},
+  {gc:"3508395",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 고정밴드 침대패드 S/Q/K",oc:"26077756",on:"S(115*205)",sku:"SKU0000012136",avail:0,verdict:"재고없음"},
+  {gc:"3508395",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 고정밴드 침대패드 S/Q/K",oc:"26262818",on:"[오감 전용] 쯔누가 여름 냉감 쿨링 이불 100*150",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3508395",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 고정밴드 침대패드 S/Q/K",oc:"26262819",on:"[오감 전용] 쯔누가 여름 냉감 쿨링 이불 150*200",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3508395",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 고정밴드 침대패드 S/Q/K",oc:"26077757",on:"Q(155*205)",sku:"SKU0000012137",avail:0,verdict:"재고없음"},
+  {gc:"3508395",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 고정밴드 침대패드 S/Q/K",oc:"26077758",on:"K(165*205)",sku:"SKU0000012138",avail:0,verdict:"재고없음"},
+  {gc:"3508395",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 고정밴드 침대패드 S/Q/K",oc:"26672590",on:"[20% 할인] 냉감 이불 MINI(100*150)",sku:"SKU0000012139",avail:0,verdict:"재고없음"},
+  {gc:"3508395",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 고정밴드 침대패드 S/Q/K",oc:"26672591",on:"[20% 할인] 냉감 이불 S(150*200)",sku:"SKU0000012140",avail:0,verdict:"재고없음"},
+  {gc:"3508395",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 고정밴드 침대패드 S/Q/K",oc:"26672592",on:"[20% 할인] 냉감 이불 Q(200*220)",sku:"SKU0000012141",avail:0,verdict:"재고없음"},
+  {gc:"3508395",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 고정밴드 침대패드 S/Q/K",oc:"26672593",on:"[20% 할인] 냉감 바디필로우 25*70",sku:"SKU0000012142",avail:0,verdict:"재고없음"},
+  {gc:"3508395",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 고정밴드 침대패드 S/Q/K",oc:"26672594",on:"[20% 할인] 냉감 베개커버 30*50",sku:"SKU0000012133",avail:0,verdict:"재고없음"},
+  {gc:"3508395",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 고정밴드 침대패드 S/Q/K",oc:"26672595",on:"[20% 할인] 냉감 베개커버 40*60",sku:"SKU0000012134",avail:0,verdict:"재고없음"},
+  {gc:"3508395",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 고정밴드 침대패드 S/Q/K",oc:"26672596",on:"[20% 할인] 냉감 베개커버 50*70",sku:"SKU0000012135",avail:0,verdict:"재고없음"},
+  {gc:"3508407",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 바디필로우 롱쿠션 베개",oc:"26077895",on:"25*70",sku:"SKU0000012142",avail:0,verdict:"재고없음"},
+  {gc:"3508407",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 바디필로우 롱쿠션 베개",oc:"26672964",on:"[20% 할인] 냉감 베개커버 30*50",sku:"SKU0000012133",avail:0,verdict:"재고없음"},
+  {gc:"3508407",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 바디필로우 롱쿠션 베개",oc:"26672965",on:"[20% 할인] 냉감 베개커버 40*60",sku:"SKU0000012134",avail:0,verdict:"재고없음"},
+  {gc:"3508407",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 바디필로우 롱쿠션 베개",oc:"26672966",on:"[20% 할인] 냉감 베개커버 50*70",sku:"SKU0000012135",avail:0,verdict:"재고없음"},
+  {gc:"3508407",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 바디필로우 롱쿠션 베개",oc:"26672967",on:"[20% 할인] 냉감 침대패드 S(115*205)",sku:"SKU0000012136",avail:0,verdict:"재고없음"},
+  {gc:"3508407",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 바디필로우 롱쿠션 베개",oc:"26672968",on:"[20% 할인] 냉감 침대패드 Q(155*205)",sku:"SKU0000012137",avail:0,verdict:"재고없음"},
+  {gc:"3508407",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 바디필로우 롱쿠션 베개",oc:"26672969",on:"[20% 할인] 냉감 침대패드 K(165*205)",sku:"SKU0000012138",avail:0,verdict:"재고없음"},
+  {gc:"3508407",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 바디필로우 롱쿠션 베개",oc:"26672970",on:"[20% 할인] 냉감 이불 MINI(100*150)",sku:"SKU0000012139",avail:0,verdict:"재고없음"},
+  {gc:"3508407",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 바디필로우 롱쿠션 베개",oc:"26672971",on:"[20% 할인] 냉감 이불 S(150*200)",sku:"SKU0000012140",avail:0,verdict:"재고없음"},
+  {gc:"3508407",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 바디필로우 롱쿠션 베개",oc:"26672972",on:"[20% 할인] 냉감 이불 Q(200*220)",sku:"SKU0000012141",avail:0,verdict:"재고없음"},
+  {gc:"3508389",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 베개커버 3sizes",oc:"26077690",on:"30*50",sku:"SKU0000012133",avail:0,verdict:"재고없음"},
+  {gc:"3508389",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 베개커버 3sizes",oc:"26625960",on:"바디필로우 롱쿠션 베개 25*70",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3508389",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 베개커버 3sizes",oc:"26672528",on:"[20% 할인] 냉감 침대패드 S(115*205)",sku:"SKU0000012136",avail:0,verdict:"재고없음"},
+  {gc:"3508389",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 베개커버 3sizes",oc:"26077691",on:"40*60",sku:"SKU0000012134",avail:0,verdict:"재고없음"},
+  {gc:"3508389",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 베개커버 3sizes",oc:"26672529",on:"[20% 할인] 냉감 침대패드 Q(155*205)",sku:"SKU0000012137",avail:0,verdict:"재고없음"},
+  {gc:"3508389",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 베개커버 3sizes",oc:"26077692",on:"50*70",sku:"SKU0000012135",avail:0,verdict:"재고없음"},
+  {gc:"3508389",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 베개커버 3sizes",oc:"26672530",on:"[20% 할인] 냉감 침대패드 K(165*205)",sku:"SKU0000012138",avail:0,verdict:"재고없음"},
+  {gc:"3508389",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 베개커버 3sizes",oc:"26672531",on:"[20% 할인] 냉감 이불 MINI(100*150)",sku:"SKU0000012139",avail:0,verdict:"재고없음"},
+  {gc:"3508389",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 베개커버 3sizes",oc:"26672532",on:"[20% 할인] 냉감 이불 S(150*200)",sku:"SKU0000012140",avail:0,verdict:"재고없음"},
+  {gc:"3508389",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 베개커버 3sizes",oc:"26672533",on:"[20% 할인] 냉감 이불 Q(200*220)",sku:"SKU0000012141",avail:0,verdict:"재고없음"},
+  {gc:"3508389",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 베개커버 3sizes",oc:"26672534",on:"[20% 할인] 냉감 바디필로우 25*70",sku:"SKU0000012142",avail:0,verdict:"재고없음"},
+  {gc:"3605455",gn:"[시즌오프] 쿨에어 쯔누가 냉감 베개커버 3sizes (2개입)",oc:"27093627",on:"30*50 2개",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3605455",gn:"[시즌오프] 쿨에어 쯔누가 냉감 베개커버 3sizes (2개입)",oc:"27093628",on:"40*60 2개",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3605455",gn:"[시즌오프] 쿨에어 쯔누가 냉감 베개커버 3sizes (2개입)",oc:"27093629",on:"50*70 2개",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3508402",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 이불 MINI/S/Q",oc:"26262835",on:"[오감 전용] 냉감 침대패드 115*205",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3508402",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 이불 MINI/S/Q",oc:"26077863",on:"MINI(100*150)",sku:"SKU0000012139",avail:0,verdict:"재고없음"},
+  {gc:"3508402",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 이불 MINI/S/Q",oc:"26077864",on:"S(150*200)",sku:"SKU0000012140",avail:0,verdict:"재고없음"},
+  {gc:"3508402",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 이불 MINI/S/Q",oc:"26262836",on:"[오감 전용] 냉감 침대패드 155*205",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3508402",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 이불 MINI/S/Q",oc:"26077865",on:"Q(200*220)",sku:"SKU0000012141",avail:0,verdict:"재고없음"},
+  {gc:"3508402",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 이불 MINI/S/Q",oc:"26672616",on:"[20% 할인] 바디필로우 25*70",sku:"SKU0000012142",avail:0,verdict:"재고없음"},
+  {gc:"3508402",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 이불 MINI/S/Q",oc:"26672617",on:"[20% 할인] 베개커버 30*50",sku:"SKU0000012133",avail:0,verdict:"재고없음"},
+  {gc:"3508402",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 이불 MINI/S/Q",oc:"26672618",on:"[20% 할인] 베개커버 40*60",sku:"SKU0000012134",avail:0,verdict:"재고없음"},
+  {gc:"3508402",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 이불 MINI/S/Q",oc:"26672619",on:"[20% 할인] 베개커버 50*70",sku:"SKU0000012135",avail:0,verdict:"재고없음"},
+  {gc:"3508402",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 이불 MINI/S/Q",oc:"26672620",on:"[20% 할인] 침대패드 S(115*205)",sku:"SKU0000012136",avail:0,verdict:"재고없음"},
+  {gc:"3508402",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 이불 MINI/S/Q",oc:"26672621",on:"[20% 할인] 침대패드 Q(155*205)",sku:"SKU0000012137",avail:0,verdict:"재고없음"},
+  {gc:"3508402",gn:"[시즌오프] 쿨에어 쯔누가 여름 냉감 쿨링 이불 MINI/S/Q",oc:"26672622",on:"[20% 할인] 침대패드 K(165*205)",sku:"SKU0000012138",avail:0,verdict:"재고없음"},
+  {gc:"3765071",gn:"[최대할인!무배] 겨울 홈판티 체크 테이블보/매트/와인커버/커트러리홀더",oc:"28045459",on:"테이블보 140*140, 레드",sku:"SKU0000012023",avail:0,verdict:"재고없음"},
+  {gc:"3765071",gn:"[최대할인!무배] 겨울 홈파티 체크 테이블보/매트/와인커버/커트러리홀더",oc:"28045462",on:"테이블보 140*200, 레드",sku:"SKU0000012026",avail:0,verdict:"재고없음"},
+  {gc:"3707436",gn:"basic / 기본 알러지케어 사계절/극세사 차렵이불 세트 2colors",oc:"27699507",on:"이불.베개커버 세트, D-스트라이프 웜화이트",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3707436",gn:"basic / 기본 알러지케어 사계절/극세사 차렵이불 세트 2colors",oc:"27699515",on:"이불.베개커버.침대패드 세트, D-스트라이프 웜화이트",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3707436",gn:"basic / 기본 알러지케어 사계절/극세사 차렵이불 세트 2colors",oc:"28413663",on:"이불.베개커버 세트, S-겨울용 극세사 딥블랙",sku:"SKU0000012330",avail:0,verdict:"재고없음"},
+  {gc:"3707436",gn:"basic / 기본 알러지케어 사계절/극세사 차렵이불 세트 2colors",oc:"28413669",on:"이불.베개커버.침대패드 세트, S-겨울용 극세사 딥블랙",sku:"SKU0000012330",avail:0,verdict:"재고없음"},
+  {gc:"3707436",gn:"basic / 기본 알러지케어 사계절/극세사 차렵이불 세트 2colors",oc:"27701584",on:"기본 방수 매트리스커버 D 딥네이비",sku:"SKU0000012245",avail:0,verdict:"재고없음"},
+  {gc:"3707457",gn:"basic / 기본 60수 코튼 사계절 차렵이불 세트 5colors",oc:"27701244",on:"기본 방수 매트리스커버 D 딥네이비",sku:"SKU0000012245",avail:0,verdict:"재고없음"},
+  {gc:"3640383",gn:"basic / 바른 알러지케어 매트리스커버, SS/D/Q/K",oc:"27312259",on:"[G018] 알러지케어 차렵이불 S 딥블랙",sku:"SKU0000012324",avail:1,verdict:"재고있음"},
+  {gc:"3640383",gn:"basic / 바른 알러지케어 매트리스커버, SS/D/Q/K",oc:"27312286",on:"[G018] 알러지케어 침대패드 K 웜화이트",sku:"SKU0000012361",avail:23,verdict:"재고있음"},
+  {gc:"3640383",gn:"basic / 바른 알러지케어 매트리스커버, SS/D/Q/K",oc:"27312295",on:"[G018] 방수 매트리스커버 D 딥네이비",sku:"SKU0000012245",avail:0,verdict:"재고없음"},
+  {gc:"3640320",gn:"basic / 바른 알러지케어 베개커버, 40*60/50*70",oc:"28712804",on:"50*70, 극세사 솔리드 크릸",sku:"SKU0000012345",avail:0,verdict:"재고없음"},
+  {gc:"3640320",gn:"basic / 바른 알러지케어 베개커버, 40*60/50*70",oc:"28712805",on:"50*70, 극세사 솔리드 딥블랙",sku:"SKU0000012346",avail:1,verdict:"재고있음"},
+  {gc:"3640320",gn:"basic / 바른 알러지케어 베개커버, 40*60/50*70",oc:"27311060",on:"[G021] 방수 매트리스커버 D 딥네이비",sku:"SKU0000012245",avail:0,verdict:"재고없음"},
+  {gc:"3640244",gn:"basic / 바른 알러지케어 침구세트, 사계절용, SS/D/Q",oc:"28646152",on:"[G024] 극세사 베개커버 50*70 크림",sku:"SKU0000012345",avail:0,verdict:"재고없음"},
+  {gc:"3640244",gn:"basic / 바른 알러지케어 침구세트, 사계절용, SS/D/Q",oc:"28646153",on:"[G024] 극세사 베개커버 50*70 딥블랙",sku:"SKU0000012346",avail:1,verdict:"재고있음"},
+  {gc:"3640244",gn:"basic / 바른 알러지케어 침구세트, 사계절용, SS/D/Q",oc:"29297389",on:"극세사 딥블랙, 슈퍼싱글 퐀세트(SS패드)",sku:"SKU0000012330",avail:0,verdict:"재고없음"},
+  {gc:"3640244",gn:"basic / 바른 알러지케어 침구세트, 사계절용, SS/D/Q",oc:"27310449",on:"[G024] 방수 매트리스커버 D 딥네이비",sku:"SKU0000012245",avail:0,verdict:"재고없음"},
+  {gc:"3640346",gn:"basic / 바른 알러지케어 침대패드, SS/D/Q/K",oc:"27311499",on:"[G022] 알러지케어 차렵이불 S 웜화이트",sku:"SKU0000012323",avail:0,verdict:"재고없음"},
+  {gc:"3640346",gn:"basic / 바른 알러지케어 침대패드, SS/D/Q/K",oc:"27311500",on:"[G022] 알러지케어 차렵이불 S 딥블랙",sku:"SKU0000012324",avail:1,verdict:"재고있음"},
+  {gc:"3640346",gn:"basic / 바른 알러지케어 침대패드, SS/D/Q/K",oc:"27311520",on:"[G022] 방수 매트리스커버 D 딥네이비",sku:"SKU0000012245",avail:0,verdict:"재고없음"},
+  {gc:"3764904",gn:"refine / 더 도톰한 더블레이어 담요, 3colors, 소형/대형",oc:"28044747",on:"대형 150*200, 웜화이트",sku:"SKU0000012407",avail:0,verdict:"재고없음"},
+  {gc:"3814530",gn:"refine / 더 따뜻한 겨울 극세사 베개커버, 2colors, 40*60/50*70",oc:"28414399",on:"극세사 솔리드웜화이트, 50*70",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3814530",gn:"refine / 더 따뜻한 겨울 극세사 베개커버, 2colors, 40*60/50*70",oc:"28414401",on:"극세사 솔리드 딥블랙, 50*70",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3814509",gn:"refine / 더 따뜻한 겨울 극세사 침대패드, 2colors, SS/D/Q/K",oc:"28511166",on:"극세사 베개커버 50*70 웜화이트",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3814509",gn:"refine / 더 따뜻한 겨울 극세사 침대패드, 2colors, SS/D/Q/K",oc:"28511167",on:"극세사 베개커버 50*70 딥블랙",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3640210",gn:"refine / 더 포근한 60수 순면 누빔매트리스커버, SS/D/Q/K",oc:"27309951",on:"SS, 웜화이트",sku:"SKU0000012303",avail:0,verdict:"재고없음"},
+  {gc:"3640210",gn:"refine / 더 포근한 60수 순면 누빔매트리스커버, SS/D/Q/K",oc:"27309976",on:"[G014] 60수 코튼 차렵이불 D 웜화이트",sku:"SKU0000012263",avail:1,verdict:"재고있음"},
+  {gc:"3640210",gn:"refine / 더 포근한 60수 순면 누빔매트리스커버, SS/D/Q/K",oc:"27310023",on:"[G014] 방수 매트리스커버 D 딥네이비",sku:"SKU0000012245",avail:0,verdict:"재고없음"},
+  {gc:"3640153",gn:"refine / 더 포근한 60수 순면 베개커버, 40*60/50*70",oc:"27309498",on:"[G016] 60수 코튼 침대패드 SS 딥네이비",sku:"SKU0000012285",avail:15,verdict:"재고있음"},
+  {gc:"3640153",gn:"refine / 더 포근한 60수 순면 베개커버, 40*60/50*70",oc:"27309516",on:"[G016] 60수 누빔 매트리스커버 SS 웜화이트",sku:"SKU0000012303",avail:0,verdict:"재고없음"},
+  {gc:"3640153",gn:"refine / 더 포근한 60수 순면 베개커버, 40*60/50*70",oc:"27309541",on:"[G016] 60수 코튼 차렵이불 D 웜화이트",sku:"SKU0000012263",avail:1,verdict:"재고있음"},
+  {gc:"3640153",gn:"refine / 더 포근한 60수 순면 베개커버, 40*60/50*70",oc:"27309558",on:"[G016] 방수 매트리스커버 D 딥네이비",sku:"SKU0000012245",avail:0,verdict:"재고없음"},
+  {gc:"3640185",gn:"refine / 더 포근한 60수 순면 침대패드, SS/D/Q/K",oc:"27309793",on:"[G017] 60수 누빔 매트리스커버 SS 웜화이트",sku:"SKU0000012303",avail:0,verdict:"재고없음"},
+  {gc:"3640185",gn:"refine / 더 포근한 60수 순면 침대패드, SS/D/Q/K",oc:"27309775",on:"SS, 솔리드 네이비",sku:"SKU0000012285",avail:15,verdict:"재고있음"},
+  {gc:"3640185",gn:"refine / 더 포근한 60수 순면 침대패드, SS/D/Q/K",oc:"27309818",on:"[G017] 60수 코튼 차렵이불 D 웜화이트",sku:"SKU0000012263",avail:1,verdict:"재고있음"},
+  {gc:"3640185",gn:"refine / 더 포근한 60수 순면 침대패드, SS/D/Q/K",oc:"27309845",on:"[G017] 방수 매트리스커버 D 딥네이비",sku:"SKU0000012245",avail:0,verdict:"재고없음"},
+  {gc:"3640123",gn:"refine / 더 포근한 60수 순면 호텔침구세트, 사계절용, S/D/Q",oc:"27309142",on:"D, 웜화이트",sku:"SKU0000012260",avail:30,verdict:"재고있음"},
+  {gc:"3640123",gn:"refine / 더 포근한 60수 순면 호텔침구세트, 사계절용, S/D/Q",oc:"27309164",on:"[G015] 60수 침대패드 SS 솔리드 네이비",sku:"SKU0000012285",avail:15,verdict:"재고있음"},
+  {gc:"3640123",gn:"refine / 더 포근한 60수 순면 호텔침구세트, 사계절용, S/D/Q",oc:"29296328",on:"솔리드 아이보리, 더블 이불베개세트",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3640123",gn:"refine / 더 포근한 60수 순면 호텔침구세트, 사계절용, S/D/Q",oc:"29296341",on:"솔리드 네이비, 슈퍼싱글 퐀세트(SS패드)",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3640123",gn:"refine / 더 포근한 60수 순면 호텔침구세트, 사계절용, S/D/Q",oc:"29296343",on:"솔리드 아이보리, 더블 풀세트(D패드)",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3640123",gn:"refine / 더 포근한 60수 순면 호텔침구세트, 사계절용, S/D/Q",oc:"27309209",on:"[G015] 방수 매트리스커버 D 네이비",sku:"SKU0000012245",avail:0,verdict:"재고없음"},
+  {gc:"3694022",gn:"refine / 쉽게 세탁하는 스트라이프 발매트, 4colors, 소형/대형",oc:"27624195",on:"45*145, 웜화이트",sku:"SKU0000012391",avail:1,verdict:"재고있음"},
+  {gc:"3640060",gn:"refine / 완벽 100% 방수 매트리스커버, TPU 5colors, SS/D/Q/K",oc:"27308670",on:"D, 딥네이비",sku:"SKU0000012245",avail:0,verdict:"재고없음"},
+  {gc:"3519084",gn:"다운필 알러지케어 사계절 이불솜 S/Q/K",oc:"26672295",on:"[20% 할인] 바운스에어 베개솜 50*70",sku:"SKU0000012050",avail:468,verdict:"재고있음"},
+  {gc:"3519107",gn:"리커버에어 프리미엄 독일 슈프렐 경추베개솜 3sizes",oc:"27390686",on:"[G023] 경추베개솜 40*60 2개입",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3519107",gn:"리커버에어 프리미엄 독일 슈프렐 경추베개솜 3sizes",oc:"27390687",on:"[G023] 경추베개솜 50*70 2개입",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3518885",gn:"소프트워싱 파자마 긴팔/반팔세트 3colors FREE",oc:"26159632",on:"[30% 할인] 헤어밴드 스크런치 스트라이프아이보리",sku:"SKU0000012143",avail:161,verdict:"재고있음"},
+  {gc:"3518885",gn:"소프트워싱 파자마 긴팔/반팔세트 3colors FREE",oc:"28217149",on:"스트라이프 아이보리 베개커버 40*60",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3518885",gn:"소프트워싱 파자마 긴팔/반팔세트 3colors FREE",oc:"28217150",on:"스트라이프 아이보리 베개커버 50*70",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3518885",gn:"소프트워싱 파자마 긴팔/반팔세트 3colors FREE",oc:"28217151",on:"모카러스트 베개커버 40*60",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3518885",gn:"소프트워싱 파자마 긴팔/반팔세트 3colors FREE",oc:"28217152",on:"모카러스트 베개커버 50*70",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3604744",gn:"소프트워싱 헤어밴드 스크런치 4colors",oc:"27079177",on:"스트라이프 아이보리",sku:"SKU0000012143",avail:161,verdict:"재고있음"},
+  {gc:"3764946",gn:"크리스마스 스판 극세사 파자마 세트 핑크/그린 2colors, M/L",oc:"28044924",on:"브라운핑크, M",sku:"SKU0000012017",avail:0,verdict:"재고없음"},
+  {gc:"3764946",gn:"크리스마스 스판 극세사 파자마 세트 핑크/그린 2colors, M/L",oc:"28044925",on:"브라운그린, M",sku:"SKU0000012018",avail:0,verdict:"재고없음"},
+  {gc:"3764946",gn:"크리스마스 스판 극세사 파자마 세트 핑크/그린 2colors, M/L",oc:"28044926",on:"브라운그린, L",sku:"SKU0000012019",avail:0,verdict:"재고없음"},
+  {gc:"3435239",gn:"테스트/60수 고밀도 순면 베개커버",oc:"25415825",on:"50*70, 그린",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3435239",gn:"테스트/60수 고밀도 순면 베개커버",oc:"25415826",on:"50*70, 옐로우",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3435239",gn:"테스트/60수 고밀도 순면 베개커버",oc:"25415827",on:"50*70, 레드",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3435239",gn:"테스트/60수 고밀도 순면 베개커버",oc:"25415828",on:"40*60, 그린",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3435239",gn:"테스트/60수 고밀도 순면 베개커버",oc:"25415829",on:"40*60, 옐로우",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3435239",gn:"테스트/60수 고밀도 순면 베개커버",oc:"25415830",on:"40*60, 레드",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3519139",gn:"플러피에어 구스필 고밀도 80수 면 베개솜 3sizes",oc:"27390634",on:"[2개입] 플러피에어 베개솜 50*70",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3519139",gn:"플러피에어 구스필 고밀도 80수 면 베개솜 3sizes",oc:"27390635",on:"[4개입] 플러피에어 베개솜 50*70",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3518948",gn:"플러피에어 구스필 고밀도 80수 면 캠핑용 베개 5colors",oc:"26160003",on:"레몬스트라이프",sku:"SKU0000012105",avail:0,verdict:"재고없음"},
+];
+
+const SKU_INFO = {
+  "SKU0000012010":{name:"크리스마스_뽀글 퍼 슬리퍼 브라운 L",total:0,avail:0},
+  "SKU0000012011":{name:"크리스마스_뽀글 퍼 슬리퍼 레드아이보리 M",total:0,avail:0},
+  "SKU0000012017":{name:"크리스마스_극세사 파자마 브라운핑크 M",total:0,avail:0},
+  "SKU0000012018":{name:"크리스마스_극세사 파자마 브라운그린 M",total:0,avail:0},
+  "SKU0000012019":{name:"크리스마스_극세사 파자마 브라운그린 L",total:0,avail:0},
+  "SKU0000012023":{name:"크리스마스_테이블보 140*140 레드",total:0,avail:0},
+  "SKU0000012026":{name:"크리스마스_테이블보 140*200 레드",total:0,avail:0},
+  "SKU0000012050":{name:"바운스에어 알러지케어 베개솜 50*70",total:468,avail:468},
+  "SKU0000012105":{name:"플러피에어 80수 여행용 베개 레몬스트라이프",total:0,avail:0},
+  "SKU0000012133":{name:"쿨에어 쯔누가 냉감 베개커버 30*50",total:0,avail:0},
+  "SKU0000012134":{name:"쿨에어 쯔누가 냉감 베개커버 40*60",total:0,avail:0},
+  "SKU0000012135":{name:"쿨에어 쯔누가 냉감 베개커버 50*70",total:0,avail:0},
+  "SKU0000012136":{name:"쿨에어 쯔누가 냉감 침대패드 S",total:0,avail:0},
+  "SKU0000012137":{name:"쿨에어 쯔누가 냉감 침대패드 Q",total:0,avail:0},
+  "SKU0000012138":{name:"쿨에어 쯔누가 냉감 침대패드 K",total:0,avail:0},
+  "SKU0000012139":{name:"쿨에어 쯔누가 냉감 이불 MINI",total:0,avail:0},
+  "SKU0000012140":{name:"쿨에어 쯔누가 냉감 이불 S",total:0,avail:0},
+  "SKU0000012141":{name:"쿨에어 쯔누가 냉감 이불 Q",total:0,avail:0},
+  "SKU0000012142":{name:"쿨에어 쯔누가 냉감 바디필로우 25*70",total:0,avail:0},
+  "SKU0000012143":{name:"40수 헤어밴드 스크런치 스트라이프 아이보리",total:161,avail:161},
+  "SKU0000012245":{name:"기본 방수 매트리스커버 D 딥네이비",total:0,avail:0},
+  "SKU0000012260":{name:"기본 60수 차렵이불 SS 딥네이비",total:30,avail:30},
+  "SKU0000012263":{name:"기본 60수 차렵이불 D 웜화이트",total:1,avail:1},
+  "SKU0000012285":{name:"기본 60수 침대패드 SS 딥네이비",total:15,avail:15},
+  "SKU0000012303":{name:"기본 60수 누빔 매트리스커버 SS 웜화이트",total:0,avail:0},
+  "SKU0000012323":{name:"기본 알러지케어 차렵이불 S 웜화이트",total:0,avail:0},
+  "SKU0000012324":{name:"기본 알러지케어 차렵이불 S 딥블랙",total:1,avail:1},
+  "SKU0000012330":{name:"기본 알러지케어 차렵이불 극세사 딥블랙 S",total:0,avail:0},
+  "SKU0000012345":{name:"기본 알러지케어 베개커버 극세사 웜화이트",total:0,avail:0},
+  "SKU0000012346":{name:"기본 알러지케어 베개커버 극세사 딥블랙",total:1,avail:1},
+  "SKU0000012361":{name:"기본 알러지케어 침대패드 K 웜화이트",total:23,avail:23},
+  "SKU0000012391":{name:"기본 스트라이프 발매트 45*145 웜화이트",total:1,avail:1},
+  "SKU0000012407":{name:"기본 헤비웨이트 더블레이어 담요 웜화이트",total:0,avail:0},
+};
+
+// ====== RENDER ======
+function renderSkuCards() {
+  const inEl = document.getElementById('skuInStock');
+  const noEl = document.getElementById('skuNoStock');
+  const sorted = Object.entries(SKU_INFO).sort((a,b) => b[1].avail - a[1].avail);
+
+  sorted.filter(([,v]) => v.avail > 0).forEach(([sku, info]) => {
+    inEl.innerHTML += `<div class="sku-item"><div class="info"><div class="sku-code">${sku}</div><div class="sku-name">${info.name}</div></div><div class="stock"><div class="qty green">${info.avail}</div><div class="unit">출고가능</div></div></div>`;
+  });
+
+  sorted.filter(([,v]) => v.avail === 0).forEach(([sku, info]) => {
+    noEl.innerHTML += `<div class="sku-item"><div class="info"><div class="sku-code">${sku}</div><div class="sku-name">${info.name}</div></div><div class="stock"><div class="qty zero">0</div><div class="unit">출고가능</div></div></div>`;
+  });
+}
+
+function renderTable(filter, search) {
+  const tbody = document.getElementById('tableBody');
+  let filtered = DATA;
+  if (filter && filter !== 'all') filtered = filtered.filter(d => d.verdict === filter);
+  if (search) {
+    const s = search.toLowerCase();
+    filtered = filtered.filter(d => d.gn.toLowerCase().includes(s) || d.on.toLowerCase().includes(s) || (d.sku||'').toLowerCase().includes(s) || d.oc.includes(s) || d.gc.includes(s));
+  }
+
+  tbody.innerHTML = filtered.map(d => {
+    const badgeClass = d.verdict === '재고있음' ? 'green' : d.verdict === '재고없음' ? 'red' : 'yellow';
+    const availDisplay = d.avail === '-' ? '-' : (d.avail > 0 ? `<strong style="color:var(--green)">${d.avail}</strong>` : '0');
+    return `<tr>
+      <td class="text-center mono">${d.gc}</td>
+      <td class="ellipsis" title="${d.gn}">${d.gn}</td>
+      <td class="text-center mono">${d.oc}</td>
+      <td class="ellipsis" title="${d.on}">${d.on}</td>
+      <td class="text-center mono">${d.sku || '-'}</td>
+      <td class="text-center">${availDisplay}</td>
+      <td class="text-center"><span class="badge ${badgeClass}">${d.verdict}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+// Tabs
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+// Filter buttons
+let currentFilter = 'all';
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    renderTable(currentFilter, document.getElementById('searchBox').value);
+  });
+});
+
+// Search
+document.getElementById('searchBox').addEventListener('input', (e) => {
+  renderTable(currentFilter, e.target.value);
+});
+
+// Init
+renderSkuCards();
+renderTable('all', '');
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>리빙PB 품절현황 · 실재고 대시보드</title>
+<style>
+  :root {
+    --primary: #1e3a5f;
+    --accent: #2563eb;
+    --green: #16a34a;
+    --red: #dc2626;
+    --yellow: #d97706;
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --text: #1e293b;
+    --muted: #64748b;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); }
+  .header { background: linear-gradient(135deg, var(--primary), #2d4a7a); color: #fff; padding: 32px 0 28px; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .header h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px; }
+  .header .sub { color: #94a3b8; font-size: 14px; }
+  .header .sub span { color: #60a5fa; font-weight: 600; }
+
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: -36px 0 24px; position: relative; z-index: 1; }
+  .summary-card { background: var(--card); border-radius: 12px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,.08); text-align: center; border-top: 3px solid var(--border); }
+  .summary-card.green { border-top-color: var(--green); }
+  .summary-card.red { border-top-color: var(--red); }
+  .summary-card.yellow { border-top-color: var(--yellow); }
+  .summary-card.blue { border-top-color: var(--accent); }
+  .summary-card .num { font-size: 32px; font-weight: 800; margin: 4px 0; }
+  .summary-card .num.green { color: var(--green); }
+  .summary-card .num.red { color: var(--red); }
+  .summary-card .num.yellow { color: var(--yellow); }
+  .summary-card .num.blue { color: var(--accent); }
+  .summary-card .label { font-size: 13px; color: var(--muted); font-weight: 500; }
+
+  .section { background: var(--card); border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .section h2 { font-size: 18px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .section h2 .icon { font-size: 20px; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+  .badge.green { background: #dcfce7; color: #166534; }
+  .badge.red { background: #fee2e2; color: #991b1b; }
+  .badge.yellow { background: #fef3c7; color: #92400e; }
+
+  .sku-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 12px; }
+  .sku-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; border-radius: 8px; border: 1px solid var(--border); transition: background .15s; }
+  .sku-item:hover { background: #f8fafc; }
+  .sku-item .info { flex: 1; min-width: 0; }
+  .sku-item .sku-code { font-size: 12px; color: var(--muted); font-family: 'SF Mono', 'Consolas', monospace; }
+  .sku-item .sku-name { font-size: 14px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+  .sku-item .stock { text-align: right; min-width: 60px; }
+  .sku-item .stock .qty { font-size: 22px; font-weight: 800; }
+  .sku-item .stock .qty.green { color: var(--green); }
+  .sku-item .stock .qty.zero { color: #cbd5e1; }
+  .sku-item .stock .unit { font-size: 11px; color: var(--muted); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th { background: #f8fafc; padding: 10px 12px; text-align: left; font-weight: 600; color: var(--muted); font-size: 12px; text-transform: uppercase; border-bottom: 2px solid var(--border); position: sticky; top: 0; z-index: 2; }
+  tbody td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  tbody tr:hover { background: #f8fafc; }
+  .table-wrap { max-height: 600px; overflow-y: auto; border-radius: 8px; border: 1px solid var(--border); }
+  .text-center { text-align: center; }
+  .text-right { text-align: right; }
+  .mono { font-family: 'SF Mono', 'Consolas', monospace; font-size: 12px; }
+  .ellipsis { max-width: 280px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  .tabs { display: flex; gap: 4px; margin-bottom: 16px; border-bottom: 2px solid var(--border); }
+  .tab { padding: 10px 20px; cursor: pointer; font-weight: 600; font-size: 14px; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all .15s; }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .filter-bar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .filter-btn { padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: #fff; cursor: pointer; font-size: 13px; font-weight: 500; transition: all .15s; }
+  .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  .search-box { padding: 8px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 13px; width: 260px; outline: none; transition: border-color .15s; }
+  .search-box:focus { border-color: var(--accent); }
+
+  .footer { text-align: center; padding: 24px; color: var(--muted); font-size: 12px; }
+
+  @media (max-width: 768px) {
+    .summary-grid { grid-template-columns: repeat(2, 1fr); }
+    .sku-grid { grid-template-columns: 1fr; }
+    .filter-bar { flex-direction: column; }
+    .search-box { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <h1>리빙PB 품절현황 · 실재고 대시보드</h1>
+    <div class="sub">샵 ID <span>25146379</span> · 최종 업데이트 <span id="updateDate">2026-03-26</span></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="summary-grid">
+    <div class="summary-card blue">
+      <div class="label">전체 품절 옵션</div>
+      <div class="num blue" id="totalCount">121</div>
+      <div class="label">개</div>
+    </div>
+    <div class="summary-card green">
+      <div class="label">재고있음 (해제가능)</div>
+      <div class="num green" id="stockYesCount">17</div>
+      <div class="label">개</div>
+    </div>
+    <div class="summary-card red">
+      <div class="label">재고없음</div>
+      <div class="num red" id="stockNoCount">71</div>
+      <div class="label">개</div>
+    </div>
+    <div class="summary-card yellow">
+      <div class="label">SKU 미매칭</div>
+      <div class="num yellow" id="unmatchedCount">33</div>
+      <div class="label">개</div>
+    </div>
+  </div>
+
+  <!-- SKU 재고 요약 -->
+  <div class="section">
+    <h2><span class="icon">📦</span> SKU별 사방넷 실재고 현황</h2>
+    <div class="tabs">
+      <div class="tab active" data-tab="instock">재고있음 (9)</div>
+      <div class="tab" data-tab="nostock">재고없음 (24)</div>
+    </div>
+    <div class="tab-content active" id="tab-instock">
+      <div class="sku-grid" id="skuInStock"></div>
+    </div>
+    <div class="tab-content" id="tab-nostock">
+      <div class="sku-grid" id="skuNoStock"></div>
+    </div>
+  </div>
+
+  <!-- 전체 옵션 상세 테이블 -->
+  <div class="section">
+    <h2><span class="icon">📋</span> 품절 옵션 전체 상세</h2>
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-filter="all">전체 (121)</button>
+        <button class="filter-btn" data-filter="재고있음">재고있음 (17)</button>
+        <button class="filter-btn" data-filter="재고없음">재고없음 (71)</button>
+        <button class="filter-btn" data-filter="SKU미매칭">SKU미매칭 (33)</button>
+      </div>
+      <input type="text" class="search-box" id="searchBox" placeholder="상품명, 옵션명, SKU 검색...">
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="text-center" style="width:90px">상품코드</th>
+            <th>상품명</th>
+            <th class="text-center" style="width:90px">옵션코드</th>
+            <th>옵션명</th>
+            <th class="text-center" style="width:130px">SKU코드</th>
+            <th class="text-center" style="width:70px">출고가능</th>
+            <th class="text-center" style="width:90px">재고판정</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  리빙PB 품절현황 대시보드 · Powered by Claude · 데이터 출처: 오늘의집 Athena + 사방넷 WMS
+</div>
+
+<script>
+// ====== DATA ======
+const DATA = [
   {gc:"3764924",gn:"[2개입 추가할인] 뽀글 퍼 겨울 슬리퍼 실내화 거실화 3colors,M/L",oc:"28047482",on:"(오감리뷰용) 극세사 양털 훌리스 담요 100*150 브라운핑크",sku:"",avail:"-",verdict:"SKU미매칭"},
   {gc:"3764924",gn:"[2개입 추가할인] 뽀글 퍼 겨울 슬리퍼 실내화 거실화 3colors,M/L",oc:"28047483",on:"(오감리뷰용) 극세사 양털 후리스 담요 100*150 브라운그",sku:"",avail:"-",verdict:"SKU미매칭"},
   {gc:"3764924",gn:"[2개입 추가할인] 뽀글 퍼 겨울 슬리퍼 실내화 거실화 3colors,M/L",oc:"28044868",on:"스트라이프 + 브라운 L",sku:"SKU0000012010",avail:0,verdict:"재고없음"},
