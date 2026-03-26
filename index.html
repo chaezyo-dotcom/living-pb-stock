@@ -89,6 +89,17 @@
     .filter-bar { flex-direction: column; }
     .search-box { width: 100%; }
   }
+
+/* Low Stock Section */
+.lowstock-section{margin-top:32px;}
+.lowstock-tabs{display:flex;gap:8px;margin-bottom:16px;}
+.lowstock-tab{padding:8px 20px;border-radius:20px;border:1.5px solid #e0e0e0;background:#fff;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;}
+.lowstock-tab.active-critical{background:#dc3545;color:#fff;border-color:#dc3545;}
+.lowstock-tab.active-warning{background:#fd7e14;color:#fff;border-color:#fd7e14;}
+.lowstock-tab .cnt{font-size:12px;margin-left:4px;opacity:.8;}
+.lowstock-badge-critical{background:#dc3545;color:#fff;padding:2px 8px;border-radius:8px;font-size:11px;}
+.lowstock-badge-warning{background:#fd7e14;color:#fff;padding:2px 8px;border-radius:8px;font-size:11px;}
+.lowstock-table-wrap{max-height:500px;overflow-y:auto;}
 </style>
 </head>
 <body>
@@ -174,6 +185,20 @@
   리빙PB 품절현황 대시보드 · Powered by Claude · 데이터 출처: 오늘의집 Athena + 사방넷 WMS
 </div>
 
+
+<div class="lowstock-section">
+<h2 style="font-size:17px;font-weight:700;margin-bottom:14px;">&#128680; &#54408;&#51208;&#51076;&#48149; &#49345;&#54408; &#54788;&#54889;</h2>
+<div class="lowstock-tabs">
+<button class="lowstock-tab active-critical" id="tabCritical" onclick="showLowstock('critical')">&#51116;&#44256; 5&#44060; &#48120;&#47564; <span class="cnt" id="cntCritical"></span></button>
+<button class="lowstock-tab" id="tabWarning" onclick="showLowstock('warning')">&#51116;&#44256; 5~9&#44060; <span class="cnt" id="cntWarning"></span></button>
+</div>
+<div class="lowstock-table-wrap">
+<table class="table">
+<thead><tr><th style="width:50px">No.</th><th>SKU &#53076;&#46300;</th><th class="text-center" style="width:80px">&#52509;&#51116;&#44256;</th><th class="text-center" style="width:80px">&#52636;&#44256;&#44032;&#45733;</th><th class="text-center" style="width:80px">&#49345;&#53468;</th></tr></thead>
+<tbody id="lowstockBody"></tbody>
+</table>
+</div>
+</div>
 <script>
 // ====== DATA (판매중 상품 + 사용 옵션만) ======
 const DATA = [
@@ -218,6 +243,9 @@ const DATA = [
   {gc:"3604744",gn:"소프트워싱 헤어밴드 스크런치 4colors",oc:"27079177",on:"스트라이프 아이보리",sku:"SKU0000012143",avail:161,verdict:"재고있음"},
   {gc:"3518948",gn:"플릭피에어 구스팄 고�ð도 80수 면 캠핑용 베개 5colors",oc:"26160003",on:"레몬스트라이프",sku:"SKU0000012105",avail:0,verdict:"재고없음"},
 ];
+
+const LOWSTOCK_CRITICAL=[{s:"SKU0000012242",t:3,a:0},{s:"SKU0000012243",t:5,a:0},{s:"SKU0000012246",t:0,a:0},{s:"SKU0000012251",t:14,a:0},{s:"SKU0000012256",t:17,a:0},{s:"SKU0000012330",t:2,a:0},{s:"SKU0000012331",t:1,a:0},{s:"SKU0000012332",t:0,a:0},{s:"SKU0000012333",t:0,a:0},{s:"SKU0000012378",t:3,a:0},{s:"SKU0000012335",t:3,a:0},{s:"SKU0000012338",t:6,a:0},{s:"SKU0000012362",t:4,a:0},{s:"SKU0000012260",t:0,a:0},{s:"SKU0000012263",t:0,a:0},{s:"SKU0000012264",t:0,a:0},{s:"SKU0000012289",t:9,a:0},{s:"SKU0000012292",t:9,a:0},{s:"SKU0000012297",t:0,a:0},{s:"SKU0000012298",t:1,a:0},{s:"SKU0000012299",t:0,a:0},{s:"SKU0000012300",t:0,a:0},{s:"SKU0000012301",t:1,a:0},{s:"SKU0000012302",t:0,a:0},{s:"SKU0000012303",t:0,a:0},{s:"SKU0000012304",t:1,a:0},{s:"SKU0000012306",t:1,a:0},{s:"SKU0000012307",t:2,a:0},{s:"SKU0000012310",t:1,a:0},{s:"SKU0000012311",t:0,a:0},{s:"SKU0000012312",t:0,a:0},{s:"SKU0000012316",t:0,a:0},{s:"SKU0000012411",t:1,a:0},{s:"SKU0000012412",t:1,a:0},{s:"SKU0000012387",t:20,a:0},{s:"SKU0000012101",t:0,a:0},{s:"SKU0000012102",t:0,a:0},{s:"SKU0000012103",t:0,a:0},{s:"SKU0000012104",t:0,a:0},{s:"SKU0000012038",t:0,a:0},{s:"SKU0000012039",t:0,a:0},{s:"SKU0000012106",t:0,a:0},{s:"SKU0000012110",t:18,a:0},{s:"SKU0000012111",t:19,a:0},{s:"SKU0000012115",t:18,a:0},{s:"SKU0000012117",t:2,a:0},{s:"SKU0000012120",t:3,a:0},{s:"SKU0000012125",t:0,a:0},{s:"SKU0000012126",t:0,a:0},{s:"SKU0000012128",t:0,a:0},{s:"SKU0000012043",t:7,a:0},{s:"SKU0000012045",t:15,a:0},{s:"SKU0000012130",t:0,a:0},{s:"SKU0000012131",t:0,a:0},{s:"SKU0000012132",t:0,a:0},{s:"SKU0000012134",t:0,a:0},{s:"SKU0000012012",t:0,a:0},{s:"SKU0000012014",t:0,a:0},{s:"SKU0000012009",t:0,a:0},{s:"SKU0000012011",t:0,a:0},{s:"SKU0000012020",t:0,a:0},{s:"SKU0000012023",t:0,a:0},{s:"SKU0000012021",t:0,a:0},{s:"SKU0000012022",t:0,a:0},{s:"SKU0000012030",t:0,a:0},{s:"SKU0000012031",t:0,a:0},{s:"SKU0000012033",t:0,a:0},{s:"SKU0000012239",t:2,a:1},{s:"SKU0000012374",t:3,a:1},{s:"SKU0000012376",t:13,a:1},{s:"SKU0000012377",t:5,a:1},{s:"SKU0000012290",t:6,a:1},{s:"SKU0000012409",t:13,a:1},{s:"SKU0000012252",t:15,a:2},{s:"SKU0000012344",t:5,a:2},{s:"SKU0000012274",t:2,a:2},{s:"SKU0000012275",t:2,a:2},{s:"SKU0000012277",t:2,a:2},{s:"SKU0000012315",t:4,a:2},{s:"SKU0000012121",t:6,a:2},{s:"SKU0000012372",t:6,a:3},{s:"SKU0000012347",t:6,a:3},{s:"SKU0000012368",t:3,a:3},{s:"SKU0000012278",t:3,a:3},{s:"SKU0000012280",t:3,a:3},{s:"SKU0000012282",t:3,a:3},{s:"SKU0000012283",t:4,a:3},{s:"SKU0000012287",t:8,a:3},{s:"SKU0000012317",t:3,a:3},{s:"SKU0000012114",t:18,a:3},{s:"SKU0000012324",t:6,a:4},{s:"SKU0000012325",t:6,a:4},{s:"SKU0000012326",t:6,a:4},{s:"SKU0000012386",t:5,a:4},{s:"SKU0000012279",t:4,a:4},{s:"SKU0000012318",t:9,a:4},{s:"SKU0000012319",t:9,a:4},{s:"SKU0000012320",t:9,a:4},{s:"SKU0000012405",t:39,a:4},{s:"SKU0000012395",t:11,a:4}];
+const LOWSTOCK_WARNING=[{s:"SKU0000012238",t:5,a:5},{s:"SKU0000012241",t:5,a:5},{s:"SKU0000012371",t:5,a:5},{s:"SKU0000012373",t:11,a:5},{s:"SKU0000012382",t:14,a:5},{s:"SKU0000012281",t:5,a:5},{s:"SKU0000012284",t:5,a:5},{s:"SKU0000012294",t:5,a:5},{s:"SKU0000012410",t:15,a:5},{s:"SKU0000012109",t:10,a:5},{s:"SKU0000012044",t:15,a:5},{s:"SKU0000012257",t:19,a:6},{s:"SKU0000012323",t:9,a:6},{s:"SKU0000012353",t:8,a:6},{s:"SKU0000012354",t:8,a:6},{s:"SKU0000012366",t:8,a:6},{s:"SKU0000012367",t:8,a:6},{s:"SKU0000012258",t:19,a:6},{s:"SKU0000012259",t:19,a:6},{s:"SKU0000012322",t:9,a:6},{s:"SKU0000012118",t:6,a:6},{s:"SKU0000012119",t:6,a:6},{s:"SKU0000012385",t:11,a:7},{s:"SKU0000012345",t:7,a:7},{s:"SKU0000012276",t:8,a:7},{s:"SKU0000012391",t:10,a:7},{s:"SKU0000012240",t:8,a:8},{s:"SKU0000012383",t:15,a:8},{s:"SKU0000012348",t:8,a:8},{s:"SKU0000012363",t:16,a:8},{s:"SKU0000012369",t:8,a:8},{s:"SKU0000012370",t:8,a:8},{s:"SKU0000012265",t:8,a:8},{s:"SKU0000012393",t:11,a:8},{s:"SKU0000012339",t:15,a:9},{s:"SKU0000012342",t:13,a:9},{s:"SKU0000012352",t:14,a:9},{s:"SKU0000012314",t:9,a:9},{s:"SKU0000012392",t:12,a:9},{s:"SKU0000012116",t:9,a:9},{s:"SKU0000012122",t:10,a:9}];
 
 const SKU_INFO = {
   "SKU0000012010":{name:"크리스마스_뽀금퍼 스리퍼 블라운 L",total:0,avail:0,barcode:""},
@@ -378,6 +406,26 @@ document.getElementById('sortAvail').addEventListener('click', () => {
 // Init
 renderSkuCards();
 renderTable('all', '');
+
+let currentLowstock = "critical";
+function showLowstock(type){
+currentLowstock=type;
+document.getElementById("tabCritical").className="lowstock-tab"+(type==="critical"?" active-critical":"");
+document.getElementById("tabWarning").className="lowstock-tab"+(type==="warning"?" active-warning":"");
+renderLowstock();}
+function renderLowstock(){
+var data=currentLowstock==="critical"?LOWSTOCK_CRITICAL:LOWSTOCK_WARNING;
+var badge=currentLowstock==="critical"?"lowstock-badge-critical":"lowstock-badge-warning";
+var label=currentLowstock==="critical"?"\uC704\uD5D8":"\uC8FC\uC758";
+var html="";
+data.forEach(function(item,i){
+var nm=SKU_INFO[item.s]?SKU_INFO[item.s].name:item.s;
+html+='<tr><td>'+(i+1)+'</td><td>'+item.s+' <span style="color:#888;font-size:12px">'+nm+'</span></td><td class="text-center">'+item.t+'</td><td class="text-center" style="font-weight:700;color:'+(item.a===0?"#dc3545":item.a<5?"#fd7e14":"#333")+'">'+item.a+'</td><td class="text-center"><span class="'+badge+'">'+label+'</span></td></tr>';});
+document.getElementById("lowstockBody").innerHTML=html;
+document.getElementById("cntCritical").textContent="("+LOWSTOCK_CRITICAL.length+")";
+document.getElementById("cntWarning").textContent="("+LOWSTOCK_WARNING.length+")";
+}
+renderLowstock();
 </script>
 </body>
 </html>
