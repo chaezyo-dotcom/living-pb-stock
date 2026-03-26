@@ -60,6 +60,9 @@
 
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   thead th { background: #f8fafc; padding: 10px 12px; text-align: left; font-weight: 600; color: var(--muted); font-size: 12px; text-transform: uppercase; border-bottom: 2px solid var(--border); position: sticky; top: 0; z-index: 2; }
+  th.sortable { cursor: pointer; user-select: none; }
+  th.sortable:hover { color: var(--accent); }
+  th.sortable .sort-icon { font-size: 10px; margin-left: 2px; }
   tbody td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
   tbody tr:hover { background: #f8fafc; }
   .table-wrap { max-height: 600px; overflow-y: auto; border-radius: 8px; border: 1px solid var(--border); }
@@ -142,7 +145,7 @@
             <th class="text-center" style="width:90px">옵션코드</th>
             <th>옵션명</th>
             <th class="text-center" style="width:130px">SKU코드</th>
-            <th class="text-center" style="width:70px">출고가능</th>
+            <th class="text-center sortable" style="width:70px" id="sortAvail" data-sort="none">출고가능 <span class="sort-icon"></span></th>
             <th class="text-center" style="width:90px">재고판정</th>
           </tr>
         </thead>
@@ -298,6 +301,13 @@ function renderTable(filter, search) {
       (d.sku||'').toLowerCase().includes(s) || d.oc.includes(s) || d.gc.includes(s)
     );
   }
+  if (currentSort !== 'none') {
+    filtered = [...filtered].sort((a, b) => {
+      const av = typeof a.avail === 'number' ? a.avail : -999;
+      const bv = typeof b.avail === 'number' ? b.avail : -999;
+      return currentSort === 'desc' ? bv - av : av - bv;
+    });
+  }
   tbody.innerHTML = filtered.map(d => {
     const badgeClass = d.verdict === '재고있음' ? 'green' : d.verdict === '재고없음' ? 'red' : 'yellow';
     let skuDisplay, availDisplay;
@@ -340,6 +350,7 @@ document.querySelectorAll('.tab').forEach(tab => {
 
 // Filter buttons
 let currentFilter = 'all';
+let currentSort = 'none'; // none, desc, asc
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -352,6 +363,16 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 // Search
 document.getElementById('searchBox').addEventListener('input', (e) => {
   renderTable(currentFilter, e.target.value);
+});
+
+// Sort by avail
+document.getElementById('sortAvail').addEventListener('click', () => {
+  if (currentSort === 'none') currentSort = 'desc';
+  else if (currentSort === 'desc') currentSort = 'asc';
+  else currentSort = 'none';
+  const icon = document.querySelector('#sortAvail .sort-icon');
+  icon.textContent = currentSort === 'desc' ? '\u25BC' : currentSort === 'asc' ? '\u25B2' : '';
+  renderTable(currentFilter, document.getElementById('searchBox').value);
 });
 
 // Init
