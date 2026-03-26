@@ -3,9 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>반품 수거송장 현황</title>
+<title>반품/교환 수거송장 현황</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#f5f6f8;color:#333;padding:24px}.container{max-width:1200px;margin:0 auto}h1{font-size:22px;font-weight:700;margin-bottom:6px;color:#1a1a1a}.subtitle{font-size:14px;color:#888;margin-bottom:24px}.summary{display:flex;gap:16px;margin-bottom:24px;flex-wrap:wrap}.summary-card{background:#fff;border-radius:12px;padding:20px 24px;flex:1;min-width:180px;box-shadow:0 1px 4px rgba(0,0,0,.06);text-align:center}.summary-card .label{font-size:13px;color:#888;margin-bottom:8px}.summary-card .count{font-size:32px;font-weight:700}.summary-card.a .count{color:#e74c3c}.summary-card.b .count{color:#f39c12}.summary-card.c .count{color:#27ae60}.summary-card.total .count{color:#35c5f0}table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:13px}thead{background:#35c5f0;color:#fff}th{padding:12px 10px;text-align:center;font-weight:600;white-space:nowrap}td{padding:10px;text-align:center;border-bottom:1px solid #f0f0f0}tr:last-child td{border-bottom:none}tr:hover{background:#f9fcff}.badge{display:inline-block;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600}.badge-a{background:#fde8e8;color:#e74c3c}.badge-b{background:#fef6e7;color:#f39c12}.badge-c{background:#e8f8ef;color:#27ae60}.legend{background:#fff;border-radius:12px;padding:20px 24px;margin-bottom:24px;box-shadow:0 1px 4px rgba(0,0,0,.06)}.legend h3{font-size:14px;font-weight:600;margin-bottom:12px;color:#555}.legend-items{display:flex;gap:24px;flex-wrap:wrap}.legend-item{display:flex;align-items:center;gap:8px;font-size:13px}.legend-dot{width:12px;height:12px;border-radius:50%}.dot-a{background:#e74c3c}.dot-b{background:#f39c12}.dot-c{background:#27ae60}.product-name{max-width:220px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tracking-num{font-family:monospace;font-size:12px;color:#555}a{color:#35c5f0;text-decoration:none}a:hover{text-decoration:underline}.timestamp{font-size:11px;color:#aaa;text-align:right;margin-top:16px}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f5;padding:20px;color:#333}
+.container{max-width:1200px;margin:0 auto}
+h1{font-size:24px;margin-bottom:8px}
+.subtitle{color:#666;margin-bottom:20px;font-size:14px}
+.summary{display:flex;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+.card{flex:1;min-width:140px;background:#fff;border-radius:12px;padding:20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.card .label{font-size:13px;color:#888;margin-bottom:8px}
+.card .value{font-size:32px;font-weight:700}
+.card .value.total{color:#2196F3}
+.card .value.red{color:#e53935}
+.card .value.orange{color:#FB8C00}
+.card .value.green{color:#43A047}
+.legend{background:#fff;border-radius:12px;padding:16px 20px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.legend h3{font-size:14px;margin-bottom:8px}
+.legend-items{display:flex;gap:24px;flex-wrap:wrap;font-size:13px}
+.legend-item{display:flex;align-items:center;gap:6px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.dot.red{background:#e53935}.dot.orange{background:#FB8C00}.dot.green{background:#43A047}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin-bottom:40px}
+th{background:#f8f9fa;padding:12px 10px;font-size:12px;color:#666;border-bottom:2px solid #e0e0e0;white-space:nowrap}
+td{padding:10px;font-size:13px;border-bottom:1px solid #f0f0f0;text-align:center}
+td a{color:#1976D2;text-decoration:none}td a:hover{text-decoration:underline}
+.badge{display:inline-block;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600}
+.badge-a{background:#FFEBEE;color:#e53935}
+.badge-b{background:#FFF3E0;color:#E65100}
+.badge-c{background:#E8F5E9;color:#2E7D32}
+.product-name{max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left}
+.tracking-num{font-family:monospace;font-size:12px}
+.timestamp{text-align:right;color:#999;font-size:12px;margin-top:8px}
+.section-title{font-size:20px;font-weight:700;margin:40px 0 8px;padding-top:20px;border-top:2px solid #e0e0e0}
+.section-subtitle{color:#666;margin-bottom:20px;font-size:14px}
+.no-data{background:#fff;border-radius:12px;padding:40px;text-align:center;color:#999;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin-bottom:40px}
+.ship-badge{display:inline-block;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600}
+.ship-need{background:#FFEBEE;color:#e53935}
+.ship-done{background:#E8F5E9;color:#2E7D32}
 </style>
 </head>
 <body>
@@ -13,37 +47,39 @@
 <h1>오늘의집 레이어 - 반품 수거송장 현황</h1>
 <p class="subtitle">2026년 3월 26일 기준 · 수거송장 미등록 반품 12건 (고유 운송장 11개)</p>
 <div class="summary">
-<div class="summary-card total"><div class="label">전체</div><div class="count">12</div></div>
-<div class="summary-card a"><div class="label">a. 회수 접수 필요</div><div class="count">5</div></div>
-<div class="summary-card b"><div class="label">b. 접수완료 / 반송장 미등록</div><div class="count">7</div></div>
-<div class="summary-card c"><div class="label">c. 반송장 등록 완료</div><div class="count">0</div></div>
+<div class="card"><div class="label">전체</div><div class="value total">12</div></div>
+<div class="card"><div class="label">a. 회수 접수 필요</div><div class="value red">5</div></div>
+<div class="card"><div class="label">b. 접수완료 / 반송장 미등록</div><div class="value orange">7</div></div>
+<div class="card"><div class="label">c. 반송장 등록 완료</div><div class="value green">0</div></div>
 </div>
-<div class="legend">
-<h3>상태 분류 기준</h3>
-<div class="legend-items">
-<div class="legend-item"><div class="legend-dot dot-a"></div><strong>a상태</strong>: 사방넷에 미등록 → 회수 접수가 필요</div>
-<div class="legend-item"><div class="legend-dot dot-b"></div><strong>b상태</strong>: 사방넷에 등록됨, 반송장번호 없음 → 택배 회수 대기중</div>
-<div class="legend-item"><div class="legend-dot dot-c"></div><strong>c상태</strong>: 사방넷에 등록됨, 반송장번호 있음 → 반송장 오로라 등록 필요</div>
-</div>
-</div>
+<div class="legend"><h3>상태 분류 기준</h3><div class="legend-items">
+<div class="legend-item"><span class="dot red"></span><b>a상태</b> : 사방넷에 미등록 → 회수 접수가 필요</div>
+<div class="legend-item"><span class="dot orange"></span><b>b상태</b> : 사방넷에 등록됨, 반송장번호 없음 → 택배 회수 대기중</div>
+<div class="legend-item"><span class="dot green"></span><b>c상태</b> : 사방넷에 등록됨, 반송장번호 있음 → 반송장 오로라 등록 필요</div>
+</div></div>
 <table>
 <thead><tr><th>#</th><th>반품번호</th><th>주문번호</th><th>주문자</th><th>상품명</th><th>운송장번호</th><th>상태</th><th>반송장번호</th><th>귀책</th><th>반품사유</th></tr></thead>
 <tbody>
 <tr><td>1</td><td><a href="https://orora.ohou.se/claims/return/207997193/207997193" target="_blank">207997193</a></td><td><a href="https://orora.ohou.se/order-detail/323076145" target="_blank">323076145</a></td><td>박*경</td><td class="product-name">알러지케어 침대패드 SS 크림</td><td class="tracking-num">530766049734</td><td><span class="badge badge-a">a. 회수접수 필요</span></td><td>-</td><td>구매자</td><td>상품이 필요하지 않아요</td></tr>
-<tr><td>2</td><td><a href="https://orora.ohou.se/claims/return/207994957/207994957" target="_blank">207994957</a></td><td><a href="https://orora.ohou.se/order-detail/322594487" target="_blank">322594487</a></td><td>김*환</td><td class="product-name">암막커튼 커튼봉 25mm 블랙</td><td class="tracking-num">530763678565</td><td><span class="badge badge-a">a. 회수접수 필요</span></td><td>-</td><td>구매자</td><td>상품이 필요하지 않아요</td></tr>
+<tr><td>2</td><td><a href="https://orora.ohou.se/claims/return/207994957/207994957" target="_blank">207994957</a></td><td><a href="https://orora.ohou.se/order-detail/322594487" target="_blank">322594487</a></td><td>김*환</td><td class="product-name">암막커트 커튼봉 25mm 블랙</td><td class="tracking-num">530763678565</td><td><span class="badge badge-a">a. 회수접수 필요</span></td><td>-</td><td>구매자</td><td>상품이 필요하지 않아요</td></tr>
 <tr><td>3</td><td><a href="https://orora.ohou.se/claims/return/207994355/207994355" target="_blank">207994355</a></td><td><a href="https://orora.ohou.se/order-detail/323211764" target="_blank">323211764</a></td><td>노*지</td><td class="product-name">알러지케어 침구세트 SS 민트</td><td class="tracking-num">530768495280</td><td><span class="badge badge-a">a. 회수접수 필요</span></td><td>-</td><td>판매자</td><td>배송지연 반품</td></tr>
-<tr><td>4</td><td><a href="https://orora.ohou.se/claims/return/207994355/207994355" target="_blank">(동일주문)</a></td><td><a href="https://orora.ohou.se/order-detail/323211764" target="_blank">323211764</a></td><td>노*지</td><td class="product-name">알러지케어 매트리스커버 SS</td><td class="tracking-num">530768495280</td><td><span class="badge badge-a">a. 회수접수 필요</span></td><td>-</td><td>판매자</td><td>배송지연 반품</td></tr>
+<tr><td>4</td><td>(동일주문)</td><td><a href="https://orora.ohou.se/order-detail/323211764" target="_blank">323211764</a></td><td>노*지</td><td class="product-name">알러지케어 매트리스커버 SS</td><td class="tracking-num">530768495280</td><td><span class="badge badge-a">a. 회수접수 필요</span></td><td>-</td><td>판매자</td><td>배송지연 반품</td></tr>
 <tr><td>5</td><td><a href="https://orora.ohou.se/claims/return/207993184/207993184" target="_blank">207993184</a></td><td><a href="https://orora.ohou.se/order-detail/322633608" target="_blank">322633608</a></td><td>김*연</td><td class="product-name">사계절 러그 차콜 100*150</td><td class="tracking-num">530763987895</td><td><span class="badge badge-a">a. 회수접수 필요</span></td><td>-</td><td>구매자</td><td>상품이 필요하지 않아요</td></tr>
 <tr><td>6</td><td><a href="https://orora.ohou.se/claims/return/207989566/207989566" target="_blank">207989566</a></td><td><a href="https://orora.ohou.se/order-detail/323068379" target="_blank">323068379</a></td><td>김*희</td><td class="product-name">60수 순면 침대패드 Q 오트밀</td><td class="tracking-num">530766049454</td><td><span class="badge badge-b">b. 접수완료 / 반송장 대기</span></td><td>-</td><td>구매자</td><td>상품이 필요하지 않아요</td></tr>
 <tr><td>7</td><td><a href="https://orora.ohou.se/claims/return/207988959/207988959" target="_blank">207988959</a></td><td><a href="https://orora.ohou.se/order-detail/323017339" target="_blank">323017339</a></td><td>김*혁</td><td class="product-name">60수 호텔침구세트 Q 차콜</td><td class="tracking-num">530765599984</td><td><span class="badge badge-b">b. 접수완료 / 반송장 대기</span></td><td>-</td><td>구매자</td><td>색상/사이즈 변경</td></tr>
-<tr><td>8</td><td><a href="https://orora.ohou.se/claims/return/207988788/207988788" target="_blank">207988788</a></td><td><a href="https://orora.ohou.se/order-detail/323013732" target="_blank">323013732</a></td><td>김*기</td><td class="product-name">암막커튼 커튼봉 화이트</td><td class="tracking-num">540761107185</td><td><span class="badge badge-a">a. 회수접수 필요</span></td><td>-</td><td>판매자</td><td>상품에 문제가 있어요</td></tr>
+<tr><td>8</td><td><a href="https://orora.ohou.se/claims/return/207988788/207988788" target="_blank">207988788</a></td><td><a href="https://orora.ohou.se/order-detail/323013732" target="_blank">323013732</a></td><td>김*기</td><td class="product-name">암막커트 커튼봉 화이트</td><td class="tracking-num">540761107185</td><td><span class="badge badge-a">a. 회수접수 필요</span></td><td>-</td><td>판매자</td><td>상품에 문제가 있어요</td></tr>
 <tr><td>9</td><td><a href="https://orora.ohou.se/claims/return/207987818/207987818" target="_blank">207987818</a></td><td><a href="https://orora.ohou.se/order-detail/322906367" target="_blank">322906367</a></td><td>강*영</td><td class="product-name">소프트워싱 매트리스커버 SS</td><td class="tracking-num">530764818703</td><td><span class="badge badge-b">b. 접수완료 / 반송장 대기</span></td><td>-</td><td>구매자</td><td>다른 상품을 주문하고 싶어요</td></tr>
 <tr><td>10</td><td><a href="https://orora.ohou.se/claims/return/207981951/207981951" target="_blank">207981951</a></td><td><a href="https://orora.ohou.se/order-detail/322596134" target="_blank">322596134</a></td><td>천*희</td><td class="product-name">알러지케어 베개커버 딥블랙</td><td class="tracking-num">540759386703</td><td><span class="badge badge-b">b. 접수완료 / 반송장 대기</span></td><td>-</td><td>구매자</td><td>다른 상품을 주문하고 싶어요</td></tr>
 <tr><td>11</td><td><a href="https://orora.ohou.se/claims/return/207978280/207978280" target="_blank">207978280</a></td><td><a href="https://orora.ohou.se/order-detail/322941272" target="_blank">322941272</a></td><td>염*나</td><td class="product-name">알러지케어 매트리스커버 K</td><td class="tracking-num">530764819311</td><td><span class="badge badge-b">b. 접수완료 / 반송장 대기</span></td><td>-</td><td>구매자</td><td>다른 이유가 있어요</td></tr>
 <tr><td>12</td><td><a href="https://orora.ohou.se/claims/return/207977689/207977689" target="_blank">207977689</a></td><td><a href="https://orora.ohou.se/order-detail/322681437" target="_blank">322681437</a></td><td>송*경</td><td class="product-name">알러지케어 베개커버 스트라이프</td><td class="tracking-num">540759386773</td><td><span class="badge badge-b">b. 접수완료 / 반송장 대기</span></td><td>-</td><td>구매자</td><td>상품이 필요하지 않아요</td></tr>
 </tbody>
 </table>
+
+<h2 class="section-title">교환 수거/재출고 현황</h2>
+<p class="section-subtitle">2026년 3월 26일 기준 · 오로라 교환관리 (교환요청~교환재배송중)</p>
+<div class="no-data">현재 진행 중인 교환 건이 없습니다. (0건)</div>
+
 <p class="timestamp">마지막 확인: 2026년 3월 26일 · 오로라 + 사방넷 크로스체크 완료</p>
 </div>
 </body>
-</html>
+  </html>
