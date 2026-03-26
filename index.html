@@ -175,11 +175,11 @@
 <script>
 // ====== DATA (판매중 상품 + 사용 옵션만) ======
 const DATA = [
-  {gc:"3764924",gn:"[2개입 추가할인] 뽀글 퍼 겨울 슬리퍼 실내화 거실화 3colors,M/L",oc:"28044868",on:"스트라이프 + 브라운 L",sku:"SKU0000012010",avail:0,verdict:"재고없음"},
-  {gc:"3764924",gn:"[2개입 추가할인] 뽀글 퍼 겨울 슬리퍼 실내화 거실화 3colors,M/L",oc:"28044869",on:"레드 M",sku:"SKU0000012011",avail:0,verdict:"재고없음"},
+  {gc:"3764924",gn:"[2개입 추가할인] 뽀글 퍼 겨울 슬릨퍼 실내화 거실화 3colors,M/L",oc:"28044868",on:"스트라이프 + 브라운 L",sku:"SKU0000012010",avail:0,verdict:"재고없음"},
+  {gc:"3764924",gn:"[2개입 추가할인] 뽀글 퍼 겨울 슬리퍼 실내화 거십화 3colors,M/L",oc:"28044869",on:"레드 M",sku:"SKU0000012011",avail:0,verdict:"재고없음"},
   {gc:"3764924",gn:"[2개입 추가할인] 뽀글 퍼 겨울 슬리퍼 실내화 거실화 3colors,M/L",oc:"28513456",on:"[이달의 혜택] 스트라이프 + 브라운 L",sku:"SKU0000012010",avail:0,verdict:"재고없음"},
   {gc:"3764924",gn:"[2개입 추가할인] 뽀글 퍼 겨울 슬리퍼 실내화 거실화 3colors,M/L",oc:"28513457",on:"[이달의 혜택] 레드 M",sku:"SKU0000012011",avail:0,verdict:"재고없음"},
-  {gc:"3612611",gn:"[시즈오프] 1+1 소프트워싱 파자마 쇼츠 2sizes - 4colors",oc:"27135249",on:"[30%할인] 헤어밴드 스크런치 스트라이프아이보리",sku:"SKU0000012143",avail:161,verdict:"재고있음"},
+  {gc:"3612611",gn:"[시즌오프] 1+1 소프트워싱 파자마 쇼츠 2sizes - 4colors",oc:"27135249",on:"[30%할인] 헤어밴드 스크런치 스트라이프아이보리",sku:"SKU0000012143",avail:161,verdict:"재고있음"},
   {gc:"3765071",gn:"[최대할인!무배] 겨울 홈파티 체크 테이블보/매트/와인커버/커트러리홀더",oc:"28045459",on:"테이블보 140*140, 레드",sku:"SKU0000012023",avail:0,verdict:"재고없음"},
   {gc:"3765071",gn:"[최대할인!무배] 겨울 홈파티 체크 테이블보/매트/와인커버/커트러리홀더",oc:"28045462",on:"테이블보 140*200, 레드",sku:"SKU0000012026",avail:0,verdict:"재고없음"},
   {gc:"3640383",gn:"basic / 바른 알러지케어 매트리스커버, SS/D/Q/K",oc:"27312259",on:"[G018] 알러지케어 차렵이불 S 딥블랙",sku:"SKU0000012324",avail:1,verdict:"재고있음"},
@@ -188,19 +188,19 @@ const DATA = [
   {gc:"3640320",gn:"basic / 바른 알러지케어 베개커버, 40*60/50*70",oc:"28712804",on:"50*70, 극세사 솔리드 크림",sku:"SKU0000012345",avail:0,verdict:"재고없음"},
   {gc:"3640320",gn:"basic / 바른 알러지케어 베개커버, 40*60/50*70",oc:"28712805",on:"50*70, 극세사 솔리드 딥블랙",sku:"SKU0000012346",avail:1,verdict:"재고있음"},
   {gc:"3640320",gn:"basic / 바른 알러지케어 베개커버, 40*60/50*70",oc:"27311060",on:"[G021] 방수 매트리스커버 D 딥네이비",sku:"SKU0000012245",avail:0,verdict:"재고없음"},
-  {gc:"3640244",gn:"basic / 바른 알러지케어 침구세트, 사계절용, SS/D/Q",oc:"28646152",on:"[G024] 극세사 베개커버 50*70 크림",sku:"SKU0000012345",avail:0,verdict:"재고없음"},
+  {gc:"3640244",gn:"basic / 바른 알러지케어 침구세트, 사계절용, SS/D/Q",oc:"28646152",on:"[G024] 극세사 베개커버 50*70 크릸",sku:"SKU0000012345",avail:0,verdict:"재고없음"},
   {gc:"3640244",gn:"basic / 바른 알러지케어 침구세트, 사계절용, SS/D/Q",oc:"28646153",on:"[G024] 극세사 베개커버 50*70 딥블랙",sku:"SKU0000012346",avail:1,verdict:"재고있음"},
   {gc:"3640346",gn:"basic / 바른 알러지케어 침대패드, SS/D/Q/K",oc:"27311499",on:"[G022] 알러지케어 차렵이불 S 웜화이트",sku:"SKU0000012323",avail:0,verdict:"재고없음"},
   {gc:"3640346",gn:"basic / 바른 알러지케어 침대패드, SS/D/Q/K",oc:"27311500",on:"[G022] 알러지케어 차렵이불 S 딥블랙",sku:"SKU0000012324",avail:1,verdict:"재고있음"},
   {gc:"3640346",gn:"basic / 바른 알러지케어 침대패드, SS/D/Q/K",oc:"27311520",on:"[G022] 방수 매트리스커버 D 딥네이비",sku:"SKU0000012245",avail:0,verdict:"재고없음"},
-  {gc:"3764904",gn:"refine / 더 도톰한 더블레이어 담요, 3colors, 소형/대형",oc:"28044747",on:"대형 150*200, 웜화이트",sku:"SKU0000012407",avail:0,verdict:"재고없음"},
-  {gc:"3814530",gn:"refine / 더 따뜻한 겨울 극세사 베개커버, 2colors, 40*60/50*70",oc:"28414399",on:"극세사 솔리드웜화이트, 50*70",sku:"",avail:"-",verdict:"SKU미매칭"},
+  {gc:"3764904",gn:"refine / 더 도톰한 더블레이薴 담요, 3colors, 소형/대형",oc:"28044747",on:"대형 150*200, 웜화이트",sku:"SKU0000012407",avail:0,verdict:"재고없음"},
+  {gc:"3814530",gn:"refine / 더 따뜻한 겨울 극세사 베개커버, 2colors, 40*60/50*70",oc:"28414399",on:"극세사 솔리드원화이트, 50*70",sku:"",avail:"-",verdict:"SKU미매칭"},
   {gc:"3814530",gn:"refine / 더 따뜻한 겨울 극세사 베개커버, 2colors, 40*60/50*70",oc:"28414401",on:"극세사 솔리드 딥블랙, 50*70",sku:"",avail:"-",verdict:"SKU미매칭"},
   {gc:"3814509",gn:"refine / 더 따뜻한 겨울 극세사 침대패드, 2colors, SS/D/Q/K",oc:"28511166",on:"극세사 베개커버 50*70 웜화이트",sku:"",avail:"-",verdict:"SKU미매칭"},
   {gc:"3814509",gn:"refine / 더 따뜻한 겨울 극세사 침대패드, 2colors, SS/D/Q/K",oc:"28511167",on:"극세사 베개커버 50*70 딥블랙",sku:"",avail:"-",verdict:"SKU미매칭"},
-  {gc:"3640210",gn:"refine / 더 포근한 60수 순면 누빔매트리스커버, SS/D/Q/K",oc:"27309951",on:"SS, 웜화이트",sku:"SKU0000012303",avail:0,verdict:"재고없음"},
+  {gc:"3640210",gn:"refine / 더 포근한 60수 순면 누비매트리스커버, SS/D/Q/K",oc:"27309951",on:"SS, 웜화이트",sku:"SKU0000012303",avail:0,verdict:"재고없음"},
   {gc:"3640210",gn:"refine / 더 포근한 60수 순면 누빔매트리스커버, SS/D/Q/K",oc:"27309976",on:"[G014] 60수 코튼 차렵이불 D 웜화이트",sku:"SKU0000012263",avail:1,verdict:"재고있음"},
-  {gc:"3640210",gn:"refine / 더 포근한 60수 순면 누빔매트리스커버, SS/D/Q/K",oc:"27310023",on:"[G014] 방수 매트리스커버 D 딥네이비",sku:"SKU0000012245",avail:0,verdict:"재고없음"},
+  {gc:"3640210",gn:"refine / 더 포근한 60수 순면 눈비매트리스커버, SS/D/Q/K",oc:"27310023",on:"[G014] 방수 매트리스커버 D 딥네이비",sku:"SKU0000012245",avail:0,verdict:"재고없음"},
   {gc:"3640153",gn:"refine / 더 포근한 60수 순면 베개커버, 40*60/50*70",oc:"27309498",on:"[G016] 60수 코튼 침대패드 SS 딥네이비",sku:"SKU0000012285",avail:15,verdict:"재고있음"},
   {gc:"3640153",gn:"refine / 더 포근한 60수 순면 베개커버, 40*60/50*70",oc:"27309516",on:"[G016] 60수 누빔 매트리스커버 SS 웜화이트",sku:"SKU0000012303",avail:0,verdict:"재고없음"},
   {gc:"3640153",gn:"refine / 더 포근한 60수 순면 베개커버, 40*60/50*70",oc:"27309541",on:"[G016] 60수 코튼 차렵이불 D 웜화이트",sku:"SKU0000012263",avail:1,verdict:"재고있음"},
@@ -210,28 +210,32 @@ const DATA = [
   {gc:"3640185",gn:"refine / 더 포근한 60수 순면 침대패드, SS/D/Q/K",oc:"27309818",on:"[G017] 60수 코튼 차렵이불 D 웜화이트",sku:"SKU0000012263",avail:1,verdict:"재고있음"},
   {gc:"3640185",gn:"refine / 더 포근한 60수 순면 침대패드, SS/D/Q/K",oc:"27309845",on:"[G017] 방수 매트리스커버 D 딥네이비",sku:"SKU0000012245",avail:0,verdict:"재고없음"},
   {gc:"3640123",gn:"refine / 더 포근한 60수 순면 호텔침구세트, 사계절용, S/D/Q",oc:"27309164",on:"[G015] 60수 침대패드 SS 솔리드 네이비",sku:"SKU0000012285",avail:15,verdict:"재고있음"},
-  {gc:"3640123",gn:"refine / 더 포근한 60수 순면 호텔침구세트, 사계절용, S/D/Q",oc:"29296328",on:"솔리드 아이보리, 더블 이불베개세트",sku:"",avail:"-",verdict:"SKU미매칭"},
-  {gc:"3640123",gn:"refine / 더 포근한 60수 순면 호텔침구세트, 사계절용, S/D/Q",oc:"29296341",on:"솔리드 네이비, 슈퍼싱글 퐀세트(SS패드)",sku:"",avail:"-",verdict:"SKU미매칭"},
-  {gc:"3640123",gn:"refine / 더 포근한 60수 순면 호텔침구세트, 사계절용, S/D/Q",oc:"29296343",on:"솔리드 아이보리, 더블 풀세트(D패드)",sku:"",avail:"-",verdict:"SKU미매칭"},
-  {gc:"3694022",gn:"refine / 쉽게 세탁하는 스트라이프 발매트, 4colors, 소형/대형",oc:"27624195",on:"45*145, 웜화이트",sku:"SKU0000012391",avail:1,verdict:"재고있음"},
+  {gc:"3640123",gn:"refine / 더 포근한 60수 순면 호텔침구세트, 사계절용, S/D/Q",oc:"29296328",on:"솔리드 아이보리, 더블 이불베개세트",sku:"SKU0000012263,SKU0000012278",avail:0,verdict:"재고없음",isSet:true,skuList:[{code:"SKU0000012263",avail:1,name:"차렵이불 D 웜화이트"},{code:"SKU0000012278",avail:-1,name:"베개커버 웜화이트(미등록)"}]},
+  {gc:"3640123",gn:"refine / 더 포근한 60수 순면 호텔침구세트, 사계절용, S/D/Q",oc:"29296341",on:"솔리드 네이비, 슈퍼싱글 퐀세트(SS패드)",sku:"SKU0000012260,SKU0000012280,SKU0000012285",avail:0,verdict:"재고없음",isSet:true,skuList:[{code:"SKU0000012260",avail:-1,name:"차렵이불 S 딥네이비(미등록)"},{code:"SKU0000012280",avail:-1,name:"베개커버 딥네이비(미등록)"},{code:"SKU0000012285",avail:15,name:"침대패드 SS 딥네이비"}]},
+  {gc:"3640123",gn:"refine / 더 포근한 60수 순면 호텔침구세트, 사계절용, S/D/Q",oc:"29296343",on:"솔리드 아이보리, 더블 풀세트(D패드)",sku:"SKU0000012263,SKU0000012278,SKU0000012288",avail:0,verdict:"재고없음",isSet:true,skuList:[{code:"SKU0000012263",avail:1,name:"차렵이불 D 웜화이트"},{code:"SKU0000012278",avail:-1,name:"베개커버 웜화이트(미등록)"},{code:"SKU0000012288",avail:-1,name:"침대패드 D 웜화이트(미등록)"}]},
+  {gc:"3694022",gn:"refine / 쉽게 세상하는 스트라이프 발매트, 4colors, 소형/대형",oc:"27624195",on:"45*145, 웜화이트",sku:"SKU0000012391",avail:1,verdict:"재고있음"},
   {gc:"3640060",gn:"refine / 완벽 100% 방수 매트리스커버, TPU 5colors, SS/D/Q/K",oc:"27308670",on:"D, 딥네이비",sku:"SKU0000012245",avail:0,verdict:"재고없음"},
   {gc:"3519084",gn:"다운필 알러지케어 사계절 이불솜 S/Q/K",oc:"26672295",on:"[20% 할인] 바운스에어 베개솜 50*70",sku:"SKU0000012050",avail:468,verdict:"재고있음"},
   {gc:"3518885",gn:"소프트워싱 파자마 긴팔/반팔세트 3colors FREE",oc:"26159632",on:"[30% 할인] 헤어밴드 스크런치 스트라이프아이보리",sku:"SKU0000012143",avail:161,verdict:"재고있음"},
-  {gc:"3604744",gn:"소프트워싱 휤어밴드 스크런치 4colors",oc:"27079177",on:"스트라이프 아이보리",sku:"SKU0000012143",avail:161,verdict:"재고있음"},
-  {gc:"3518948",gn:"플럨피에어 구스필 고밀도 80수 면 캠핑용 베개 5colors",oc:"26160003",on:"레몬스트라이프",sku:"SKU0000012105",avail:0,verdict:"재고없음"},
+  {gc:"3604744",gn:"소프트워싱 휤발ӮS� 스큼런치 4colors",oc:"27079177",on:"스트라이프 아이보리",sku:"SKU0000012143",avail:161,verdict:"재고있음"},
+  {gc:"3518948",gn:"플릭피에어 구스팄 고�ð도 80수 면 침항침 베개 5colors",oc:"26160003",on:"레몪스트라이프",sku:"SKU0000012105",avail:0,verdict:"재고없음"},
 ];
 
 const SKU_INFO = {
-  "SKU0000012010":{name:"크리스마스_뽀글 퍼 슬리퍼 브라운 L",total:0,avail:0,barcode:""},
+  "SKU0000012010":{name:"크리스마스_변꺈퍼 스리퍼 블라운 L",total:0,avail:0,barcode:""},
   "SKU0000012011":{name:"크리스마스_뽀글 퍼 슬리퍼 레드아이보리 M",total:0,avail:0,barcode:""},
   "SKU0000012023":{name:"크리스마스_테이블보 140*140 레드",total:0,avail:0,barcode:""},
   "SKU0000012026":{name:"크리스마스_테이블보 140*200 레드",total:0,avail:0,barcode:""},
-  "SKU0000012050":{name:"바운스에어 알러지케어 베개솜 50*70",total:468,avail:468,barcode:"2110012000030"},
-  "SKU0000012105":{name:"플러피에어 80수 엨행용 베개 레몬스트라이프",total:0,avail:0,barcode:"2110011600057"},
+  "SKU0000012050":{name:"바우스에어 알러지케어 베개솜 50*70",total:468,avail:468,barcode:"2110012000030"},
+  "SKU0000012105":{name:"플러피에어 80수 여행용 베개 레몬스트라이프",total:0,avail:0,barcode:"2110011600057"},
   "SKU0000012143":{name:"40수 헤어밴드 스크런치 스트라이프 아이보리",total:161,avail:161,barcode:"2110012800012"},
   "SKU0000012245":{name:"기본 방수 매트리스커버 D 딥네이비",total:0,avail:0,barcode:"2110022200086"},
+  "SKU0000012260":{name:"기본 60수 차렵이불 S 딥네이비",total:-1,avail:-1,barcode:"2110022300038",unregistered:true},
   "SKU0000012263":{name:"기본 60수 차렵이불 D 웜화이트",total:1,avail:1,barcode:"2110022300069"},
+  "SKU0000012278":{name:"기본 60수 코튼 베개커버 웜화이트",total:-1,avail:-1,barcode:"2110022400066",unregistered:true},
+  "SKU0000012280":{name:"기본 60수 코튼 베개커버 딥네이비",total:-1,avail:-1,barcode:"2110022400080",unregistered:true},
   "SKU0000012285":{name:"기본 60수 침대패드 SS 딥네이비",total:15,avail:15,barcode:"2110022500032"},
+  "SKU0000012288":{name:"기본 60수 침대패드 D 웜화이트",total:-1,avail:-1,barcode:"2110022500063",unregistered:true},
   "SKU0000012303":{name:"기본 60수 누빔 매트리스커버 SS 웜화이트",total:0,avail:0,barcode:"2110022600015"},
   "SKU0000012323":{name:"기본 알러지케어 차렵이불 S 웜화이트",total:0,avail:0,barcode:"2110022700012"},
   "SKU0000012324":{name:"기본 알러지케어 차렵이불 S 딥블랙",total:1,avail:1,barcode:"2110022700029"},
@@ -239,7 +243,7 @@ const SKU_INFO = {
   "SKU0000012346":{name:"기본 알러지케어 베개커버 극세사 딥블랙",total:1,avail:1,barcode:"2110025200045"},
   "SKU0000012361":{name:"기본 알러지케어 침대패드 K 웜화이트",total:23,avail:23,barcode:""},
   "SKU0000012391":{name:"기본 스트라이프 발매트 45*145 웜화이트",total:1,avail:1,barcode:"2110023500024"},
-  "SKU0000012407":{name:"기본 헤비웨이트 더블레이어 담요 웜화이트",total:0,avail:0,barcode:""},
+  "SKU0000012407":{name:"기본 휤비웨이트 더블레이어 담요 웜화이트",total:0,avail:0,barcode:""},
 };
 
 // ====== COUNTS ======
@@ -278,6 +282,12 @@ function renderSkuCards() {
     noEl.innerHTML += `<div class="sku-item"><div class="info"><div class="sku-code">${sku}</div>${barcodeHtml}<div class="sku-name">${info.name}</div></div><div class="stock"><div class="qty zero">0</div><div class="unit">출고가능</div></div></div>`;
   });
 
+  sorted.filter(([,v]) => v.unregistered).forEach(([sku, info]) => {
+    noCount++;
+    const barcodeHtml = info.barcode ? `<div class="sku-barcode">바코드: ${info.barcode}</div>` : '';
+    noEl.innerHTML += `<div class="sku-item" style="border-color:#d97706"><div class="info"><div class="sku-code">${sku} <span style="color:#d97706;font-size:10px">사방넷 미등록</span></div>${barcodeHtml}<div class="sku-name">${info.name}</div></div><div class="stock"><div class="qty" style="color:#d97706">-</div><div class="unit">미등록</div></div></div>`;
+  });
+
   document.getElementById('skuInCount').textContent = inCount;
   document.getElementById('skuNoCount').textContent = noCount;
 }
@@ -295,13 +305,28 @@ function renderTable(filter, search) {
   }
   tbody.innerHTML = filtered.map(d => {
     const badgeClass = d.verdict === '재고있음' ? 'green' : d.verdict === '재고없음' ? 'red' : 'yellow';
-    const availDisplay = d.avail === '-' ? '-' : (d.avail > 0 ? `<strong style="color:var(--green)">${d.avail}</strong>` : '0');
+    let skuDisplay, availDisplay;
+    if (d.isSet && d.skuList) {
+      skuDisplay = d.skuList.map(s => {
+        const color = s.avail < 0 ? '#d97706' : s.avail > 0 ? 'var(--green)' : 'var(--red)';
+        return `<div style="margin:2px 0"><span style="color:${color}">${s.code}</span></div>`;
+      }).join('');
+      availDisplay = d.skuList.map(s => {
+        if (s.avail < 0) return `<div style="margin:2px 0;color:#d97706;font-size:11px">미등록</div>`;
+        if (s.avail > 0) return `<div style="margin:2px 0"><strong style="color:var(--green)">${s.avail}</strong></div>`;
+        return `<div style="margin:2px 0">0</div>`;
+      }).join('');
+    } else {
+      skuDisplay = d.sku || '-';
+      availDisplay = d.avail === '-' ? '-' : (d.avail > 0 ? `<strong style="color:var(--green)">${d.avail}</strong>` : '0');
+    }
+    const setTag = d.isSet ? ' <span style="font-size:10px;background:#e0e7ff;color:#3730a3;padding:1px 5px;border-radius:3px;">세트</span>' : '';
     return `<tr>
       <td class="text-center mono">${d.gc}</td>
       <td class="ellipsis" title="${d.gn}">${d.gn}</td>
       <td class="text-center mono">${d.oc}</td>
-      <td class="ellipsis" title="${d.on}">${d.on}</td>
-      <td class="text-center mono">${d.sku || '-'}</td>
+      <td class="ellipsis" title="${d.on}">${d.on}${setTag}</td>
+      <td class="text-center mono" style="font-size:11px">${skuDisplay}</td>
       <td class="text-center">${availDisplay}</td>
       <td class="text-center"><span class="badge ${badgeClass}">${d.verdict}</span></td>
     </tr>`;
