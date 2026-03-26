@@ -186,15 +186,18 @@
 </div>
 
 
-<div class="lowstock-section">
-<h2 style="font-size:17px;font-weight:700;margin-bottom:14px;">&#128680; &#54408;&#51208;&#51076;&#48149; &#49345;&#54408; &#54788;&#54889;</h2>
-<div class="lowstock-tabs">
-<button class="lowstock-tab active-critical" id="tabCritical" onclick="showLowstock('critical')">&#51116;&#44256; 5&#44060; &#48120;&#47564; <span class="cnt" id="cntCritical"></span></button>
-<button class="lowstock-tab" id="tabWarning" onclick="showLowstock('warning')">&#51116;&#44256; 5~9&#44060; <span class="cnt" id="cntWarning"></span></button>
+<div class="section" style="margin-top:24px;">
+<h2 class="icon">🚨 품절임박 상품 현황</h2>
+<div class="filter-bar" style="margin-bottom:12px;">
+<button class="filter-btn active" id="tabCritical" onclick="showLowstock('critical')">재고 5개 미만 <span class="cnt-all" id="cntCritical"></span></button>
+<button class="filter-btn" id="tabWarning" onclick="showLowstock('warning')">재고 5~9개 <span class="cnt-all" id="cntWarning"></span></button>
 </div>
-<div class="lowstock-table-wrap">
+<div class="search-box" style="margin-bottom:12px;">
+<input type="text" id="lowstockSearch" placeholder="품절임박 SKU 검색..." oninput="renderLowstock()">
+</div>
+<div class="table-wrap">
 <table class="table">
-<thead><tr><th style="width:50px">No.</th><th>SKU &#53076;&#46300;</th><th class="text-center" style="width:80px">&#52509;&#51116;&#44256;</th><th class="text-center" style="width:80px">&#52636;&#44256;&#44032;&#45733;</th><th class="text-center" style="width:80px">&#49345;&#53468;</th></tr></thead>
+<thead><tr><th style="width:50px">No.</th><th>SKU 코드</th><th style="width:160px">SKU명</th><th class="text-center" style="width:80px">총재고</th><th class="text-center" style="width:80px">출고가능</th><th class="text-center" style="width:70px">상태</th></tr></thead>
 <tbody id="lowstockBody"></tbody>
 </table>
 </div>
@@ -410,17 +413,22 @@ renderTable('all', '');
 let currentLowstock = "critical";
 function showLowstock(type){
 currentLowstock=type;
-document.getElementById("tabCritical").className="lowstock-tab"+(type==="critical"?" active-critical":"");
-document.getElementById("tabWarning").className="lowstock-tab"+(type==="warning"?" active-warning":"");
+document.getElementById("tabCritical").className="filter-btn"+(type==="critical"?" active":"");
+document.getElementById("tabWarning").className="filter-btn"+(type==="warning"?" active":"");
 renderLowstock();}
 function renderLowstock(){
 var data=currentLowstock==="critical"?LOWSTOCK_CRITICAL:LOWSTOCK_WARNING;
-var badge=currentLowstock==="critical"?"lowstock-badge-critical":"lowstock-badge-warning";
-var label=currentLowstock==="critical"?"\uC704\uD5D8":"\uC8FC\uC758";
-var html="";
-data.forEach(function(item,i){
-var nm=SKU_INFO[item.s]?SKU_INFO[item.s].name:item.s;
-html+='<tr><td>'+(i+1)+'</td><td>'+item.s+' <span style="color:#888;font-size:12px">'+nm+'</span></td><td class="text-center">'+item.t+'</td><td class="text-center" style="font-weight:700;color:'+(item.a===0?"#dc3545":item.a<5?"#fd7e14":"#333")+'">'+item.a+'</td><td class="text-center"><span class="'+badge+'">'+label+'</span></td></tr>';});
+var q=(document.getElementById("lowstockSearch")||{}).value||"";
+q=q.toLowerCase();
+var isCrit=currentLowstock==="critical";
+var badge=isCrit?"background:#dc3545":"background:#fd7e14";
+var html="";var n=0;
+data.forEach(function(item){
+var nm=SKU_INFO[item.s]?SKU_INFO[item.s].name:"-";
+if(q && item.s.toLowerCase().indexOf(q)===-1 && nm.toLowerCase().indexOf(q)===-1) return;
+n++;
+var color=item.a===0?"#dc3545":item.a<5?"#fd7e14":"#333";
+html+='<tr><td>'+n+'</td><td>'+item.s+'</td><td style="font-size:12px;color:#666">'+nm+'</td><td class="text-center">'+item.t+'</td><td class="text-center" style="font-weight:700;color:'+color+'">'+item.a+'</td><td class="text-center"><span style="display:inline-block;padding:2px 8px;border-radius:8px;font-size:11px;color:#fff;'+badge+'">'+(isCrit?"\uC704\uD5D8":"\uC8FC\uC758")+'</span></td></tr>';});
 document.getElementById("lowstockBody").innerHTML=html;
 document.getElementById("cntCritical").textContent="("+LOWSTOCK_CRITICAL.length+")";
 document.getElementById("cntWarning").textContent="("+LOWSTOCK_WARNING.length+")";
