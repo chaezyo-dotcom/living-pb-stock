@@ -322,12 +322,17 @@ document.getElementById('unmatchedCount').textContent = prodCount + '개 상품'
   });
 })();
 
-// Update SKU section tab labels
+// Update SKU section tab labels and restore content panels
 (function(){
-  var tabIn = document.getElementById('tab-instock');
-  var tabNo = document.getElementById('tab-nostock');
-  if(tabIn) tabIn.innerHTML = '정상 판매 <span id="skuInCount">0</span>';
-  if(tabNo) tabNo.innerHTML = '품절 있음 <span id="skuNoCount">0</span>';
+  var tabs = document.querySelectorAll('.tab[data-tab]');
+  tabs.forEach(function(t){
+    if(t.dataset.tab==='instock') t.innerHTML = '정상 판매 (<span id="skuInCount">0</span>)';
+    if(t.dataset.tab==='nostock') t.innerHTML = '품절 있음 (<span id="skuNoCount">0</span>)';
+  });
+  var tic = document.getElementById('tab-instock');
+  var tnc = document.getElementById('tab-nostock');
+  if(tic) tic.innerHTML = '<div class="sku-grid" id="skuInStock"></div>';
+  if(tnc) tnc.innerHTML = '<div class="sku-grid" id="skuNoStock"></div>';
 })();
 
 function renderSkuCards() {
