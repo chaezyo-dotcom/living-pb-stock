@@ -976,6 +976,23 @@ const LOWSTOCK_ALL=[
 {code:"SKU0000015888",barcode:"2110026800077",name:"퓨어 코튼 40수 코마사 타월 세트 5P 세트 베이직 스트라이프 차콜",total:916,avail:902},
 {code:"SKU0000012342",barcode:"2110022800088",name:"기본 알러지케어 베개커버 4colors, 40*60/ 50*70 50*70 솔리드 딥블랙",total:963,avail:960}
 ];
+// ====== COUNTS ======
+const totalCount = DATA.length;
+const stockYesCount = DATA.filter(d => d.verdict === '재고있음').length;
+const stockNoCount = DATA.filter(d => d.verdict === '재고없음').length;
+const unmatchedCount = DATA.filter(d => d.verdict === 'SKU미매칭').length;
+
+document.getElementById('totalCount').textContent = totalCount;
+document.getElementById('stockYesCount').textContent = stockYesCount;
+document.getElementById('stockNoCount').textContent = stockNoCount;
+document.getElementById('unmatchedCount').textContent = unmatchedCount;
+
+document.querySelector('.cnt-all').textContent = totalCount;
+document.querySelector('.cnt-yes').textContent = stockYesCount;
+document.querySelector('.cnt-no').textContent = stockNoCount;
+document.querySelector('.cnt-unmatched').textContent = unmatchedCount;
+
+// ====== RENDER ======
 function renderSkuCards() {
   const inEl = document.getElementById('skuInStock');
   const noEl = document.getElementById('skuNoStock');
