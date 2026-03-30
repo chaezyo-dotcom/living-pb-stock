@@ -281,6 +281,7 @@ const DATA = [
 {gc:"3814530",gn:"refine / 더 따뜻한 겨울 극세사 베개커버, 2colors, 40*60/50*70",oc:"28414399",on:"극세사 솔리드웜화이트 / 50*70",sku:"SKU0000012345",avail:0,verdict:"재고없음",oosDate:"2026-02-10"},
 {gc:"3814530",gn:"refine / 더 따뜻한 겨울 극세사 베개커버, 2colors, 40*60/50*70",oc:"28414401",on:"극세사 솔리드 딥블랙 / 50*70",sku:"SKU0000012346",avail:1,verdict:"재고없음",oosDate:"2026-01-28"}
 ];
+DATA.sort((a, b) => (b.oosDate || "").localeCompare(a.oosDate || ""));
 const SKU_INFO = {
   "SKU0000012133":{name:"쿨에어 쯔누가 여름 냉감 쿨링 베게커버 3sizes 30*50",total:0,avail:0,barcode:"2110013100012"},
   "SKU0000012134":{name:"쿨에어 쯔누가 여름 냉감 쿨링 베게커버 3sizes 40*60",total:0,avail:0,barcode:"2110013100029"},
