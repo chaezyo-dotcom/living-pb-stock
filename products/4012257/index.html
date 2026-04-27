@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>여름 파자마 PB 판매 대시보드 (4012257)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  background: #f5f6f8;
+  color: #1f2937;
+  line-height: 1.5;
+  padding: 24px;
+}
+.container { max-width: 1280px; margin: 0 auto; }
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: white;
+  padding: 28px 32px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+}
+.header h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+.header .subtitle { font-size: 14px; opacity: 0.9; }
+.header .meta { margin-top: 12px; font-size: 12px; opacity: 0.85; display: flex; gap: 16px; flex-wrap: wrap; }
+.header .meta span::before { content: "•"; margin-right: 6px; opacity: 0.6; }
+.header .meta span:first-child::before { content: ""; margin: 0; }
+
+/* Summary Cards */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+.card .label { font-size: 12px; color: #6b7280; margin-bottom: 8px; font-weight: 500; }
+.card .value { font-size: 26px; font-weight: 700; color: #1f2937; }
+.card .sub { font-size: 12px; color: #9ca3af; margin-top: 4px; }
+.card.primary { border-left: 4px solid #4f46e5; }
+.card.success { border-left: 4px solid #10b981; }
+.card.warning { border-left: 4px solid #f59e0b; }
+.card.info { border-left: 4px solid #3b82f6; }
+
+/* Section */
+.section {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e7eb;
+}
+.section h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section h2::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 16px;
+  background: #4f46e5;
+  border-radius: 2px;
+}
+
+/* Two column layout */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 900px) {
+  .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+th, td {
+  text-align: right;
+  padding: 10px 12px;
+  border-bottom: 1px solid #f1f3f5;
+}
+th:first-child, td:first-child { text-align: left; }
+th {
+  background: #fafbfc;
+  color: #4b5563;
+  font-weight: 600;
+  font-size: 12px;
+  border-bottom: 2px solid #e5e7eb;
+}
+tr:hover td { background: #f9fafb; }
+tr.subtotal td {
+  background: #f3f4f6;
+  font-weight: 700;
+  color: #4f46e5;
+  border-top: 1px solid #d1d5db;
+}
+tr.total td {
+  background: #eef2ff;
+  font-weight: 700;
+  color: #312e81;
+  font-size: 14px;
+  border-top: 2px solid #4f46e5;
+}
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.badge.color-blue { background: #dbeafe; color: #1e40af; }
+.badge.color-green { background: #d1fae5; color: #065f46; }
+.badge.color-pink { background: #fce7f3; color: #9d174d; }
+
+/* Chart wrapper */
+.chart-wrap {
+  position: relative;
+  height: 280px;
+}
+.chart-wrap.tall { height: 320px; }
+
+/* Footer */
+.footer {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 11px;
+  padding: 16px 0;
+  margin-top: 8px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>refine / 부드러운 에어핏 여름잠옷 파자마 세트</h1>
+    <div class="subtitle">상품코드 4012257 · 3 colors (스카이블루 / 그린 / 핑크) · M / L 사이즈</div>
+    <div class="meta">
+      <span>판매시작 2026-04-24</span>
+      <span>리포트 기준 2026-04-27</span>
+      <span>Source: finance_datahub.df_com_sales · ba_preserved.total_pdp_facts</span>
+    </div>
+  </div>
+
+  <!-- 요약 카드 -->
+  <div class="summary-grid">
+    <div class="card primary">
+      <div class="label">총 판매 수량 (Gross)</div>
+      <div class="value">50<span style="font-size:14px;color:#9ca3af;font-weight:400;"> 개</span></div>
+      <div class="sub">취소 5개 / 순매출 45개</div>
+    </div>
+    <div class="card success">
+      <div class="label">총 거래액 (Gross GMV)</div>
+      <div class="value">1,245,000<span style="font-size:14px;color:#9ca3af;font-weight:400;"> 원</span></div>
+      <div class="sub">취소 124,500원 / 순매출 1,120,500원</div>
+    </div>
+    <div class="card info">
+      <div class="label">총 PDP 방문 (UV)</div>
+      <div class="value">86<span style="font-size:14px;color:#9ca3af;font-weight:400;"> 명</span></div>
+      <div class="sub">PV 936 · 세션 163</div>
+    </div>
+    <div class="card warning">
+      <div class="label">구매 전환율 (구매자/PDP UV)</div>
+      <div class="value">52.3<span style="font-size:14px;color:#9ca3af;font-weight:400;"> %</span></div>
+      <div class="sub">신규 PB · 초기 효율 양호</div>
+    </div>
+  </div>
+
+  <!-- 일자별 판매 추이 차트 -->
+  <div class="section">
+    <h2>일자별 판매 추이</h2>
+    <div class="grid-2">
+      <div>
+        <div class="chart-wrap tall"><canvas id="dailySalesChart"></canvas></div>
+      </div>
+      <div>
+        <div class="chart-wrap tall"><canvas id="dailyTrafficChart"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 옵션별 판매 -->
+  <div class="section">
+    <h2>옵션별 판매 누계 (4/24~4/27)</h2>
+    <div class="grid-2">
+      <div>
+        <div class="chart-wrap"><canvas id="optionQtyChart"></canvas></div>
+      </div>
+      <div>
+        <table id="optionTable">
+          <thead>
+            <tr>
+              <th>옵션</th>
+              <th>판매수량</th>
+              <th>거래액(원)</th>
+              <th>취소</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 일자별 옵션별 상세 -->
+  <div class="section">
+    <h2>일자별 · 옵션별 판매 상세</h2>
+    <table id="dailyOptionTable">
+      <thead>
+        <tr>
+          <th>일자</th>
+          <th>옵션ID</th>
+          <th>색상</th>
+          <th>사이즈</th>
+          <th>판매수량</th>
+          <th>거래액(원)</th>
+          <th>취소수량</th>
+          <th>취소액(원)</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- 구매 유입 경로 -->
+  <div class="section">
+    <h2>구매 유입 경로 (PDP 진입 referrer 기준)</h2>
+    <div class="grid-2">
+      <div>
+        <div class="chart-wrap"><canvas id="referrerPieChart"></canvas></div>
+      </div>
+      <div>
+        <table id="referrerTable">
+          <thead>
+            <tr>
+              <th>유입 경로</th>
+              <th>설명</th>
+              <th>PV</th>
+              <th>UV</th>
+              <th>비중</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div style="margin-top:20px;">
+      <div class="chart-wrap" style="height:240px;"><canvas id="referrerByDateChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    데이터 기준일: 2026-04-27 KST · 결제일(base_dt) 기준 / PDP 로그(log_date) 기준 · 일부 일자는 데이터 적재 지연이 있을 수 있습니다.
+  </div>
+</div>
+
+<script>
+// =========================
+// DATA (Athena 추출 2026-04-27 기준)
+// =========================
+const DAILY_OPTION = [
+  // {date, option_id, color, size, qty, gmv, cancel_qty, cancel_gmv}
+  {date:"2026-04-24",option_id:"30093899",color:"스카이블루",size:"M",qty:8,gmv:199200,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-04-24",option_id:"30093900",color:"스카이블루",size:"L",qty:7,gmv:174300,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-04-24",option_id:"30093901",color:"그린",size:"M",qty:6,gmv:149400,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-04-24",option_id:"30093902",color:"그린",size:"L",qty:9,gmv:224100,cancel_qty:2,cancel_gmv:49800},
+  {date:"2026-04-24",option_id:"30093903",color:"핑크",size:"M",qty:7,gmv:174300,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-04-24",option_id:"30093904",color:"핑크",size:"L",qty:9,gmv:224100,cancel_qty:3,cancel_gmv:74700},
+  {date:"2026-04-25",option_id:"30093902",color:"그린",size:"L",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-04-25",option_id:"30093903",color:"핑크",size:"M",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-04-27",option_id:"30093900",color:"스카이블루",size:"L",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-04-27",option_id:"30093903",color:"핑크",size:"M",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
+];
+
+const DAILY_TRAFFIC = [
+  // {date, pdp_pv, pdp_uv, pdp_sessions}
+  {date:"2026-04-24", pdp_pv:835, pdp_uv:51, pdp_sessions:126},
+  {date:"2026-04-25", pdp_pv:66,  pdp_uv:21, pdp_sessions:22},
+  {date:"2026-04-26", pdp_pv:35,  pdp_uv:14, pdp_sessions:15},
+  // 4/27 데이터 적재 전
+];
+
+const REFERRER = [
+  // {type, label, pv, uv}
+  {type:"PRODUCTIONS", label:"다른 상품 PDP (PDP 추천 등)", pv:474, uv:55},
+  {type:"DIRECT",      label:"직접 진입 (URL/외부 링크)",     pv:200, uv:48},
+  {type:"GOODS",       label:"신규 상품 페이지(레거시 GOODS)",pv:188, uv:13},
+  {type:"BRANDS",      label:"브랜드샵",                       pv:47,  uv:18},
+  {type:"ORDERS",      label:"주문 내역/주문서",               pv:16,  uv:6},
+  {type:"USERS",       label:"마이페이지/스크랩",              pv:4,   uv:2},
+  {type:"EXHIBITIONS", label:"기획전",                         pv:4,   uv:1},
+  {type:"CLAIMS",      label:"취소/반품 페이지",               pv:3,   uv:1},
+];
+
+const REFERRER_BY_DATE = [
+  // {date, type, pv}
+  {date:"2026-04-24", type:"PRODUCTIONS", pv:438},
+  {date:"2026-04-24", type:"GOODS",       pv:188},
+  {date:"2026-04-24", type:"DIRECT",      pv:156},
+  {date:"2026-04-24", type:"BRANDS",      pv:26},
+  {date:"2026-04-24", type:"ORDERS",      pv:16},
+  {date:"2026-04-24", type:"EXHIBITIONS", pv:4},
+  {date:"2026-04-24", type:"USERS",       pv:4},
+  {date:"2026-04-24", type:"CLAIMS",      pv:3},
+  {date:"2026-04-25", type:"DIRECT",      pv:28},
+  {date:"2026-04-25", type:"PRODUCTIONS", pv:26},
+  {date:"2026-04-25", type:"BRANDS",      pv:12},
+  {date:"2026-04-26", type:"DIRECT",      pv:16},
+  {date:"2026-04-26", type:"PRODUCTIONS", pv:10},
+  {date:"2026-04-26", type:"BRANDS",      pv:9},
+];
+
+// =========================
+// 색상 팔레트
+// =========================
+const COLOR_BY_OPTION = {
+  "스카이블루 / M": "#60a5fa",
+  "스카이블루 / L": "#3b82f6",
+  "그린 / M":       "#86efac",
+  "그린 / L":       "#22c55e",
+  "핑크 / M":       "#f9a8d4",
+  "핑크 / L":       "#ec4899",
+};
+const REF_PALETTE = ["#4f46e5","#10b981","#f59e0b","#ef4444","#3b82f6","#8b5cf6","#06b6d4","#84cc16"];
+
+// =========================
+// Helpers
+// =========================
+const fmt = n => n.toLocaleString('ko-KR');
+const sum = arr => arr.reduce((a,b)=>a+b,0);
+const dates = ["2026-04-24","2026-04-25","2026-04-26","2026-04-27"];
+
+// =========================
+// 일자별 판매 추이 차트 (qty + gmv combo)
+// =========================
+const dailySales = dates.map(d => {
+  const rows = DAILY_OPTION.filter(r=>r.date===d);
+  return {
+    date: d.slice(5),
+    qty: sum(rows.map(r=>r.qty)),
+    gmv: sum(rows.map(r=>r.gmv))
+  };
+});
+
+new Chart(document.getElementById('dailySalesChart'), {
+  data: {
+    labels: dailySales.map(d=>d.date),
+    datasets: [
+      {
+        type:'bar',
+        label:'판매수량 (개)',
+        data: dailySales.map(d=>d.qty),
+        backgroundColor:'#4f46e5',
+        yAxisID:'y',
+        borderRadius:4
+      },
+      {
+        type:'line',
+        label:'거래액 (원)',
+        data: dailySales.map(d=>d.gmv),
+        borderColor:'#f59e0b',
+        backgroundColor:'#f59e0b',
+        yAxisID:'y1',
+        tension:0.3,
+        pointRadius:5,
+        pointBackgroundColor:'#f59e0b'
+      }
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      title:{display:true,text:'일자별 판매수량 & 거래액', font:{size:13,weight:'600'}, color:'#374151'},
+      legend:{position:'bottom', labels:{font:{size:11}}}
+    },
+    scales:{
+      y:{ beginAtZero:true, position:'left', title:{display:true,text:'수량(개)', font:{size:11}}, ticks:{font:{size:11}} },
+      y1:{ beginAtZero:true, position:'right', grid:{drawOnChartArea:false},
+           title:{display:true,text:'거래액(원)', font:{size:11}},
+           ticks:{font:{size:11}, callback:v=>v.toLocaleString()} }
+    }
+  }
+});
+
+// =========================
+// 일자별 트래픽 차트
+// =========================
+new Chart(document.getElementById('dailyTrafficChart'), {
+  type:'bar',
+  data:{
+    labels: DAILY_TRAFFIC.map(d=>d.date.slice(5)),
+    datasets:[
+      {label:'PDP PV', data:DAILY_TRAFFIC.map(d=>d.pdp_pv), backgroundColor:'#3b82f6', borderRadius:4},
+      {label:'PDP UV', data:DAILY_TRAFFIC.map(d=>d.pdp_uv), backgroundColor:'#10b981', borderRadius:4},
+      {label:'세션',  data:DAILY_TRAFFIC.map(d=>d.pdp_sessions), backgroundColor:'#f59e0b', borderRadius:4}
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      title:{display:true,text:'일자별 PDP 트래픽 (4/27 데이터 적재 지연)', font:{size:13,weight:'600'}, color:'#374151'},
+      legend:{position:'bottom', labels:{font:{size:11}}}
+    },
+    scales:{ y:{beginAtZero:true, ticks:{font:{size:11}}}, x:{ticks:{font:{size:11}}} }
+  }
+});
+
+// =========================
+// 옵션별 누계 집계
+// =========================
+const optionAgg = {};
+DAILY_OPTION.forEach(r=>{
+  const k = `${r.color} / ${r.size}`;
+  if(!optionAgg[k]) optionAgg[k] = {key:k, color:r.color, size:r.size, option_id:r.option_id, qty:0, gmv:0, cancel_qty:0, cancel_gmv:0};
+  optionAgg[k].qty += r.qty;
+  optionAgg[k].gmv += r.gmv;
+  optionAgg[k].cancel_qty += r.cancel_qty;
+  optionAgg[k].cancel_gmv += r.cancel_gmv;
+});
+const optionRows = Object.values(optionAgg).sort((a,b)=>b.qty-a.qty);
+
+// 옵션별 판매수량 차트
+new Chart(document.getElementById('optionQtyChart'), {
+  type:'bar',
+  data:{
+    labels: optionRows.map(r=>r.key),
+    datasets:[
+      {label:'판매수량', data:optionRows.map(r=>r.qty),
+        backgroundColor:optionRows.map(r=>COLOR_BY_OPTION[r.key]||'#6b7280'),
+        borderRadius:4},
+      {label:'취소수량', data:optionRows.map(r=>r.cancel_qty),
+        backgroundColor:'#ef4444',
+        borderRadius:4}
+    ]
+  },
+  options:{
+    indexAxis:'y',
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      title:{display:true,text:'옵션별 판매수량 (취소 포함)', font:{size:13,weight:'600'}, color:'#374151'},
+      legend:{position:'bottom', labels:{font:{size:11}}}
+    },
+    scales:{ x:{beginAtZero:true, ticks:{font:{size:11}}}, y:{ticks:{font:{size:11}}} }
+  }
+});
+
+// 옵션별 테이블 렌더
+const optTbody = document.querySelector('#optionTable tbody');
+let totalQ=0, totalG=0, totalCQ=0, totalCG=0;
+optionRows.forEach(r=>{
+  const tr = document.createElement('tr');
+  const colorClass = r.color==='스카이블루'?'color-blue':r.color==='그린'?'color-green':'color-pink';
+  tr.innerHTML = `
+    <td><span class="badge ${colorClass}">${r.color}</span> ${r.size}</td>
+    <td>${fmt(r.qty)}</td>
+    <td>${fmt(r.gmv)}</td>
+    <td>${r.cancel_qty>0?`<span style="color:#ef4444;">${fmt(r.cancel_qty)}개 / ${fmt(r.cancel_gmv)}원</span>`:'-'}</td>
+  `;
+  optTbody.appendChild(tr);
+  totalQ+=r.qty; totalG+=r.gmv; totalCQ+=r.cancel_qty; totalCG+=r.cancel_gmv;
+});
+const totRow = document.createElement('tr');
+totRow.className = 'total';
+totRow.innerHTML = `
+  <td>전체 합계</td>
+  <td>${fmt(totalQ)}</td>
+  <td>${fmt(totalG)}</td>
+  <td>${totalCQ>0?fmt(totalCQ)+'개 / '+fmt(totalCG)+'원':'-'}</td>
+`;
+optTbody.appendChild(totRow);
+
+// =========================
+// 일자별 옵션별 상세 테이블
+// =========================
+const dailyTbody = document.querySelector('#dailyOptionTable tbody');
+const sortedDaily = [...DAILY_OPTION].sort((a,b)=>{
+  if(a.date!==b.date) return a.date.localeCompare(b.date);
+  return a.option_id.localeCompare(b.option_id);
+});
+
+let curDate = null;
+let dQ=0, dG=0, dCQ=0, dCG=0;
+const flushDateSubtotal = ()=>{
+  if(curDate===null) return;
+  const tr = document.createElement('tr');
+  tr.className='subtotal';
+  tr.innerHTML = `<td colspan="4">${curDate} 소계</td><td>${fmt(dQ)}</td><td>${fmt(dG)}</td><td>${fmt(dCQ)}</td><td>${fmt(dCG)}</td>`;
+  dailyTbody.appendChild(tr);
+  dQ=0; dG=0; dCQ=0; dCG=0;
+};
+
+sortedDaily.forEach(r=>{
+  if(r.date!==curDate){
+    flushDateSubtotal();
+    curDate = r.date;
+  }
+  const colorClass = r.color==='스카이블루'?'color-blue':r.color==='그린'?'color-green':'color-pink';
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td>${r.date}</td>
+    <td style="font-family:monospace;color:#6b7280;">${r.option_id}</td>
+    <td><span class="badge ${colorClass}">${r.color}</span></td>
+    <td>${r.size}</td>
+    <td>${fmt(r.qty)}</td>
+    <td>${fmt(r.gmv)}</td>
+    <td>${r.cancel_qty>0?'<span style="color:#ef4444;">'+fmt(r.cancel_qty)+'</span>':'-'}</td>
+    <td>${r.cancel_gmv>0?'<span style="color:#ef4444;">'+fmt(r.cancel_gmv)+'</span>':'-'}</td>
+  `;
+  dailyTbody.appendChild(tr);
+  dQ+=r.qty; dG+=r.gmv; dCQ+=r.cancel_qty; dCG+=r.cancel_gmv;
+});
+flushDateSubtotal();
+
+// =========================
+// 유입 경로 파이 차트
+// =========================
+const refTotal = sum(REFERRER.map(r=>r.pv));
+new Chart(document.getElementById('referrerPieChart'), {
+  type:'doughnut',
+  data:{
+    labels: REFERRER.map(r=>r.type),
+    datasets:[{
+      data: REFERRER.map(r=>r.pv),
+      backgroundColor: REF_PALETTE.slice(0, REFERRER.length),
+      borderWidth:2, borderColor:'#fff'
+    }]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      title:{display:true,text:'PDP 유입 referrer 비중 (PV 기준)', font:{size:13,weight:'600'}, color:'#374151'},
+      legend:{position:'right', labels:{font:{size:11}, boxWidth:14}},
+      tooltip:{ callbacks:{ label: ctx=>`${ctx.label}: ${fmt(ctx.parsed)} PV (${(ctx.parsed/refTotal*100).toFixed(1)}%)` } }
+    }
+  }
+});
+
+// 유입 테이블
+const refTbody = document.querySelector('#referrerTable tbody');
+REFERRER.forEach((r,i)=>{
+  const pct = (r.pv/refTotal*100).toFixed(1);
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td><span style="display:inline-block;width:10px;height:10px;background:${REF_PALETTE[i]};border-radius:50%;margin-right:8px;"></span>${r.type}</td>
+    <td style="text-align:left;color:#6b7280;font-size:12px;">${r.label}</td>
+    <td>${fmt(r.pv)}</td>
+    <td>${fmt(r.uv)}</td>
+    <td>${pct}%</td>
+  `;
+  refTbody.appendChild(tr);
+});
+const refTotRow = document.createElement('tr');
+refTotRow.className='total';
+refTotRow.innerHTML = `<td colspan="2">전체</td><td>${fmt(refTotal)}</td><td>${fmt(sum(REFERRER.map(r=>r.uv)))}</td><td>100%</td>`;
+refTbody.appendChild(refTotRow);
+
+// =========================
+// 일자별 유입 경로 stacked bar
+// =========================
+const refTypes = ['PRODUCTIONS','DIRECT','GOODS','BRANDS','ORDERS','EXHIBITIONS','USERS','CLAIMS'];
+const refDates = ['2026-04-24','2026-04-25','2026-04-26'];
+const refDateColor = {
+  PRODUCTIONS:'#4f46e5', DIRECT:'#10b981', GOODS:'#f59e0b', BRANDS:'#ef4444',
+  ORDERS:'#3b82f6', EXHIBITIONS:'#8b5cf6', USERS:'#06b6d4', CLAIMS:'#84cc16'
+};
+
+new Chart(document.getElementById('referrerByDateChart'), {
+  type:'bar',
+  data:{
+    labels: refDates.map(d=>d.slice(5)),
+    datasets: refTypes.map(t=>({
+      label:t,
+      data: refDates.map(d=>{
+        const row = REFERRER_BY_DATE.find(r=>r.date===d && r.type===t);
+        return row ? row.pv : 0;
+      }),
+      backgroundColor: refDateColor[t],
+      stack:'stack0'
+    }))
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      title:{display:true,text:'일자별 유입 경로 PV (Stacked)', font:{size:13,weight:'600'}, color:'#374151'},
+      legend:{position:'bottom', labels:{font:{size:10}, boxWidth:10}}
+    },
+    scales:{
+      x:{stacked:true, ticks:{font:{size:11}}},
+      y:{stacked:true, beginAtZero:true, ticks:{font:{size:11}}}
+    }
+  }
+});
+</script>
+</body>
+</html>
