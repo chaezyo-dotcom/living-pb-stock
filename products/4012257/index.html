@@ -34,23 +34,26 @@ body {
 /* Summary Cards */
 .summary-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
   margin-bottom: 24px;
 }
 .card {
   background: white;
-  padding: 20px;
+  padding: 18px;
   border-radius: 10px;
   border: 1px solid #e5e7eb;
 }
 .card .label { font-size: 12px; color: #6b7280; margin-bottom: 8px; font-weight: 500; }
-.card .value { font-size: 26px; font-weight: 700; color: #1f2937; }
-.card .sub { font-size: 12px; color: #9ca3af; margin-top: 4px; }
+.card .value { font-size: 24px; font-weight: 700; color: #1f2937; }
+.card .sub { font-size: 11px; color: #9ca3af; margin-top: 4px; }
 .card.primary { border-left: 4px solid #4f46e5; }
 .card.success { border-left: 4px solid #10b981; }
 .card.warning { border-left: 4px solid #f59e0b; }
-.card.info { border-left: 4px solid #3b82f6; }
+.card.info    { border-left: 4px solid #3b82f6; }
+.card.purple  { border-left: 4px solid #8b5cf6; }
+.card.pink    { border-left: 4px solid #ec4899; }
+.card.cyan    { border-left: 4px solid #06b6d4; }
 
 /* Section */
 .section {
@@ -78,27 +81,16 @@ body {
   border-radius: 2px;
 }
 
-/* Two column layout */
-.grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
+/* Layouts */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
 @media (max-width: 900px) {
-  .grid-2 { grid-template-columns: 1fr; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
 }
 
 /* Tables */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
-}
-th, td {
-  text-align: right;
-  padding: 10px 12px;
-  border-bottom: 1px solid #f1f3f5;
-}
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: right; padding: 10px 12px; border-bottom: 1px solid #f1f3f5; }
 th:first-child, td:first-child { text-align: left; }
 th {
   background: #fafbfc;
@@ -128,15 +120,40 @@ tr.total td {
   font-size: 11px;
   font-weight: 600;
 }
-.badge.color-blue { background: #dbeafe; color: #1e40af; }
+.badge.color-blue  { background: #dbeafe; color: #1e40af; }
 .badge.color-green { background: #d1fae5; color: #065f46; }
-.badge.color-pink { background: #fce7f3; color: #9d174d; }
+.badge.color-pink  { background: #fce7f3; color: #9d174d; }
+
+/* Funnel */
+.funnel-step {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+}
+.funnel-bar {
+  height: 36px;
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  min-width: 80px;
+}
+.funnel-step:nth-child(2) .funnel-bar { background: linear-gradient(90deg, #3b82f6, #06b6d4); }
+.funnel-step:nth-child(3) .funnel-bar { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+.funnel-step .label-area { width: 140px; font-size: 13px; color: #4b5563; font-weight: 600; }
+.funnel-step .rate {
+  margin-left: 12px;
+  color: #6b7280;
+  font-size: 12px;
+}
 
 /* Chart wrapper */
-.chart-wrap {
-  position: relative;
-  height: 280px;
-}
+.chart-wrap { position: relative; height: 280px; }
 .chart-wrap.tall { height: 320px; }
 
 /* Footer */
@@ -156,33 +173,58 @@ tr.total td {
     <div class="subtitle">상품코드 4012257 · 3 colors (스카이블루 / 그린 / 핑크) · M / L 사이즈</div>
     <div class="meta">
       <span>판매시작 2026-04-24</span>
-      <span>리포트 기준 2026-04-27</span>
-      <span>Source: finance_datahub.df_com_sales · ba_preserved.total_pdp_facts</span>
+      <span>리포트 기준 2026-04-28</span>
+      <span>Source: finance_datahub.df_com_sales · ba_preserved.total_pdp_facts · ba_preserved.smba_daily_pdp_imps_v2</span>
     </div>
   </div>
 
   <!-- 요약 카드 -->
   <div class="summary-grid">
     <div class="card primary">
-      <div class="label">총 판매 수량 (Gross)</div>
-      <div class="value">50<span style="font-size:14px;color:#9ca3af;font-weight:400;"> 개</span></div>
-      <div class="sub">취소 5개 / 순매출 45개</div>
+      <div class="label">총 판매수량 (Gross)</div>
+      <div class="value">69<span style="font-size:13px;color:#9ca3af;font-weight:400;"> 개</span></div>
+      <div class="sub">취소 5개 · 순매출 64개</div>
     </div>
     <div class="card success">
       <div class="label">총 거래액 (Gross GMV)</div>
-      <div class="value">1,245,000<span style="font-size:14px;color:#9ca3af;font-weight:400;"> 원</span></div>
-      <div class="sub">취소 124,500원 / 순매출 1,120,500원</div>
+      <div class="value">1,718,100<span style="font-size:13px;color:#9ca3af;font-weight:400;"> 원</span></div>
+      <div class="sub">취소 124,500원 · 순매출 1,593,600원</div>
+    </div>
+    <div class="card purple">
+      <div class="label">총 노출수 (Impression)</div>
+      <div class="value">1,735<span style="font-size:13px;color:#9ca3af;font-weight:400;"> 회</span></div>
+      <div class="sub">노출 UV 994 · PLP/검색/리스트 합계</div>
     </div>
     <div class="card info">
-      <div class="label">총 PDP 방문 (UV)</div>
-      <div class="value">86<span style="font-size:14px;color:#9ca3af;font-weight:400;"> 명</span></div>
+      <div class="label">PDP 방문 (UV)</div>
+      <div class="value">86<span style="font-size:13px;color:#9ca3af;font-weight:400;"> 명</span></div>
       <div class="sub">PV 936 · 세션 163</div>
     </div>
-    <div class="card warning">
-      <div class="label">구매 전환율 (구매자/PDP UV)</div>
-      <div class="value">52.3<span style="font-size:14px;color:#9ca3af;font-weight:400;"> %</span></div>
-      <div class="sub">신규 PB · 초기 효율 양호</div>
+    <div class="card cyan">
+      <div class="label">CTR (PDP UV/노출 UV)</div>
+      <div class="value">8.7<span style="font-size:13px;color:#9ca3af;font-weight:400;"> %</span></div>
+      <div class="sub">노출 대비 PDP 진입 비율</div>
     </div>
+    <div class="card warning">
+      <div class="label">CVR (구매자/PDP UV)</div>
+      <div class="value">59.3<span style="font-size:13px;color:#9ca3af;font-weight:400;"> %</span></div>
+      <div class="sub">PDP 진입 대비 구매 전환율</div>
+    </div>
+    <div class="card pink">
+      <div class="label">총 구매자수</div>
+      <div class="value">53<span style="font-size:13px;color:#9ca3af;font-weight:400;"> 명</span></div>
+      <div class="sub">PB 신규 출시 · 5일간</div>
+    </div>
+  </div>
+
+  <!-- 퍼널 -->
+  <div class="section">
+    <h2>구매 퍼널 (Impression → PDP → Buyer)</h2>
+    <div id="funnelArea"></div>
+    <p style="font-size:11px;color:#9ca3af;margin-top:12px;">
+      * Impression UV: 상품카드가 노출된 유니크 유저 / PDP UV: 상세페이지 진입 유저 / Buyers: 결제 완료 유저(중복 제거).
+      4/27, 4/28은 노출/PDP 로그 적재 지연으로 4/24~4/26 데이터 기준.
+    </p>
   </div>
 
   <!-- 일자별 판매 추이 차트 -->
@@ -198,9 +240,34 @@ tr.total td {
     </div>
   </div>
 
+  <!-- 일자별 퍼널 지표 -->
+  <div class="section">
+    <h2>일자별 퍼널 지표 (Impression / CTR / CVR)</h2>
+    <div class="grid-2">
+      <div>
+        <div class="chart-wrap tall"><canvas id="dailyFunnelChart"></canvas></div>
+      </div>
+      <div>
+        <table id="funnelTable">
+          <thead>
+            <tr>
+              <th>일자</th>
+              <th>노출 UV</th>
+              <th>PDP UV</th>
+              <th>구매자</th>
+              <th>CTR</th>
+              <th>CVR</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
   <!-- 옵션별 판매 -->
   <div class="section">
-    <h2>옵션별 판매 누계 (4/24~4/27)</h2>
+    <h2>옵션별 판매 누계 (4/24~4/28)</h2>
     <div class="grid-2">
       <div>
         <div class="chart-wrap"><canvas id="optionQtyChart"></canvas></div>
@@ -241,6 +308,29 @@ tr.total td {
     </table>
   </div>
 
+  <!-- 노출 채널별 -->
+  <div class="section">
+    <h2>노출 채널별 분석 (4/24~4/26)</h2>
+    <div class="grid-2">
+      <div>
+        <div class="chart-wrap"><canvas id="impChannelChart"></canvas></div>
+      </div>
+      <div>
+        <table id="impChannelTable">
+          <thead>
+            <tr>
+              <th>채널</th>
+              <th>설명</th>
+              <th>노출 UV</th>
+              <th>노출수</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
   <!-- 구매 유입 경로 -->
   <div class="section">
     <h2>구매 유입 경로 (PDP 진입 referrer 기준)</h2>
@@ -269,16 +359,16 @@ tr.total td {
   </div>
 
   <div class="footer">
-    데이터 기준일: 2026-04-27 KST · 결제일(base_dt) 기준 / PDP 로그(log_date) 기준 · 일부 일자는 데이터 적재 지연이 있을 수 있습니다.
+    데이터 기준일: 2026-04-28 KST · 결제: base_dt(KST) / PDP·노출: log_date(KST) · 4/27~4/28 PDP·노출 데이터는 적재 지연 (D+2)
   </div>
 </div>
 
 <script>
 // =========================
-// DATA (Athena 추출 2026-04-27 기준)
+// DATA (Athena 추출 2026-04-28 기준)
 // =========================
 const DAILY_OPTION = [
-  // {date, option_id, color, size, qty, gmv, cancel_qty, cancel_gmv}
+  // PAYMENT 기준
   {date:"2026-04-24",option_id:"30093899",color:"스카이블루",size:"M",qty:8,gmv:199200,cancel_qty:0,cancel_gmv:0},
   {date:"2026-04-24",option_id:"30093900",color:"스카이블루",size:"L",qty:7,gmv:174300,cancel_qty:0,cancel_gmv:0},
   {date:"2026-04-24",option_id:"30093901",color:"그린",size:"M",qty:6,gmv:149400,cancel_qty:0,cancel_gmv:0},
@@ -287,20 +377,41 @@ const DAILY_OPTION = [
   {date:"2026-04-24",option_id:"30093904",color:"핑크",size:"L",qty:9,gmv:224100,cancel_qty:3,cancel_gmv:74700},
   {date:"2026-04-25",option_id:"30093902",color:"그린",size:"L",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
   {date:"2026-04-25",option_id:"30093903",color:"핑크",size:"M",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
-  {date:"2026-04-27",option_id:"30093900",color:"스카이블루",size:"L",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
-  {date:"2026-04-27",option_id:"30093903",color:"핑크",size:"M",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-04-27",option_id:"30093899",color:"스카이블루",size:"M",qty:2,gmv:49800,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-04-27",option_id:"30093900",color:"스카이블루",size:"L",qty:3,gmv:74700,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-04-27",option_id:"30093901",color:"그린",size:"M",qty:3,gmv:74700,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-04-27",option_id:"30093902",color:"그린",size:"L",qty:4,gmv:99600,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-04-27",option_id:"30093903",color:"핑크",size:"M",qty:3,gmv:74700,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-04-27",option_id:"30093904",color:"핑크",size:"L",qty:2,gmv:49800,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-04-28",option_id:"30093900",color:"스카이블루",size:"L",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-04-28",option_id:"30093902",color:"그린",size:"L",qty:2,gmv:49800,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-04-28",option_id:"30093903",color:"핑크",size:"M",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
 ];
 
-const DAILY_TRAFFIC = [
-  // {date, pdp_pv, pdp_uv, pdp_sessions}
-  {date:"2026-04-24", pdp_pv:835, pdp_uv:51, pdp_sessions:126},
-  {date:"2026-04-25", pdp_pv:66,  pdp_uv:21, pdp_sessions:22},
-  {date:"2026-04-26", pdp_pv:35,  pdp_uv:14, pdp_sessions:15},
-  // 4/27 데이터 적재 전
+// 일별 노출/PDP/구매자 (퍼널)
+const DAILY_FUNNEL = [
+  // {date, imp_uv, imp_cnt, pdp_pv, pdp_uv, pdp_sessions, buyers}
+  {date:"2026-04-24", imp_uv:103, imp_cnt:280, pdp_pv:835, pdp_uv:51, pdp_sessions:126, buyers:42},
+  {date:"2026-04-25", imp_uv:346, imp_cnt:501, pdp_pv:66,  pdp_uv:21, pdp_sessions:22,  buyers:1},
+  {date:"2026-04-26", imp_uv:545, imp_cnt:954, pdp_pv:35,  pdp_uv:14, pdp_sessions:15,  buyers:0},
+  {date:"2026-04-27", imp_uv:null,imp_cnt:null,pdp_pv:null,pdp_uv:null,pdp_sessions:null,buyers:8},
+  {date:"2026-04-28", imp_uv:null,imp_cnt:null,pdp_pv:null,pdp_uv:null,pdp_sessions:null,buyers:2},
+];
+
+// 노출 채널별 (4/24~4/26 합산, url_path_gubun_re != '00.all')
+const IMP_CHANNEL = [
+  {channel:"etc",       label:"기타 진입(홈/앱 알림 등)", uv:560, imps:814},
+  {channel:"search",    label:"검색결과",                  uv:250, imps:539},
+  {channel:"category",  label:"카테고리 PLP",              uv:115, imps:167},
+  {channel:"pdp",       label:"다른 PDP 추천",             uv:84,  imps:148},
+  {channel:"contents",  label:"콘텐츠/스토리",             uv:17,  imps:29},
+  {channel:"store",     label:"브랜드/스토어",             uv:18,  imps:28},
+  {channel:"collection_books", label:"컬렉션북",            uv:3,   imps:8},
+  {channel:"exhibitions", label:"기획전",                  uv:0,   imps:1},
+  {channel:"ranks",     label:"랭킵",                       uv:1,   imps:1},
 ];
 
 const REFERRER = [
-  // {type, label, pv, uv}
   {type:"PRODUCTIONS", label:"다른 상품 PDP (PDP 추천 등)", pv:474, uv:55},
   {type:"DIRECT",      label:"직접 진입 (URL/외부 링크)",     pv:200, uv:48},
   {type:"GOODS",       label:"신규 상품 페이지(레거시 GOODS)",pv:188, uv:13},
@@ -312,7 +423,6 @@ const REFERRER = [
 ];
 
 const REFERRER_BY_DATE = [
-  // {date, type, pv}
   {date:"2026-04-24", type:"PRODUCTIONS", pv:438},
   {date:"2026-04-24", type:"GOODS",       pv:188},
   {date:"2026-04-24", type:"DIRECT",      pv:156},
@@ -341,16 +451,45 @@ const COLOR_BY_OPTION = {
   "핑크 / L":       "#ec4899",
 };
 const REF_PALETTE = ["#4f46e5","#10b981","#f59e0b","#ef4444","#3b82f6","#8b5cf6","#06b6d4","#84cc16"];
+const CHAN_PALETTE = ["#4f46e5","#10b981","#f59e0b","#ef4444","#3b82f6","#8b5cf6","#06b6d4","#84cc16","#ec4899"];
 
 // =========================
 // Helpers
 // =========================
-const fmt = n => n.toLocaleString('ko-KR');
-const sum = arr => arr.reduce((a,b)=>a+b,0);
-const dates = ["2026-04-24","2026-04-25","2026-04-26","2026-04-27"];
+const fmt = n => (n==null) ? '-' : n.toLocaleString('ko-KR');
+const sum = arr => arr.reduce((a,b)=>a+(b||0),0);
+const dates = ["2026-04-24","2026-04-25","2026-04-26","2026-04-27","2026-04-28"];
 
 // =========================
-// 일자별 판매 추이 차트 (qty + gmv combo)
+// 퍼널 (전체 합계)
+// =========================
+const totalImpUV  = sum(DAILY_FUNNEL.map(d=>d.imp_uv));
+const totalPdpUV  = sum(DAILY_FUNNEL.map(d=>d.pdp_uv));
+const totalBuyers = sum(DAILY_FUNNEL.map(d=>d.buyers));
+const ctrPct = (totalPdpUV/totalImpUV*100).toFixed(1);
+const cvrPct = (totalBuyers/totalPdpUV*100).toFixed(1);
+
+const funnelArea = document.getElementById('funnelArea');
+const maxImp = Math.max(totalImpUV, totalPdpUV, totalBuyers);
+const steps = [
+  {label:"노출 UV", value:totalImpUV, sub:"Impression"},
+  {label:"PDP UV",  value:totalPdpUV, sub:"CTR " + ctrPct + "%"},
+  {label:"구매자",  value:totalBuyers, sub:"CVR " + cvrPct + "%"}
+];
+steps.forEach((s,i)=>{
+  const w = (s.value/maxImp*100).toFixed(0);
+  const div = document.createElement('div');
+  div.className = 'funnel-step';
+  div.innerHTML = `
+    <div class="label-area">${s.label}</div>
+    <div class="funnel-bar" style="width:${w}%;">${fmt(s.value)} 명</div>
+    <div class="rate">${s.sub}</div>
+  `;
+  funnelArea.appendChild(div);
+});
+
+// =========================
+// 일자별 판매 추이 차트
 // =========================
 const dailySales = dates.map(d => {
   const rows = DAILY_OPTION.filter(r=>r.date===d);
@@ -365,25 +504,11 @@ new Chart(document.getElementById('dailySalesChart'), {
   data: {
     labels: dailySales.map(d=>d.date),
     datasets: [
-      {
-        type:'bar',
-        label:'판매수량 (개)',
-        data: dailySales.map(d=>d.qty),
-        backgroundColor:'#4f46e5',
-        yAxisID:'y',
-        borderRadius:4
-      },
-      {
-        type:'line',
-        label:'거래액 (원)',
-        data: dailySales.map(d=>d.gmv),
-        borderColor:'#f59e0b',
-        backgroundColor:'#f59e0b',
-        yAxisID:'y1',
-        tension:0.3,
-        pointRadius:5,
-        pointBackgroundColor:'#f59e0b'
-      }
+      {type:'bar', label:'판매수량 (개)', data:dailySales.map(d=>d.qty),
+        backgroundColor:'#4f46e5', yAxisID:'y', borderRadius:4},
+      {type:'line', label:'거래액 (원)', data:dailySales.map(d=>d.gmv),
+        borderColor:'#f59e0b', backgroundColor:'#f59e0b', yAxisID:'y1',
+        tension:0.3, pointRadius:5, pointBackgroundColor:'#f59e0b'}
     ]
   },
   options:{
@@ -407,22 +532,84 @@ new Chart(document.getElementById('dailySalesChart'), {
 new Chart(document.getElementById('dailyTrafficChart'), {
   type:'bar',
   data:{
-    labels: DAILY_TRAFFIC.map(d=>d.date.slice(5)),
+    labels: DAILY_FUNNEL.map(d=>d.date.slice(5)),
     datasets:[
-      {label:'PDP PV', data:DAILY_TRAFFIC.map(d=>d.pdp_pv), backgroundColor:'#3b82f6', borderRadius:4},
-      {label:'PDP UV', data:DAILY_TRAFFIC.map(d=>d.pdp_uv), backgroundColor:'#10b981', borderRadius:4},
-      {label:'세션',  data:DAILY_TRAFFIC.map(d=>d.pdp_sessions), backgroundColor:'#f59e0b', borderRadius:4}
+      {label:'노출 UV', data:DAILY_FUNNEL.map(d=>d.imp_uv), backgroundColor:'#8b5cf6', borderRadius:4},
+      {label:'PDP PV', data:DAILY_FUNNEL.map(d=>d.pdp_pv), backgroundColor:'#3b82f6', borderRadius:4},
+      {label:'PDP UV', data:DAILY_FUNNEL.map(d=>d.pdp_uv), backgroundColor:'#10b981', borderRadius:4},
+      {label:'구매자', data:DAILY_FUNNEL.map(d=>d.buyers), backgroundColor:'#f59e0b', borderRadius:4}
     ]
   },
   options:{
     responsive:true, maintainAspectRatio:false,
     plugins:{
-      title:{display:true,text:'일자별 PDP 트래픽 (4/27 데이터 적재 지연)', font:{size:13,weight:'600'}, color:'#374151'},
+      title:{display:true,text:'일자별 트래픽 & 구매자 (4/27~4/28 노출/PDP 적재 지연)', font:{size:13,weight:'600'}, color:'#374151'},
       legend:{position:'bottom', labels:{font:{size:11}}}
     },
     scales:{ y:{beginAtZero:true, ticks:{font:{size:11}}}, x:{ticks:{font:{size:11}}} }
   }
 });
+
+// =========================
+// 일자별 퍼널 차트 (CTR/CVR 라인)
+// =========================
+const funnelCtr = DAILY_FUNNEL.map(d=> d.imp_uv && d.pdp_uv ? +(d.pdp_uv/d.imp_uv*100).toFixed(1) : null);
+const funnelCvr = DAILY_FUNNEL.map(d=> d.pdp_uv && d.buyers!=null ? +(d.buyers/d.pdp_uv*100).toFixed(1) : null);
+
+new Chart(document.getElementById('dailyFunnelChart'), {
+  data:{
+    labels: DAILY_FUNNEL.map(d=>d.date.slice(5)),
+    datasets:[
+      {type:'bar', label:'노출 UV', data:DAILY_FUNNEL.map(d=>d.imp_uv), backgroundColor:'#c4b5fd', yAxisID:'y', borderRadius:4},
+      {type:'bar', label:'PDP UV', data:DAILY_FUNNEL.map(d=>d.pdp_uv), backgroundColor:'#93c5fd', yAxisID:'y', borderRadius:4},
+      {type:'line', label:'CTR (%)', data:funnelCtr, borderColor:'#f59e0b', backgroundColor:'#f59e0b',
+        yAxisID:'y1', tension:0.3, pointRadius:5, spanGaps:true},
+      {type:'line', label:'CVR (%)', data:funnelCvr, borderColor:'#ef4444', backgroundColor:'#ef4444',
+        yAxisID:'y1', tension:0.3, pointRadius:5, spanGaps:true, borderDash:[6,4]}
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      title:{display:true,text:'일자별 노출/PDP UV + CTR & CVR', font:{size:13,weight:'600'}, color:'#374151'},
+      legend:{position:'bottom', labels:{font:{size:11}}}
+    },
+    scales:{
+      y:{beginAtZero:true, position:'left', title:{display:true,text:'UV (명)', font:{size:11}}, ticks:{font:{size:11}}},
+      y1:{beginAtZero:true, position:'right', grid:{drawOnChartArea:false},
+           title:{display:true,text:'%', font:{size:11}},
+           ticks:{font:{size:11}, callback:v=>v+'%'}}
+    }
+  }
+});
+
+// 퍼널 테이블
+const funnelTbody = document.querySelector('#funnelTable tbody');
+DAILY_FUNNEL.forEach(d=>{
+  const ctr = d.imp_uv && d.pdp_uv ? (d.pdp_uv/d.imp_uv*100).toFixed(1)+'%' : '-';
+  const cvr = d.pdp_uv && d.buyers!=null ? (d.buyers/d.pdp_uv*100).toFixed(1)+'%' : '-';
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td>${d.date}</td>
+    <td>${fmt(d.imp_uv)}</td>
+    <td>${fmt(d.pdp_uv)}</td>
+    <td>${fmt(d.buyers)}</td>
+    <td>${ctr}</td>
+    <td>${cvr}</td>
+  `;
+  funnelTbody.appendChild(tr);
+});
+const funnelTotRow = document.createElement('tr');
+funnelTotRow.className='total';
+funnelTotRow.innerHTML = `
+  <td>합계</td>
+  <td>${fmt(totalImpUV)}</td>
+  <td>${fmt(totalPdpUV)}</td>
+  <td>${fmt(totalBuyers)}</td>
+  <td>${ctrPct}%</td>
+  <td>${cvrPct}%</td>
+`;
+funnelTbody.appendChild(funnelTotRow);
 
 // =========================
 // 옵션별 누계 집계
@@ -438,18 +625,15 @@ DAILY_OPTION.forEach(r=>{
 });
 const optionRows = Object.values(optionAgg).sort((a,b)=>b.qty-a.qty);
 
-// 옵션별 판매수량 차트
 new Chart(document.getElementById('optionQtyChart'), {
   type:'bar',
   data:{
     labels: optionRows.map(r=>r.key),
     datasets:[
       {label:'판매수량', data:optionRows.map(r=>r.qty),
-        backgroundColor:optionRows.map(r=>COLOR_BY_OPTION[r.key]||'#6b7280'),
-        borderRadius:4},
+        backgroundColor:optionRows.map(r=>COLOR_BY_OPTION[r.key]||'#6b7280'), borderRadius:4},
       {label:'취소수량', data:optionRows.map(r=>r.cancel_qty),
-        backgroundColor:'#ef4444',
-        borderRadius:4}
+        backgroundColor:'#ef4444', borderRadius:4}
     ]
   },
   options:{
@@ -463,7 +647,6 @@ new Chart(document.getElementById('optionQtyChart'), {
   }
 });
 
-// 옵션별 테이블 렌더
 const optTbody = document.querySelector('#optionTable tbody');
 let totalQ=0, totalG=0, totalCQ=0, totalCG=0;
 optionRows.forEach(r=>{
@@ -531,6 +714,51 @@ sortedDaily.forEach(r=>{
 flushDateSubtotal();
 
 // =========================
+// 노출 채널 차트 + 테이블
+// =========================
+const impChannelSorted = [...IMP_CHANNEL].sort((a,b)=>b.imps-a.imps);
+const impTotal = sum(impChannelSorted.map(r=>r.imps));
+const impUvTotal = sum(impChannelSorted.map(r=>r.uv));
+
+new Chart(document.getElementById('impChannelChart'), {
+  type:'bar',
+  data:{
+    labels: impChannelSorted.map(r=>r.channel),
+    datasets:[
+      {label:'노출수', data:impChannelSorted.map(r=>r.imps),
+        backgroundColor:impChannelSorted.map((r,i)=>CHAN_PALETTE[i%CHAN_PALETTE.length]), borderRadius:4},
+      {label:'노출 UV', data:impChannelSorted.map(r=>r.uv),
+        backgroundColor:'#cbd5e1', borderRadius:4}
+    ]
+  },
+  options:{
+    indexAxis:'y',
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      title:{display:true,text:'노출 채널별 분포 (노출수 / UV)', font:{size:13,weight:'600'}, color:'#374151'},
+      legend:{position:'bottom', labels:{font:{size:11}}}
+    },
+    scales:{ x:{beginAtZero:true, ticks:{font:{size:11}}}, y:{ticks:{font:{size:11}}} }
+  }
+});
+
+const impTbody = document.querySelector('#impChannelTable tbody');
+impChannelSorted.forEach((r,i)=>{
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td><span style="display:inline-block;width:10px;height:10px;background:${CHAN_PALETTE[i%CHAN_PALETTE.length]};border-radius:50%;margin-right:8px;"></span>${r.channel}</td>
+    <td style="text-align:left;color:#6b7280;font-size:12px;">${r.label}</td>
+    <td>${fmt(r.uv)}</td>
+    <td>${fmt(r.imps)}</td>
+  `;
+  impTbody.appendChild(tr);
+});
+const impTotRow = document.createElement('tr');
+impTotRow.className='total';
+impTotRow.innerHTML = `<td colspan="2">전체</td><td>${fmt(impUvTotal)}</td><td>${fmt(impTotal)}</td>`;
+impTbody.appendChild(impTotRow);
+
+// =========================
 // 유입 경로 파이 차트
 // =========================
 const refTotal = sum(REFERRER.map(r=>r.pv));
@@ -554,7 +782,6 @@ new Chart(document.getElementById('referrerPieChart'), {
   }
 });
 
-// 유입 테이블
 const refTbody = document.querySelector('#referrerTable tbody');
 REFERRER.forEach((r,i)=>{
   const pct = (r.pv/refTotal*100).toFixed(1);
@@ -600,8 +827,8 @@ new Chart(document.getElementById('referrerByDateChart'), {
   options:{
     responsive:true, maintainAspectRatio:false,
     plugins:{
-      title:{display:true,text:'일자별 유입 경로 PV (Stacked)', font:{size:13,weight:'600'}, color:'#374151'},
-      legend:{position:'bottom', labels:{font:{size:10}, boxWidth:10}}
+      title:{display:true,text:'일자별 유입 경로 PV (Stacked, 4/24~4/26)', font:{size:13,weight:'600'}, color:'#374151'},
+      legend:{position:'bottom', labels:{font:{size:11}}}
     },
     scales:{
       x:{stacked:true, ticks:{font:{size:11}}},
