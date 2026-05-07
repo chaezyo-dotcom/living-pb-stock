@@ -73,7 +73,7 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
     <div class="subtitle">상품코드 4012257 · 3 colors (스카이블루 / 그린 / 핑크) · M / L 사이즈</div>
     <div class="meta">
       <span>판매시작 2026-04-24</span>
-      <span>리포트 기준 2026-05-06</span>
+      <span>리포트 기준 2026-05-07</span>
       <span>Source: finance_datahub.df_com_sales · ba_preserved.total_pdp_facts · ba_preserved.smba_daily_pdp_imps_v2 · ba_preserved.commerce_product_search_tb</span>
     </div>
   </div>
@@ -254,11 +254,14 @@ const DAILY_OPTION = [
   {date:"2026-05-05",option_id:"30093902",color:"그린",size:"L",qty:4,gmv:99600,cancel_qty:0,cancel_gmv:0},
   {date:"2026-05-05",option_id:"30093903",color:"핑크",size:"M",qty:3,gmv:74700,cancel_qty:1,cancel_gmv:24900},
   {date:"2026-05-05",option_id:"30093904",color:"핑크",size:"L",qty:2,gmv:49800,cancel_qty:0,cancel_gmv:0},
-  {date:"2026-05-06",option_id:"30093899",color:"스카이블루",size:"M",qty:2,gmv:49800,cancel_qty:1,cancel_gmv:24900},
-  {date:"2026-05-06",option_id:"30093900",color:"스카이블루",size:"L",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
-  {date:"2026-05-06",option_id:"30093901",color:"그린",size:"M",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
-  {date:"2026-05-06",option_id:"30093902",color:"그린",size:"L",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
-  {date:"2026-05-06",option_id:"30093904",color:"핑크",size:"L",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0}
+  {date:"2026-05-06",option_id:"30093899",color:"스카이블루",size:"M",qty:8,gmv:199200,cancel_qty:1,cancel_gmv:24900},
+  {date:"2026-05-06",option_id:"30093900",color:"스카이블루",size:"L",qty:14,gmv:348600,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-06",option_id:"30093901",color:"그린",size:"M",qty:12,gmv:298800,cancel_qty:2,cancel_gmv:49800},
+  {date:"2026-05-06",option_id:"30093902",color:"그린",size:"L",qty:10,gmv:249000,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-06",option_id:"30093903",color:"핑크",size:"M",qty:5,gmv:124500,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-06",option_id:"30093904",color:"핑크",size:"L",qty:4,gmv:99600,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-07",option_id:"30093902",color:"그린",size:"L",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-07",option_id:"30093904",color:"핑크",size:"L",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0}
 ];
 
 const DAILY_FUNNEL = [
@@ -274,7 +277,8 @@ const DAILY_FUNNEL = [
   {date:"2026-05-03", imp_uv:4537, imp_cnt:10162, pdp_pv:617, pdp_uv:168, buyers:5},
   {date:"2026-05-04", imp_uv:7281, imp_cnt:13763, pdp_pv:647, pdp_uv:222, buyers:4},
   {date:"2026-05-05", imp_uv:8163, imp_cnt:16482, pdp_pv:1254, pdp_uv:385, buyers:10},
-  {date:"2026-05-06", imp_uv:null, imp_cnt:null, pdp_pv:null, pdp_uv:null, buyers:4}
+  {date:"2026-05-06", imp_uv:51531, imp_cnt:73349, pdp_pv:3195, pdp_uv:988, buyers:31},
+  {date:"2026-05-07", imp_uv:null, imp_cnt:null, pdp_pv:null, pdp_uv:null, buyers:1}
 ];
 
 const PATH_BY_DATE = [
@@ -296,8 +300,8 @@ const PATH_BY_DATE = [
   {date:"2026-04-26", channel:"search", imps:326},
   {date:"2026-04-26", channel:"category", imps:100},
   {date:"2026-04-26", channel:"pdp", imps:91},
-  {date:"2026-04-26", channel:"contents", imps:8},
   {date:"2026-04-26", channel:"store", imps:8},
+  {date:"2026-04-26", channel:"contents", imps:8},
   {date:"2026-04-26", channel:"collection_books", imps:6},
   {date:"2026-04-26", channel:"ranks", imps:1},
   {date:"2026-04-27", channel:"etc", imps:7926},
@@ -343,8 +347,8 @@ const PATH_BY_DATE = [
   {date:"2026-05-01", channel:"category", imps:122},
   {date:"2026-05-01", channel:"contents", imps:107},
   {date:"2026-05-01", channel:"store", imps:43},
-  {date:"2026-05-01", channel:"home", imps:6},
   {date:"2026-05-01", channel:"ranks", imps:6},
+  {date:"2026-05-01", channel:"home", imps:6},
   {date:"2026-05-02", channel:"etc", imps:5343},
   {date:"2026-05-02", channel:"search", imps:2173},
   {date:"2026-05-02", channel:"pdp", imps:1664},
@@ -384,7 +388,19 @@ const PATH_BY_DATE = [
   {date:"2026-05-05", channel:"collection_books", imps:30},
   {date:"2026-05-05", channel:"home", imps:15},
   {date:"2026-05-05", channel:"cart", imps:2},
-  {date:"2026-05-05", channel:"styling_shot", imps:1}
+  {date:"2026-05-05", channel:"styling_shot", imps:1},
+  {date:"2026-05-06", channel:"today_deals", imps:30605},
+  {date:"2026-05-06", channel:"exhibitions", imps:29738},
+  {date:"2026-05-06", channel:"pdp", imps:4839},
+  {date:"2026-05-06", channel:"etc", imps:4743},
+  {date:"2026-05-06", channel:"search", imps:2213},
+  {date:"2026-05-06", channel:"contents", imps:773},
+  {date:"2026-05-06", channel:"category", imps:232},
+  {date:"2026-05-06", channel:"store", imps:81},
+  {date:"2026-05-06", channel:"collection_books", imps:74},
+  {date:"2026-05-06", channel:"home", imps:46},
+  {date:"2026-05-06", channel:"ranks", imps:3},
+  {date:"2026-05-06", channel:"cart", imps:2}
 ];
 
 // 채널 메타
@@ -449,16 +465,16 @@ const REFERRER_BY_DATE = [
   {date:"2026-05-01", type:"EXHIBITIONS", pv:11, uv:null},
   {date:"2026-05-01", type:"BRANDS", pv:5, uv:null},
   {date:"2026-05-01", type:"CARDS", pv:1, uv:null},
-  {date:"2026-05-01", type:"ORDERS", pv:1, uv:null},
   {date:"2026-05-01", type:"CARD_COLLECTIONS", pv:1, uv:null},
+  {date:"2026-05-01", type:"ORDERS", pv:1, uv:null},
   {date:"2026-05-02", type:"DIRECT", pv:190, uv:null},
   {date:"2026-05-02", type:"PRODUCTIONS", pv:88, uv:null},
   {date:"2026-05-02", type:"EXHIBITIONS", pv:14, uv:null},
   {date:"2026-05-02", type:"CARD_COLLECTIONS", pv:11, uv:null},
   {date:"2026-05-02", type:"BRANDS", pv:3, uv:null},
   {date:"2026-05-02", type:"GOODS", pv:2, uv:null},
-  {date:"2026-05-02", type:"DETAIL", pv:1, uv:null},
   {date:"2026-05-02", type:"OGARDEN_GAME_HOME", pv:1, uv:null},
+  {date:"2026-05-02", type:"DETAIL", pv:1, uv:null},
   {date:"2026-05-03", type:"DIRECT", pv:403, uv:null},
   {date:"2026-05-03", type:"PRODUCTIONS", pv:132, uv:null},
   {date:"2026-05-03", type:"EXHIBITIONS", pv:33, uv:null},
@@ -483,7 +499,19 @@ const REFERRER_BY_DATE = [
   {date:"2026-05-05", type:"BRANDS", pv:30, uv:null},
   {date:"2026-05-05", type:"CARD_COLLECTIONS", pv:22, uv:null},
   {date:"2026-05-05", type:"GOODS", pv:4, uv:null},
-  {date:"2026-05-05", type:"ORDERS", pv:3, uv:null}
+  {date:"2026-05-05", type:"ORDERS", pv:3, uv:null},
+  {date:"2026-05-06", type:"DIRECT", pv:1295, uv:null},
+  {date:"2026-05-06", type:"EXHIBITIONS", pv:1147, uv:null},
+  {date:"2026-05-06", type:"PRODUCTIONS", pv:667, uv:null},
+  {date:"2026-05-06", type:"BRANDS", pv:24, uv:null},
+  {date:"2026-05-06", type:"CARD_COLLECTIONS", pv:20, uv:null},
+  {date:"2026-05-06", type:"ORDERS", pv:14, uv:null},
+  {date:"2026-05-06", type:"USERS", pv:14, uv:null},
+  {date:"2026-05-06", type:"COUPON-MOLDS", pv:5, uv:null},
+  {date:"2026-05-06", type:"CARDS", pv:4, uv:null},
+  {date:"2026-05-06", type:"OGARDEN_GAME_HOME", pv:2, uv:null},
+  {date:"2026-05-06", type:"DELIVERIES", pv:2, uv:null},
+  {date:"2026-05-06", type:"DETAIL", pv:1, uv:null}
 ];
 const REFERRER_LABELS = {
   PRODUCTIONS:"다른 상품 PDP", DIRECT:"직접 진입(URL/외부)", GOODS:"신규 상품 페이지(GOODS)",
@@ -492,36 +520,36 @@ const REFERRER_LABELS = {
 };
 // SRP는 누적 데이터로 유지 (키워드별 누적)
 const SRP_KEYWORDS = [
-  {keyword:"잠옷", imps:70, avg_rank:6.7286},
-  {keyword:"여름잠옷", imps:36, avg_rank:6},
-  {keyword:"커플잠옷", imps:17, avg_rank:2.1765},
-  {keyword:"울랄라파자마", imps:11, avg_rank:13.7273},
-  {keyword:"파자마", imps:11, avg_rank:7.0909},
-  {keyword:"홈웨어", imps:7, avg_rank:11},
-  {keyword:"레이어 파자마", imps:6, avg_rank:0},
-  {keyword:"여성잠옷", imps:6, avg_rank:0.3333},
-  {keyword:"남자여름잠옷", imps:6, avg_rank:2.5},
+  {keyword:"잠옷", imps:78, avg_rank:7.3974},
+  {keyword:"여름잠옷", imps:38, avg_rank:5.7368},
+  {keyword:"커플잠옷", imps:19, avg_rank:1.9474},
+  {keyword:"파자마", imps:15, avg_rank:6.7333},
+  {keyword:"울랄라파자마", imps:12, avg_rank:13},
+  {keyword:"홈웨어", imps:9, avg_rank:8.6667},
+  {keyword:"남자여름잠옷", imps:7, avg_rank:2.1429},
+  {keyword:"남자잠옷", imps:7, avg_rank:2.5714},
   {keyword:"커플여름잠옷", imps:6, avg_rank:0.8333},
+  {keyword:"여성잠옷", imps:6, avg_rank:0.3333},
+  {keyword:"레이어 파자마", imps:6, avg_rank:0},
+  {keyword:"여름파자마", imps:6, avg_rank:8.1667},
+  {keyword:"레이어 잠옷", imps:5, avg_rank:0},
   {keyword:"커플잠옷세트", imps:5, avg_rank:1},
   {keyword:"오늘의집 레이어", imps:5, avg_rank:5},
-  {keyword:"레이어 잠옷", imps:5, avg_rank:0},
-  {keyword:"남자잠옷", imps:5, avg_rank:2.8},
-  {keyword:"커플 잠옷", imps:3, avg_rank:29.6667},
-  {keyword:"울랄라", imps:3, avg_rank:3},
+  {keyword:"울랄라", imps:4, avg_rank:2.5},
+  {keyword:"노카라잠옷", imps:3, avg_rank:1},
   {keyword:"에어핏여름잠옷", imps:3, avg_rank:0},
-  {keyword:"여름파자마", imps:3, avg_rank:7.6667},
+  {keyword:"양말", imps:3, avg_rank:8.6667},
   {keyword:"남자파자마", imps:3, avg_rank:15},
-  {keyword:"여름 파자마", imps:2, avg_rank:3.5},
-  {keyword:"Layer 파자마", imps:2, avg_rank:0},
-  {keyword:"여름커플잠옷", imps:2, avg_rank:0.5},
-  {keyword:"모던하우스 잠옷", imps:2, avg_rank:12},
-  {keyword:"자주", imps:2, avg_rank:10},
-  {keyword:"울랄라파자마원피스", imps:2, avg_rank:0},
-  {keyword:"양말", imps:2, avg_rank:13},
+  {keyword:"커플 잠옷", imps:3, avg_rank:29.6667},
   {keyword:"여름 커플 잠옷", imps:2, avg_rank:0},
-  {keyword:"커플잠옷 반팔", imps:2, avg_rank:0.5},
-  {keyword:"남자 잠옷", imps:2, avg_rank:2.5},
-  {keyword:"여름잠옷바지", imps:2, avg_rank:10}
+  {keyword:"여성 여름 잠옷", imps:2, avg_rank:1},
+  {keyword:"커플 파자마", imps:2, avg_rank:3.5},
+  {keyword:"극세사 잠옷", imps:2, avg_rank:3},
+  {keyword:"Layer 파자마", imps:2, avg_rank:0},
+  {keyword:"자주", imps:2, avg_rank:10},
+  {keyword:"모던하우스 잠옷", imps:2, avg_rank:12},
+  {keyword:"울랄라파자마원피스", imps:2, avg_rank:0},
+  {keyword:"남자 잠옷", imps:2, avg_rank:2.5}
 ];
 
 // =========================
