@@ -883,6 +883,35 @@ const SRP_KEYWORDS = [
 ];
 
 // =========================
+// 채널/Referrer 라벨 메타
+// =========================
+const CHANNEL_META = {
+  etc:{label:"기타 (홈/광고/푸시 등)"},
+  search:{label:"검색결과"},
+  category:{label:"카테고리 PLP"},
+  pdp:{label:"다른 PDP 추천"},
+  contents:{label:"콘텐츠/스토리"},
+  store:{label:"브랜드/스토어"},
+  collection_books:{label:"컬렉션북"},
+  exhibitions:{label:"기획전"},
+  ranks:{label:"베스트/랭킹"},
+  home:{label:"홈"},
+  cart:{label:"장바구니"},
+  premium:{label:"프리미엄"},
+  styling_shot:{label:"스타일링샷"},
+  today_deals:{label:"오늘의딜"},
+  brands:{label:"브랜드샵"}
+};
+const REFERRER_LABELS = {
+  PRODUCTIONS:"다른 상품 PDP", DIRECT:"직접 진입(URL/외부)", GOODS:"신규 상품 페이지(GOODS)",
+  BRANDS:"브랜드샵", ORDERS:"주문 내역/주문서", USERS:"마이페이지/스크랩",
+  EXHIBITIONS:"기획전", CLAIMS:"취소/반품", CARD_COLLECTIONS:"카드 컬렉션",
+  CARDS:"콘텐츠 카드", DETAIL:"상세", DELIVERIES:"배송", "COUPON-MOLDS":"쿠폰",
+  OGARDEN_GAME_HOME:"오가든", "PAYMENT.OHOU.SE":"결제 페이지", PROJECTS:"프로젝트",
+  PROMOTIONS:"프로모션", ADVICES:"전문가 어드바이스"
+};
+
+// =========================
 // 주차 계산 (ISO Week, Mon-Sun)
 // =========================
 function getISOWeek(dateStr){
