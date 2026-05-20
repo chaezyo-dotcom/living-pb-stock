@@ -1206,28 +1206,42 @@ function renderDailyOptionTable(data){
   const tbody = document.querySelector('#dailyOptionTable tbody');
   tbody.innerHTML = '';
   if(data.daily.length===0){tbody.innerHTML='<tr><td colspan="8" class="empty-msg">데이터 없음</td></tr>';return;}
-  const sorted = [...data.daily].sort((a,b)=>{
-    if(a.date!==b.date) return a.date.localeCompare(b.date);
-    return a.option_id.localeCompare(b.option_id);
+  // 일자별 그룹화 (최근일자 먼저, 같은 일자 내 옵션 ID 오름차순)
+  const groups = {};
+  data.daily.forEach(r=>{
+    if(!groups[r.date]) groups[r.date]={rows:[],q:0,g:0,cq:0,cg:0};
+    const gr=groups[r.date]; gr.rows.push(r);
+    gr.q+=r.qty; gr.g+=r.gmv; gr.cq+=r.cancel_qty; gr.cg+=r.cancel_gmv;
   });
-  let curDate=null,dQ=0,dG=0,dCQ=0,dCG=0;
-  const flush = ()=>{
-    if(curDate===null) return;
-    const tr = document.createElement('tr');
-    tr.className='subtotal';
-    tr.innerHTML = `<td colspan="4">${curDate} 소계</td><td>${fmt(dQ)}</td><td>${fmt(dG)}</td><td>${fmt(dCQ)}</td><td>${fmt(dCG)}</td>`;
-    tbody.appendChild(tr);
-    dQ=0;dG=0;dCQ=0;dCG=0;
-  };
-  sorted.forEach(r=>{
-    if(r.date!==curDate){flush();curDate=r.date;}
-    const cls = r.color==='스카이블루'?'color-blue':r.color==='그린'?'color-green':'color-pink';
-    const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${r.date}</td><td style="font-family:monospace;color:#6b7280;">${r.option_id}</td><td><span class="badge ${cls}">${r.color}</span></td><td>${r.size}</td><td>${fmt(r.qty)}</td><td>${fmt(r.gmv)}</td><td>${r.cancel_qty>0?'<span style="color:#ef4444;">'+fmt(r.cancel_qty)+'</span>':'-'}</td><td>${r.cancel_gmv>0?'<span style="color:#ef4444;">'+fmt(r.cancel_gmv)+'</span>':'-'}</td>`;
-    tbody.appendChild(tr);
-    dQ+=r.qty;dG+=r.gmv;dCQ+=r.cancel_qty;dCG+=r.cancel_gmv;
+  const dates = Object.keys(groups).sort().reverse();
+  dates.forEach((date, idx)=>{
+    const gr = groups[date];
+    gr.rows.sort((a,b)=>a.option_id.localeCompare(b.option_id));
+    const isOpen = idx === 0; // 최신 일자만 펼침
+    const hdr = document.createElement('tr');
+    hdr.className = 'subtotal date-header';
+    hdr.style.cursor = 'pointer';
+    hdr.dataset.date = date;
+    hdr.innerHTML = '<td colspan="4"><span class="caret" style="display:inline-block;width:14px;color:#6b7280;">'+(isOpen?'\u25BC':'\u25B6')+'</span> '+date+' ('+gr.rows.length+'개 옵션)</td><td>'+fmt(gr.q)+'</td><td>'+fmt(gr.g)+'</td><td>'+(gr.cq>0?'<span style="color:#ef4444;">'+fmt(gr.cq)+'</span>':'-')+'</td><td>'+(gr.cg>0?'<span style="color:#ef4444;">'+fmt(gr.cg)+'</span>':'-')+'</td>';
+    tbody.appendChild(hdr);
+    gr.rows.forEach(r=>{
+      const cls = r.color==='\uC2A4\uCE74\uC774\uBE14\uB8E8'?'color-blue':r.color==='\uADF8\uB9B0'?'color-green':'color-pink';
+      const tr = document.createElement('tr');
+      tr.className = 'detail-row';
+      tr.dataset.date = date;
+      if(!isOpen) tr.style.display = 'none';
+      tr.innerHTML = '<td>'+r.date+'</td><td style="font-family:monospace;color:#6b7280;">'+r.option_id+'</td><td><span class="badge '+cls+'">'+r.color+'</span></td><td>'+r.size+'</td><td>'+fmt(r.qty)+'</td><td>'+fmt(r.gmv)+'</td><td>'+(r.cancel_qty>0?'<span style="color:#ef4444;">'+fmt(r.cancel_qty)+'</span>':'-')+'</td><td>'+(r.cancel_gmv>0?'<span style="color:#ef4444;">'+fmt(r.cancel_gmv)+'</span>':'-')+'</td>';
+      tbody.appendChild(tr);
+    });
+    hdr.addEventListener('click', ()=>{
+      const detail = tbody.querySelector('tr.detail-row[data-date="'+date+'"]');
+      const isCurrentlyOpen = detail && detail.style.display !== 'none';
+      const newDisplay = isCurrentlyOpen ? 'none' : '';
+      tbody.querySelectorAll('tr.detail-row[data-date="'+date+'"]').forEach(r => r.style.display = newDisplay);
+      const caret = hdr.querySelector('.caret');
+      if (caret) caret.textContent = isCurrentlyOpen ? '\u25B6' : '\u25BC';
+    });
   });
-  flush();
 }
 
 // =========================
