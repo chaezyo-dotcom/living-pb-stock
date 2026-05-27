@@ -28,14 +28,6 @@
   .stat .num small{font-size:13px;font-weight:600;color:var(--sub);margin-left:3px;}
   .stat.red .num{color:var(--danger);}
 
-  .upanel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:16px 0 4px;box-shadow:var(--shadow);}
-  .uphead{font-size:14px;font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-  .upcount{font-size:12px;font-weight:700;color:var(--danger);background:var(--danger-bg);padding:3px 10px;border-radius:20px;}
-  .upchips{display:flex;flex-wrap:wrap;gap:7px;}
-  .upchip{font-size:12.5px;font-weight:500;padding:5px 10px;border-radius:8px;border:1px solid var(--line);background:#fafbfc;display:inline-flex;align-items:center;gap:7px;}
-  .upchip b{font-weight:700;font-size:10.5px;background:#fff;border:1px solid var(--line);padding:1px 6px;border-radius:10px;color:#475569;}
-  .upchip.req{border-color:#f0d3c0;background:var(--req-bg);}
-  .upchip.add{border-color:#dde2ea;background:var(--add-bg);}
   .toolbar{display:flex;gap:10px;align-items:center;margin:18px 0 14px;flex-wrap:wrap;}
   .search{flex:1;min-width:220px;position:relative;}
   .search input{width:100%;padding:11px 14px 11px 38px;border:1px solid var(--line);border-radius:10px;
@@ -138,8 +130,6 @@
       <div class="num" id="statAdd">0<small>개</small></div>
     </div>
   </div>
-
-  <div class="upanel" id="upanel"></div>
 
   <div class="toolbar">
     <div class="search">
@@ -360,23 +350,6 @@ document.getElementById('statOpt').innerHTML = totalOpt + '<small>개</small>';
 document.getElementById('statGoods').innerHTML = GROUPS.filter(g=>g.opts.length>0).length + '<small>개</small>';
 document.getElementById('statReq').innerHTML = reqCnt + '<small>개</small>';
 document.getElementById('statAdd').innerHTML = addCnt + '<small>개</small>';
-
-// 현재 품절 옵션 한눈에 보기 (옵션명 정규화 후 중복 제거)
-const normOpt = n => n.replace(/^\[G\d+\]\s*/,'').replace(/^\[이달의 혜택\]\s*/,'').trim();
-(function(){
-  const map = new Map();
-  GROUPS.forEach(g => g.opts.forEach(o => {
-    const key = normOpt(o.on);
-    if(!map.has(key)) map.set(key, {name:key, t:o.t, gcs:new Set()});
-    map.get(key).gcs.add(g.gc);
-  }));
-  const arr = Array.from(map.values()).map(x=>({name:x.name, t:x.t, cnt:x.gcs.size}));
-  arr.sort((a,b)=> b.cnt-a.cnt || a.name.localeCompare(b.name));
-  const el = document.getElementById('upanel');
-  if(arr.length===0){ el.style.display='none'; return; }
-  el.innerHTML = '<div class="uphead">🔎 현재 품절 옵션 한눈에 보기 <span class="upcount">중복 제거 '+arr.length+'종</span></div>'
-    + '<div class="upchips">' + arr.map(x=>'<span class="upchip '+(x.t==='필수'?'req':'add')+'" title="'+x.cnt+'개 상품에서 품절">'+esc(x.name)+'<b>'+x.cnt+'</b></span>').join('') + '</div>';
-})();
 
 const toast = document.getElementById('toast');
 let toastT;
