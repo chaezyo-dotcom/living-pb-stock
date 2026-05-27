@@ -9,21 +9,23 @@
     --bg:#f5f6f8; --card:#ffffff; --ink:#1f2430; --sub:#6b7280;
     --line:#e6e8ec; --accent:#2f6df0; --danger:#e04848; --danger-bg:#fdeaea;
     --chip:#eef1f6; --shadow:0 1px 3px rgba(20,30,50,.06),0 1px 2px rgba(20,30,50,.04);
+    --layer:#2f6df0; --layer-bg:#e9f0fe; --kove:#0f9d76; --kove-bg:#e6f6f0; --winter:#7a5af0; --winter-bg:#efebfe;
+    --req:#c2410c; --req-bg:#fdf0e6; --add:#475569; --add-bg:#eef1f5;
   }
   *{box-sizing:border-box;}
   body{margin:0;background:var(--bg);color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
     -webkit-font-smoothing:antialiased;}
-  .wrap{max-width:1080px;margin:0 auto;padding:24px 16px 80px;}
+  .wrap{max-width:1120px;margin:0 auto;padding:24px 16px 80px;}
   header h1{font-size:22px;font-weight:800;margin:0 0 6px;letter-spacing:-.3px;}
   header .meta{font-size:13px;color:var(--sub);}
   header .meta b{color:var(--ink);font-weight:600;}
 
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0 8px;}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0 8px;}
   .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow);}
   .stat .label{font-size:12px;color:var(--sub);margin-bottom:6px;}
-  .stat .num{font-size:30px;font-weight:800;line-height:1;letter-spacing:-1px;}
-  .stat .num small{font-size:14px;font-weight:600;color:var(--sub);margin-left:3px;}
+  .stat .num{font-size:28px;font-weight:800;line-height:1;letter-spacing:-1px;}
+  .stat .num small{font-size:13px;font-weight:600;color:var(--sub);margin-left:3px;}
   .stat.red .num{color:var(--danger);}
 
   .toolbar{display:flex;gap:10px;align-items:center;margin:18px 0 14px;flex-wrap:wrap;}
@@ -37,22 +39,39 @@
     font-size:13px;cursor:pointer;color:var(--ink);font-weight:600;}
   .btn:hover{border-color:var(--accent);color:var(--accent);}
 
+  .brandsec{margin:22px 0 10px;display:flex;align-items:center;gap:10px;}
+  .brandsec .btag{font-size:14px;font-weight:800;padding:5px 13px;border-radius:20px;letter-spacing:-.2px;}
+  .brandsec .bmeta{font-size:12.5px;color:var(--sub);}
+  .btag.layer{color:var(--layer);background:var(--layer-bg);}
+  .btag.kove{color:var(--kove);background:var(--kove-bg);}
+  .btag.winter{color:var(--winter);background:var(--winter-bg);}
+
   .group{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;
     box-shadow:var(--shadow);overflow:hidden;}
-  .ghead{display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;user-select:none;}
+  .ghead{display:flex;align-items:center;gap:10px;padding:13px 16px;cursor:pointer;user-select:none;}
   .ghead:hover{background:#fafbfc;}
+  .gcode-wrap{display:flex;align-items:center;gap:5px;white-space:nowrap;}
   .gcode{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;font-weight:700;
-    background:var(--chip);padding:4px 9px;border-radius:7px;color:#374151;white-space:nowrap;}
-  .gname{flex:1;font-size:14.5px;font-weight:600;min-width:0;}
+    background:var(--chip);padding:4px 9px;border-radius:7px;color:#374151;cursor:copy;}
+  .gcode:hover{background:#dfe3ea;}
+  .copy{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border:1px solid var(--line);
+    background:#fff;border-radius:7px;cursor:pointer;color:var(--sub);padding:0;}
+  .copy:hover{border-color:var(--accent);color:var(--accent);}
+  .copy.done{border-color:var(--kove);color:var(--kove);background:var(--kove-bg);}
+  .bmini{font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:6px;white-space:nowrap;}
+  .bmini.layer{color:var(--layer);background:var(--layer-bg);}
+  .bmini.kove{color:var(--kove);background:var(--kove-bg);}
+  .bmini.winter{color:var(--winter);background:var(--winter-bg);}
+  .gname{flex:1;font-size:14px;font-weight:600;min-width:0;}
   .gcount{font-size:12.5px;font-weight:700;color:var(--danger);background:var(--danger-bg);
     padding:4px 10px;border-radius:20px;white-space:nowrap;}
-  .arrow{transition:transform .18s;opacity:.5;}
+  .arrow{transition:transform .18s;opacity:.5;flex-shrink:0;}
   .group.collapsed .arrow{transform:rotate(-90deg);}
   .group.collapsed .gbody{display:none;}
 
-  .gbody{border-top:1px solid var(--line);}
-  table{width:100%;border-collapse:collapse;}
-  th,td{text-align:left;padding:10px 18px;font-size:13.5px;vertical-align:top;}
+  .gbody{border-top:1px solid var(--line);overflow-x:auto;}
+  table{width:100%;border-collapse:collapse;min-width:680px;}
+  th,td{text-align:left;padding:10px 16px;font-size:13.5px;vertical-align:middle;}
   thead th{font-size:11.5px;color:var(--sub);font-weight:600;background:#fafbfc;
     border-bottom:1px solid var(--line);text-transform:uppercase;letter-spacing:.3px;}
   tbody tr{border-bottom:1px solid #f1f2f4;}
@@ -61,17 +80,26 @@
   .oc{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:#475569;white-space:nowrap;}
   .on{font-weight:500;}
   .date{color:var(--sub);font-size:12.5px;white-space:nowrap;}
-  .col-oc{width:120px;} .col-date{width:110px;}
+  .tbadge{font-size:11px;font-weight:700;padding:3px 7px;border-radius:6px;white-space:nowrap;}
+  .tbadge.req{color:var(--req);background:var(--req-bg);}
+  .tbadge.add{color:var(--add);background:var(--add-bg);}
+  .memo-in{width:100%;min-width:150px;padding:6px 9px;border:1px solid var(--line);border-radius:8px;
+    font-size:12.5px;font-family:inherit;background:#fff;outline:none;color:var(--ink);}
+  .memo-in:focus{border-color:var(--accent);}
+  .memo-in::placeholder{color:#b6bcc6;}
+  .col-oc{width:108px;} .col-type{width:78px;} .col-date{width:104px;} .col-memo{width:230px;}
 
   .empty{display:none;text-align:center;padding:50px 20px;color:var(--sub);font-size:14px;}
   footer{margin-top:30px;text-align:center;font-size:12px;color:var(--sub);}
+  .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);
+    background:#1f2430;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;
+    opacity:0;pointer-events:none;transition:all .2s;z-index:50;}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
   @media(max-width:640px){
-    .cards{grid-template-columns:1fr;}
-    .col-oc,.col-date{width:auto;}
-    th,td{padding:9px 12px;}
-    .ghead{padding:12px 14px;}
-    .gname{font-size:13.5px;}
+    .cards{grid-template-columns:repeat(2,1fr);}
+    .ghead{padding:12px 13px;gap:8px;flex-wrap:wrap;}
+    .gname{font-size:13px;flex-basis:100%;order:5;}
   }
 </style>
 </head>
@@ -92,15 +120,19 @@
       <div class="num" id="statGoods">0<small>개</small></div>
     </div>
     <div class="stat">
-      <div class="label">최다 품절 상품 옵션 수</div>
-      <div class="num" id="statMax">0<small>개</small></div>
+      <div class="label">필수옵션</div>
+      <div class="num" id="statReq">0<small>개</small></div>
+    </div>
+    <div class="stat">
+      <div class="label">추가옵션</div>
+      <div class="num" id="statAdd">0<small>개</small></div>
     </div>
   </div>
 
   <div class="toolbar">
     <div class="search">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <input id="q" type="text" placeholder="상품코드 · 상품명 · 옵션코드 · 옵션명 검색">
+      <input id="q" type="text" placeholder="브랜드 · 상품코드 · 상품명 · 옵션코드 · 옵션명 검색">
     </div>
     <div class="btns">
       <button class="btn" id="expandAll">모두 펼치기</button>
@@ -111,222 +143,289 @@
   <div id="list"></div>
   <div class="empty" id="empty">검색 결과가 없습니다.</div>
 
-  <footer>리빙PB 품절 옵션 현황 · Powered by Claude · 데이터 출처: 오늘의집 Athena (dump_mongo_commerce)</footer>
+  <footer>리빙PB 품절 옵션 현황 · Powered by Claude · 데이터 출처: 오늘의집 Athena (dump_mongo_commerce) · 메모는 이 브라우저에 저장됩니다</footer>
 </div>
+<div class="toast" id="toast">복사되었습니다</div>
 
 <script>
 const LAST_UPDATED = "2026-05-27 10:15";
+const BRAND_ORDER = ["오늘의집layer","코브","윈터하우스"];
+const BRAND_CLASS = {"오늘의집layer":"layer","코브":"kove","윈터하우스":"winter"};
 
-// 상품코드별 현재 품절 옵션 (판매중 상품 / 판매중 옵션만)
+// 상품코드별 현재 품절 옵션 (판매중 상품 / 판매중 옵션만). t: 옵션 구분(필수/추가)
 const GROUPS = [
-  {gc:"3519098", gn:"[오늘의집 단독] 바운스에어 다운필 알러지케어 베개솜 3sizes", opts:[
-    {oc:"26160685", on:"50*70", d:"2026-04-20"},
-    {oc:"27414524", on:"[이달의 혜택] 50*70 2개입 (개당 14/500원)", d:"2026-04-20"},
-    {oc:"27414525", on:"[이달의 혜택] 50*70 4개입 (개당 12/250원)", d:"2026-04-20"}
+  {gc:"3640060", brand:"오늘의집layer", gn:"basic / 바른 100% 방수 매트리스커버, TPU, 5colors, SS/D/Q/K", opts:[
+    {oc:"27308663", on:"SS / 웜화이트", t:"필수", d:"2026-05-26"},
+    {oc:"27308670", on:"D / 딥네이비", t:"필수", d:"2025-11-27"},
+    {oc:"27308671", on:"D / 올리브그린", t:"필수", d:"2026-04-27"}
   ]},
-  {gc:"3640060", gn:"basic / 바른 100% 방수 매트리스커버, TPU, 5colors, SS/D/Q/K", opts:[
-    {oc:"27308663", on:"SS / 웜화이트", d:"2026-05-26"},
-    {oc:"27308670", on:"D / 딥네이비", d:"2025-11-27"},
-    {oc:"27308671", on:"D / 올리브그린", d:"2026-04-27"}
+  {gc:"3640123", brand:"오늘의집layer", gn:"refine / 더 포근한 60수 순면 호텔침구세트,여름냉감(듀라론)/사계절,SS/D/Q", opts:[
+    {oc:"27309168", on:"[G015]60수 코튼 침대패드 D 솔리드 오트밀", t:"추가", d:"2026-03-30"},
+    {oc:"29296328", on:"솔리드 아이보리 / 더블 이불베개세트", t:"필수", d:"2026-05-06"},
+    {oc:"29296329", on:"솔리드 오트밀 / 더블 이불베개세트", t:"필수", d:"2026-05-06"},
+    {oc:"29296331", on:"솔리드 네이비 / 더블 이불베개세트", t:"필수", d:"2026-05-06"},
+    {oc:"29296332", on:"솔리드 차콜 / 더블 이불베개세트", t:"필수", d:"2026-05-06"},
+    {oc:"27309197", on:"[G015]60수 코튼 누빔 매트리스커버 K 솔리드 아이보리", t:"추가", d:"2026-04-27"},
+    {oc:"29296343", on:"솔리드 아이보리 / 더블 풀세트(D패드)", t:"필수", d:"2026-05-06"},
+    {oc:"29296344", on:"솔리드 오트밀 / 더블 풀세트(D패드)", t:"필수", d:"2026-05-06"},
+    {oc:"29296346", on:"솔리드 네이비 / 더블 풀세트(D패드)", t:"필수", d:"2026-05-06"},
+    {oc:"29296347", on:"솔리드 차콜 / 더블 풀세트(D패드)", t:"필수", d:"2026-05-06"},
+    {oc:"27581022", on:"[G015]바운스에어 다운필 알러지케어 베개솜 50*70", t:"추가", d:"2026-04-20"},
+    {oc:"27581023", on:"[G015]바운스에어 다운필 알러지케어 베개솜 50*70 2개입", t:"추가", d:"2026-04-20"}
   ]},
-  {gc:"3640123", gn:"refine / 더 포근한 60수 순면 호텔침구세트,여름냉감(듀라론)/사계절,SS/D/Q", opts:[
-    {oc:"27309168", on:"[G015]60수 코튼 침대패드 D 솔리드 오트밀", d:"2026-03-30"},
-    {oc:"29296328", on:"솔리드 아이보리 / 더블 이불베개세트", d:"2026-05-06"},
-    {oc:"29296329", on:"솔리드 오트밀 / 더블 이불베개세트", d:"2026-05-06"},
-    {oc:"29296331", on:"솔리드 네이비 / 더블 이불베개세트", d:"2026-05-06"},
-    {oc:"29296332", on:"솔리드 차콜 / 더블 이불베개세트", d:"2026-05-06"},
-    {oc:"27309197", on:"[G015]60수 코튼 누빔 매트리스커버 K 솔리드 아이보리", d:"2026-04-27"},
-    {oc:"29296343", on:"솔리드 아이보리 / 더블 풀세트(D패드)", d:"2026-05-06"},
-    {oc:"29296344", on:"솔리드 오트밀 / 더블 풀세트(D패드)", d:"2026-05-06"},
-    {oc:"29296346", on:"솔리드 네이비 / 더블 풀세트(D패드)", d:"2026-05-06"},
-    {oc:"29296347", on:"솔리드 차콜 / 더블 풀세트(D패드)", d:"2026-05-06"},
-    {oc:"27581022", on:"[G015]바운스에어 다운필 알러지케어 베개솜 50*70", d:"2026-04-20"},
-    {oc:"27581023", on:"[G015]바운스에어 다운필 알러지케어 베개솜 50*70 2개입", d:"2026-04-20"}
+  {gc:"3640153", brand:"오늘의집layer", gn:"refine / 더 포근한 60수 순면 베개커버, 40*60/50*70", opts:[
+    {oc:"27537204", on:"바운스에어 다운필 알러지케어 베개솜 50*70", t:"추가", d:"2026-04-20"},
+    {oc:"27537205", on:"바운스에어 다운필 알러지케어 베개솜 50*70 2개입 (개당 14,500원)", t:"추가", d:"2026-04-20"},
+    {oc:"27309501", on:"[G016]기본 60수 코튼 침대패드 D 웜화이트", t:"추가", d:"2026-05-18"},
+    {oc:"27309502", on:"[G016]기본 60수 코튼 침대패드 D 오트밀베이지", t:"추가", d:"2026-03-30"},
+    {oc:"27309503", on:"[G016]기본 60수 코튼 침대패드 D 딥네이비", t:"추가", d:"2026-04-27"},
+    {oc:"27309516", on:"[G016]기본 60수 코튼 누빔 매트리스커버 SS 웜화이트", t:"추가", d:"2026-03-23"},
+    {oc:"27309531", on:"[G016]기본 60수 코튼 누빔 매트리스커버 K 웜화이트", t:"추가", d:"2026-04-27"},
+    {oc:"27309541", on:"[G016]기본 60수 코튼 차렵이불 D 웜화이트", t:"추가", d:"2026-01-19"},
+    {oc:"27309551", on:"[G016]기본 방수 매트리스커버 SS 웜화이트", t:"추가", d:"2026-05-26"},
+    {oc:"27309558", on:"[G016]기본 방수 매트리스커버 D 딥네이비", t:"추가", d:"2025-11-27"},
+    {oc:"27309559", on:"[G016]기본 방수 매트리스커버 D 올리브그린", t:"추가", d:"2026-04-27"}
   ]},
-  {gc:"3640153", gn:"refine / 더 포근한 60수 순면 베개커버, 40*60/50*70", opts:[
-    {oc:"27537204", on:"바운스에어 다운필 알러지케어 베개솜 50*70", d:"2026-04-20"},
-    {oc:"27537205", on:"바운스에어 다운필 알러지케어 베개솜 50*70 2개입 (개당 14,500원)", d:"2026-04-20"},
-    {oc:"27309501", on:"[G016]기본 60수 코튼 침대패드 D 웜화이트", d:"2026-05-18"},
-    {oc:"27309502", on:"[G016]기본 60수 코튼 침대패드 D 오트밀베이지", d:"2026-03-30"},
-    {oc:"27309503", on:"[G016]기본 60수 코튼 침대패드 D 딥네이비", d:"2026-04-27"},
-    {oc:"27309516", on:"[G016]기본 60수 코튼 누빔 매트리스커버 SS 웜화이트", d:"2026-03-23"},
-    {oc:"27309531", on:"[G016]기본 60수 코튼 누빔 매트리스커버 K 웜화이트", d:"2026-04-27"},
-    {oc:"27309541", on:"[G016]기본 60수 코튼 차렵이불 D 웜화이트", d:"2026-01-19"},
-    {oc:"27309551", on:"[G016]기본 방수 매트리스커버 SS 웜화이트", d:"2026-05-26"},
-    {oc:"27309558", on:"[G016]기본 방수 매트리스커버 D 딥네이비", d:"2025-11-27"},
-    {oc:"27309559", on:"[G016]기본 방수 매트리스커버 D 올리브그린", d:"2026-04-27"}
+  {gc:"3640185", brand:"오늘의집layer", gn:"refine / 더 포근한 60수 순면 침대패드, SS/D/Q/K", opts:[
+    {oc:"27309793", on:"[G017]기본 60수 코튼 누빔 매트리스커버 SS 웜화이트", t:"추가", d:"2026-03-23"},
+    {oc:"27309778", on:"D / 솔리드 아이보리", t:"필수", d:"2026-05-18"},
+    {oc:"27309779", on:"D / 솔리드 오트밀", t:"필수", d:"2026-03-30"},
+    {oc:"27309808", on:"[G017]기본 60수 코튼 누빔 매트리스커버 K 웜화이트", t:"추가", d:"2026-04-27"},
+    {oc:"27309818", on:"[G017]기본 60수 코튼 차렵이불 D 웜화이트", t:"추가", d:"2026-01-19"},
+    {oc:"27309819", on:"[G017]기본 60수 코튼 차렵이불 D 오트밀베이지", t:"추가", d:"2026-04-27"},
+    {oc:"27309820", on:"[G017]기본 60수 코튼 차렵이불 D 딥네이비", t:"추가", d:"2026-04-27"},
+    {oc:"27309839", on:"[G017]기본 방수 매트리스커버 SS 웜화이트", t:"추가", d:"2026-05-26"},
+    {oc:"27309845", on:"[G017]기본 방수 매트리스커버 D 딥네이비", t:"추가", d:"2025-11-27"},
+    {oc:"27309846", on:"[G017]기본 방수 매트리스커버 D 올리브그린", t:"추가", d:"2026-04-27"}
   ]},
-  {gc:"3640185", gn:"refine / 더 포근한 60수 순면 침대패드, SS/D/Q/K", opts:[
-    {oc:"27309793", on:"[G017]기본 60수 코튼 누빔 매트리스커버 SS 웜화이트", d:"2026-03-23"},
-    {oc:"27309778", on:"D / 솔리드 아이보리", d:"2026-05-18"},
-    {oc:"27309779", on:"D / 솔리드 오트밀", d:"2026-03-30"},
-    {oc:"27309808", on:"[G017]기본 60수 코튼 누빔 매트리스커버 K 웜화이트", d:"2026-04-27"},
-    {oc:"27309818", on:"[G017]기본 60수 코튼 차렵이불 D 웜화이트", d:"2026-01-19"},
-    {oc:"27309819", on:"[G017]기본 60수 코튼 차렵이불 D 오트밀베이지", d:"2026-04-27"},
-    {oc:"27309820", on:"[G017]기본 60수 코튼 차렵이불 D 딥네이비", d:"2026-04-27"},
-    {oc:"27309839", on:"[G017]기본 방수 매트리스커버 SS 웜화이트", d:"2026-05-26"},
-    {oc:"27309845", on:"[G017]기본 방수 매트리스커버 D 딥네이비", d:"2025-11-27"},
-    {oc:"27309846", on:"[G017]기본 방수 매트리스커버 D 올리브그린", d:"2026-04-27"}
+  {gc:"3640210", brand:"오늘의집layer", gn:"refine / 더 포근한 60수 순면 누빔매트리스커버,SS/D/Q/K", opts:[
+    {oc:"27309951", on:"SS / 웜화이트", t:"필수", d:"2026-03-23"},
+    {oc:"27309976", on:"[G014]기본 60수 코튼 차렵이불 D 웜화이트", t:"추가", d:"2026-01-19"},
+    {oc:"27309977", on:"[G014]기본 60수 코튼 차렵이불 D 오트밀베이지", t:"추가", d:"2026-04-27"},
+    {oc:"27309978", on:"[G014]기본 60수 코튼 차렵이불 D 딥네이비", t:"추가", d:"2026-04-27"},
+    {oc:"27309980", on:"[G014]기본 60수 코튼 차렵이불 D 애쉬차콜", t:"추가", d:"2026-05-11"},
+    {oc:"27309966", on:"K / 웜화이트", t:"필수", d:"2026-04-21"},
+    {oc:"27310001", on:"[G014]기본 60수 코튼 침대패드 D 웜화이트", t:"추가", d:"2026-05-18"},
+    {oc:"27310016", on:"[G014]기본 방수 매트리스커버 SS 웜화이트", t:"추가", d:"2026-05-26"},
+    {oc:"27310023", on:"[G014]기본 방수 매트리스커버 D 딥네이비", t:"추가", d:"2025-11-27"},
+    {oc:"27310024", on:"[G014]기본 방수 매트리스커버 D 올리브그린", t:"추가", d:"2026-04-27"}
   ]},
-  {gc:"3640210", gn:"refine / 더 포근한 60수 순면 누빔매트리스커버,SS/D/Q/K", opts:[
-    {oc:"27309951", on:"SS / 웜화이트", d:"2026-03-23"},
-    {oc:"27309976", on:"[G014]기본 60수 코튼 차렵이불 D 웜화이트", d:"2026-01-19"},
-    {oc:"27309977", on:"[G014]기본 60수 코튼 차렵이불 D 오트밀베이지", d:"2026-04-27"},
-    {oc:"27309978", on:"[G014]기본 60수 코튼 차렵이불 D 딥네이비", d:"2026-04-27"},
-    {oc:"27309980", on:"[G014]기본 60수 코튼 차렵이불 D 애쉬차콜", d:"2026-05-11"},
-    {oc:"27309966", on:"K / 웜화이트", d:"2026-04-21"},
-    {oc:"27310001", on:"[G014]기본 60수 코튼 침대패드 D 웜화이트", d:"2026-05-18"},
-    {oc:"27310016", on:"[G014]기본 방수 매트리스커버 SS 웜화이트", d:"2026-05-26"},
-    {oc:"27310023", on:"[G014]기본 방수 매트리스커버 D 딥네이비", d:"2025-11-27"},
-    {oc:"27310024", on:"[G014]기본 방수 매트리스커버 D 올리브그린", d:"2026-04-27"}
+  {gc:"3640244", brand:"오늘의집layer", gn:"refine / 더 촘촘한 알러지케어 침구세트, 여름냉감(듀라론)/사계절용, SS/D/Q", opts:[
+    {oc:"29540506", on:"[G024]알러지케어 베개커버 50*70 솔리드 브라운", t:"추가", d:"2026-04-20"},
+    {oc:"28646152", on:"[G024]겨울용 극세사 베개커버 50*70 솔리드 크림", t:"추가", d:"2026-02-10"},
+    {oc:"28646153", on:"[G024]겨울용 극세사 베개커버 50*70 솔리드 딥블랙", t:"추가", d:"2026-02-09"},
+    {oc:"27310428", on:"[G024]알러지케어 침대패드 D 솔리드 크림", t:"추가", d:"2026-03-30"},
+    {oc:"29297376", on:"베이직 스트라이프 크림 / 더블 풀세트(D패드)", t:"필수", d:"2026-05-13"},
+    {oc:"29297391", on:"극세사_베이직 스트라이프 딥블랙 / 더블 풀세트(D패드)", t:"필수", d:"2026-05-13"},
+    {oc:"27310432", on:"[G024]알러지케어 침대패드 K 솔리드 크림", t:"추가", d:"2026-05-22"},
+    {oc:"30711417", on:"베이직 스트라이프 크림 / 퀸&킹겸용 풀세트(K패드)", t:"필수", d:"2026-05-22"},
+    {oc:"27581225", on:"[G024]바운스에어 다운필 알러지케어 베개솜 50*70", t:"추가", d:"2026-04-20"},
+    {oc:"27581226", on:"[G024]바운스에어 다운필 알러지케어 베개솜 50*70 2개입", t:"추가", d:"2026-04-20"}
   ]},
-  {gc:"3640244", gn:"refine / 더 촘촘한 알러지케어 침구세트, 여름냉감(듀라론)/사계절용, SS/D/Q", opts:[
-    {oc:"29540506", on:"[G024]알러지케어 베개커버 50*70 솔리드 브라운", d:"2026-04-20"},
-    {oc:"28646152", on:"[G024]겨울용 극세사 베개커버 50*70 솔리드 크림", d:"2026-02-10"},
-    {oc:"28646153", on:"[G024]겨울용 극세사 베개커버 50*70 솔리드 딥블랙", d:"2026-02-09"},
-    {oc:"27310428", on:"[G024]알러지케어 침대패드 D 솔리드 크림", d:"2026-03-30"},
-    {oc:"29297376", on:"베이직 스트라이프 크림 / 더블 풀세트(D패드)", d:"2026-05-13"},
-    {oc:"29297391", on:"극세사_베이직 스트라이프 딥블랙 / 더블 풀세트(D패드)", d:"2026-05-13"},
-    {oc:"27310432", on:"[G024]알러지케어 침대패드 K 솔리드 크림", d:"2026-05-22"},
-    {oc:"30711417", on:"베이직 스트라이프 크림 / 퀸&킹겸용 풀세트(K패드)", d:"2026-05-22"},
-    {oc:"27581225", on:"[G024]바운스에어 다운필 알러지케어 베개솜 50*70", d:"2026-04-20"},
-    {oc:"27581226", on:"[G024]바운스에어 다운필 알러지케어 베개솜 50*70 2개입", d:"2026-04-20"}
+  {gc:"3640320", brand:"오늘의집layer", gn:"refine / 더 촘촘한 알러지케어 베개커버, 40*60/50*70", opts:[
+    {oc:"27537152", on:"바운스에어 다운필 알러지케어 베개솜 50*70", t:"추가", d:"2026-04-20"},
+    {oc:"27537153", on:"바운스에어 다운필 알러지케어 베개솜 50*70 2개입 (개당 14,500원)", t:"추가", d:"2026-04-20"},
+    {oc:"29756980", on:"50*70 / 솔리드 브라운", t:"필수", d:"2026-04-20"},
+    {oc:"28712804", on:"50*70 / 극세사 솔리드 크림", t:"필수", d:"2026-02-27"},
+    {oc:"28712805", on:"50*70 / 극세사 솔리드 딥블랙", t:"필수", d:"2026-02-27"},
+    {oc:"27311053", on:"[G021]기본 방수 매트리스커버 SS 웜화이트", t:"추가", d:"2026-05-26"},
+    {oc:"27311060", on:"[G021]기본 방수 매트리스커버 D 딥네이비", t:"추가", d:"2025-11-27"},
+    {oc:"27311061", on:"[G021]기본 방수 매트리스커버 D 올리브그린", t:"추가", d:"2026-04-27"}
   ]},
-  {gc:"3640320", gn:"refine / 더 촘촘한 알러지케어 베개커버, 40*60/50*70", opts:[
-    {oc:"27537152", on:"바운스에어 다운필 알러지케어 베개솜 50*70", d:"2026-04-20"},
-    {oc:"27537153", on:"바운스에어 다운필 알러지케어 베개솜 50*70 2개입 (개당 14,500원)", d:"2026-04-20"},
-    {oc:"29756980", on:"50*70 / 솔리드 브라운", d:"2026-04-20"},
-    {oc:"28712804", on:"50*70 / 극세사 솔리드 크림", d:"2026-02-27"},
-    {oc:"28712805", on:"50*70 / 극세사 솔리드 딥블랙", d:"2026-02-27"},
-    {oc:"27311053", on:"[G021]기본 방수 매트리스커버 SS 웜화이트", d:"2026-05-26"},
-    {oc:"27311060", on:"[G021]기본 방수 매트리스커버 D 딥네이비", d:"2025-11-27"},
-    {oc:"27311061", on:"[G021]기본 방수 매트리스커버 D 올리브그린", d:"2026-04-27"}
+  {gc:"3640346", brand:"오늘의집layer", gn:"refine / 더 촘촘한 알러지케어 침대패드, SS/D/Q/K", opts:[
+    {oc:"27311499", on:"[G022]기본 알러지케어 차렵이불 S 스트라이프 웜화이트", t:"추가", d:"2026-03-23"},
+    {oc:"27311500", on:"[G022]기본 알러지케어 차렵이불 S 스트라이프 딥블랙", t:"추가", d:"2026-01-19"},
+    {oc:"27311481", on:"D / 솔리드 크림", t:"필수", d:"2026-03-30"},
+    {oc:"28199046", on:"D / 극세사 솔리드 딥블랙", t:"필수", d:"2026-04-14"},
+    {oc:"27311513", on:"[G022]기본 방수 매트리스커버 SS 웜화이트", t:"추가", d:"2026-05-26"},
+    {oc:"27311520", on:"[G022]기본 방수 매트리스커버 D 딥네이비", t:"추가", d:"2025-11-27"},
+    {oc:"27311521", on:"[G022]기본 방수 매트리스커버 D 올리브그린", t:"추가", d:"2026-04-27"},
+    {oc:"27581244", on:"바운스에어 다운필 알러지케어 베개솜 50*70", t:"추가", d:"2026-04-20"},
+    {oc:"27581245", on:"바운스에어 다운필 알러지케어 베개솜 50*70 2개입 (개당 14,500원)", t:"추가", d:"2026-04-20"}
   ]},
-  {gc:"3640346", gn:"refine / 더 촘촘한 알러지케어 침대패드, SS/D/Q/K", opts:[
-    {oc:"27311499", on:"[G022]기본 알러지케어 차렵이불 S 스트라이프 웜화이트", d:"2026-03-23"},
-    {oc:"27311500", on:"[G022]기본 알러지케어 차렵이불 S 스트라이프 딥블랙", d:"2026-01-19"},
-    {oc:"27311481", on:"D / 솔리드 크림", d:"2026-03-30"},
-    {oc:"28199046", on:"D / 극세사 솔리드 딥블랙", d:"2026-04-14"},
-    {oc:"27311513", on:"[G022]기본 방수 매트리스커버 SS 웜화이트", d:"2026-05-26"},
-    {oc:"27311520", on:"[G022]기본 방수 매트리스커버 D 딥네이비", d:"2025-11-27"},
-    {oc:"27311521", on:"[G022]기본 방수 매트리스커버 D 올리브그린", d:"2026-04-27"},
-    {oc:"27581244", on:"바운스에어 다운필 알러지케어 베개솜 50*70", d:"2026-04-20"},
-    {oc:"27581245", on:"바운스에어 다운필 알러지케어 베개솜 50*70 2개입 (개당 14,500원)", d:"2026-04-20"}
+  {gc:"3640383", brand:"오늘의집layer", gn:"refine / 더 촘촘한 알러지케어 매트리스커버, SS/D/Q/K", opts:[
+    {oc:"27312258", on:"[G018]기본 알러지케어 차렵이불 S 스트라이프 웜화이트", t:"추가", d:"2026-04-06"},
+    {oc:"27312259", on:"[G018]기본 알러지케어 차렵이불 S 스트라이프 딥블랙", t:"추가", d:"2026-01-19"},
+    {oc:"27312282", on:"[G018]기본 알러지케어 침대패드 D 솔리드 웜화이트", t:"추가", d:"2026-03-30"},
+    {oc:"27312288", on:"[G018]기본 방수 매트리스커버 SS 웜화이트", t:"추가", d:"2026-05-26"},
+    {oc:"27312295", on:"[G018]기본 방수 매트리스커버 D 딥네이비", t:"추가", d:"2025-11-27"},
+    {oc:"27312296", on:"[G018]기본 방수 매트리스커버 D 올리브그린", t:"추가", d:"2026-04-27"}
   ]},
-  {gc:"3640383", gn:"refine / 더 촘촘한 알러지케어 매트리스커버, SS/D/Q/K", opts:[
-    {oc:"27312258", on:"[G018]기본 알러지케어 차렵이불 S 스트라이프 웜화이트", d:"2026-04-06"},
-    {oc:"27312259", on:"[G018]기본 알러지케어 차렵이불 S 스트라이프 딥블랙", d:"2026-01-19"},
-    {oc:"27312282", on:"[G018]기본 알러지케어 침대패드 D 솔리드 웜화이트", d:"2026-03-30"},
-    {oc:"27312288", on:"[G018]기본 방수 매트리스커버 SS 웜화이트", d:"2026-05-26"},
-    {oc:"27312295", on:"[G018]기본 방수 매트리스커버 D 딥네이비", d:"2025-11-27"},
-    {oc:"27312296", on:"[G018]기본 방수 매트리스커버 D 올리브그린", d:"2026-04-27"}
+  {gc:"3694022", brand:"오늘의집layer", gn:"refine / 쉽게 세탁하는 스트라이프 발매트, 4colors, 소형/대형", opts:[
+    {oc:"27624195", on:"45*145 / 웜화이트", t:"필수", d:"2026-02-23"}
   ]},
-  {gc:"3694022", gn:"refine / 쉽게 세탁하는 스트라이프 발매트, 4colors, 소형/대형", opts:[
-    {oc:"27624195", on:"45*145 / 웜화이트", d:"2026-02-23"}
+  {gc:"3764904", brand:"오늘의집layer", gn:"refine / 더 도톰한 더블레이어 담요, 3colors, 소형/대형", opts:[
+    {oc:"28044744", on:"소형 100*150 / 웜화이트", t:"필수", d:"2026-04-14"},
+    {oc:"28044747", on:"대형 150*200 / 웜화이트", t:"필수", d:"2026-02-04"},
+    {oc:"28044748", on:"대형 150*200 / 오트밀베이지", t:"필수", d:"2026-04-14"}
   ]},
-  {gc:"3764904", gn:"refine / 더 도톰한 더블레이어 담요, 3colors, 소형/대형", opts:[
-    {oc:"28044744", on:"소형 100*150 / 웜화이트", d:"2026-04-14"},
-    {oc:"28044747", on:"대형 150*200 / 웜화이트", d:"2026-02-04"},
-    {oc:"28044748", on:"대형 150*200 / 오트밀베이지", d:"2026-04-14"}
+  {gc:"3764909", brand:"오늘의집layer", gn:"basic / 바른 완벽차광 암막커튼(1+1), 3colors, 창문형/거실형", opts:[
+    {oc:"28044763", on:"고밀도 매트텍스처 커튼핀형 / 140*180(소) 2장 아이보리", t:"필수", d:"2026-05-21"}
   ]},
-  {gc:"3764909", gn:"basic / 바른 완벽차광 암막커튼(1+1), 3colors, 창문형/거실형", opts:[
-    {oc:"28044763", on:"고밀도 매트텍스처 커튼핀형 / 140*180(소) 2장 아이보리", d:"2026-05-21"}
+  {gc:"3814509", brand:"오늘의집layer", gn:"refine / 더 따뜻한 겨울 극세사 침대패드, 2colors, SS/D/Q/K", opts:[
+    {oc:"28511166", on:"겨울용 기본 극세사 베개커버 50*70 솔리드 웜화이트", t:"추가", d:"2026-02-10"},
+    {oc:"28511167", on:"겨울용 기본 극세사 베개커버 50*70 솔리드 딥블랙", t:"추가", d:"2026-01-28"}
   ]},
-  {gc:"3764924", gn:"[오늘의집 단독] [2개입 추가할인] 뽀글 퍼 겨울 슬리퍼 실내화 3colors,M/L", opts:[
-    {oc:"28044868", on:"스트라이프 + 브라운 L", d:"2026-02-10"},
-    {oc:"28044869", on:"레드 M", d:"2025-12-29"},
-    {oc:"28513456", on:"[이달의 혜택] 스트라이프 + 브라운 L( 2P 구매시 19,900원)", d:"2026-02-10"},
-    {oc:"28513457", on:"[이달의 혜택] 레드 M (2P 구매시 19.900원)", d:"2025-12-29"}
+  {gc:"3814530", brand:"오늘의집layer", gn:"refine / 더 따뜻한 겨울 극세사 베개커버, 2colors, 40*60/50*70", opts:[
+    {oc:"28414399", on:"극세사 솔리드웜화이트 / 50*70", t:"필수", d:"2026-02-10"},
+    {oc:"28414401", on:"극세사 솔리드 딥블랙 / 50*70", t:"필수", d:"2026-01-28"}
   ]},
-  {gc:"3765071", gn:"[오늘의집 단독] [최대할인!무배] 홈파티 체크 테이블보/테이블매트/와인커버/커트러리홀더", opts:[
-    {oc:"28045459", on:"테이블보 140*140 / 레드", d:"2025-12-04"},
-    {oc:"28045462", on:"테이블보 140*200 / 레드", d:"2025-12-04"}
+  {gc:"3918642", brand:"오늘의집layer", gn:"basic / 바른 소프트워싱 침구세트, 여름(간절기)/사계절용, 8colors, SS/Q", opts:[
+    {oc:"29596491", on:"[G025]바운스에어 다운필 알러지케어 베개솜 50*70", t:"추가", d:"2026-04-20"},
+    {oc:"29596492", on:"[G025]바운스에어 다운필 알러지케어 베개솜 50*70 2개입", t:"추가", d:"2026-04-20"}
   ]},
-  {gc:"3814509", gn:"refine / 더 따뜻한 겨울 극세사 침대패드, 2colors, SS/D/Q/K", opts:[
-    {oc:"28511166", on:"겨울용 기본 극세사 베개커버 50*70 솔리드 웜화이트", d:"2026-02-10"},
-    {oc:"28511167", on:"겨울용 기본 극세사 베개커버 50*70 솔리드 딥블랙", d:"2026-01-28"}
+  {gc:"3919961", brand:"오늘의집layer", gn:"refine / 쉽게 세탁하는 사계절 러그, 100*150/150*200/175*230", opts:[
+    {oc:"29313860", on:"마이크로 스트라이프 - 민트 / 150*200 [6월 말 예약배송]", t:"필수", d:"2026-05-26"}
   ]},
-  {gc:"3814530", gn:"refine / 더 따뜻한 겨울 극세사 베개커버, 2colors, 40*60/50*70", opts:[
-    {oc:"28414399", on:"극세사 솔리드웜화이트 / 50*70", d:"2026-02-10"},
-    {oc:"28414401", on:"극세사 솔리드 딥블랙 / 50*70", d:"2026-01-28"}
+  {gc:"4037745", brand:"오늘의집layer", gn:"refine / 끈적임 없는 쾌적한 시어서커 여름 침구세트, 3colors, SS/Q", opts:[
+    {oc:"30421443", on:"[G027]바운스에어 다운필 알러지케어 베개솜 50*70", t:"추가", d:"2026-04-30"},
+    {oc:"30421444", on:"[G024]바운스에어 다운필 알러지케어 베개솜 50*70 2개입", t:"추가", d:"2026-04-30"}
   ]},
-  {gc:"3830243", gn:"[오늘의집 단독] 소프트워싱 자루형 베개커버 2colors, 40*60,50*70", opts:[
-    {oc:"28608175", on:"바운스에어 다운필 알러지케어 베개솜 50*70", d:"2026-04-20"},
-    {oc:"28608176", on:"바운스에어 다운필 알러지케어 베개솜 50*70 2개입 (개당 14,500원)", d:"2026-04-20"}
+  {gc:"3519098", brand:"코브", gn:"[오늘의집 단독] 바운스에어 다운필 알러지케어 베개솜 3sizes", opts:[
+    {oc:"26160685", on:"50*70", t:"필수", d:"2026-04-20"},
+    {oc:"27414524", on:"[이달의 혜택] 50*70 2개입 (개당 14/500원)", t:"필수", d:"2026-04-20"},
+    {oc:"27414525", on:"[이달의 혜택] 50*70 4개입 (개당 12/250원)", t:"필수", d:"2026-04-20"}
   ]},
-  {gc:"3918642", gn:"basic / 바른 소프트워싱 침구세트, 여름(간절기)/사계절용, 8colors, SS/Q", opts:[
-    {oc:"29596491", on:"[G025]바운스에어 다운필 알러지케어 베개솜 50*70", d:"2026-04-20"},
-    {oc:"29596492", on:"[G025]바운스에어 다운필 알러지케어 베개솜 50*70 2개입", d:"2026-04-20"}
+  {gc:"3830243", brand:"코브", gn:"[오늘의집 단독] 소프트워싱 자루형 베개커버 2colors, 40*60,50*70", opts:[
+    {oc:"28608175", on:"바운스에어 다운필 알러지케어 베개솜 50*70", t:"추가", d:"2026-04-20"},
+    {oc:"28608176", on:"바운스에어 다운필 알러지케어 베개솜 50*70 2개입 (개당 14,500원)", t:"추가", d:"2026-04-20"}
   ]},
-  {gc:"3919961", gn:"refine / 쉽게 세탁하는 사계절 러그, 100*150/150*200/175*230", opts:[
-    {oc:"29313860", on:"마이크로 스트라이프 - 민트 / 150*200 [6월 말 예약배송]", d:"2026-05-26"}
+  {gc:"3764924", brand:"윈터하우스", gn:"[오늘의집 단독] [2개입 추가할인] 뽀글 퍼 겨울 슬리퍼 실내화 3colors,M/L", opts:[
+    {oc:"28044868", on:"스트라이프 + 브라운 L", t:"필수", d:"2026-02-10"},
+    {oc:"28044869", on:"레드 M", t:"필수", d:"2025-12-29"},
+    {oc:"28513456", on:"[이달의 혜택] 스트라이프 + 브라운 L( 2P 구매시 19,900원)", t:"추가", d:"2026-02-10"},
+    {oc:"28513457", on:"[이달의 혜택] 레드 M (2P 구매시 19.900원)", t:"필수", d:"2025-12-29"}
   ]},
-  {gc:"4037745", gn:"refine / 끈적임 없는 쾌적한 시어서커 여름 침구세트, 3colors, SS/Q", opts:[
-    {oc:"30421443", on:"[G027]바운스에어 다운필 알러지케어 베개솜 50*70", d:"2026-04-30"},
-    {oc:"30421444", on:"[G024]바운스에어 다운필 알러지케어 베개솜 50*70 2개입", d:"2026-04-30"}
+  {gc:"3765071", brand:"윈터하우스", gn:"[오늘의집 단독] [최대할인!무배] 홈파티 체크 테이블보/테이블매트/와인커버/커트러리홀더", opts:[
+    {oc:"28045459", on:"테이블보 140*140 / 레드", t:"필수", d:"2025-12-04"},
+    {oc:"28045462", on:"테이블보 140*200 / 레드", t:"필수", d:"2025-12-04"}
   ]}
 ];
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const MEMO_KEY = oc => 'pbmemo_' + oc;
 
 // 통계
 const totalOpt = GROUPS.reduce((a,g)=>a+g.opts.length,0);
-const maxOpt = GROUPS.reduce((a,g)=>Math.max(a,g.opts.length),0);
+const reqCnt = GROUPS.reduce((a,g)=>a+g.opts.filter(o=>o.t==='필수').length,0);
+const addCnt = totalOpt - reqCnt;
 document.getElementById('updated').textContent = LAST_UPDATED;
 document.getElementById('statOpt').innerHTML = totalOpt + '<small>개</small>';
 document.getElementById('statGoods').innerHTML = GROUPS.length + '<small>개</small>';
-document.getElementById('statMax').innerHTML = maxOpt + '<small>개</small>';
+document.getElementById('statReq').innerHTML = reqCnt + '<small>개</small>';
+document.getElementById('statAdd').innerHTML = addCnt + '<small>개</small>';
 
-// 렌더
+const toast = document.getElementById('toast');
+let toastT;
+function showToast(msg){
+  toast.textContent = msg; toast.classList.add('show');
+  clearTimeout(toastT); toastT = setTimeout(()=>toast.classList.remove('show'), 1400);
+}
+function copyCode(code, btnEl){
+  const done = () => {
+    showToast('상품코드 ' + code + ' 복사됨');
+    if(btnEl){ btnEl.classList.add('done'); setTimeout(()=>btnEl.classList.remove('done'), 1200); }
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(code).then(done).catch(()=>fallbackCopy(code, done));
+  } else { fallbackCopy(code, done); }
+}
+function fallbackCopy(text, cb){
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); cb(); }catch(e){}
+  document.body.removeChild(ta);
+}
+
 const listEl = document.getElementById('list');
 function render(filter){
   filter = (filter||'').trim().toLowerCase();
   listEl.innerHTML = '';
   let shown = 0;
-  GROUPS.forEach((g, idx) => {
-    let opts = g.opts;
-    let groupMatch = !filter || g.gc.toLowerCase().includes(filter) || g.gn.toLowerCase().includes(filter);
-    if(filter && !groupMatch){
-      opts = g.opts.filter(o => o.oc.toLowerCase().includes(filter) || o.on.toLowerCase().includes(filter));
-      if(opts.length === 0) return;
-    }
-    shown++;
-    const collapsed = filter ? '' : (g.opts.length > 0 ? '' : '');
-    const div = document.createElement('div');
-    div.className = 'group';
-    const rows = opts.map(o => `
-      <tr>
-        <td class="oc">${esc(o.oc)}</td>
-        <td class="on">${esc(o.on)}</td>
-        <td class="date">${esc(o.d)}</td>
-      </tr>`).join('');
-    div.innerHTML = `
-      <div class="ghead">
-        <span class="gcode">${esc(g.gc)}</span>
-        <span class="gname">${esc(g.gn)}</span>
-        <span class="gcount">품절 ${opts.length}개</span>
-        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </div>
-      <div class="gbody">
-        <table>
-          <thead><tr><th class="col-oc">옵션코드</th><th>옵션명</th><th class="col-date">품절일</th></tr></thead>
-          <tbody>${rows}</tbody>
-        </table>
-      </div>`;
-    div.querySelector('.ghead').addEventListener('click', () => div.classList.toggle('collapsed'));
-    listEl.appendChild(div);
+
+  BRAND_ORDER.forEach(brand => {
+    let groups = GROUPS.filter(g => g.brand === brand);
+    const rendered = [];
+    groups.forEach(g => {
+      let opts = g.opts;
+      const groupMatch = !filter || g.brand.toLowerCase().includes(filter)
+        || g.gc.toLowerCase().includes(filter) || g.gn.toLowerCase().includes(filter);
+      if(filter && !groupMatch){
+        opts = g.opts.filter(o => o.oc.toLowerCase().includes(filter) || o.on.toLowerCase().includes(filter));
+        if(opts.length === 0) return;
+      }
+      rendered.push({g, opts});
+    });
+    if(rendered.length === 0) return;
+
+    const cls = BRAND_CLASS[brand] || 'layer';
+    const optSum = rendered.reduce((a,r)=>a+r.opts.length,0);
+    const sec = document.createElement('div');
+    sec.className = 'brandsec';
+    sec.innerHTML = '<span class="btag '+cls+'">'+esc(brand)+'</span>'
+      + '<span class="bmeta">상품 '+rendered.length+'개 · 품절 옵션 '+optSum+'개</span>';
+    listEl.appendChild(sec);
+
+    rendered.forEach(({g, opts}) => {
+      shown++;
+      const div = document.createElement('div');
+      div.className = 'group';
+      const rows = opts.map(o => {
+        const tcls = o.t === '필수' ? 'req' : 'add';
+        const memoVal = localStorage.getItem(MEMO_KEY(o.oc)) || '';
+        return '<tr>'
+          + '<td class="oc">'+esc(o.oc)+'</td>'
+          + '<td><span class="tbadge '+tcls+'">'+esc(o.t)+'옵션</span></td>'
+          + '<td class="on">'+esc(o.on)+'</td>'
+          + '<td class="date">'+esc(o.d)+'</td>'
+          + '<td><input class="memo-in" type="text" data-oc="'+esc(o.oc)+'" value="'+esc(memoVal)+'" placeholder="단종 / 재입고 예정일 메모"></td>'
+          + '</tr>';
+      }).join('');
+      div.innerHTML =
+        '<div class="ghead">'
+        + '<span class="gcode-wrap">'
+          + '<span class="gcode" data-code="'+esc(g.gc)+'" title="클릭하면 상품코드 복사">'+esc(g.gc)+'</span>'
+          + '<button class="copy" data-code="'+esc(g.gc)+'" title="상품코드 복사">'
+            + '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>'
+          + '</button>'
+        + '</span>'
+        + '<span class="bmini '+(BRAND_CLASS[g.brand]||'layer')+'">'+esc(g.brand)+'</span>'
+        + '<span class="gname">'+esc(g.gn)+'</span>'
+        + '<span class="gcount">품절 '+opts.length+'개</span>'
+        + '<svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>'
+        + '</div>'
+        + '<div class="gbody"><table>'
+        + '<thead><tr><th class="col-oc">옵션코드</th><th class="col-type">구분</th><th>옵션명</th><th class="col-date">품절일</th><th class="col-memo">메모 (단종/재입고예정)</th></tr></thead>'
+        + '<tbody>'+rows+'</tbody></table></div>';
+
+      div.querySelector('.ghead').addEventListener('click', (e) => {
+        if(e.target.closest('.gcode') || e.target.closest('.copy')) return;
+        div.classList.toggle('collapsed');
+      });
+      div.querySelector('.gcode').addEventListener('click', (e) => { e.stopPropagation(); copyCode(g.gc); });
+      div.querySelector('.copy').addEventListener('click', (e) => { e.stopPropagation(); copyCode(g.gc, e.currentTarget); });
+      div.querySelectorAll('.memo-in').forEach(inp => {
+        inp.addEventListener('input', () => {
+          const oc = inp.getAttribute('data-oc');
+          const v = inp.value;
+          if(v) localStorage.setItem(MEMO_KEY(oc), v);
+          else localStorage.removeItem(MEMO_KEY(oc));
+        });
+      });
+      listEl.appendChild(div);
+    });
   });
+
   document.getElementById('empty').style.display = shown ? 'none' : 'block';
 }
 render('');
 
-// 검색
 let t;
 document.getElementById('q').addEventListener('input', e => {
   clearTimeout(t);
   t = setTimeout(() => render(e.target.value), 120);
 });
-// 펼치기/접기
 document.getElementById('expandAll').addEventListener('click', () =>
   document.querySelectorAll('.group').forEach(g => g.classList.remove('collapsed')));
 document.getElementById('collapseAll').addEventListener('click', () =>
