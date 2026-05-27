@@ -381,7 +381,7 @@ function render(filter){
   let shown = 0;
 
   BRAND_ORDER.forEach(brand => {
-    let groups = GROUPS.filter(g => g.brand === brand).sort((a,b)=>Number(a.gc)-Number(b.gc));
+    let groups = GROUPS.filter(g => g.brand === brand).sort((a,b)=> (b.opts.length>0?1:0)-(a.opts.length>0?1:0) || Number(a.gc)-Number(b.gc));
     const rendered = [];
     groups.forEach(g => {
       let opts = g.opts;
