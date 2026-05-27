@@ -430,7 +430,7 @@ function render(filter){
         + '<span class="bmini '+(BRAND_CLASS[g.brand]||'layer')+'">'+esc(g.brand)+'</span>'
         + '<span class="gname">'+esc(g.gn)+'</span>'
         + (g.gs==='OUT' ? '<span class="gsbadge">전체품절</span>' : '')
-        + (opts.length===0 ? '<span class="okbadge">품절 없음</span>' : '<span class="gcount">품절 '+opts.length+'개</span>')
+        + (opts.length===0 ? '<span class="okbadge">품절 없음</span>' : '<span class="gcount">품절 '+opts.filter(o=>!((localStorage.getItem(MEMO_KEY(o.oc))||'').includes('단종'))).length+'개</span>')
         + (opts.length===0 ? '' : '<svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>')
         + '</div>'
         + (opts.length===0 ? '' :
@@ -451,6 +451,8 @@ function render(filter){
           const v = inp.value;
           if(v) localStorage.setItem(MEMO_KEY(oc), v);
           else localStorage.removeItem(MEMO_KEY(oc));
+          const gcEl = div.querySelector('.gcount');
+          if(gcEl){ gcEl.textContent = '품절 ' + opts.filter(o=>!((localStorage.getItem(MEMO_KEY(o.oc))||'').includes('단종'))).length + '개'; }
         });
       });
       listEl.appendChild(div);
