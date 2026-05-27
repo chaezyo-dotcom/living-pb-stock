@@ -65,6 +65,7 @@
   .gname{flex:1;font-size:14px;font-weight:600;min-width:0;}
   .gcount{font-size:12.5px;font-weight:700;color:var(--danger);background:var(--danger-bg);
     padding:4px 10px;border-radius:20px;white-space:nowrap;}
+  .gsbadge{font-size:11px;font-weight:700;color:#fff;background:var(--danger);padding:3px 9px;border-radius:6px;white-space:nowrap;}
   .arrow{transition:transform .18s;opacity:.5;flex-shrink:0;}
   .group.collapsed .arrow{transform:rotate(-90deg);}
   .group.collapsed .gbody{display:none;}
@@ -107,7 +108,7 @@
 <div class="wrap">
   <header>
     <h1>리빙PB 품절 옵션 현황 · 상품코드별</h1>
-    <div class="meta">샵 ID <b>25146379</b> · 최종 업데이트 <b id="updated"></b> · 판매중 상품 / 판매중 옵션 중 현재 품절(OUT_OF_STOCK) 옵션만 표시</div>
+    <div class="meta">샵 ID <b>25146379</b> · 최종 업데이트 <b id="updated"></b> · 판매중·전체품절 상품 / 판매중 옵션 중 현재 품절 옵션만 표시 (전체품절=상품 전체 품절)</div>
   </header>
 
   <div class="cards">
@@ -273,10 +274,22 @@ const GROUPS = [
     {oc:"30421443", on:"[G027]바운스에어 다운필 알러지케어 베개솜 50*70", t:"추가", d:"2026-04-30"},
     {oc:"30421444", on:"[G024]바운스에어 다운필 알러지케어 베개솜 50*70 2개입", t:"추가", d:"2026-04-30"}
   ]},
+  {gc:"3518948", brand:"코브", gs:"OUT", gn:"[오늘의집 단독] 플러피에어 구스필 고밀도 80수 면 캠핑용 베개 5colors", opts:[
+    {oc:"26159999", on:"소프트차콜", t:"필수", d:"2026-04-17"},
+    {oc:"26160000", on:"포그블루", t:"필수", d:"2026-04-17"},
+    {oc:"26160001", on:"코지레드", t:"필수", d:"2026-04-17"},
+    {oc:"26160002", on:"크림옐로우", t:"필수", d:"2026-04-17"},
+    {oc:"26160003", on:"레몬스트라이프", t:"필수", d:"2025-08-26"}
+  ]},
   {gc:"3519098", brand:"코브", gn:"[오늘의집 단독] 바운스에어 다운필 알러지케어 베개솜 3sizes", opts:[
     {oc:"26160685", on:"50*70", t:"필수", d:"2026-04-20"},
     {oc:"27414524", on:"[이달의 혜택] 50*70 2개입 (개당 14/500원)", t:"필수", d:"2026-04-20"},
     {oc:"27414525", on:"[이달의 혜택] 50*70 4개입 (개당 12/250원)", t:"필수", d:"2026-04-20"}
+  ]},
+  {gc:"3605455", brand:"코브", gs:"OUT", gn:"[오늘의집 단독] 쿨에어 쯔누가 여름 냉감 쿨링 베개커버 3sizes (2개입)", opts:[
+    {oc:"27093627", on:"30*50 2개", t:"필수", d:"2025-10-01"},
+    {oc:"27093628", on:"40*60 2개", t:"필수", d:"2025-10-01"},
+    {oc:"27093629", on:"50*70 2개", t:"필수", d:"2025-10-01"}
   ]},
   {gc:"3830243", brand:"코브", gn:"[오늘의집 단독] 소프트워싱 자루형 베개커버 2colors, 40*60,50*70", opts:[
     {oc:"28608175", on:"바운스에어 다운필 알러지케어 베개솜 50*70", t:"추가", d:"2026-04-20"},
@@ -287,6 +300,11 @@ const GROUPS = [
     {oc:"28044869", on:"레드 M", t:"필수", d:"2025-12-29"},
     {oc:"28513456", on:"[이달의 혜택] 스트라이프 + 브라운 L( 2P 구매시 19,900원)", t:"추가", d:"2026-02-10"},
     {oc:"28513457", on:"[이달의 혜택] 레드 M (2P 구매시 19.900원)", t:"추가", d:"2025-12-29"}
+  ]},
+  {gc:"3764946", brand:"윈터하우스", gs:"OUT", gn:"[오늘의집 단독] 크리스마스 스판 극세사 파자마 세트 핑크/그린 2colors,M/L", opts:[
+    {oc:"28044924", on:"브라운핑크 / M", t:"필수", d:"2025-11-26"},
+    {oc:"28044925", on:"브라운그린 / M", t:"필수", d:"2025-12-28"},
+    {oc:"28044926", on:"브라운그린 / L", t:"필수", d:"2025-11-24"}
   ]},
   {gc:"3765071", brand:"윈터하우스", gn:"[오늘의집 단독] [최대할인!무배] 홈파티 체크 테이블보/테이블매트/와인커버/커트러리홀더", opts:[
     {oc:"28045459", on:"테이블보 140*140 / 레드", t:"필수", d:"2025-12-04"},
@@ -384,6 +402,7 @@ function render(filter){
         + '</span>'
         + '<span class="bmini '+(BRAND_CLASS[g.brand]||'layer')+'">'+esc(g.brand)+'</span>'
         + '<span class="gname">'+esc(g.gn)+'</span>'
+        + (g.gs==='OUT' ? '<span class="gsbadge">전체품절</span>' : '')
         + '<span class="gcount">품절 '+opts.length+'개</span>'
         + '<svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>'
         + '</div>'
