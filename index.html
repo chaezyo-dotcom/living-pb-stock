@@ -66,6 +66,7 @@
   .gcount{font-size:12.5px;font-weight:700;color:var(--danger);background:var(--danger-bg);
     padding:4px 10px;border-radius:20px;white-space:nowrap;}
   .gsbadge{font-size:11px;font-weight:700;color:#fff;background:var(--danger);padding:3px 9px;border-radius:6px;white-space:nowrap;}
+  .okbadge{font-size:12.5px;font-weight:700;color:var(--kove);background:var(--kove-bg);padding:4px 10px;border-radius:20px;white-space:nowrap;}
   .arrow{transition:transform .18s;opacity:.5;flex-shrink:0;}
   .group.collapsed .arrow{transform:rotate(-90deg);}
   .group.collapsed .gbody{display:none;}
@@ -108,7 +109,7 @@
 <div class="wrap">
   <header>
     <h1>리빙PB 품절 옵션 현황 · 상품코드별</h1>
-    <div class="meta">샵 ID <b>25146379</b> · 최종 업데이트 <b id="updated"></b> · 판매중·전체품절 상품 / 판매중 옵션 중 현재 품절 옵션만 표시 (전체품절=상품 전체 품절)</div>
+    <div class="meta">샵 ID <b>25146379</b> · 최종 업데이트 <b id="updated"></b> · 판매중·전체품절 상품 전체 표시 · 품절 옵션은 판매중 옵션 기준 · 품절 없는 상품은 '품절 없음' · 전체품절=상품 전체 품절</div>
   </header>
 
   <div class="cards">
@@ -309,7 +310,32 @@ const GROUPS = [
   {gc:"3765071", brand:"윈터하우스", gn:"[오늘의집 단독] [최대할인!무배] 홈파티 체크 테이블보/테이블매트/와인커버/커트러리홀더", opts:[
     {oc:"28045459", on:"테이블보 140*140 / 레드", t:"필수", d:"2025-12-04"},
     {oc:"28045462", on:"테이블보 140*200 / 레드", t:"필수", d:"2025-12-04"}
-  ]}
+  ]},
+  {gc:"3508389", brand:"오늘의집layer", gn:"refine / 닿자마자 시원한 쯔누가 여름 냉감 베개커버, 3sizes", opts:[]},
+  {gc:"3508395", brand:"오늘의집layer", gn:"refine / 닿자마자 시원한 쯔누가 여름 냉감 침대패드,S/Q/K", opts:[]},
+  {gc:"3508402", brand:"오늘의집layer", gn:"refine / 닿자마자 시원한 쯔누가 여름 냉감 이불, Mini/S/Q", opts:[]},
+  {gc:"3508407", brand:"오늘의집layer", gn:"refine / 닿자마자 시원한 쯔누가 여름 냉감 바디필로우", opts:[]},
+  {gc:"3832724", brand:"오늘의집layer", gn:"refine / 쉽게 세탁하는 테리 코튼 슬리퍼, 2colors, M/L", opts:[]},
+  {gc:"3918631", brand:"오늘의집layer", gn:"basic / 바른 소프트워싱 경추베개, 3colors, 40*60/50*70", opts:[]},
+  {gc:"3920046", brand:"오늘의집layer", gn:"refine / 오래 써도 깨끗한 40수 코마사 호텔수건, 7colors, 5P/10P", opts:[]},
+  {gc:"4012257", brand:"오늘의집layer", gn:"[런칭할인] refine / 부드러운 에어핏 여름잠옷 파자마 세트, 3colors, M/L", opts:[]},
+  {gc:"4033595", brand:"오늘의집layer", gn:"[런칭할인] [1+1] basic / 바른 플랫 양발 욕실화, 3colors", opts:[]},
+  {gc:"4037734", brand:"오늘의집layer", gn:"refine / 열기를 낮추는 듀라론 여름냉감 침대패드,밴드형,3colors, SS/Q", opts:[]},
+  {gc:"3518885", brand:"코브", gn:"[오늘의집 단독] 소프트워싱 파자마 긴팔/반팔세트 3colors FREE(사계절/여름용)", opts:[]},
+  {gc:"3518961", brand:"코브", gn:"[오늘의집 단독] [시즌오프] 소프트워싱 파자마 쇼츠 2sizes - 4colors", opts:[]},
+  {gc:"3519039", brand:"코브", gn:"[오늘의집 단독] 울에어 호주산 양모 100% 퀼팅 베개커버 3sizes - 3colors", opts:[]},
+  {gc:"3519065", brand:"코브", gn:"[오늘의집 단독] 울에어 호주산 양모 100% 퀼팅 고정밴드 침대패드 S/Q/K", opts:[]},
+  {gc:"3519074", brand:"코브", gn:"[오늘의집 단독] 울에어 호주산 양모 100% 이불솜 S/Q/K", opts:[]},
+  {gc:"3519084", brand:"코브", gn:"[오늘의집 단독] 다운필 알러지케어 사계절 이불솜 S/Q/K", opts:[]},
+  {gc:"3519107", brand:"코브", gn:"[오늘의집 단독] 리커버에어 프리미엄 독일 슈프렐 경추베개솜 3sizes", opts:[]},
+  {gc:"3519122", brand:"코브", gn:"[오늘의집 단독] 플러피에어 구스필 고밀도 80수 면 사계절 이불솜 S/Q/K", opts:[]},
+  {gc:"3519139", brand:"코브", gn:"[오늘의집 단독] 플러피에어 구스필 고밀도 80수 면 베개솜 3sizes", opts:[]},
+  {gc:"3588645", brand:"코브", gn:"[오늘의집 단독] 소프트워싱 아이필로우 4colors", opts:[]},
+  {gc:"3588668", brand:"코브", gn:"[오늘의집 단독] 소프트워싱 슬리핑마스크 4colors", opts:[]},
+  {gc:"3604744", brand:"코브", gn:"[오늘의집 단독] 소프트워싱 헤어밴드 스크런치 4colors", opts:[]},
+  {gc:"3612611", brand:"코브", gn:"[오늘의집 단독] 1+1 소프트워싱 파자마 쇼츠 2sizes - 4colors", opts:[]},
+  {gc:"3764933", brand:"윈터하우스", gn:"[오늘의집 단독] 기모 100% 워싱 겨울 파자마 세트 레드/그린,M/L", opts:[]},
+  {gc:"3764940", brand:"윈터하우스", gn:"[오늘의집 단독] 양털 극세사 블랭킷 담요 2colors, 100*150", opts:[]},
 ];
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -321,7 +347,7 @@ const reqCnt = GROUPS.reduce((a,g)=>a+g.opts.filter(o=>o.t==='필수').length,0)
 const addCnt = totalOpt - reqCnt;
 document.getElementById('updated').textContent = LAST_UPDATED;
 document.getElementById('statOpt').innerHTML = totalOpt + '<small>개</small>';
-document.getElementById('statGoods').innerHTML = GROUPS.length + '<small>개</small>';
+document.getElementById('statGoods').innerHTML = GROUPS.filter(g=>g.opts.length>0).length + '<small>개</small>';
 document.getElementById('statReq').innerHTML = reqCnt + '<small>개</small>';
 document.getElementById('statAdd').innerHTML = addCnt + '<small>개</small>';
 
@@ -355,7 +381,7 @@ function render(filter){
   let shown = 0;
 
   BRAND_ORDER.forEach(brand => {
-    let groups = GROUPS.filter(g => g.brand === brand);
+    let groups = GROUPS.filter(g => g.brand === brand).sort((a,b)=>Number(a.gc)-Number(b.gc));
     const rendered = [];
     groups.forEach(g => {
       let opts = g.opts;
@@ -371,10 +397,11 @@ function render(filter){
 
     const cls = BRAND_CLASS[brand] || 'layer';
     const optSum = rendered.reduce((a,r)=>a+r.opts.length,0);
+    const oosCnt = rendered.filter(r=>r.opts.length>0).length;
     const sec = document.createElement('div');
     sec.className = 'brandsec';
     sec.innerHTML = '<span class="btag '+cls+'">'+esc(brand)+'</span>'
-      + '<span class="bmeta">상품 '+rendered.length+'개 · 품절 옵션 '+optSum+'개</span>';
+      + '<span class="bmeta">상품 '+rendered.length+'개 (품절 '+oosCnt+') · 품절 옵션 '+optSum+'개</span>';
     listEl.appendChild(sec);
 
     rendered.forEach(({g, opts}) => {
@@ -403,15 +430,17 @@ function render(filter){
         + '<span class="bmini '+(BRAND_CLASS[g.brand]||'layer')+'">'+esc(g.brand)+'</span>'
         + '<span class="gname">'+esc(g.gn)+'</span>'
         + (g.gs==='OUT' ? '<span class="gsbadge">전체품절</span>' : '')
-        + '<span class="gcount">품절 '+opts.length+'개</span>'
-        + '<svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>'
+        + (opts.length===0 ? '<span class="okbadge">품절 없음</span>' : '<span class="gcount">품절 '+opts.length+'개</span>')
+        + (opts.length===0 ? '' : '<svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>')
         + '</div>'
-        + '<div class="gbody"><table>'
-        + '<thead><tr><th class="col-oc">옵션코드</th><th class="col-type">구분</th><th>옵션명</th><th class="col-date">품절일</th><th class="col-memo">메모 (단종/재입고예정)</th></tr></thead>'
-        + '<tbody>'+rows+'</tbody></table></div>';
+        + (opts.length===0 ? '' :
+           '<div class="gbody"><table>'
+           + '<thead><tr><th class="col-oc">옵션코드</th><th class="col-type">구분</th><th>옵션명</th><th class="col-date">품절일</th><th class="col-memo">메모 (단종/재입고예정)</th></tr></thead>'
+           + '<tbody>'+rows+'</tbody></table></div>');
 
       div.querySelector('.ghead').addEventListener('click', (e) => {
         if(e.target.closest('.gcode') || e.target.closest('.copy')) return;
+        if(!div.querySelector('.gbody')) return;
         div.classList.toggle('collapsed');
       });
       div.querySelector('.gcode').addEventListener('click', (e) => { e.stopPropagation(); copyCode(g.gc); });
