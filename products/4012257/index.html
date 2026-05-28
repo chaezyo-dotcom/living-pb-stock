@@ -205,6 +205,36 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
     </div>
   </div>
 
+
+  <!-- 홈웨어 카테고리 거래액 순위 -->
+  <div class="section">
+    <h2>패브릭 > 홈웨어 카테고리 내 일자별 거래액 순위</h2>
+    <div class="desc">홈웨어 카테고리 산하 8개 sub(상하의세트/상의/하의/원피스/이너웨어/양말/수면안대/홈웨어) 전체 상품 중 우리 GMV 순위 (전체 기간)</div>
+    <div class="summary-grid">
+      <div class="card primary"><div class="label">🏆 1위 차지일</div><div class="value" id="crFirstDays">-</div><div class="sub" id="crFirstSub"></div></div>
+      <div class="card success"><div class="label">최근 7일 평균 순위</div><div class="value" id="crAvgRank">-</div></div>
+      <div class="card cyan"><div class="label">최고 순위</div><div class="value" id="crBest">-</div></div>
+      <div class="card warning"><div class="label">최근 7일 평균 일거래액</div><div class="value" id="crAvgGmv">-</div></div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div style="font-size:13px;font-weight:600;color:#374151;margin-bottom:8px;">📈 일자별 순위 추이 (1=1위, 낮을수록 좋음)</div>
+        <div class="chart-wrap tall"><canvas id="categoryRankChart"></canvas></div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:#374151;margin-bottom:8px;">💰 일자별 GMV (우리 vs 카테고리 1위)</div>
+        <div class="chart-wrap tall"><canvas id="categoryGmvChart"></canvas></div>
+      </div>
+    </div>
+    <div style="margin-top:20px;">
+      <div style="font-size:13px;font-weight:600;color:#374151;margin-bottom:8px;">📋 일자별 상세</div>
+      <table id="categoryRankTable">
+        <thead><tr><th>일자</th><th>우리 순위</th><th>우리 거래액(원)</th><th>판매수량</th><th>카테고리 1위 거래액(원)</th><th>총 상품수</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
   <div class="footer">
     데이터 기준일: 2026-05-27 KST · 결제: base_dt(KST) / PDP·노출: log_date(KST) · 5/27 PDP·노출 데이터는 적재 지연 (D+2)
   </div>
@@ -1067,6 +1097,43 @@ const SRP_KEYWORDS = [
   {keyword:"반팔잠옷", imps:5, avg_rank:1.0},
 ];
 
+const CATEGORY_RANK = [
+  {date:"2026-04-25", our_rank:17, our_gmv:49800, our_qty:2, total:77, top_goods_id:"3703917", top_gmv:322600},
+  {date:"2026-04-26", our_rank:null, our_gmv:0, our_qty:0, total:null, top_goods_id:"3467095", top_gmv:345000},
+  {date:"2026-04-27", our_rank:1, our_gmv:423300, our_qty:17, total:89, top_goods_id:"4012257", top_gmv:423300},
+  {date:"2026-04-28", our_rank:3, our_gmv:174300, our_qty:7, total:100, top_goods_id:"3299304", top_gmv:430000},
+  {date:"2026-04-29", our_rank:7, our_gmv:99600, our_qty:4, total:76, top_goods_id:"3467095", top_gmv:276000},
+  {date:"2026-04-30", our_rank:10, our_gmv:74700, our_qty:3, total:64, top_goods_id:"3424228", top_gmv:237000},
+  {date:"2026-05-01", our_rank:10, our_gmv:74700, our_qty:3, total:71, top_goods_id:"3467095", top_gmv:483000},
+  {date:"2026-05-02", our_rank:9, our_gmv:74700, our_qty:3, total:57, top_goods_id:"3467095", top_gmv:207000},
+  {date:"2026-05-03", our_rank:2, our_gmv:199200, our_qty:8, total:86, top_goods_id:"3764743", top_gmv:316000},
+  {date:"2026-05-04", our_rank:4, our_gmv:224100, our_qty:9, total:114, top_goods_id:"3995592", top_gmv:328950},
+  {date:"2026-05-05", our_rank:2, our_gmv:348600, our_qty:14, total:120, top_goods_id:"3995603", top_gmv:404600},
+  {date:"2026-05-06", our_rank:2, our_gmv:1319700, our_qty:53, total:152, top_goods_id:"3500843", top_gmv:1425700},
+  {date:"2026-05-07", our_rank:6, our_gmv:298800, our_qty:12, total:133, top_goods_id:"3444732", top_gmv:564900},
+  {date:"2026-05-08", our_rank:1, our_gmv:323700, our_qty:13, total:100, top_goods_id:"4012257", top_gmv:323700},
+  {date:"2026-05-09", our_rank:5, our_gmv:298800, our_qty:12, total:116, top_goods_id:"3444732", top_gmv:430400},
+  {date:"2026-05-10", our_rank:1, our_gmv:547800, our_qty:22, total:147, top_goods_id:"4012257", top_gmv:547800},
+  {date:"2026-05-11", our_rank:1, our_gmv:249000, our_qty:10, total:88, top_goods_id:"4012257", top_gmv:249000},
+  {date:"2026-05-12", our_rank:1, our_gmv:473100, our_qty:19, total:76, top_goods_id:"4012257", top_gmv:473100},
+  {date:"2026-05-13", our_rank:1, our_gmv:473100, our_qty:19, total:91, top_goods_id:"4012257", top_gmv:473100},
+  {date:"2026-05-14", our_rank:1, our_gmv:1269900, our_qty:51, total:70, top_goods_id:"4012257", top_gmv:1269900},
+  {date:"2026-05-15", our_rank:3, our_gmv:174300, our_qty:7, total:87, top_goods_id:"3999937", top_gmv:244800},
+  {date:"2026-05-16", our_rank:1, our_gmv:348600, our_qty:14, total:84, top_goods_id:"4012257", top_gmv:348600},
+  {date:"2026-05-17", our_rank:4, our_gmv:597600, our_qty:24, total:137, top_goods_id:"4034469", top_gmv:716400},
+  {date:"2026-05-18", our_rank:1, our_gmv:498000, our_qty:20, total:172, top_goods_id:"4012257", top_gmv:498000},
+  {date:"2026-05-19", our_rank:1, our_gmv:298800, our_qty:12, total:135, top_goods_id:"4012257", top_gmv:298800},
+  {date:"2026-05-20", our_rank:1, our_gmv:522900, our_qty:21, total:166, top_goods_id:"4012257", top_gmv:522900},
+  {date:"2026-05-21", our_rank:1, our_gmv:1444200, our_qty:58, total:103, top_goods_id:"4012257", top_gmv:1444200},
+  {date:"2026-05-22", our_rank:1, our_gmv:348600, our_qty:14, total:109, top_goods_id:"4012257", top_gmv:348600},
+  {date:"2026-05-23", our_rank:12, our_gmv:99600, our_qty:4, total:108, top_goods_id:"3704040", top_gmv:199200},
+  {date:"2026-05-24", our_rank:3, our_gmv:149400, our_qty:6, total:102, top_goods_id:"3585044", top_gmv:222600},
+  {date:"2026-05-25", our_rank:1, our_gmv:647400, our_qty:26, total:115, top_goods_id:"4012257", top_gmv:647400},
+  {date:"2026-05-26", our_rank:1, our_gmv:522900, our_qty:21, total:118, top_goods_id:"4012257", top_gmv:522900},
+  {date:"2026-05-27", our_rank:1, our_gmv:522900, our_qty:21, total:113, top_goods_id:"4012257", top_gmv:522900},
+  {date:"2026-05-28", our_rank:1, our_gmv:647400, our_qty:26, total:49, top_goods_id:"4012257", top_gmv:647400}
+];
+
 // =========================
 // 채널/Referrer 라벨 메타
 // =========================
@@ -1217,6 +1284,7 @@ function renderAll(week){
   renderPathByDate(data);
   renderReferrer(data);
   renderSRP();
+  renderCategoryRank();
 }
 
 // =========================
@@ -1606,6 +1674,64 @@ function renderSRP(){
   tr.innerHTML = '<td>전체 ('+SRP_KEYWORDS.length+' 키워드)</td><td>'+fmt(totCat)+'</td><td>'+fmt(totImps)+'</td><td>'+wAvgRank+' 가중평균</td><td>-</td>';
   tbody.appendChild(tr);
 }
+
+function renderCategoryRank(){
+  const data = CATEGORY_RANK;
+  const firstDays = data.filter(d=>d.our_rank===1).length;
+  document.getElementById('crFirstDays').textContent = firstDays + '일';
+  document.getElementById('crFirstSub').textContent = '(전체 ' + data.length + '일 중)';
+  const last7 = data.slice(-7).filter(d=>d.our_rank);
+  document.getElementById('crAvgRank').textContent = last7.length ? (last7.reduce((a,b)=>a+b.our_rank,0)/last7.length).toFixed(1)+'위' : '-';
+  const ranks = data.filter(d=>d.our_rank).map(d=>d.our_rank);
+  document.getElementById('crBest').textContent = ranks.length ? Math.min.apply(null,ranks)+'위' : '-';
+  const last7gmv = data.slice(-7).filter(d=>d.our_gmv>0);
+  const avgGmv = last7gmv.length ? Math.round(last7gmv.reduce((a,b)=>a+b.our_gmv,0)/last7gmv.length) : 0;
+  document.getElementById('crAvgGmv').textContent = avgGmv.toLocaleString('ko-KR')+'원';
+
+  charts.crRank = new Chart(document.getElementById('categoryRankChart'),{
+    type:'line',
+    data:{labels:data.map(d=>d.date.slice(5)),datasets:[{
+      label:'우리 순위', data:data.map(d=>d.our_rank),
+      borderColor:'#4f46e5', backgroundColor:'#4f46e5',
+      pointBackgroundColor:data.map(d=>d.our_rank===1?'#10b981':d.our_rank&&d.our_rank<=5?'#f59e0b':'#ef4444'),
+      pointRadius:5, tension:.25, spanGaps:false, fill:false
+    }]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){return '순위: '+ctx.parsed.y+'위';}}}},
+      scales:{y:{reverse:true,beginAtZero:false,min:1,title:{display:true,text:'순위',font:{size:11}}}}}
+  });
+
+  charts.crGmv = new Chart(document.getElementById('categoryGmvChart'),{
+    type:'bar',
+    data:{labels:data.map(d=>d.date.slice(5)),datasets:[
+      {label:'우리 GMV', data:data.map(d=>d.our_gmv||0), backgroundColor:'#4f46e5', borderRadius:3},
+      {label:'카테고리 1위 GMV', data:data.map(d=>d.top_gmv), backgroundColor:'rgba(16,185,129,0.4)', borderRadius:3}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{font:{size:11}}}},
+      scales:{y:{beginAtZero:true,ticks:{callback:function(v){return (v/10000)+'만';}}}}}
+  });
+
+  const tbody = document.querySelector('#categoryRankTable tbody');
+  tbody.innerHTML = '';
+  data.forEach(d=>{
+    let cls='', lbl=d.our_rank?d.our_rank+'위':'-';
+    if(d.our_rank===1){cls='top5';lbl='\u{1F3C6} 1위';}
+    else if(d.our_rank && d.our_rank<=5){cls='top5';}
+    else if(d.our_rank && d.our_rank<=15){cls='top15';}
+    else if(d.our_rank){cls='below';}
+    const isOurTop = d.top_goods_id==='4012257';
+    const tr = document.createElement('tr');
+    tr.innerHTML = '<td>'+d.date+'</td>'
+      + '<td>'+(d.our_rank?'<span class="rank-pill '+cls+'">'+lbl+'</span>':'-')+'</td>'
+      + '<td>'+fmt(d.our_gmv||0)+'</td>'
+      + '<td>'+fmt(d.our_qty||0)+'</td>'
+      + '<td>'+fmt(d.top_gmv)+(isOurTop?' <span style="color:#10b981;font-size:11px;">(=우리)</span>':'')+'</td>'
+      + '<td>'+(d.total||'-')+'</td>';
+    tbody.appendChild(tr);
+  });
+}
+
 
 // =========================
 // 주차 탭 초기화
