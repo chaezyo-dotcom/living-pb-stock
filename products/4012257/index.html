@@ -79,9 +79,14 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
   </div>
 
   <!-- 주차 선택 탭 -->
-  <div class="week-tabs" id="weekTabs">
-    <span class="label">📅 기간 보기</span>
-    <!-- buttons inserted by JS -->
+  <div class="week-tabs" id="weekTabsAll">
+    <span class="label">📅 전체 기간</span>
+  </div>
+  <div class="week-tabs" id="weekTabsMonth">
+    <span class="label">📆 월별</span>
+  </div>
+  <div class="week-tabs" id="weekTabsWeek">
+    <span class="label">🗓 주차별</span>
   </div>
 
   <!-- 요약 카드 -->
@@ -1806,7 +1811,9 @@ function renderCategoryRank(){
 // 주차 탭 초기화
 // =========================
 function initWeekTabs(){
-  const wrap = document.getElementById('weekTabs');
+  const wrapAll = document.getElementById('weekTabsAll');
+  const wrapMonth = document.getElementById('weekTabsMonth');
+  const wrapWeek = document.getElementById('weekTabsWeek');
   WEEK_OPTIONS.forEach(opt=>{
     const btn = document.createElement('button');
     btn.className = 'week-tab' + (opt.key==='ALL'?' active':'');
@@ -1817,7 +1824,9 @@ function initWeekTabs(){
       btn.classList.add('active');
       renderAll(opt.key);
     };
-    wrap.appendChild(btn);
+    if(opt.key==='ALL') wrapAll.appendChild(btn);
+    else if(opt.key.indexOf('-M')>=0) wrapMonth.appendChild(btn);
+    else wrapWeek.appendChild(btn);
   });
 }
 
