@@ -1213,7 +1213,18 @@ function weekRange(weekKey){
   const start = new Date(week1Mon); start.setUTCDate(week1Mon.getUTCDate() + (w-1)*7);
   const end = new Date(start); end.setUTCDate(start.getUTCDate() + 6);
   const f = d=>d.toISOString().slice(0,10);
-  return {start:f(start), end:f(end)};
+  return {start:f(start), end:f(end)}
+
+function getMonthKey(dateStr){
+  return dateStr.slice(0,7).replace('-','-M'); // "2026-05-13" -> "2026-M05"
+}
+function monthRange(monthKey){
+  const [y, m] = monthKey.split('-M').map(Number);
+  const startDate = new Date(Date.UTC(y, m-1, 1));
+  const endDate = new Date(Date.UTC(y, m, 0));
+  const f = d => d.toISOString().slice(0,10);
+  return {start: f(startDate), end: f(endDate)};
+};
 }
 
 // 데이터에 weekKey 추가
@@ -1221,6 +1232,10 @@ DAILY_OPTION.forEach(r=>r.weekKey = getISOWeek(r.date));
 DAILY_FUNNEL.forEach(r=>r.weekKey = getISOWeek(r.date));
 PATH_BY_DATE.forEach(r=>r.weekKey = getISOWeek(r.date));
 REFERRER_BY_DATE.forEach(r=>r.weekKey = getISOWeek(r.date));
+DAILY_OPTION.forEach(r=>r.monthKey = getMonthKey(r.date));
+DAILY_FUNNEL.forEach(r=>r.monthKey = getMonthKey(r.date));
+PATH_BY_DATE.forEach(r=>r.monthKey = getMonthKey(r.date));
+REFERRER_BY_DATE.forEach(r=>r.monthKey = getMonthKey(r.date));
 
 // 모든 주차 + 전체
 const ALL_WEEKS = [...new Set([
@@ -1228,10 +1243,19 @@ const ALL_WEEKS = [...new Set([
   ...DAILY_FUNNEL.map(r=>r.weekKey),
   ...PATH_BY_DATE.map(r=>r.weekKey),
 ])].sort();
+const ALL_MONTHS = [...new Set([
+  ...DAILY_OPTION.map(r=>r.monthKey),
+  ...DAILY_FUNNEL.map(r=>r.monthKey),
+  ...PATH_BY_DATE.map(r=>r.monthKey),
+])].sort();
 const WEEK_OPTIONS = [{key:'ALL', label:'전체', subLabel:`(${DAILY_OPTION.length>0?DAILY_OPTION[0].date.slice(5):''} ~)`},
   ...ALL_WEEKS.map(w=>{
     const {start,end} = weekRange(w);
     return {key:w, label:w.slice(-3), subLabel:`(${start.slice(5)}~${end.slice(5)})`};
+  }),
+  ...ALL_MONTHS.map(m=>{
+    const monthNum = parseInt(m.split('-M')[1]);
+    return {key:m, label:monthNum+'월', subLabel:'('+m.split('-M')[0]+')'};
   })
 ];
 
@@ -1271,6 +1295,22 @@ function getFilteredData(week){
       refByDate: REFERRER_BY_DATE,
       label: '전체 기간',
       dates: [...new Set([...DAILY_OPTION,...DAILY_FUNNEL].map(r=>r.date))].sort()
+    };
+  }
+  if(week.indexOf('-M')>=0){
+    const fM = (arr)=>arr.filter(r=>r.monthKey===week);
+    const {start,end} = monthRange(week);
+    const dates = [];
+    for(let d=new Date(start+'T00:00:00Z'); d<=new Date(end+'T00:00:00Z'); d.setUTCDate(d.getUTCDate()+1)){
+      dates.push(d.toISOString().slice(0,10));
+    }
+    return {
+      daily: fM(DAILY_OPTION),
+      funnel: fM(DAILY_FUNNEL),
+      pathByDate: fM(PATH_BY_DATE),
+      refByDate: fM(REFERRER_BY_DATE),
+      label: parseInt(week.split('-M')[1])+'월 ('+start.slice(5)+'~'+end.slice(5)+')',
+      dates
     };
   }
   const f = (arr)=>arr.filter(r=>r.weekKey===week);
