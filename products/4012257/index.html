@@ -1213,7 +1213,8 @@ function weekRange(weekKey){
   const start = new Date(week1Mon); start.setUTCDate(week1Mon.getUTCDate() + (w-1)*7);
   const end = new Date(start); end.setUTCDate(start.getUTCDate() + 6);
   const f = d=>d.toISOString().slice(0,10);
-  return {start:f(start), end:f(end)}
+  return {start:f(start), end:f(end)};
+}
 
 function getMonthKey(dateStr){
   return dateStr.slice(0,7).replace('-','-M'); // "2026-05-13" -> "2026-M05"
@@ -1224,7 +1225,6 @@ function monthRange(monthKey){
   const endDate = new Date(Date.UTC(y, m, 0));
   const f = d => d.toISOString().slice(0,10);
   return {start: f(startDate), end: f(endDate)};
-};
 }
 
 // 데이터에 weekKey 추가
