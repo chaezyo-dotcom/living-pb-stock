@@ -73,7 +73,7 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
     <div class="subtitle">상품코드 4012257 · 3 colors (스카이블루 / 그린 / 핑크) · M / L 사이즈</div>
     <div class="meta">
       <span>판매시작 2026-04-24</span>
-      <span>리포트 기준 2026-05-28</span>
+      <span>리포트 기준 2026-05-31</span>
       <span>Source: finance_datahub.df_com_sales · ba_preserved.total_pdp_facts · ba_preserved.smba_daily_pdp_imps_v2 · ba_preserved.commerce_product_search_tb</span>
     </div>
   </div>
@@ -241,7 +241,7 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
   </div>
 
   <div class="footer">
-    데이터 기준일: 2026-05-28 KST · 결제: base_dt(KST) / PDP·노출: log_date(KST) · 5/28 PDP·노출 데이터는 적재 지연 (D+2)
+    데이터 기준일: 2026-05-31 KST · 결제: base_dt(KST) / PDP·노출: log_date(KST) · 5/31 PDP·노출 데이터는 적재 지연 (D+2)
   </div>
 </div>
 
@@ -406,7 +406,25 @@ const DAILY_OPTION = [
   {date:"2026-05-28",option_id:"30093901",color:"그린",size:"M",qty:6,gmv:149400,cancel_qty:0,cancel_gmv:0},
   {date:"2026-05-28",option_id:"30093902",color:"그린",size:"L",qty:6,gmv:149400,cancel_qty:0,cancel_gmv:0},
   {date:"2026-05-28",option_id:"30093903",color:"핑크",size:"M",qty:11,gmv:273900,cancel_qty:0,cancel_gmv:0},
-  {date:"2026-05-28",option_id:"30093904",color:"핑크",size:"L",qty:7,gmv:174300,cancel_qty:0,cancel_gmv:0}
+  {date:"2026-05-28",option_id:"30093904",color:"핑크",size:"L",qty:7,gmv:174300,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-29",option_id:"30093899",color:"스카이블루",size:"M",qty:5,gmv:124500,cancel_qty:1,cancel_gmv:24900},
+  {date:"2026-05-29",option_id:"30093900",color:"스카이블루",size:"L",qty:2,gmv:49800,cancel_qty:1,cancel_gmv:24900},
+  {date:"2026-05-29",option_id:"30093901",color:"그린",size:"M",qty:5,gmv:124500,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-29",option_id:"30093902",color:"그린",size:"L",qty:4,gmv:99600,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-29",option_id:"30093903",color:"핑크",size:"M",qty:2,gmv:49800,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-29",option_id:"30093904",color:"핑크",size:"L",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-30",option_id:"30093899",color:"스카이블루",size:"M",qty:2,gmv:49800,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-30",option_id:"30093900",color:"스카이블루",size:"L",qty:5,gmv:124500,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-30",option_id:"30093901",color:"그린",size:"M",qty:4,gmv:99600,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-30",option_id:"30093902",color:"그린",size:"L",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-30",option_id:"30093903",color:"핑크",size:"M",qty:3,gmv:74700,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-30",option_id:"30093904",color:"핑크",size:"L",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-31",option_id:"30093899",color:"스카이블루",size:"M",qty:3,gmv:74700,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-31",option_id:"30093900",color:"스카이블루",size:"L",qty:8,gmv:199200,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-31",option_id:"30093901",color:"그린",size:"M",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-31",option_id:"30093902",color:"그린",size:"L",qty:3,gmv:74700,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-31",option_id:"30093903",color:"핑크",size:"M",qty:3,gmv:74700,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-05-31",option_id:"30093904",color:"핑크",size:"L",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0}
 ];
 
 const DAILY_FUNNEL = [
@@ -443,7 +461,10 @@ const DAILY_FUNNEL = [
   {date:"2026-05-25", imp_uv:10033, imp_cnt:21322, pdp_pv:1016, pdp_uv:279, buyers:15},
   {date:"2026-05-26", imp_uv:16570, imp_cnt:34565, pdp_pv:1078, pdp_uv:372, buyers:12},
   {date:"2026-05-27", imp_uv:14736, imp_cnt:30438, pdp_pv:1112, pdp_uv:304, buyers:12},
-  {date:"2026-05-28", imp_uv:54155, imp_cnt:86062, pdp_pv:2575, pdp_uv:834, buyers:28}
+  {date:"2026-05-28", imp_uv:54155, imp_cnt:86062, pdp_pv:2575, pdp_uv:834, buyers:28},
+  {date:"2026-05-29", imp_uv:12626, imp_cnt:25973, pdp_pv:794, pdp_uv:270, buyers:13},
+  {date:"2026-05-30", imp_uv:11949, imp_cnt:25035, pdp_pv:902, pdp_uv:281, buyers:12},
+  {date:"2026-05-31", imp_uv:11003, imp_cnt:23528, pdp_pv:771, pdp_uv:282, buyers:11}
 ];
 
 const PATH_BY_DATE = [
@@ -804,7 +825,41 @@ const PATH_BY_DATE = [
   {date:"2026-05-28", channel:"collection_books", imps:77},
   {date:"2026-05-28", channel:"home", imps:34},
   {date:"2026-05-28", channel:"cart", imps:1},
-  {date:"2026-05-28", channel:"styling_shot", imps:1}
+  {date:"2026-05-28", channel:"styling_shot", imps:1},
+  {date:"2026-05-29", channel:"etc", imps:16378},
+  {date:"2026-05-29", channel:"search", imps:3610},
+  {date:"2026-05-29", channel:"pdp", imps:2429},
+  {date:"2026-05-29", channel:"exhibitions", imps:2271},
+  {date:"2026-05-29", channel:"contents", imps:524},
+  {date:"2026-05-29", channel:"category", imps:361},
+  {date:"2026-05-29", channel:"ranks", imps:191},
+  {date:"2026-05-29", channel:"store", imps:148},
+  {date:"2026-05-29", channel:"collection_books", imps:33},
+  {date:"2026-05-29", channel:"home", imps:20},
+  {date:"2026-05-29", channel:"today_deals", imps:8},
+  {date:"2026-05-30", channel:"etc", imps:15537},
+  {date:"2026-05-30", channel:"search", imps:4478},
+  {date:"2026-05-30", channel:"pdp", imps:2577},
+  {date:"2026-05-30", channel:"exhibitions", imps:1276},
+  {date:"2026-05-30", channel:"contents", imps:520},
+  {date:"2026-05-30", channel:"category", imps:513},
+  {date:"2026-05-30", channel:"store", imps:79},
+  {date:"2026-05-30", channel:"collection_books", imps:28},
+  {date:"2026-05-30", channel:"home", imps:24},
+  {date:"2026-05-30", channel:"styling_shot", imps:1},
+  {date:"2026-05-30", channel:"ranks", imps:1},
+  {date:"2026-05-30", channel:"cart", imps:1},
+  {date:"2026-05-31", channel:"etc", imps:13210},
+  {date:"2026-05-31", channel:"search", imps:4948},
+  {date:"2026-05-31", channel:"pdp", imps:2411},
+  {date:"2026-05-31", channel:"exhibitions", imps:1640},
+  {date:"2026-05-31", channel:"category", imps:567},
+  {date:"2026-05-31", channel:"contents", imps:564},
+  {date:"2026-05-31", channel:"collection_books", imps:82},
+  {date:"2026-05-31", channel:"store", imps:60},
+  {date:"2026-05-31", channel:"home", imps:42},
+  {date:"2026-05-31", channel:"styling_shot", imps:3},
+  {date:"2026-05-31", channel:"today_deals", imps:1}
 ];
 
 const REFERRER_BY_DATE = [
@@ -1095,7 +1150,32 @@ const REFERRER_BY_DATE = [
   {date:"2026-05-28", type:"USERS", pv:17, uv:null},
   {date:"2026-05-28", type:"BRANDS", pv:10, uv:null},
   {date:"2026-05-28", type:"OGARDEN_GAME_HOME", pv:4, uv:null},
-  {date:"2026-05-28", type:"CARDS", pv:3, uv:null}
+  {date:"2026-05-28", type:"CARDS", pv:3, uv:null},
+  {date:"2026-05-29", type:"DIRECT", pv:480, uv:null},
+  {date:"2026-05-29", type:"PRODUCTIONS", pv:154, uv:null},
+  {date:"2026-05-29", type:"EXHIBITIONS", pv:86, uv:null},
+  {date:"2026-05-29", type:"BRANDS", pv:30, uv:null},
+  {date:"2026-05-29", type:"CARD_COLLECTIONS", pv:27, uv:null},
+  {date:"2026-05-29", type:"ORDERS", pv:14, uv:null},
+  {date:"2026-05-29", type:"DELIVERIES", pv:2, uv:null},
+  {date:"2026-05-29", type:"GOODS", pv:1, uv:null},
+  {date:"2026-05-30", type:"DIRECT", pv:604, uv:null},
+  {date:"2026-05-30", type:"PRODUCTIONS", pv:235, uv:null},
+  {date:"2026-05-30", type:"EXHIBITIONS", pv:41, uv:null},
+  {date:"2026-05-30", type:"CARD_COLLECTIONS", pv:10, uv:null},
+  {date:"2026-05-30", type:"BRANDS", pv:7, uv:null},
+  {date:"2026-05-30", type:"USERS", pv:4, uv:null},
+  {date:"2026-05-30", type:"ORDERS", pv:1, uv:null},
+  {date:"2026-05-31", type:"DIRECT", pv:512, uv:null},
+  {date:"2026-05-31", type:"PRODUCTIONS", pv:137, uv:null},
+  {date:"2026-05-31", type:"EXHIBITIONS", pv:55, uv:null},
+  {date:"2026-05-31", type:"BRANDS", pv:19, uv:null},
+  {date:"2026-05-31", type:"USERS", pv:17, uv:null},
+  {date:"2026-05-31", type:"CARD_COLLECTIONS", pv:16, uv:null},
+  {date:"2026-05-31", type:"CARDS", pv:8, uv:null},
+  {date:"2026-05-31", type:"ORDERS", pv:3, uv:null},
+  {date:"2026-05-31", type:"GOODS", pv:3, uv:null},
+  {date:"2026-05-31", type:"COUPON-MOLDS", pv:1, uv:null}
 ];
 
 const SRP_KEYWORDS = [
