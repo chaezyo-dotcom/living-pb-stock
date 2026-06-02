@@ -73,7 +73,7 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
     <div class="subtitle">상품코드 4012257 · 3 colors (스카이블루 / 그린 / 핑크) · M / L 사이즈</div>
     <div class="meta">
       <span>판매시작 2026-04-24</span>
-      <span>리포트 기준 2026-05-31</span>
+      <span>리포트 기준 2026-06-01</span>
       <span>Source: finance_datahub.df_com_sales · ba_preserved.total_pdp_facts · ba_preserved.smba_daily_pdp_imps_v2 · ba_preserved.commerce_product_search_tb</span>
     </div>
   </div>
@@ -241,7 +241,7 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
   </div>
 
   <div class="footer">
-    데이터 기준일: 2026-05-31 KST · 결제: base_dt(KST) / PDP·노출: log_date(KST) · 5/31 PDP·노출 데이터는 적재 지연 (D+2)
+    데이터 기준일: 2026-06-01 KST · 결제: base_dt(KST) / PDP·노출: log_date(KST) · 6/1 PDP·노출 데이터는 적재 지연 (D+2)
   </div>
 </div>
 
@@ -424,7 +424,13 @@ const DAILY_OPTION = [
   {date:"2026-05-31",option_id:"30093901",color:"그린",size:"M",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
   {date:"2026-05-31",option_id:"30093902",color:"그린",size:"L",qty:3,gmv:74700,cancel_qty:0,cancel_gmv:0},
   {date:"2026-05-31",option_id:"30093903",color:"핑크",size:"M",qty:3,gmv:74700,cancel_qty:0,cancel_gmv:0},
-  {date:"2026-05-31",option_id:"30093904",color:"핑크",size:"L",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0}
+  {date:"2026-05-31",option_id:"30093904",color:"핑크",size:"L",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-06-01",option_id:"30093899",color:"스카이블루",size:"M",qty:3,gmv:74700,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-06-01",option_id:"30093900",color:"스카이블루",size:"L",qty:7,gmv:174300,cancel_qty:1,cancel_gmv:24900},
+  {date:"2026-06-01",option_id:"30093901",color:"그린",size:"M",qty:2,gmv:49800,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-06-01",option_id:"30093902",color:"그린",size:"L",qty:7,gmv:174300,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-06-01",option_id:"30093903",color:"핑크",size:"M",qty:2,gmv:49800,cancel_qty:1,cancel_gmv:24900},
+  {date:"2026-06-01",option_id:"30093904",color:"핑크",size:"L",qty:2,gmv:49800,cancel_qty:0,cancel_gmv:0}
 ];
 
 const DAILY_FUNNEL = [
@@ -464,7 +470,8 @@ const DAILY_FUNNEL = [
   {date:"2026-05-28", imp_uv:54155, imp_cnt:86062, pdp_pv:2575, pdp_uv:834, buyers:28},
   {date:"2026-05-29", imp_uv:12626, imp_cnt:25973, pdp_pv:794, pdp_uv:270, buyers:13},
   {date:"2026-05-30", imp_uv:11949, imp_cnt:25035, pdp_pv:902, pdp_uv:281, buyers:12},
-  {date:"2026-05-31", imp_uv:11003, imp_cnt:23528, pdp_pv:771, pdp_uv:282, buyers:11}
+  {date:"2026-05-31", imp_uv:11003, imp_cnt:23528, pdp_pv:771, pdp_uv:282, buyers:11},
+  {date:"2026-06-01", imp_uv:9456, imp_cnt:20594, pdp_pv:717, pdp_uv:213, buyers:14}
 ];
 
 const PATH_BY_DATE = [
@@ -859,7 +866,18 @@ const PATH_BY_DATE = [
   {date:"2026-05-31", channel:"store", imps:60},
   {date:"2026-05-31", channel:"home", imps:42},
   {date:"2026-05-31", channel:"styling_shot", imps:3},
-  {date:"2026-05-31", channel:"today_deals", imps:1}
+  {date:"2026-05-31", channel:"today_deals", imps:1},
+  {date:"2026-06-01", channel:"etc", imps:11765},
+  {date:"2026-06-01", channel:"search", imps:4459},
+  {date:"2026-06-01", channel:"pdp", imps:2537},
+  {date:"2026-06-01", channel:"exhibitions", imps:746},
+  {date:"2026-06-01", channel:"contents", imps:501},
+  {date:"2026-06-01", channel:"category", imps:439},
+  {date:"2026-06-01", channel:"collection_books", imps:84},
+  {date:"2026-06-01", channel:"home", imps:33},
+  {date:"2026-06-01", channel:"store", imps:28},
+  {date:"2026-06-01", channel:"cart", imps:1},
+  {date:"2026-06-01", channel:"ranks", imps:1}
 ];
 
 const REFERRER_BY_DATE = [
@@ -1175,7 +1193,15 @@ const REFERRER_BY_DATE = [
   {date:"2026-05-31", type:"CARDS", pv:8, uv:null},
   {date:"2026-05-31", type:"ORDERS", pv:3, uv:null},
   {date:"2026-05-31", type:"GOODS", pv:3, uv:null},
-  {date:"2026-05-31", type:"COUPON-MOLDS", pv:1, uv:null}
+  {date:"2026-05-31", type:"COUPON-MOLDS", pv:1, uv:null},
+  {date:"2026-06-01", type:"DIRECT", pv:453, uv:null},
+  {date:"2026-06-01", type:"PRODUCTIONS", pv:193, uv:null},
+  {date:"2026-06-01", type:"ORDERS", pv:18, uv:null},
+  {date:"2026-06-01", type:"BRANDS", pv:18, uv:null},
+  {date:"2026-06-01", type:"CARD_COLLECTIONS", pv:14, uv:null},
+  {date:"2026-06-01", type:"EXHIBITIONS", pv:14, uv:null},
+  {date:"2026-06-01", type:"USERS", pv:6, uv:null},
+  {date:"2026-06-01", type:"CARDS", pv:1, uv:null}
 ];
 
 const SRP_KEYWORDS = [
