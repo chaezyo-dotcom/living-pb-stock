@@ -261,8 +261,8 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
       <div class="month-subtabs" id="compareMonthTabs"></div>
       <table id="compareTable">
         <thead>
-          <tr><th rowspan="2">일자</th><th rowspan="2">비교 상품</th><th colspan="5" style="text-align:center;border-bottom:2px solid #4f46e5;">우리 (4012257)</th><th colspan="5" style="text-align:center;border-bottom:2px solid #9ca3af;">비교 상품</th></tr>
-          <tr><th>순위</th><th>거래액</th><th>노출UV</th><th>CTR</th><th>CVR</th><th>순위</th><th>거래액</th><th>노출UV</th><th>CTR</th><th>CVR</th></tr>
+          <tr><th rowspan="2">일자</th><th colspan="5" style="text-align:center;border-bottom:2px solid #4f46e5;">우리 (4012257)</th><th colspan="6" style="text-align:center;border-bottom:2px solid #9ca3af;">비교 상품</th></tr>
+          <tr><th>순위</th><th>거래액</th><th>노출UV</th><th>CTR</th><th>CVR</th><th>상품</th><th>순위</th><th>거래액</th><th>노출UV</th><th>CTR</th><th>CVR</th></tr>
         </thead>
         <tbody></tbody>
       </table>
@@ -2681,6 +2681,28 @@ function renderCompareTable(){
     tr.innerHTML='<td>'+r.date+'</td>'+
       '<td style="text-align:left;">'+brand+'<span style="color:#6b7280;font-size:12px;">'+r.comp_name+'</span> <span style="font-family:monospace;color:#9ca3af;font-size:11px;">'+r.comp_id+'</span></td>'+
       '<td>'+rp(r.our_rank)+'</td><td>'+gw(r.our_gmv)+'</td><td>'+fmt(r.our_imp)+'</td><td style="'+cc(r.our_ctr,r.comp_ctr)+'">'+pct(r.our_ctr)+'</td><td style="'+cc(r.our_cvr,r.comp_cvr)+'">'+pct(r.our_cvr)+'</td>'+
+      '<td>'+rp(r.comp_rank)+'</td><td>'+gw(r.comp_gmv)+'</td><td>'+fmt(r.comp_imp)+'</td><td>'+pct(r.comp_ctr)+'</td><td>'+pct(r.comp_cvr)+'</td>';
+    tb.appendChild(tr);
+  });
+}
+
+
+function renderCompareTable(){
+  const tb=document.querySelector('#compareTable tbody'); tb.innerHTML='';
+  const months=[...new Set(COMPARE_BY_DATE.map(function(r){return mkey(r.date);}))].sort();
+  let sel=(monthSel.compare&&months.indexOf(monthSel.compare)>=0)?monthSel.compare:months[months.length-1];
+  monthSel.compare=sel;
+  buildMonthTabs('compareMonthTabs',months,sel,function(mk){ monthSel.compare=mk; renderCompareTable(); });
+  const pct=function(v){return v==null?'-':v.toFixed(1)+'%';};
+  const gw=function(v){return (v==null||v===0)?'-':Math.round(v/10000).toLocaleString('ko-KR')+'만';};
+  const cc=function(a,b){return (a!=null&&b!=null)?(a>=b?'color:#059669;font-weight:700;':'color:#dc2626;'):'';};
+  const rp=function(rk){ if(rk==null)return '-'; var c=rk===1?'background:#d1fae5;color:#065f46;':rk<=5?'background:#fef3c7;color:#92400e;':rk<=15?'background:#e0e7ff;color:#3730a3;':'background:#fee2e2;color:#991b1b;'; var lbl=rk===1?'🏆1위':rk+'위'; return '<span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;font-weight:600;'+c+'">'+lbl+'</span>'; };
+  COMPARE_BY_DATE.filter(function(r){return mkey(r.date)===sel;}).forEach(function(r){
+    const brand = r.comp_brand?('<span style="font-weight:600;color:#374151;">'+r.comp_brand+'</span> '):'';
+    const tr=document.createElement('tr');
+    tr.innerHTML='<td>'+r.date+'</td>'+
+      '<td>'+rp(r.our_rank)+'</td><td>'+gw(r.our_gmv)+'</td><td>'+fmt(r.our_imp)+'</td><td style="'+cc(r.our_ctr,r.comp_ctr)+'">'+pct(r.our_ctr)+'</td><td style="'+cc(r.our_cvr,r.comp_cvr)+'">'+pct(r.our_cvr)+'</td>'+
+      '<td style="text-align:left;">'+brand+'<span style="color:#6b7280;font-size:12px;">'+r.comp_name+'</span> <span style="font-family:monospace;color:#9ca3af;font-size:11px;">'+r.comp_id+'</span></td>'+
       '<td>'+rp(r.comp_rank)+'</td><td>'+gw(r.comp_gmv)+'</td><td>'+fmt(r.comp_imp)+'</td><td>'+pct(r.comp_ctr)+'</td><td>'+pct(r.comp_cvr)+'</td>';
     tb.appendChild(tr);
   });
