@@ -239,6 +239,7 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
     </div>
     <div style="margin-top:20px;">
       <div style="font-size:13px;font-weight:600;color:#374151;margin-bottom:8px;">📋 일자별 상세</div>
+      <div class="month-subtabs" id="categoryRankMonthTabs"></div>
       <table id="categoryRankTable">
         <thead><tr><th>일자</th><th>우리 순위</th><th>우리 거래액(원)</th><th>판매수량</th><th>카테고리 1위 거래액(원)</th><th>총 상품수</th></tr></thead>
         <tbody></tbody>
@@ -2595,6 +2596,72 @@ function renderCompareTable(){
       '<td>'+fmt(r.comp_imp)+'</td><td>'+pct(r.comp_ctr)+'</td><td>'+pct(r.comp_cvr)+'</td>';
     tb.appendChild(tr);
   });
+}
+
+
+// ===== 카테고리 순위 테이블 월별 탭 =====
+function renderCategoryRankTable(){
+  const data = CATEGORY_RANK;
+  const months=[...new Set(data.map(function(d){return mkey(d.date);}))].sort();
+  let sel=(monthSel.category&&months.indexOf(monthSel.category)>=0)?monthSel.category:months[months.length-1];
+  monthSel.category=sel;
+  buildMonthTabs('categoryRankMonthTabs',months,sel,function(mk){ monthSel.category=mk; renderCategoryRankTable(); });
+  const tbody=document.querySelector('#categoryRankTable tbody'); tbody.innerHTML='';
+  data.filter(function(d){return mkey(d.date)===sel;}).forEach(function(d){
+    let cls='', lbl=d.our_rank?d.our_rank+'위':'-';
+    if(d.our_rank===1){cls='top5';lbl='🏆 1위';}
+    else if(d.our_rank && d.our_rank<=5){cls='top5';}
+    else if(d.our_rank && d.our_rank<=15){cls='top15';}
+    else if(d.our_rank){cls='below';}
+    const isOurTop = d.top_goods_id==='4012257';
+    const tr=document.createElement('tr');
+    tr.innerHTML = '<td>'+d.date+'</td>'
+      + '<td>'+(d.our_rank?'<span class="rank-pill '+cls+'">'+lbl+'</span>':'-')+'</td>'
+      + '<td>'+fmt(d.our_gmv||0)+'</td>'
+      + '<td>'+fmt(d.our_qty||0)+'</td>'
+      + '<td>'+fmt(d.top_gmv)+(isOurTop?' <span style="color:#10b981;font-size:11px;">(=우리)</span>':'')+'</td>'
+      + '<td>'+(d.total||'-')+'</td>';
+    tbody.appendChild(tr);
+  });
+}
+function renderCategoryRank(){
+  const data = CATEGORY_RANK;
+  const firstDays = data.filter(d=>d.our_rank===1).length;
+  document.getElementById('crFirstDays').textContent = firstDays + '일';
+  document.getElementById('crFirstSub').textContent = '(전체 ' + data.length + '일 중)';
+  const last7 = data.slice(-7).filter(d=>d.our_rank);
+  document.getElementById('crAvgRank').textContent = last7.length ? (last7.reduce((a,b)=>a+b.our_rank,0)/last7.length).toFixed(1)+'위' : '-';
+  const ranks = data.filter(d=>d.our_rank).map(d=>d.our_rank);
+  document.getElementById('crBest').textContent = ranks.length ? Math.min.apply(null,ranks)+'위' : '-';
+  const last7gmv = data.slice(-7).filter(d=>d.our_gmv>0);
+  const avgGmv = last7gmv.length ? Math.round(last7gmv.reduce((a,b)=>a+b.our_gmv,0)/last7gmv.length) : 0;
+  document.getElementById('crAvgGmv').textContent = avgGmv.toLocaleString('ko-KR')+'원';
+
+  charts.crRank = new Chart(document.getElementById('categoryRankChart'),{
+    type:'line',
+    data:{labels:data.map(d=>d.date.slice(5)),datasets:[{
+      label:'우리 순위', data:data.map(d=>d.our_rank),
+      borderColor:'#4f46e5', backgroundColor:'#4f46e5',
+      pointBackgroundColor:data.map(d=>d.our_rank===1?'#10b981':d.our_rank&&d.our_rank<=5?'#f59e0b':'#ef4444'),
+      pointRadius:5, tension:.25, spanGaps:false, fill:false
+    }]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){return '순위: '+ctx.parsed.y+'위';}}}},
+      scales:{y:{reverse:true,beginAtZero:false,min:1,title:{display:true,text:'순위',font:{size:11}}}}}
+  });
+
+  charts.crGmv = new Chart(document.getElementById('categoryGmvChart'),{
+    type:'bar',
+    data:{labels:data.map(d=>d.date.slice(5)),datasets:[
+      {label:'우리 GMV', data:data.map(d=>d.our_gmv||0), backgroundColor:'#4f46e5', borderRadius:3},
+      {label:'카테고리 1위 GMV', data:data.map(d=>d.top_gmv), backgroundColor:'rgba(16,185,129,0.4)', borderRadius:3}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{font:{size:11}}}},
+      scales:{y:{beginAtZero:true,ticks:{callback:function(v){return (v/10000)+'만';}}}}}
+  });
+
+  renderCategoryRankTable();
 }
 
 initWeekTabs();
