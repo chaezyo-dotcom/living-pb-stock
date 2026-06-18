@@ -507,7 +507,13 @@ const DAILY_OPTION = [
   {date:"2026-06-16",option_id:"30093901",color:"그린",size:"M",qty:4,gmv:99600,cancel_qty:0,cancel_gmv:0},
   {date:"2026-06-16",option_id:"30093902",color:"그린",size:"L",qty:6,gmv:149400,cancel_qty:1,cancel_gmv:24900},
   {date:"2026-06-16",option_id:"30093903",color:"핑크",size:"M",qty:2,gmv:49800,cancel_qty:0,cancel_gmv:0},
-  {date:"2026-06-16",option_id:"30093904",color:"핑크",size:"L",qty:3,gmv:74700,cancel_qty:0,cancel_gmv:0}
+  {date:"2026-06-16",option_id:"30093904",color:"핑크",size:"L",qty:3,gmv:74700,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-06-17",option_id:"30093899",color:"스카이블루",size:"M",qty:4,gmv:99600,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-06-17",option_id:"30093900",color:"스카이블루",size:"L",qty:7,gmv:174300,cancel_qty:1,cancel_gmv:24900},
+  {date:"2026-06-17",option_id:"30093901",color:"그린",size:"M",qty:2,gmv:49800,cancel_qty:1,cancel_gmv:24900},
+  {date:"2026-06-17",option_id:"30093902",color:"그린",size:"L",qty:5,gmv:124500,cancel_qty:1,cancel_gmv:24900},
+  {date:"2026-06-17",option_id:"30093903",color:"핑크",size:"M",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-06-17",option_id:"30093904",color:"핑크",size:"L",qty:1,gmv:24900,cancel_qty:0,cancel_gmv:0}
 ];
 
 const DAILY_FUNNEL = [
@@ -563,7 +569,8 @@ const DAILY_FUNNEL = [
   {date:"2026-06-13", imp_uv:9253, imp_cnt:18936, pdp_pv:521, pdp_uv:202, buyers:4},
   {date:"2026-06-14", imp_uv:10392, imp_cnt:22190, pdp_pv:734, pdp_uv:251, buyers:9},
   {date:"2026-06-15", imp_uv:10682, imp_cnt:20758, pdp_pv:538, pdp_uv:171, buyers:6},
-  {date:"2026-06-16", imp_uv:11750, imp_cnt:22475, pdp_pv:778, pdp_uv:248, buyers:14}
+  {date:"2026-06-16", imp_uv:11750, imp_cnt:22475, pdp_pv:778, pdp_uv:248, buyers:14},
+  {date:"2026-06-17", imp_uv:8257, imp_cnt:16455, pdp_pv:543, pdp_uv:152, buyers:8}
 ];
 
 const PATH_BY_DATE = [
@@ -1141,7 +1148,18 @@ const PATH_BY_DATE = [
   {date:"2026-06-16", channel:"collection_books", imps:59},
   {date:"2026-06-16", channel:"home", imps:20},
   {date:"2026-06-16", channel:"cart", imps:6},
-  {date:"2026-06-16", channel:"ranks", imps:1}
+  {date:"2026-06-16", channel:"ranks", imps:1},
+  {date:"2026-06-17", channel:"etc", imps:8411},
+  {date:"2026-06-17", channel:"search", imps:3621},
+  {date:"2026-06-17", channel:"pdp", imps:1875},
+  {date:"2026-06-17", channel:"exhibitions", imps:1772},
+  {date:"2026-06-17", channel:"category", imps:325},
+  {date:"2026-06-17", channel:"contents", imps:282},
+  {date:"2026-06-17", channel:"store", imps:94},
+  {date:"2026-06-17", channel:"collection_books", imps:53},
+  {date:"2026-06-17", channel:"home", imps:14},
+  {date:"2026-06-17", channel:"cart", imps:7},
+  {date:"2026-06-17", channel:"styling_shot", imps:1}
 ];
 
 const REFERRER_BY_DATE = [
@@ -1603,25 +1621,32 @@ const REFERRER_BY_DATE = [
   {date:"2026-06-16", type:"ORDERS", pv:4, uv:null},
   {date:"2026-06-16", type:"OGARDEN_GAME_HOME", pv:3, uv:null},
   {date:"2026-06-16", type:"DETAIL", pv:1, uv:null},
-  {date:"2026-06-16", type:"USERS", pv:1, uv:null}
+  {date:"2026-06-16", type:"USERS", pv:1, uv:null},
+  {date:"2026-06-17", type:"DIRECT", pv:414, uv:null},
+  {date:"2026-06-17", type:"PRODUCTIONS", pv:83, uv:null},
+  {date:"2026-06-17", type:"BRANDS", pv:18, uv:null},
+  {date:"2026-06-17", type:"ORDERS", pv:14, uv:null},
+  {date:"2026-06-17", type:"EXHIBITIONS", pv:9, uv:null},
+  {date:"2026-06-17", type:"CARD_COLLECTIONS", pv:4, uv:null},
+  {date:"2026-06-17", type:"CARDS", pv:1, uv:null}
 ];
 
 const SRP_KEYWORDS = [
-  {keyword:"잠옷", cat_sessions:3446, imps:620, avg_rank:2.4},
-  {keyword:"여름잠옷", cat_sessions:2106, imps:425, avg_rank:2.2},
-  {keyword:"울랄라파자마", cat_sessions:1418, imps:28, avg_rank:10.6},
+  {keyword:"잠옷", cat_sessions:3446, imps:657, avg_rank:2.3},
+  {keyword:"여름잠옷", cat_sessions:2106, imps:456, avg_rank:2.0},
+  {keyword:"울랄라파자마", cat_sessions:1418, imps:31, avg_rank:11.8},
   {keyword:"샤워가운", cat_sessions:986, imps:0, avg_rank:0},
-  {keyword:"파자마", cat_sessions:979, imps:133, avg_rank:2.9},
-  {keyword:"커플잠옷", cat_sessions:872, imps:176, avg_rank:2.7},
+  {keyword:"파자마", cat_sessions:979, imps:144, avg_rank:2.7},
+  {keyword:"커플잠옷", cat_sessions:872, imps:180, avg_rank:2.6},
   {keyword:"여성잠옷", cat_sessions:431, imps:22, avg_rank:4.8},
   {keyword:"원피스잠옷", cat_sessions:428, imps:0, avg_rank:0},
-  {keyword:"홈웨어", cat_sessions:397, imps:30, avg_rank:5.0},
+  {keyword:"홈웨어", cat_sessions:397, imps:33, avg_rank:4.6},
   {keyword:"양말", cat_sessions:359, imps:0, avg_rank:0},
-  {keyword:"티세르", cat_sessions:341, imps:19, avg_rank:6.6},
-  {keyword:"반팔잠옷", cat_sessions:300, imps:11, avg_rank:8.0},
-  {keyword:"여름파자마", cat_sessions:286, imps:60, avg_rank:1.5},
-  {keyword:"여름 잠옷", cat_sessions:258, imps:56, avg_rank:1.8},
-  {keyword:"남자잠옷", cat_sessions:248, imps:67, avg_rank:1.2},
+  {keyword:"티세르", cat_sessions:341, imps:22, avg_rank:6.2},
+  {keyword:"반팔잠옷", cat_sessions:300, imps:12, avg_rank:7.3},
+  {keyword:"여름파자마", cat_sessions:286, imps:63, avg_rank:1.4},
+  {keyword:"여름 잠옷", cat_sessions:258, imps:60, avg_rank:1.8},
+  {keyword:"남자잠옷", cat_sessions:248, imps:68, avg_rank:1.2},
   {keyword:"잠옷바지", cat_sessions:233, imps:0, avg_rank:0},
   {keyword:"안대", cat_sessions:219, imps:0, avg_rank:0},
   {keyword:"수면안대", cat_sessions:198, imps:0, avg_rank:0},
@@ -1629,14 +1654,14 @@ const SRP_KEYWORDS = [
   {keyword:"로브", cat_sessions:169, imps:0, avg_rank:0},
   {keyword:"실크잠옷", cat_sessions:161, imps:0, avg_rank:0},
   {keyword:"남자여름잠옷", cat_sessions:160, imps:52, avg_rank:1.3},
-  {keyword:"여름커플잠옷", cat_sessions:148, imps:16, avg_rank:12.0},
+  {keyword:"여름커플잠옷", cat_sessions:148, imps:19, avg_rank:11.4},
   {keyword:"울랄라", cat_sessions:146, imps:7, avg_rank:9.6},
   {keyword:"티세르잠옷", cat_sessions:141, imps:0, avg_rank:0},
   {keyword:"가운", cat_sessions:137, imps:0, avg_rank:0},
   {keyword:"키티", cat_sessions:136, imps:0, avg_rank:0},
-  {keyword:"커플 잠옷", cat_sessions:111, imps:16, avg_rank:12.8},
+  {keyword:"커플 잠옷", cat_sessions:111, imps:17, avg_rank:12.0},
   {keyword:"댄스온더플로어", cat_sessions:110, imps:0, avg_rank:0},
-  {keyword:"커플잠옷세트", cat_sessions:103, imps:8, avg_rank:3.0}
+  {keyword:"커플잠옷세트", cat_sessions:103, imps:9, avg_rank:3.2}
 ];
 
 const CATEGORY_RANK = [
@@ -1692,7 +1717,8 @@ const CATEGORY_RANK = [
   {date:"2026-06-13", our_rank:14, our_gmv:124500, our_qty:5, total:107, top_goods_id:"4024056", top_gmv:3232000},
   {date:"2026-06-14", our_rank:13, our_gmv:373500, our_qty:15, total:193, top_goods_id:"4024056", top_gmv:1933200},
   {date:"2026-06-15", our_rank:5, our_gmv:224100, our_qty:9, total:131, top_goods_id:"4024056", top_gmv:375900},
-  {date:"2026-06-16", our_rank:2, our_gmv:572700, our_qty:23, total:133, top_goods_id:"4082044", top_gmv:604800}
+  {date:"2026-06-16", our_rank:2, our_gmv:572700, our_qty:23, total:133, top_goods_id:"4082044", top_gmv:604800},
+  {date:"2026-06-17", our_rank:1, our_gmv:498000, our_qty:20, total:120, top_goods_id:"4012257", top_gmv:498000}
 ];
 
 // =========================
