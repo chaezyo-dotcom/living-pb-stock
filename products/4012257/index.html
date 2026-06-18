@@ -19,6 +19,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Pretendard','Apple SD Gothic 
 /* Week tabs */
 .week-tabs{background:white;border:1px solid #e5e7eb;border-radius:12px;padding:14px 16px;margin-bottom:20px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .week-tabs .label{font-size:12px;color:#6b7280;font-weight:600;margin-right:8px}
+.month-subtabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.month-subtabs .msub{font-size:12px;font-weight:600;color:#6b7280;background:#f3f4f6;border:1px solid #e5e7eb;border-radius:6px;padding:5px 14px;cursor:pointer}
+.month-subtabs .msub:hover{background:#e5e7eb}
+.month-subtabs .msub.active{background:#4f46e5;color:#fff;border-color:#4f46e5}
 .week-tab{padding:8px 16px;border-radius:8px;border:1px solid #e5e7eb;background:white;font-size:13px;font-weight:600;color:#4b5563;cursor:pointer;transition:all .15s}
 .week-tab:hover{background:#f3f4f6}
 .week-tab.active{background:#4f46e5;color:white;border-color:#4f46e5}
@@ -109,6 +113,7 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
     <div class="grid-2">
       <div><div class="chart-wrap tall"><canvas id="dailyFunnelChart"></canvas></div></div>
       <div>
+        <div class="month-subtabs" id="funnelMonthTabs"></div>
         <table id="funnelTable">
           <thead><tr><th>일자</th><th>노출 UV</th><th>PDP UV</th><th>구매자</th><th>CTR</th><th>CVR</th></tr></thead>
           <tbody></tbody>
@@ -134,6 +139,7 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
   <!-- 일자별 옵션별 상세 -->
   <div class="section">
     <h2>일자별 · 옵션별 판매 상세 <span id="rangeBadge4" style="font-size:12px;color:#6b7280;font-weight:400;margin-left:8px;"></span></h2>
+    <div class="month-subtabs" id="dailyOptionMonthTabs"></div>
     <table id="dailyOptionTable">
       <thead>
         <tr><th>일자</th><th>옵션ID</th><th>색상</th><th>사이즈</th><th>판매수량</th><th>거래액(원)</th><th>취소수량</th><th>취소액(원)</th></tr>
@@ -251,6 +257,7 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
     </div>
     <div style="margin-top:20px;">
       <div style="font-size:13px;font-weight:600;color:#374151;margin-bottom:8px;">📋 일자별 상세 (초록=우리 우위 · 빨강=열위)</div>
+      <div class="month-subtabs" id="compareMonthTabs"></div>
       <table id="compareTable">
         <thead>
           <tr><th rowspan="2">일자</th><th rowspan="2">비교 상품</th><th colspan="3" style="text-align:center;border-bottom:2px solid #4f46e5;">우리 (4012257)</th><th colspan="3" style="text-align:center;border-bottom:2px solid #9ca3af;">비교 상품</th></tr>
@@ -2495,6 +2502,98 @@ function initWeekTabs(){
     if(opt.key==='ALL') wrapAll.appendChild(btn);
     else if(opt.key.indexOf('-M')>=0) wrapMonth.appendChild(btn);
     else wrapWeek.appendChild(btn);
+  });
+}
+
+
+// ===== 월별 서브탭 (테이블 길이 단축) =====
+const monthSel={funnel:null,daily:null,compare:null};
+const mkey=function(d){return d.slice(0,7);};
+const mlabel=function(k){return parseInt(k.slice(5))+'월';};
+function buildMonthTabs(cid,months,sel,onPick){
+  const c=document.getElementById(cid); if(!c)return; c.innerHTML='';
+  months.forEach(function(k){
+    const b=document.createElement('button');
+    b.className='msub'+(k===sel?' active':'');
+    b.textContent=mlabel(k);
+    b.onclick=function(){ onPick(k); };
+    c.appendChild(b);
+  });
+}
+function renderFunnelTable(data){
+  const tbody=document.querySelector('#funnelTable tbody'); tbody.innerHTML='';
+  const all=data.funnel||[];
+  const months=[...new Set(all.map(function(r){return mkey(r.date);}))].sort();
+  if(months.length===0){ buildMonthTabs('funnelMonthTabs',[],null,function(){}); tbody.innerHTML='<tr><td colspan="6" class="empty-msg">데이터 없음</td></tr>'; return; }
+  let sel=(monthSel.funnel&&months.indexOf(monthSel.funnel)>=0)?monthSel.funnel:months[months.length-1];
+  monthSel.funnel=sel;
+  buildMonthTabs('funnelMonthTabs',months,sel,function(mk){ monthSel.funnel=mk; renderFunnelTable(data); });
+  const rows=all.filter(function(r){return mkey(r.date)===sel;});
+  let totImpUV=0,totPdpUV=0,totBuyers=0;
+  rows.forEach(function(d){
+    const ctr=d.imp_uv&&d.pdp_uv?(d.pdp_uv/d.imp_uv*100).toFixed(1)+'%':'-';
+    const cvr=d.pdp_uv&&d.buyers!=null?(d.buyers/d.pdp_uv*100).toFixed(1)+'%':'-';
+    const thumb=(d.date==='2026-05-13'||d.date==='2026-05-19')?' <span style="display:inline-block;font-size:10px;color:#4f46e5;background:#eef2ff;border-radius:4px;padding:1px 5px;margin-left:4px;vertical-align:middle;">📷 썸네일 변경</span>':'';
+    const tr=document.createElement('tr');
+    tr.innerHTML='<td>'+d.date+thumb+'</td><td>'+fmt(d.imp_uv)+'</td><td>'+fmt(d.pdp_uv)+'</td><td>'+fmt(d.buyers)+'</td><td>'+ctr+'</td><td>'+cvr+'</td>';
+    tbody.appendChild(tr);
+    totImpUV+=(d.imp_uv||0); totPdpUV+=(d.pdp_uv||0); totBuyers+=(d.buyers||0);
+  });
+  const ctrT=totImpUV>0?(totPdpUV/totImpUV*100).toFixed(1)+'%':'-';
+  const cvrT=totPdpUV>0?(totBuyers/totPdpUV*100).toFixed(1)+'%':'-';
+  const tr=document.createElement('tr'); tr.className='total';
+  tr.innerHTML='<td>합계</td><td>'+fmt(totImpUV)+'</td><td>'+fmt(totPdpUV)+'</td><td>'+fmt(totBuyers)+'</td><td>'+ctrT+'</td><td>'+cvrT+'</td>';
+  tbody.appendChild(tr);
+}
+function renderDailyOptionTable(data){
+  const tbody=document.querySelector('#dailyOptionTable tbody'); tbody.innerHTML='';
+  const all=data.daily||[];
+  const months=[...new Set(all.map(function(r){return mkey(r.date);}))].sort();
+  if(months.length===0){ buildMonthTabs('dailyOptionMonthTabs',[],null,function(){}); tbody.innerHTML='<tr><td colspan="8" class="empty-msg">데이터 없음</td></tr>'; return; }
+  let sel=(monthSel.daily&&months.indexOf(monthSel.daily)>=0)?monthSel.daily:months[months.length-1];
+  monthSel.daily=sel;
+  buildMonthTabs('dailyOptionMonthTabs',months,sel,function(mk){ monthSel.daily=mk; renderDailyOptionTable(data); });
+  const src=all.filter(function(r){return mkey(r.date)===sel;});
+  const groups={};
+  src.forEach(function(r){ if(!groups[r.date])groups[r.date]={rows:[],q:0,g:0,cq:0,cg:0}; const gr=groups[r.date]; gr.rows.push(r); gr.q+=r.qty; gr.g+=r.gmv; gr.cq+=r.cancel_qty; gr.cg+=r.cancel_gmv; });
+  const dates=Object.keys(groups).sort().reverse();
+  dates.forEach(function(date,idx){
+    const gr=groups[date]; gr.rows.sort(function(a,b){return a.option_id.localeCompare(b.option_id);});
+    const isOpen=idx===0;
+    const hdr=document.createElement('tr'); hdr.className='subtotal date-header'; hdr.style.cursor='pointer'; hdr.dataset.date=date;
+    hdr.innerHTML='<td colspan="4"><span class="caret" style="display:inline-block;width:14px;color:#6b7280;">'+(isOpen?'▼':'▶')+'</span> '+date+' ('+gr.rows.length+'개 옵션)</td><td>'+fmt(gr.q)+'</td><td>'+fmt(gr.g)+'</td><td>'+(gr.cq>0?'<span style="color:#ef4444;">'+fmt(gr.cq)+'</span>':'-')+'</td><td>'+(gr.cg>0?'<span style="color:#ef4444;">'+fmt(gr.cg)+'</span>':'-')+'</td>';
+    tbody.appendChild(hdr);
+    gr.rows.forEach(function(r){
+      const cls=r.color==='스카이블루'?'color-blue':r.color==='그린'?'color-green':'color-pink';
+      const tr=document.createElement('tr'); tr.className='detail-row'; tr.dataset.date=date; if(!isOpen)tr.style.display='none';
+      tr.innerHTML='<td>'+r.date+'</td><td style="font-family:monospace;color:#6b7280;">'+r.option_id+'</td><td><span class="badge '+cls+'">'+r.color+'</span></td><td>'+r.size+'</td><td>'+fmt(r.qty)+'</td><td>'+fmt(r.gmv)+'</td><td>'+(r.cancel_qty>0?'<span style="color:#ef4444;">'+fmt(r.cancel_qty)+'</span>':'-')+'</td><td>'+(r.cancel_gmv>0?'<span style="color:#ef4444;">'+fmt(r.cancel_gmv)+'</span>':'-')+'</td>';
+      tbody.appendChild(tr);
+    });
+    hdr.addEventListener('click',function(){
+      const detail=tbody.querySelector('tr.detail-row[data-date="'+date+'"]');
+      const isOpenNow=detail&&detail.style.display!=='none';
+      const nd=isOpenNow?'none':'';
+      tbody.querySelectorAll('tr.detail-row[data-date="'+date+'"]').forEach(function(r){r.style.display=nd;});
+      const caret=hdr.querySelector('.caret'); if(caret)caret.textContent=isOpenNow?'▶':'▼';
+    });
+  });
+}
+function renderCompareTable(){
+  const tb=document.querySelector('#compareTable tbody'); tb.innerHTML='';
+  const months=[...new Set(COMPARE_BY_DATE.map(function(r){return mkey(r.date);}))].sort();
+  let sel=(monthSel.compare&&months.indexOf(monthSel.compare)>=0)?monthSel.compare:months[months.length-1];
+  monthSel.compare=sel;
+  buildMonthTabs('compareMonthTabs',months,sel,function(mk){ monthSel.compare=mk; renderCompareTable(); });
+  const pct=function(v){return v==null?'-':v.toFixed(1)+'%';};
+  COMPARE_BY_DATE.filter(function(r){return mkey(r.date)===sel;}).forEach(function(r){
+    const rb=r.comp_rank===1?'<span class="badge" style="background:#fee2e2;color:#991b1b;">1위</span>':'<span class="badge" style="background:#e0e7ff;color:#3730a3;">2위</span>';
+    const cc=function(a,b){return (a!=null&&b!=null)?(a>=b?'color:#059669;font-weight:700;':'color:#dc2626;'):'';};
+    const tr=document.createElement('tr');
+    tr.innerHTML='<td>'+r.date+'</td>'+
+      '<td style="text-align:left;"><span style="font-family:monospace;color:#9ca3af;font-size:11px;">'+r.comp_id+'</span> '+rb+' <span style="color:#6b7280;font-size:12px;">'+r.comp_name+'</span></td>'+
+      '<td>'+fmt(r.our_imp)+'</td><td style="'+cc(r.our_ctr,r.comp_ctr)+'">'+pct(r.our_ctr)+'</td><td style="'+cc(r.our_cvr,r.comp_cvr)+'">'+pct(r.our_cvr)+'</td>'+
+      '<td>'+fmt(r.comp_imp)+'</td><td>'+pct(r.comp_ctr)+'</td><td>'+pct(r.comp_cvr)+'</td>';
+    tb.appendChild(tr);
   });
 }
 
