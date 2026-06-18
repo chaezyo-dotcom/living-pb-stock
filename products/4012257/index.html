@@ -261,8 +261,8 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
       <div class="month-subtabs" id="compareMonthTabs"></div>
       <table id="compareTable">
         <thead>
-          <tr><th rowspan="2">일자</th><th rowspan="2">비교 상품</th><th colspan="3" style="text-align:center;border-bottom:2px solid #4f46e5;">우리 (4012257)</th><th colspan="3" style="text-align:center;border-bottom:2px solid #9ca3af;">비교 상품</th></tr>
-          <tr><th>노출UV</th><th>CTR</th><th>CVR</th><th>노출UV</th><th>CTR</th><th>CVR</th></tr>
+          <tr><th rowspan="2">일자</th><th rowspan="2">비교 상품</th><th colspan="5" style="text-align:center;border-bottom:2px solid #4f46e5;">우리 (4012257)</th><th colspan="5" style="text-align:center;border-bottom:2px solid #9ca3af;">비교 상품</th></tr>
+          <tr><th>순위</th><th>거래액</th><th>노출UV</th><th>CTR</th><th>CVR</th><th>순위</th><th>거래액</th><th>노출UV</th><th>CTR</th><th>CVR</th></tr>
         </thead>
         <tbody></tbody>
       </table>
@@ -1750,60 +1750,60 @@ const CATEGORY_RANK = [
   {date:"2026-06-17", our_rank:1, our_gmv:498000, our_qty:20, total:120, top_goods_id:"4012257", top_gmv:498000}
 ];
 const COMPARE_BY_DATE = [
-  {date:"2026-04-25", our_imp:346, our_pdp:21, our_buy:1, our_ctr:6.1, our_cvr:4.8, comp_id:"3703917", comp_name:"더 클래식 긴팔 파자마", comp_rank:1, comp_imp:1640, comp_pdp:73, comp_buy:6, comp_ctr:4.5, comp_cvr:8.2},
-  {date:"2026-04-26", our_imp:545, our_pdp:14, our_buy:0, our_ctr:2.6, our_cvr:0.0, comp_id:"3467095", comp_name:"퍼리스 기능성 반팔 파자마", comp_rank:1, comp_imp:304, comp_pdp:19, comp_buy:4, comp_ctr:6.2, comp_cvr:21.1},
-  {date:"2026-04-27", our_imp:5794, our_pdp:null, our_buy:8, our_ctr:null, our_cvr:null, comp_id:"3438131", comp_name:"H made 캘르 커플잠옷", comp_rank:2, comp_imp:1227, comp_pdp:null, comp_buy:4, comp_ctr:null, comp_cvr:null},
-  {date:"2026-04-28", our_imp:8609, our_pdp:159, our_buy:4, our_ctr:1.8, our_cvr:2.5, comp_id:"3299304", comp_name:"한복 로브 호작도", comp_rank:1, comp_imp:11, comp_pdp:null, comp_buy:1, comp_ctr:null, comp_cvr:null},
-  {date:"2026-04-29", our_imp:3937, our_pdp:151, our_buy:1, our_ctr:3.8, our_cvr:0.7, comp_id:"3467095", comp_name:"퍼리스 기능성 반팔 파자마", comp_rank:1, comp_imp:226, comp_pdp:5, comp_buy:2, comp_ctr:2.2, comp_cvr:40.0},
-  {date:"2026-04-30", our_imp:3571, our_pdp:108, our_buy:2, our_ctr:3.0, our_cvr:1.9, comp_id:"3424228", comp_name:"퍼리스파자마 Long-Stripe", comp_rank:1, comp_imp:849, comp_pdp:28, comp_buy:1, comp_ctr:3.3, comp_cvr:3.6},
-  {date:"2026-05-01", our_imp:4305, our_pdp:109, our_buy:2, our_ctr:2.5, our_cvr:1.8, comp_id:"3467095", comp_name:"퍼리스 기능성 반팔 파자마", comp_rank:1, comp_imp:137, comp_pdp:19, comp_buy:3, comp_ctr:13.9, comp_cvr:15.8},
-  {date:"2026-05-02", our_imp:4708, our_pdp:112, our_buy:2, our_ctr:2.4, our_cvr:1.8, comp_id:"3467095", comp_name:"퍼리스 기능성 반팔 파자마", comp_rank:1, comp_imp:113, comp_pdp:10, comp_buy:2, comp_ctr:8.8, comp_cvr:20.0},
-  {date:"2026-05-03", our_imp:4537, our_pdp:168, our_buy:5, our_ctr:3.7, our_cvr:3.0, comp_id:"3764743", comp_name:"퍼리스파자마 Long-Leopard", comp_rank:1, comp_imp:120, comp_pdp:8, comp_buy:1, comp_ctr:6.7, comp_cvr:12.5},
-  {date:"2026-05-04", our_imp:7281, our_pdp:222, our_buy:4, our_ctr:3.0, our_cvr:1.8, comp_id:"3995592", comp_name:"에브리데이 이지 셋업", comp_rank:1, comp_imp:630, comp_pdp:15, comp_buy:3, comp_ctr:2.4, comp_cvr:20.0},
-  {date:"2026-05-05", our_imp:8163, our_pdp:385, our_buy:10, our_ctr:4.7, our_cvr:2.6, comp_id:"3995603", comp_name:"썸머 브리즈 가디건", comp_rank:1, comp_imp:1020, comp_pdp:24, comp_buy:3, comp_ctr:2.4, comp_cvr:12.5},
-  {date:"2026-05-06", our_imp:51531, our_pdp:988, our_buy:31, our_ctr:1.9, our_cvr:3.1, comp_id:"3500843", comp_name:"돌체 블랙 쿨스킨 세트", comp_rank:1, comp_imp:1502, comp_pdp:111, comp_buy:37, comp_ctr:7.4, comp_cvr:33.3},
-  {date:"2026-05-07", our_imp:7452, our_pdp:259, our_buy:7, our_ctr:3.5, our_cvr:2.7, comp_id:"3444732", comp_name:"아모레 베이비핑크 세트", comp_rank:1, comp_imp:942, comp_pdp:125, comp_buy:16, comp_ctr:13.3, comp_cvr:12.8},
-  {date:"2026-05-08", our_imp:11102, our_pdp:226, our_buy:9, our_ctr:2.0, our_cvr:4.0, comp_id:"3444732", comp_name:"아모레 베이비핑크 세트", comp_rank:2, comp_imp:873, comp_pdp:141, comp_buy:6, comp_ctr:16.2, comp_cvr:4.3},
-  {date:"2026-05-09", our_imp:12898, our_pdp:366, our_buy:8, our_ctr:2.8, our_cvr:2.2, comp_id:"3444732", comp_name:"아모레 베이비핑크 세트", comp_rank:1, comp_imp:1062, comp_pdp:156, comp_buy:12, comp_ctr:14.7, comp_cvr:7.7},
-  {date:"2026-05-10", our_imp:12373, our_pdp:296, our_buy:14, our_ctr:2.4, our_cvr:4.7, comp_id:"3704040", comp_name:"스탠다드 뉴욕 긴팔 파자마", comp_rank:2, comp_imp:3305, comp_pdp:114, comp_buy:8, comp_ctr:3.4, comp_cvr:7.0},
-  {date:"2026-05-11", our_imp:15785, our_pdp:260, our_buy:8, our_ctr:1.6, our_cvr:3.1, comp_id:"3512984", comp_name:"H made 로셀 커플잠옷", comp_rank:2, comp_imp:1208, comp_pdp:50, comp_buy:4, comp_ctr:4.1, comp_cvr:8.0},
-  {date:"2026-05-12", our_imp:17685, our_pdp:257, our_buy:11, our_ctr:1.5, our_cvr:4.3, comp_id:"3467095", comp_name:"퍼리스 기능성 반팔 파자마", comp_rank:2, comp_imp:3351, comp_pdp:62, comp_buy:2, comp_ctr:1.9, comp_cvr:3.2},
-  {date:"2026-05-13", our_imp:11948, our_pdp:232, our_buy:12, our_ctr:1.9, our_cvr:5.2, comp_id:"3704040", comp_name:"스탠다드 뉴욕 긴팔 파자마", comp_rank:2, comp_imp:2250, comp_pdp:69, comp_buy:4, comp_ctr:3.1, comp_cvr:5.8},
-  {date:"2026-05-14", our_imp:44341, our_pdp:729, our_buy:30, our_ctr:1.6, our_cvr:4.1, comp_id:"4022880", comp_name:"PAJAMAS LONG SET", comp_rank:2, comp_imp:21, comp_pdp:3, comp_buy:1, comp_ctr:14.3, comp_cvr:33.3},
-  {date:"2026-05-15", our_imp:10118, our_pdp:238, our_buy:4, our_ctr:2.4, our_cvr:1.7, comp_id:"3999937", comp_name:"베이직 반팔 긴바지 페어", comp_rank:1, comp_imp:685, comp_pdp:65, comp_buy:4, comp_ctr:9.5, comp_cvr:6.2},
-  {date:"2026-05-16", our_imp:8151, our_pdp:228, our_buy:8, our_ctr:2.8, our_cvr:3.5, comp_id:"3444718", comp_name:"러블리민트 실크스킨 세트", comp_rank:2, comp_imp:336, comp_pdp:19, comp_buy:2, comp_ctr:5.7, comp_cvr:10.5},
-  {date:"2026-05-17", our_imp:8767, our_pdp:274, our_buy:13, our_ctr:3.1, our_cvr:4.7, comp_id:"4034469", comp_name:"누아르 실크스킨 v2 세트", comp_rank:1, comp_imp:6138, comp_pdp:195, comp_buy:27, comp_ctr:3.2, comp_cvr:13.8},
-  {date:"2026-05-18", our_imp:9141, our_pdp:223, our_buy:11, our_ctr:2.4, our_cvr:4.9, comp_id:"4034469", comp_name:"누아르 실크스킨 v2 세트", comp_rank:2, comp_imp:585, comp_pdp:65, comp_buy:13, comp_ctr:11.1, comp_cvr:20.0},
-  {date:"2026-05-19", our_imp:7752, our_pdp:222, our_buy:9, our_ctr:2.9, our_cvr:4.1, comp_id:"4034469", comp_name:"누아르 실크스킨 v2 세트", comp_rank:2, comp_imp:494, comp_pdp:56, comp_buy:7, comp_ctr:11.3, comp_cvr:12.5},
-  {date:"2026-05-20", our_imp:7917, our_pdp:245, our_buy:14, our_ctr:3.1, our_cvr:5.7, comp_id:"3500840", comp_name:"돌체 다크그린 쿨스킨 세트", comp_rank:2, comp_imp:500, comp_pdp:52, comp_buy:6, comp_ctr:10.4, comp_cvr:11.5},
-  {date:"2026-05-21", our_imp:37639, our_pdp:666, our_buy:40, our_ctr:1.8, our_cvr:6.0, comp_id:"4034469", comp_name:"누아르 실크스킨 v2 세트", comp_rank:2, comp_imp:480, comp_pdp:61, comp_buy:7, comp_ctr:12.7, comp_cvr:11.5},
-  {date:"2026-05-22", our_imp:9376, our_pdp:242, our_buy:9, our_ctr:2.6, our_cvr:3.7, comp_id:"3704040", comp_name:"스탠다드 뉴욕 긴팔 파자마", comp_rank:2, comp_imp:2423, comp_pdp:66, comp_buy:3, comp_ctr:2.7, comp_cvr:4.5},
-  {date:"2026-05-23", our_imp:8738, our_pdp:186, our_buy:3, our_ctr:2.1, our_cvr:1.6, comp_id:"3704040", comp_name:"스탠다드 뉴욕 긴팔 파자마", comp_rank:1, comp_imp:3425, comp_pdp:72, comp_buy:5, comp_ctr:2.1, comp_cvr:6.9},
-  {date:"2026-05-24", our_imp:9138, our_pdp:215, our_buy:4, our_ctr:2.4, our_cvr:1.9, comp_id:"3585044", comp_name:"H made 로덴 커플잠옷", comp_rank:1, comp_imp:295, comp_pdp:29, comp_buy:3, comp_ctr:9.8, comp_cvr:10.3},
-  {date:"2026-05-25", our_imp:10033, our_pdp:279, our_buy:15, our_ctr:2.8, our_cvr:5.4, comp_id:"4024056", comp_name:"마리나 시어서커 세트", comp_rank:2, comp_imp:622, comp_pdp:62, comp_buy:7, comp_ctr:10.0, comp_cvr:11.3},
-  {date:"2026-05-26", our_imp:16570, our_pdp:372, our_buy:12, our_ctr:2.2, our_cvr:3.2, comp_id:"4024056", comp_name:"마리나 시어서커 세트", comp_rank:2, comp_imp:807, comp_pdp:64, comp_buy:9, comp_ctr:7.9, comp_cvr:14.1},
-  {date:"2026-05-27", our_imp:14736, our_pdp:304, our_buy:12, our_ctr:2.1, our_cvr:3.9, comp_id:"4034469", comp_name:"누아르 실크스킨 v2 세트", comp_rank:2, comp_imp:771, comp_pdp:60, comp_buy:12, comp_ctr:7.8, comp_cvr:20.0},
-  {date:"2026-05-28", our_imp:54155, our_pdp:834, our_buy:28, our_ctr:1.5, our_cvr:3.4, comp_id:"4034469", comp_name:"누아르 실크스킨 v2 세트", comp_rank:2, comp_imp:707, comp_pdp:64, comp_buy:8, comp_ctr:9.1, comp_cvr:12.5},
-  {date:"2026-05-29", our_imp:12626, our_pdp:270, our_buy:13, our_ctr:2.1, our_cvr:4.8, comp_id:"4034469", comp_name:"누아르 실크스킨 v2 세트", comp_rank:2, comp_imp:470, comp_pdp:48, comp_buy:8, comp_ctr:10.2, comp_cvr:16.7},
-  {date:"2026-05-30", our_imp:11949, our_pdp:281, our_buy:12, our_ctr:2.4, our_cvr:4.3, comp_id:"3444732", comp_name:"아모레 베이비핑크 세트", comp_rank:2, comp_imp:608, comp_pdp:40, comp_buy:5, comp_ctr:6.6, comp_cvr:12.5},
-  {date:"2026-05-31", our_imp:11003, our_pdp:282, our_buy:11, our_ctr:2.6, our_cvr:3.9, comp_id:"4034469", comp_name:"누아르 실크스킨 v2 세트", comp_rank:1, comp_imp:1210, comp_pdp:97, comp_buy:25, comp_ctr:8.0, comp_cvr:25.8},
-  {date:"2026-06-01", our_imp:9456, our_pdp:213, our_buy:14, our_ctr:2.3, our_cvr:6.6, comp_id:"4034464", comp_name:"넛티 시어서커 세트", comp_rank:2, comp_imp:382, comp_pdp:43, comp_buy:7, comp_ctr:11.3, comp_cvr:16.3},
-  {date:"2026-06-02", our_imp:11435, our_pdp:232, our_buy:12, our_ctr:2.0, our_cvr:5.2, comp_id:"3999937", comp_name:"베이직 반팔 긴바지 페어", comp_rank:2, comp_imp:1088, comp_pdp:90, comp_buy:9, comp_ctr:8.3, comp_cvr:10.0},
-  {date:"2026-06-03", our_imp:9929, our_pdp:283, our_buy:14, our_ctr:2.9, our_cvr:4.9, comp_id:"3500843", comp_name:"돌체 블랙 쿨스킨 세트", comp_rank:2, comp_imp:582, comp_pdp:53, comp_buy:6, comp_ctr:9.1, comp_cvr:11.3},
-  {date:"2026-06-04", our_imp:38995, our_pdp:632, our_buy:31, our_ctr:1.6, our_cvr:4.9, comp_id:"1836541", comp_name:"5컬러 반팔 커플잠옷", comp_rank:2, comp_imp:240, comp_pdp:26, comp_buy:4, comp_ctr:10.8, comp_cvr:15.4},
-  {date:"2026-06-05", our_imp:11441, our_pdp:257, our_buy:8, our_ctr:2.2, our_cvr:3.1, comp_id:"3148480", comp_name:"스팀 온열 수면안대", comp_rank:2, comp_imp:9, comp_pdp:1, comp_buy:1, comp_ctr:11.1, comp_cvr:100.0},
-  {date:"2026-06-06", our_imp:11693, our_pdp:244, our_buy:7, our_ctr:2.1, our_cvr:2.9, comp_id:"4024056", comp_name:"마리나 시어서커 세트", comp_rank:1, comp_imp:3082, comp_pdp:186, comp_buy:29, comp_ctr:6.0, comp_cvr:15.6},
-  {date:"2026-06-07", our_imp:10192, our_pdp:241, our_buy:12, our_ctr:2.4, our_cvr:5.0, comp_id:"4024058", comp_name:"스칼렛 쿨스킨 v2 세트", comp_rank:2, comp_imp:649, comp_pdp:48, comp_buy:4, comp_ctr:7.4, comp_cvr:8.3},
-  {date:"2026-06-08", our_imp:16317, our_pdp:297, our_buy:7, our_ctr:1.8, our_cvr:2.4, comp_id:"4024056", comp_name:"마리나 시어서커 세트", comp_rank:1, comp_imp:3029, comp_pdp:232, comp_buy:21, comp_ctr:7.7, comp_cvr:9.1},
-  {date:"2026-06-09", our_imp:14509, our_pdp:249, our_buy:4, our_ctr:1.7, our_cvr:1.6, comp_id:"4024056", comp_name:"마리나 시어서커 세트", comp_rank:1, comp_imp:3254, comp_pdp:190, comp_buy:15, comp_ctr:5.8, comp_cvr:7.9},
-  {date:"2026-06-10", our_imp:10763, our_pdp:302, our_buy:7, our_ctr:2.8, our_cvr:2.3, comp_id:"4024056", comp_name:"마리나 시어서커 세트", comp_rank:1, comp_imp:25748, comp_pdp:554, comp_buy:32, comp_ctr:2.2, comp_cvr:5.8},
-  {date:"2026-06-11", our_imp:35966, our_pdp:494, our_buy:19, our_ctr:1.4, our_cvr:3.8, comp_id:"4024056", comp_name:"마리나 시어서커 세트", comp_rank:2, comp_imp:3726, comp_pdp:185, comp_buy:15, comp_ctr:5.0, comp_cvr:8.1},
-  {date:"2026-06-12", our_imp:10700, our_pdp:202, our_buy:3, our_ctr:1.9, our_cvr:1.5, comp_id:"3467095", comp_name:"퍼리스 기능성 반팔 파자마", comp_rank:1, comp_imp:2722, comp_pdp:43, comp_buy:3, comp_ctr:1.6, comp_cvr:7.0},
-  {date:"2026-06-13", our_imp:9253, our_pdp:202, our_buy:4, our_ctr:2.2, our_cvr:2.0, comp_id:"4024056", comp_name:"마리나 시어서커 세트", comp_rank:1, comp_imp:5816, comp_pdp:1935, comp_buy:121, comp_ctr:33.3, comp_cvr:6.3},
-  {date:"2026-06-14", our_imp:10392, our_pdp:251, our_buy:9, our_ctr:2.4, our_cvr:3.6, comp_id:"4024056", comp_name:"마리나 시어서커 세트", comp_rank:1, comp_imp:17809, comp_pdp:974, comp_buy:70, comp_ctr:5.5, comp_cvr:7.2},
-  {date:"2026-06-15", our_imp:10682, our_pdp:171, our_buy:6, our_ctr:1.6, our_cvr:3.5, comp_id:"4024056", comp_name:"마리나 시어서커 세트", comp_rank:1, comp_imp:15681, comp_pdp:725, comp_buy:17, comp_ctr:4.6, comp_cvr:2.3},
-  {date:"2026-06-16", our_imp:11750, our_pdp:248, our_buy:14, our_ctr:2.1, our_cvr:5.6, comp_id:"4082044", comp_name:"[오집단독] 레이지 하프 파자마", comp_rank:1, comp_imp:1011, comp_pdp:41, comp_buy:4, comp_ctr:4.1, comp_cvr:9.8},
-  {date:"2026-06-17", our_imp:8257, our_pdp:152, our_buy:8, our_ctr:1.8, our_cvr:5.3, comp_id:"4024056", comp_name:"마리나 시어서커 세트", comp_rank:2, comp_imp:4936, comp_pdp:236, comp_buy:14, comp_ctr:4.8, comp_cvr:5.9}
+  {date:"2026-04-25", our_rank:17, our_gmv:49800, our_imp:346, our_ctr:6.1, our_cvr:4.8, comp_id:"3703917", comp_brand:"오셀픽", comp_name:"더 클래식 긴팔 파자마", comp_rank:1, comp_gmv:322600, comp_imp:1640, comp_ctr:4.5, comp_cvr:8.2},
+  {date:"2026-04-26", our_rank:null, our_gmv:0, our_imp:545, our_ctr:2.6, our_cvr:0, comp_id:"3467095", comp_brand:"댄스온더플로어", comp_name:"퍼리스 기능성 반팔 파자마", comp_rank:1, comp_gmv:345000, comp_imp:304, comp_ctr:6.2, comp_cvr:21.1},
+  {date:"2026-04-27", our_rank:1, our_gmv:423300, our_imp:5794, our_ctr:null, our_cvr:null, comp_id:"3438131", comp_brand:"해피데이", comp_name:"H made 캘르 커플잠옷", comp_rank:2, comp_gmv:252000, comp_imp:1227, comp_ctr:null, comp_cvr:null},
+  {date:"2026-04-28", our_rank:3, our_gmv:174300, our_imp:8609, our_ctr:1.8, our_cvr:2.5, comp_id:"3299304", comp_brand:null, comp_name:"한복 로브 호작도", comp_rank:1, comp_gmv:430000, comp_imp:11, comp_ctr:null, comp_cvr:null},
+  {date:"2026-04-29", our_rank:7, our_gmv:99600, our_imp:3937, our_ctr:3.8, our_cvr:0.7, comp_id:"3467095", comp_brand:"댄스온더플로어", comp_name:"퍼리스 기능성 반팔 파자마", comp_rank:1, comp_gmv:276000, comp_imp:226, comp_ctr:2.2, comp_cvr:40},
+  {date:"2026-04-30", our_rank:10, our_gmv:74700, our_imp:3571, our_ctr:3, our_cvr:1.9, comp_id:"3424228", comp_brand:"댄스온더플로어", comp_name:"퍼리스파자마 Long-Stripe", comp_rank:1, comp_gmv:237000, comp_imp:849, comp_ctr:3.3, comp_cvr:3.6},
+  {date:"2026-05-01", our_rank:10, our_gmv:74700, our_imp:4305, our_ctr:2.5, our_cvr:1.8, comp_id:"3467095", comp_brand:"댄스온더플로어", comp_name:"퍼리스 기능성 반팔 파자마", comp_rank:1, comp_gmv:483000, comp_imp:137, comp_ctr:13.9, comp_cvr:15.8},
+  {date:"2026-05-02", our_rank:9, our_gmv:74700, our_imp:4708, our_ctr:2.4, our_cvr:1.8, comp_id:"3467095", comp_brand:"댄스온더플로어", comp_name:"퍼리스 기능성 반팔 파자마", comp_rank:1, comp_gmv:207000, comp_imp:113, comp_ctr:8.8, comp_cvr:20},
+  {date:"2026-05-03", our_rank:2, our_gmv:199200, our_imp:4537, our_ctr:3.7, our_cvr:3, comp_id:"3764743", comp_brand:"댄스온더플로어", comp_name:"퍼리스파자마 Long-Leopard", comp_rank:1, comp_gmv:316000, comp_imp:120, comp_ctr:6.7, comp_cvr:12.5},
+  {date:"2026-05-04", our_rank:4, our_gmv:224100, our_imp:7281, our_ctr:3, our_cvr:1.8, comp_id:"3995592", comp_brand:"레이지지", comp_name:"에브리데이 이지 셋업", comp_rank:1, comp_gmv:328950, comp_imp:630, comp_ctr:2.4, comp_cvr:20},
+  {date:"2026-05-05", our_rank:2, our_gmv:348600, our_imp:8163, our_ctr:4.7, our_cvr:2.6, comp_id:"3995603", comp_brand:"레이지지", comp_name:"썸머 브리즈 가디건", comp_rank:1, comp_gmv:404600, comp_imp:1020, comp_ctr:2.4, comp_cvr:12.5},
+  {date:"2026-05-06", our_rank:2, our_gmv:1319700, our_imp:51531, our_ctr:1.9, our_cvr:3.1, comp_id:"3500843", comp_brand:"티세르", comp_name:"돌체 블랙 쿨스킨 세트", comp_rank:1, comp_gmv:1425700, comp_imp:1502, comp_ctr:7.4, comp_cvr:33.3},
+  {date:"2026-05-07", our_rank:6, our_gmv:298800, our_imp:7452, our_ctr:3.5, our_cvr:2.7, comp_id:"3444732", comp_brand:"티세르", comp_name:"아모레 베이비핑크 세트", comp_rank:1, comp_gmv:564900, comp_imp:942, comp_ctr:13.3, comp_cvr:12.8},
+  {date:"2026-05-08", our_rank:1, our_gmv:323700, our_imp:11102, our_ctr:2, our_cvr:4, comp_id:"3444732", comp_brand:"티세르", comp_name:"아모레 베이비핑크 세트", comp_rank:2, comp_gmv:274000, comp_imp:873, comp_ctr:16.2, comp_cvr:4.3},
+  {date:"2026-05-09", our_rank:5, our_gmv:298800, our_imp:12898, our_ctr:2.8, our_cvr:2.2, comp_id:"3444732", comp_brand:"티세르", comp_name:"아모레 베이비핑크 세트", comp_rank:1, comp_gmv:430400, comp_imp:1062, comp_ctr:14.7, comp_cvr:7.7},
+  {date:"2026-05-10", our_rank:1, our_gmv:547800, our_imp:12373, our_ctr:2.4, our_cvr:4.7, comp_id:"3704040", comp_brand:"오셀픽", comp_name:"스탠다드 뉴욕 긴팔 파자마", comp_rank:2, comp_gmv:414200, comp_imp:3305, comp_ctr:3.4, comp_cvr:7},
+  {date:"2026-05-11", our_rank:1, our_gmv:249000, our_imp:15785, our_ctr:1.6, our_cvr:3.1, comp_id:"3512984", comp_brand:"해피데이", comp_name:"H made 로셀 커플잠옷", comp_rank:2, comp_gmv:222600, comp_imp:1208, comp_ctr:4.1, comp_cvr:8},
+  {date:"2026-05-12", our_rank:1, our_gmv:473100, our_imp:17685, our_ctr:1.5, our_cvr:4.3, comp_id:"3467095", comp_brand:"댄스온더플로어", comp_name:"퍼리스 기능성 반팔 파자마", comp_rank:2, comp_gmv:315000, comp_imp:3351, comp_ctr:1.9, comp_cvr:3.2},
+  {date:"2026-05-13", our_rank:1, our_gmv:473100, our_imp:11948, our_ctr:1.9, our_cvr:5.2, comp_id:"3704040", comp_brand:"오셀픽", comp_name:"스탠다드 뉴욕 긴팔 파자마", comp_rank:2, comp_gmv:160300, comp_imp:2250, comp_ctr:3.1, comp_cvr:5.8},
+  {date:"2026-05-14", our_rank:1, our_gmv:1269900, our_imp:44341, our_ctr:1.6, our_cvr:4.1, comp_id:"4022880", comp_brand:"GBH", comp_name:"PAJAMAS LONG SET", comp_rank:2, comp_gmv:141750, comp_imp:21, comp_ctr:14.3, comp_cvr:33.3},
+  {date:"2026-05-15", our_rank:3, our_gmv:174300, our_imp:10118, our_ctr:2.4, our_cvr:1.7, comp_id:"3999937", comp_brand:"울랄라파자마", comp_name:"베이직 반팔 긴바지 페어", comp_rank:1, comp_gmv:244800, comp_imp:685, comp_ctr:9.5, comp_cvr:6.2},
+  {date:"2026-05-16", our_rank:1, our_gmv:348600, our_imp:8151, our_ctr:2.8, our_cvr:3.5, comp_id:"3444718", comp_brand:"티세르", comp_name:"러블리민트 실크스킨 세트", comp_rank:2, comp_gmv:124500, comp_imp:336, comp_ctr:5.7, comp_cvr:10.5},
+  {date:"2026-05-17", our_rank:4, our_gmv:597600, our_imp:8767, our_ctr:3.1, our_cvr:4.7, comp_id:"4034469", comp_brand:"티세르", comp_name:"누아르 실크스킨 v2 세트", comp_rank:1, comp_gmv:716400, comp_imp:6138, comp_ctr:3.2, comp_cvr:13.8},
+  {date:"2026-05-18", our_rank:1, our_gmv:498000, our_imp:9141, our_ctr:2.4, our_cvr:4.9, comp_id:"4034469", comp_brand:"티세르", comp_name:"누아르 실크스킨 v2 세트", comp_rank:2, comp_gmv:417900, comp_imp:585, comp_ctr:11.1, comp_cvr:20},
+  {date:"2026-05-19", our_rank:1, our_gmv:298800, our_imp:7752, our_ctr:2.9, our_cvr:4.1, comp_id:"4034469", comp_brand:"티세르", comp_name:"누아르 실크스킨 v2 세트", comp_rank:2, comp_gmv:238800, comp_imp:494, comp_ctr:11.3, comp_cvr:12.5},
+  {date:"2026-05-20", our_rank:1, our_gmv:522900, our_imp:7917, our_ctr:3.1, our_cvr:5.7, comp_id:"3500840", comp_brand:"티세르", comp_name:"돌체 다크그린 쿨스킨 세트", comp_rank:2, comp_gmv:249000, comp_imp:500, comp_ctr:10.4, comp_cvr:11.5},
+  {date:"2026-05-21", our_rank:1, our_gmv:1444200, our_imp:37639, our_ctr:1.8, our_cvr:6, comp_id:"4034469", comp_brand:"티세르", comp_name:"누아르 실크스킨 v2 세트", comp_rank:2, comp_gmv:258700, comp_imp:480, comp_ctr:12.7, comp_cvr:11.5},
+  {date:"2026-05-22", our_rank:1, our_gmv:348600, our_imp:9376, our_ctr:2.6, our_cvr:3.7, comp_id:"3704040", comp_brand:"오셀픽", comp_name:"스탠다드 뉴욕 긴팔 파자마", comp_rank:2, comp_gmv:174300, comp_imp:2423, comp_ctr:2.7, comp_cvr:4.5},
+  {date:"2026-05-23", our_rank:12, our_gmv:99600, our_imp:8738, our_ctr:2.1, our_cvr:1.6, comp_id:"3704040", comp_brand:"오셀픽", comp_name:"스탠다드 뉴욕 긴팔 파자마", comp_rank:1, comp_gmv:199200, comp_imp:3425, comp_ctr:2.1, comp_cvr:6.9},
+  {date:"2026-05-24", our_rank:3, our_gmv:149400, our_imp:9138, our_ctr:2.4, our_cvr:1.9, comp_id:"3585044", comp_brand:"해피데이", comp_name:"H made 로덴 커플잠옷", comp_rank:1, comp_gmv:222600, comp_imp:295, comp_ctr:9.8, comp_cvr:10.3},
+  {date:"2026-05-25", our_rank:1, our_gmv:647400, our_imp:10033, our_ctr:2.8, our_cvr:5.4, comp_id:"4024056", comp_brand:"티세르", comp_name:"마리나 시어서커 세트", comp_rank:2, comp_gmv:223900, comp_imp:622, comp_ctr:10, comp_cvr:11.3},
+  {date:"2026-05-26", our_rank:1, our_gmv:522900, our_imp:16570, our_ctr:2.2, our_cvr:3.2, comp_id:"4024056", comp_brand:"티세르", comp_name:"마리나 시어서커 세트", comp_rank:2, comp_gmv:258700, comp_imp:807, comp_ctr:7.9, comp_cvr:14.1},
+  {date:"2026-05-27", our_rank:1, our_gmv:522900, our_imp:14736, our_ctr:2.1, our_cvr:3.9, comp_id:"4034469", comp_brand:"티세르", comp_name:"누아르 실크스킨 v2 세트", comp_rank:2, comp_gmv:318400, comp_imp:771, comp_ctr:7.8, comp_cvr:20},
+  {date:"2026-05-28", our_rank:1, our_gmv:647400, our_imp:54155, our_ctr:1.5, our_cvr:3.4, comp_id:"4034469", comp_brand:"티세르", comp_name:"누아르 실크스킨 v2 세트", comp_rank:2, comp_gmv:258700, comp_imp:707, comp_ctr:9.1, comp_cvr:12.5},
+  {date:"2026-05-29", our_rank:1, our_gmv:473100, our_imp:12626, our_ctr:2.1, our_cvr:4.8, comp_id:"4034469", comp_brand:"티세르", comp_name:"누아르 실크스킨 v2 세트", comp_rank:2, comp_gmv:199000, comp_imp:470, comp_ctr:10.2, comp_cvr:16.7},
+  {date:"2026-05-30", our_rank:1, our_gmv:398400, our_imp:11949, our_ctr:2.4, our_cvr:4.3, comp_id:"3444732", comp_brand:"티세르", comp_name:"아모레 베이비핑크 세트", comp_rank:2, comp_gmv:174300, comp_imp:608, comp_ctr:6.6, comp_cvr:12.5},
+  {date:"2026-05-31", our_rank:2, our_gmv:473100, our_imp:11003, our_ctr:2.6, our_cvr:3.9, comp_id:"4034469", comp_brand:"티세르", comp_name:"누아르 실크스킨 v2 세트", comp_rank:1, comp_gmv:1000000, comp_imp:1210, comp_ctr:8, comp_cvr:25.8},
+  {date:"2026-06-01", our_rank:1, our_gmv:572700, our_imp:9456, our_ctr:2.3, our_cvr:6.6, comp_id:"4034464", comp_brand:"티세르", comp_name:"넛티 시어서커 세트", comp_rank:2, comp_gmv:218900, comp_imp:382, comp_ctr:11.3, comp_cvr:16.3},
+  {date:"2026-06-02", our_rank:1, our_gmv:572700, our_imp:11435, our_ctr:2, our_cvr:5.2, comp_id:"3999937", comp_brand:"울랄라파자마", comp_name:"베이직 반팔 긴바지 페어", comp_rank:2, comp_gmv:326400, comp_imp:1088, comp_ctr:8.3, comp_cvr:10},
+  {date:"2026-06-03", our_rank:1, our_gmv:522900, our_imp:9929, our_ctr:2.9, our_cvr:4.9, comp_id:"3500843", comp_brand:"티세르", comp_name:"돌체 블랙 쿨스킨 세트", comp_rank:2, comp_gmv:174300, comp_imp:582, comp_ctr:9.1, comp_cvr:11.3},
+  {date:"2026-06-04", our_rank:1, our_gmv:1195200, our_imp:38995, our_ctr:1.6, our_cvr:4.9, comp_id:"1836541", comp_brand:"어나더디", comp_name:"5컬러 반팔 커플잠옷", comp_rank:2, comp_gmv:218900, comp_imp:240, comp_ctr:10.8, comp_cvr:15.4},
+  {date:"2026-06-05", our_rank:1, our_gmv:273900, our_imp:11441, our_ctr:2.2, our_cvr:3.1, comp_id:"3148480", comp_brand:"포미그", comp_name:"스팀 온열 수면안대", comp_rank:2, comp_gmv:140400, comp_imp:9, comp_ctr:11.1, comp_cvr:100},
+  {date:"2026-06-06", our_rank:9, our_gmv:273900, our_imp:11693, our_ctr:2.1, our_cvr:2.9, comp_id:"4024056", comp_brand:"티세르", comp_name:"마리나 시어서커 세트", comp_rank:1, comp_gmv:756200, comp_imp:3082, comp_ctr:6, comp_cvr:15.6},
+  {date:"2026-06-07", our_rank:1, our_gmv:522900, our_imp:10192, our_ctr:2.4, our_cvr:5, comp_id:"4024058", comp_brand:"티세르", comp_name:"스칼렛 쿨스킨 v2 세트", comp_rank:2, comp_gmv:238800, comp_imp:649, comp_ctr:7.4, comp_cvr:8.3},
+  {date:"2026-06-08", our_rank:4, our_gmv:348600, our_imp:16317, our_ctr:1.8, our_cvr:2.4, comp_id:"4024056", comp_brand:"티세르", comp_name:"마리나 시어서커 세트", comp_rank:1, comp_gmv:577100, comp_imp:3029, comp_ctr:7.7, comp_cvr:9.1},
+  {date:"2026-06-09", our_rank:11, our_gmv:124500, our_imp:14509, our_ctr:1.7, our_cvr:1.6, comp_id:"4024056", comp_brand:"티세르", comp_name:"마리나 시어서커 세트", comp_rank:1, comp_gmv:457700, comp_imp:3254, comp_ctr:5.8, comp_cvr:7.9},
+  {date:"2026-06-10", our_rank:7, our_gmv:224100, our_imp:10763, our_ctr:2.8, our_cvr:2.3, comp_id:"4024056", comp_brand:"티세르", comp_name:"마리나 시어서커 세트", comp_rank:1, comp_gmv:875600, comp_imp:25748, comp_ctr:2.2, comp_cvr:5.8},
+  {date:"2026-06-11", our_rank:1, our_gmv:747000, our_imp:35966, our_ctr:1.4, our_cvr:3.8, comp_id:"4024056", comp_brand:"티세르", comp_name:"마리나 시어서커 세트", comp_rank:2, comp_gmv:577100, comp_imp:3726, comp_ctr:5, comp_cvr:8.1},
+  {date:"2026-06-12", our_rank:11, our_gmv:124500, our_imp:10700, our_ctr:1.9, our_cvr:1.5, comp_id:"3467095", comp_brand:"댄스온더플로어", comp_name:"퍼리스 기능성 반팔 파자마", comp_rank:1, comp_gmv:396000, comp_imp:2722, comp_ctr:1.6, comp_cvr:7},
+  {date:"2026-06-13", our_rank:14, our_gmv:124500, our_imp:9253, our_ctr:2.2, our_cvr:2, comp_id:"4024056", comp_brand:"티세르", comp_name:"마리나 시어서커 세트", comp_rank:1, comp_gmv:3232000, comp_imp:5816, comp_ctr:33.3, comp_cvr:6.3},
+  {date:"2026-06-14", our_rank:13, our_gmv:373500, our_imp:10392, our_ctr:2.4, our_cvr:3.6, comp_id:"4024056", comp_brand:"티세르", comp_name:"마리나 시어서커 세트", comp_rank:1, comp_gmv:1933200, comp_imp:17809, comp_ctr:5.5, comp_cvr:7.2},
+  {date:"2026-06-15", our_rank:5, our_gmv:224100, our_imp:10682, our_ctr:1.6, our_cvr:3.5, comp_id:"4024056", comp_brand:"티세르", comp_name:"마리나 시어서커 세트", comp_rank:1, comp_gmv:375900, comp_imp:15681, comp_ctr:4.6, comp_cvr:2.3},
+  {date:"2026-06-16", our_rank:2, our_gmv:572700, our_imp:11750, our_ctr:2.1, our_cvr:5.6, comp_id:"4082044", comp_brand:null, comp_name:"[오집단독] 레이지 하프 파자마", comp_rank:1, comp_gmv:604800, comp_imp:1011, comp_ctr:4.1, comp_cvr:9.8},
+  {date:"2026-06-17", our_rank:1, our_gmv:498000, our_imp:8257, our_ctr:1.8, our_cvr:5.3, comp_id:"4024056", comp_brand:"티세르", comp_name:"마리나 시어서커 세트", comp_rank:2, comp_gmv:393800, comp_imp:4936, comp_ctr:4.8, comp_cvr:5.9}
 ];
 
 
@@ -2662,6 +2662,28 @@ function renderCategoryRank(){
   });
 
   renderCategoryRankTable();
+}
+
+
+function renderCompareTable(){
+  const tb=document.querySelector('#compareTable tbody'); tb.innerHTML='';
+  const months=[...new Set(COMPARE_BY_DATE.map(function(r){return mkey(r.date);}))].sort();
+  let sel=(monthSel.compare&&months.indexOf(monthSel.compare)>=0)?monthSel.compare:months[months.length-1];
+  monthSel.compare=sel;
+  buildMonthTabs('compareMonthTabs',months,sel,function(mk){ monthSel.compare=mk; renderCompareTable(); });
+  const pct=function(v){return v==null?'-':v.toFixed(1)+'%';};
+  const gw=function(v){return (v==null||v===0)?'-':Math.round(v/10000).toLocaleString('ko-KR')+'만';};
+  const cc=function(a,b){return (a!=null&&b!=null)?(a>=b?'color:#059669;font-weight:700;':'color:#dc2626;'):'';};
+  const rp=function(rk){ if(rk==null)return '-'; var c=rk===1?'background:#d1fae5;color:#065f46;':rk<=5?'background:#fef3c7;color:#92400e;':rk<=15?'background:#e0e7ff;color:#3730a3;':'background:#fee2e2;color:#991b1b;'; var lbl=rk===1?'🏆1위':rk+'위'; return '<span style="display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;font-weight:600;'+c+'">'+lbl+'</span>'; };
+  COMPARE_BY_DATE.filter(function(r){return mkey(r.date)===sel;}).forEach(function(r){
+    const brand = r.comp_brand?('<span style="font-weight:600;color:#374151;">'+r.comp_brand+'</span> '):'';
+    const tr=document.createElement('tr');
+    tr.innerHTML='<td>'+r.date+'</td>'+
+      '<td style="text-align:left;">'+brand+'<span style="color:#6b7280;font-size:12px;">'+r.comp_name+'</span> <span style="font-family:monospace;color:#9ca3af;font-size:11px;">'+r.comp_id+'</span></td>'+
+      '<td>'+rp(r.our_rank)+'</td><td>'+gw(r.our_gmv)+'</td><td>'+fmt(r.our_imp)+'</td><td style="'+cc(r.our_ctr,r.comp_ctr)+'">'+pct(r.our_ctr)+'</td><td style="'+cc(r.our_cvr,r.comp_cvr)+'">'+pct(r.our_cvr)+'</td>'+
+      '<td>'+rp(r.comp_rank)+'</td><td>'+gw(r.comp_gmv)+'</td><td>'+fmt(r.comp_imp)+'</td><td>'+pct(r.comp_ctr)+'</td><td>'+pct(r.comp_cvr)+'</td>';
+    tb.appendChild(tr);
+  });
 }
 
 initWeekTabs();
