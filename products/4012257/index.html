@@ -2244,14 +2244,14 @@ function drawDailySalesChart(){
   var allDates=Object.keys(byDate).sort();
   var cfg;
   if(dailySalesSel==='ALL'){
-    var cum=0, labels=[], vals=[];
-    allDates.forEach(function(d){ cum+=byDate[d].gmv; labels.push(d.slice(5)); vals.push(cum); });
+    var labels=[], vals=[];
+    allDates.forEach(function(d){ labels.push(d.slice(5)); vals.push(byDate[d].gmv); });
     cfg={ data:{labels:labels,datasets:[
-      {type:'line',label:'누적 거래액 (원)',data:vals,borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,0.12)',fill:true,tension:0.3,pointRadius:0,borderWidth:2}
+      {type:'line',label:'일별 거래액 (원)',data:vals,borderColor:'#f59e0b',backgroundColor:'#f59e0b',fill:false,tension:0.3,pointRadius:2,borderWidth:2}
     ]},
     options:{responsive:true,maintainAspectRatio:false,
-      plugins:{title:{display:true,text:'누적 거래액 추이 ('+(allDates[0]?allDates[0].slice(5):'')+'~)',font:{size:13,weight:'600'},color:'#374151'},legend:{position:'bottom',labels:{font:{size:11}}}},
-      scales:{ y:{beginAtZero:true,title:{display:true,text:'누적 거래액(원)',font:{size:11}},ticks:{font:{size:11},callback:function(v){return v.toLocaleString();}}} }
+      plugins:{title:{display:true,text:'일별 거래액 추이 ('+(allDates[0]?allDates[0].slice(5):'')+'~)',font:{size:13,weight:'600'},color:'#374151'},legend:{position:'bottom',labels:{font:{size:11}}}},
+      scales:{ y:{beginAtZero:true,title:{display:true,text:'거래액(원)',font:{size:11}},ticks:{font:{size:11},callback:function(v){return v.toLocaleString();}}} }
     }};
   } else {
     var dts=allDates.filter(function(d){return mkey(d)===dailySalesSel;});
@@ -2278,11 +2278,11 @@ function renderDailyTraffic(data){
   const fnlMap = Object.fromEntries(data.funnel.map(d=>[d.date,d]));
   const fnlData = data.dates.map(d=>fnlMap[d]||{date:d,imp_uv:null,pdp_uv:null,buyers:null});
   charts.dailyTraffic = new Chart(document.getElementById('dailyTrafficChart'),{
-    type:'bar',
+    type:'line',
     data:{labels:fnlData.map(d=>d.date.slice(5)),datasets:[
-      {label:'노출 UV',data:fnlData.map(d=>d.imp_uv),backgroundColor:'#8b5cf6',borderRadius:4},
-      {label:'PDP UV',data:fnlData.map(d=>d.pdp_uv),backgroundColor:'#10b981',borderRadius:4},
-      {label:'구매자', data:fnlData.map(d=>d.buyers),backgroundColor:'#f59e0b',borderRadius:4}
+      {label:'노출 UV',data:fnlData.map(d=>d.imp_uv),borderColor:'#8b5cf6',backgroundColor:'#8b5cf6',tension:0.3,fill:false,pointRadius:2,borderWidth:2,spanGaps:true},
+      {label:'PDP UV',data:fnlData.map(d=>d.pdp_uv),borderColor:'#10b981',backgroundColor:'#10b981',tension:0.3,fill:false,pointRadius:2,borderWidth:2,spanGaps:true},
+      {label:'구매자', data:fnlData.map(d=>d.buyers),borderColor:'#f59e0b',backgroundColor:'#f59e0b',tension:0.3,fill:false,pointRadius:2,borderWidth:2,spanGaps:true}
     ]},
     options:{responsive:true,maintainAspectRatio:false,
       plugins:{title:{display:true,text:'일자별 노출/PDP UV / 구매자',font:{size:13,weight:'600'},color:'#374151'},legend:{position:'bottom',labels:{font:{size:11}}}},
