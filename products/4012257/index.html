@@ -3064,7 +3064,7 @@ function renderFunnelTable(data){
   rows.forEach(function(d){
     const ctr=d.imp_uv&&d.pdp_uv?(d.pdp_uv/d.imp_uv*100).toFixed(1)+'%':'-';
     const cvr=d.pdp_uv&&d.buyers!=null?(d.buyers/d.pdp_uv*100).toFixed(1)+'%':'-';
-    const thumb=(d.date==='2026-05-13'||d.date==='2026-05-19')?' <span style="display:inline-block;font-size:10px;color:#4f46e5;background:#eef2ff;border-radius:4px;padding:1px 5px;margin-left:4px;vertical-align:middle;">📷 썸네일 변경</span>':'';
+    const thumb=(d.date==='2026-05-13'||d.date==='2026-05-19'||d.date==='2026-07-03')?' <span style="display:inline-block;font-size:10px;color:#4f46e5;background:#eef2ff;border-radius:4px;padding:1px 5px;margin-left:4px;vertical-align:middle;">📷 썸네일 변경</span>':'';
     const tr=document.createElement('tr');
     tr.innerHTML='<td>'+d.date+thumb+'</td><td>'+fmt(d.imp_uv)+'</td><td>'+fmt(d.pdp_uv)+'</td><td>'+fmt(d.buyers)+'</td><td>'+ctr+'</td><td>'+cvr+'</td>';
     tbody.appendChild(tr);
