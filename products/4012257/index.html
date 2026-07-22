@@ -293,6 +293,24 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
     </div>
   </div>
 
+  <div class="section">
+    <h2>홈웨어 카테고리 전체 vs 우리 상품 월별 거래액 추이</h2>
+    <div class="desc">홈웨어 8개 sub 카테고리 전체 거래액과 우리(4012257) 거래액의 월별 추이 · 좌축=카테고리 전체(억원), 우축=우리(만원) · 4월(4/25 출시)·7월(~7/21)은 부분 집계</div>
+    <div class="summary-grid">
+      <div class="card primary"><div class="label">우리 누적 거래액</div><div class="value" id="mgOurTotal">-</div></div>
+      <div class="card success"><div class="label">카테고리 전체 누적</div><div class="value" id="mgCatTotal">-</div></div>
+      <div class="card cyan"><div class="label">우리 점유율(누적)</div><div class="value" id="mgShare">-</div></div>
+      <div class="card warning"><div class="label">최고 점유월</div><div class="value" id="mgBestMonth">-</div></div>
+    </div>
+    <div class="chart-wrap tall"><canvas id="monthlyGmvChart"></canvas></div>
+    <div style="margin-top:20px;">
+      <table id="monthlyGmvTable">
+        <thead><tr><th>월</th><th>우리 거래액(원)</th><th>우리 수량</th><th>카테고리 전체 거래액(원)</th><th>카테고리 수량</th><th>우리 점유율</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
   <div class="footer">
     데이터 기준일: 2026-07-21 KST · 결제: base_dt(KST) / PDP·노출: log_date(KST) · 7/21 PDP·노출 데이터는 적재 지연 (D+2)
   </div>
@@ -3691,8 +3709,58 @@ function renderCompareTable(){
   });
 }
 
+
+// =========================
+// 홈웨어 카테고리 전체 vs 우리 월별 거래액 추이
+// =========================
+const MONTHLY_GMV = [
+  {ym:"2026-04", our_gmv:1967100, cat_gmv:162293179, our_qty:79, cat_qty:6495, partial:true},
+  {ym:"2026-05", our_gmv:14815500, cat_gmv:192632711, our_qty:595, cat_qty:7695, partial:false},
+  {ym:"2026-06", our_gmv:11080500, cat_gmv:213163151, our_qty:445, cat_qty:9242, partial:false},
+  {ym:"2026-07", our_gmv:4834000, cat_gmv:101865805, our_qty:200, cat_qty:4381, partial:true}
+];
+let monthlyGmvChart=null;
+function renderMonthlyGmv(){
+  const rows=MONTHLY_GMV;
+  const labels=rows.map(r=>parseInt(r.ym.slice(5))+"월"+(r.partial?"*":""));
+  if(monthlyGmvChart) monthlyGmvChart.destroy();
+  monthlyGmvChart=new Chart(document.getElementById("monthlyGmvChart"),{
+    type:"line",
+    data:{labels,datasets:[
+      {label:"카테고리 전체 GMV",data:rows.map(r=>r.cat_gmv),borderColor:"#10b981",backgroundColor:"rgba(16,185,129,0.12)",yAxisID:"yCat",tension:.3,pointRadius:4,borderWidth:2,fill:true},
+      {label:"우리 GMV (4012257)",data:rows.map(r=>r.our_gmv),borderColor:"#4f46e5",backgroundColor:"#4f46e5",yAxisID:"yOur",tension:.3,pointRadius:4,borderWidth:2}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      interaction:{mode:"index",intersect:false},
+      plugins:{legend:{position:"top",labels:{font:{size:11},boxWidth:12}},
+        tooltip:{callbacks:{label:ctx=>{const r=rows[ctx.dataIndex];const v=ctx.parsed.y;const sh=(r.our_gmv/r.cat_gmv*100).toFixed(1);return ctx.datasetIndex===0?("카테고리 전체: "+fmt(v)+"원"):("우리: "+fmt(v)+"원 (점유율 "+sh+"%)");}}}},
+      scales:{
+        yCat:{position:"left",beginAtZero:true,title:{display:true,text:"카테고리 전체(억원)",font:{size:10}},ticks:{callback:v=>(v/100000000).toFixed(1)+"억",font:{size:11}}},
+        yOur:{position:"right",beginAtZero:true,grid:{drawOnChartArea:false},title:{display:true,text:"우리(만원)",font:{size:10}},ticks:{callback:v=>(v/10000)+"만",font:{size:11}}},
+        x:{ticks:{font:{size:11}}}
+      }}
+  });
+  const ourTot=rows.reduce((a,r)=>a+r.our_gmv,0);
+  const catTot=rows.reduce((a,r)=>a+r.cat_gmv,0);
+  const best=rows.slice().sort((a,b)=>(b.our_gmv/b.cat_gmv)-(a.our_gmv/a.cat_gmv))[0];
+  document.getElementById("mgOurTotal").textContent=(ourTot/10000).toFixed(0)+"만원";
+  document.getElementById("mgCatTotal").textContent=(catTot/100000000).toFixed(2)+"억원";
+  document.getElementById("mgShare").textContent=(ourTot/catTot*100).toFixed(2)+"%";
+  document.getElementById("mgBestMonth").textContent=parseInt(best.ym.slice(5))+"월 ("+(best.our_gmv/best.cat_gmv*100).toFixed(1)+"%)";
+  const tb=document.querySelector("#monthlyGmvTable tbody");tb.innerHTML="";
+  rows.forEach(r=>{
+    const sh=(r.our_gmv/r.cat_gmv*100).toFixed(2)+"%";
+    const tr=document.createElement("tr");
+    tr.innerHTML="<td>"+parseInt(r.ym.slice(5))+"월"+(r.partial?' <span style="color:#9ca3af;font-size:11px;">(부분)</span>':"")+"</td>"+
+      "<td>"+fmt(r.our_gmv)+"</td><td>"+fmt(r.our_qty)+"</td><td>"+fmt(r.cat_gmv)+"</td><td>"+fmt(r.cat_qty)+"</td>"+
+      '<td style="font-weight:700;color:#4f46e5;">'+sh+"</td>";
+    tb.appendChild(tr);
+  });
+}
+
 initWeekTabs();
 renderAll('ALL');
+renderMonthlyGmv();
 
 function renderMargin(){
   var tb=document.querySelector("#marginTable tbody"); if(!tb) return; tb.innerHTML="";
