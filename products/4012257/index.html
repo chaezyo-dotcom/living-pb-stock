@@ -295,13 +295,15 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
 
   <div class="section">
     <h2>홈웨어 카테고리 전체 vs 우리 상품 월별 거래액 추이</h2>
-    <div class="desc">홈웨어 8개 sub 카테고리 전체 거래액과 우리(4012257) 거래액의 월별 추이 · 좌축=카테고리 전체(억원), 우축=우리(만원) · 4월(4/25 출시)·7월(~7/21)은 부분 집계</div>
+    <div class="desc">홈웨어 8개 sub 카테고리 전체 거래액과 우리(4012257) 거래액 추이 · 좌축=카테고리 전체(억원), 우축=우리(만원) · <b>월 탭을 누르면 해당 월의 주차별 추이</b>로 전환 · 4월(4/25 출시)·7월(~7/21)은 부분 집계</div>
     <div class="summary-grid">
       <div class="card primary"><div class="label">우리 누적 거래액</div><div class="value" id="mgOurTotal">-</div></div>
       <div class="card success"><div class="label">카테고리 전체 누적</div><div class="value" id="mgCatTotal">-</div></div>
       <div class="card cyan"><div class="label">우리 점유율(누적)</div><div class="value" id="mgShare">-</div></div>
       <div class="card warning"><div class="label">최고 점유월</div><div class="value" id="mgBestMonth">-</div></div>
     </div>
+    <div class="month-subtabs" id="mgTabs" style="margin-bottom:14px;"></div>
+    <div id="mgSubtitle" style="font-size:13px;font-weight:600;color:#374151;margin-bottom:8px;"></div>
     <div class="chart-wrap tall"><canvas id="monthlyGmvChart"></canvas></div>
     <div style="margin-top:20px;">
       <table id="monthlyGmvTable">
@@ -3713,50 +3715,179 @@ function renderCompareTable(){
 // =========================
 // 홈웨어 카테고리 전체 vs 우리 월별 거래액 추이
 // =========================
-const MONTHLY_GMV = [
-  {ym:"2026-04", our_gmv:1967100, cat_gmv:162293179, our_qty:79, cat_qty:6495, partial:true},
-  {ym:"2026-05", our_gmv:14815500, cat_gmv:192632711, our_qty:595, cat_qty:7695, partial:false},
-  {ym:"2026-06", our_gmv:11080500, cat_gmv:213163151, our_qty:445, cat_qty:9242, partial:false},
-  {ym:"2026-07", our_gmv:4834000, cat_gmv:101865805, our_qty:200, cat_qty:4381, partial:true}
+const DAILY_CAT_GMV = [
+  {d:"2026-04-25",o:49800,c:3275718,oq:2,cq:120},
+  {d:"2026-04-26",o:0,c:3400890,oq:0,cq:154},
+  {d:"2026-04-27",o:423300,c:3935568,oq:17,cq:160},
+  {d:"2026-04-28",o:174300,c:4740370,oq:7,cq:168},
+  {d:"2026-04-29",o:99600,c:3599696,oq:4,cq:202},
+  {d:"2026-04-30",o:74700,c:2901658,oq:3,cq:130},
+  {d:"2026-05-01",o:74700,c:3182550,oq:3,cq:111},
+  {d:"2026-05-02",o:74700,c:2455740,oq:3,cq:78},
+  {d:"2026-05-03",o:199200,c:3851854,oq:8,cq:145},
+  {d:"2026-05-04",o:224100,c:6755154,oq:9,cq:202},
+  {d:"2026-05-05",o:348600,c:7150800,oq:14,cq:248},
+  {d:"2026-05-06",o:1319700,c:18476405,oq:53,cq:702},
+  {d:"2026-05-07",o:298800,c:9147110,oq:12,cq:342},
+  {d:"2026-05-08",o:323700,c:5565521,oq:13,cq:198},
+  {d:"2026-05-09",o:298800,c:8636323,oq:12,cq:326},
+  {d:"2026-05-10",o:547800,c:8377788,oq:22,cq:327},
+  {d:"2026-05-11",o:249000,c:4004146,oq:10,cq:163},
+  {d:"2026-05-12",o:473100,c:4851010,oq:19,cq:188},
+  {d:"2026-05-13",o:473100,c:4013098,oq:19,cq:155},
+  {d:"2026-05-14",o:1269900,c:3632850,oq:51,cq:160},
+  {d:"2026-05-15",o:174300,c:3695034,oq:7,cq:149},
+  {d:"2026-05-16",o:348600,c:3139253,oq:14,cq:130},
+  {d:"2026-05-17",o:597600,c:13426484,oq:24,cq:578},
+  {d:"2026-05-18",o:498000,c:9245740,oq:20,cq:393},
+  {d:"2026-05-19",o:298800,c:7006040,oq:12,cq:288},
+  {d:"2026-05-20",o:522900,c:8588730,oq:21,cq:350},
+  {d:"2026-05-21",o:1444200,c:5692960,oq:58,cq:238},
+  {d:"2026-05-22",o:348600,c:5152400,oq:14,cq:190},
+  {d:"2026-05-23",o:99600,c:5100033,oq:4,cq:202},
+  {d:"2026-05-24",o:149400,c:4949819,oq:6,cq:206},
+  {d:"2026-05-25",o:647400,c:5293190,oq:26,cq:225},
+  {d:"2026-05-26",o:522900,c:5152080,oq:21,cq:256},
+  {d:"2026-05-27",o:522900,c:5098175,oq:21,cq:229},
+  {d:"2026-05-28",o:1120500,c:5479260,oq:45,cq:233},
+  {d:"2026-05-29",o:473100,c:3311640,oq:19,cq:147},
+  {d:"2026-05-30",o:398400,c:3601912,oq:16,cq:158},
+  {d:"2026-05-31",o:473100,c:8599612,oq:19,cq:378},
+  {d:"2026-06-01",o:572700,c:5839952,oq:23,cq:232},
+  {d:"2026-06-02",o:572700,c:6374460,oq:23,cq:263},
+  {d:"2026-06-03",o:522900,c:5708014,oq:21,cq:255},
+  {d:"2026-06-04",o:1195200,c:6749894,oq:48,cq:278},
+  {d:"2026-06-05",o:273900,c:3525557,oq:11,cq:169},
+  {d:"2026-06-06",o:273900,c:7479540,oq:11,cq:341},
+  {d:"2026-06-07",o:522900,c:5597440,oq:21,cq:249},
+  {d:"2026-06-08",o:348600,c:8986820,oq:14,cq:381},
+  {d:"2026-06-09",o:124500,c:7138421,oq:5,cq:304},
+  {d:"2026-06-10",o:224100,c:8400340,oq:9,cq:398},
+  {d:"2026-06-11",o:747000,c:8005207,oq:30,cq:365},
+  {d:"2026-06-12",o:124500,c:6609795,oq:5,cq:243},
+  {d:"2026-06-13",o:124500,c:10724320,oq:5,cq:471},
+  {d:"2026-06-14",o:373500,c:21660980,oq:15,cq:983},
+  {d:"2026-06-15",o:224100,c:6863258,oq:9,cq:269},
+  {d:"2026-06-16",o:572700,c:7777611,oq:23,cq:325},
+  {d:"2026-06-17",o:498000,c:7374070,oq:20,cq:296},
+  {d:"2026-06-18",o:522900,c:6073391,oq:21,cq:281},
+  {d:"2026-06-19",o:348600,c:6919618,oq:14,cq:244},
+  {d:"2026-06-20",o:99600,c:5205616,oq:4,cq:213},
+  {d:"2026-06-21",o:522900,c:20306250,oq:21,cq:920},
+  {d:"2026-06-22",o:124500,c:3901782,oq:5,cq:175},
+  {d:"2026-06-23",o:149400,c:3322419,oq:6,cq:150},
+  {d:"2026-06-24",o:298800,c:3476192,oq:12,cq:170},
+  {d:"2026-06-25",o:971100,c:3807378,oq:39,cq:152},
+  {d:"2026-06-26",o:74700,c:2709081,oq:3,cq:110},
+  {d:"2026-06-27",o:74700,c:2304788,oq:3,cq:103},
+  {d:"2026-06-28",o:49800,c:2781174,oq:2,cq:121},
+  {d:"2026-06-29",o:398400,c:4403183,oq:16,cq:185},
+  {d:"2026-06-30",o:149400,c:13136600,oq:6,cq:596},
+  {d:"2026-07-01",o:174300,c:5788473,oq:7,cq:253},
+  {d:"2026-07-02",o:771900,c:4978580,oq:31,cq:196},
+  {d:"2026-07-03",o:170300,c:4957588,oq:7,cq:203},
+  {d:"2026-07-04",o:239000,c:4607580,oq:10,cq:180},
+  {d:"2026-07-05",o:403300,c:6457305,oq:17,cq:277},
+  {d:"2026-07-06",o:172300,c:4566919,oq:7,cq:215},
+  {d:"2026-07-07",o:145400,c:4949574,oq:6,cq:193},
+  {d:"2026-07-08",o:118500,c:3606110,oq:5,cq:136},
+  {d:"2026-07-09",o:49800,c:5020800,oq:2,cq:195},
+  {d:"2026-07-10",o:288800,c:7706810,oq:12,cq:339},
+  {d:"2026-07-11",o:214100,c:5050490,oq:9,cq:196},
+  {d:"2026-07-12",o:307700,c:4976622,oq:13,cq:242},
+  {d:"2026-07-13",o:338600,c:4307614,oq:14,cq:206},
+  {d:"2026-07-14",o:118500,c:5516650,oq:5,cq:246},
+  {d:"2026-07-15",o:193200,c:3951910,oq:8,cq:163},
+  {d:"2026-07-16",o:384400,c:3742880,oq:16,cq:162},
+  {d:"2026-07-17",o:24900,c:7273310,oq:1,cq:338},
+  {d:"2026-07-18",o:263900,c:2924000,oq:11,cq:125},
+  {d:"2026-07-19",o:47800,c:5037160,oq:2,cq:232},
+  {d:"2026-07-20",o:212100,c:3629639,oq:9,cq:155},
+  {d:"2026-07-21",o:195200,c:2815791,oq:8,cq:129}
 ];
 let monthlyGmvChart=null;
-function renderMonthlyGmv(){
-  const rows=MONTHLY_GMV;
-  const labels=rows.map(r=>parseInt(r.ym.slice(5))+"월"+(r.partial?"*":""));
+let mgMode='ALL';
+const mgMonths=[...new Set(DAILY_CAT_GMV.map(r=>r.d.slice(0,7)))].sort();
+function mgAgg(rows,keyFn){
+  const m={};
+  rows.forEach(r=>{const k=keyFn(r); if(!m[k])m[k]={key:k,o:0,c:0,oq:0,cq:0,dates:[]}; const g=m[k]; g.o+=r.o;g.c+=r.c;g.oq+=r.oq;g.cq+=r.cq;g.dates.push(r.d);});
+  return Object.values(m).sort((a,b)=>a.key<b.key?-1:1).map(g=>{g.dates.sort();g.dmin=g.dates[0];g.dmax=g.dates[g.dates.length-1];return g;});
+}
+function mgRenderTabs(){
+  const c=document.getElementById('mgTabs'); if(!c) return; c.innerHTML='';
+  const tabs=[{k:'ALL',label:'전체(월별)'}].concat(mgMonths.map(m=>({k:m,label:parseInt(m.slice(5))+'월'})));
+  tabs.forEach(t=>{
+    const b=document.createElement('button');
+    b.className='msub'+(t.k===mgMode?' active':'');
+    b.textContent=t.label;
+    b.onclick=()=>{mgMode=t.k; mgRenderTabs(); mgRenderChart();};
+    c.appendChild(b);
+  });
+}
+function mgRenderChart(){
+  let buckets, labels, subtitle, tableFirstCol;
+  if(mgMode==='ALL'){
+    buckets=mgAgg(DAILY_CAT_GMV, r=>r.d.slice(0,7));
+    labels=buckets.map(g=>{const mn=parseInt(g.key.slice(5)); const partial=(g.key===mgMonths[0]||g.key===mgMonths[mgMonths.length-1]); return mn+'월'+(partial?'*':'');});
+    subtitle='📅 월별 추이 · 월 탭을 누르면 해당 월 주차별 추이로 전환 · * = 부분 집계 월';
+    tableFirstCol='월';
+  } else {
+    const src=DAILY_CAT_GMV.filter(r=>r.d.slice(0,7)===mgMode);
+    buckets=mgAgg(src, r=>getISOWeek(r.d));
+    labels=buckets.map(g=>{const s=g.dmin.slice(5).replace('-','/');const e=g.dmax.slice(5).replace('-','/');return s+'~'+e;});
+    subtitle='📅 '+parseInt(mgMode.slice(5))+'월 주차별 추이 (ISO 주차, 월~일 · 월 경계 주차는 해당 월 일자만 합산)';
+    tableFirstCol='주차';
+  }
   if(monthlyGmvChart) monthlyGmvChart.destroy();
-  monthlyGmvChart=new Chart(document.getElementById("monthlyGmvChart"),{
-    type:"line",
+  monthlyGmvChart=new Chart(document.getElementById('monthlyGmvChart'),{
+    type:'line',
     data:{labels,datasets:[
-      {label:"카테고리 전체 GMV",data:rows.map(r=>r.cat_gmv),borderColor:"#10b981",backgroundColor:"rgba(16,185,129,0.12)",yAxisID:"yCat",tension:.3,pointRadius:4,borderWidth:2,fill:true},
-      {label:"우리 GMV (4012257)",data:rows.map(r=>r.our_gmv),borderColor:"#4f46e5",backgroundColor:"#4f46e5",yAxisID:"yOur",tension:.3,pointRadius:4,borderWidth:2}
+      {label:'카테고리 전체 GMV',data:buckets.map(g=>g.c),borderColor:'#10b981',backgroundColor:'rgba(16,185,129,0.12)',yAxisID:'yCat',tension:.3,pointRadius:4,borderWidth:2,fill:true},
+      {label:'우리 GMV (4012257)',data:buckets.map(g=>g.o),borderColor:'#4f46e5',backgroundColor:'#4f46e5',yAxisID:'yOur',tension:.3,pointRadius:4,borderWidth:2}
     ]},
     options:{responsive:true,maintainAspectRatio:false,
-      interaction:{mode:"index",intersect:false},
-      plugins:{legend:{position:"top",labels:{font:{size:11},boxWidth:12}},
-        tooltip:{callbacks:{label:ctx=>{const r=rows[ctx.dataIndex];const v=ctx.parsed.y;const sh=(r.our_gmv/r.cat_gmv*100).toFixed(1);return ctx.datasetIndex===0?("카테고리 전체: "+fmt(v)+"원"):("우리: "+fmt(v)+"원 (점유율 "+sh+"%)");}}}},
+      interaction:{mode:'index',intersect:false},
+      plugins:{legend:{position:'top',labels:{font:{size:11},boxWidth:12}},
+        tooltip:{callbacks:{label:ctx=>{const g=buckets[ctx.dataIndex];const v=ctx.parsed.y;const sh=g.c?(g.o/g.c*100).toFixed(1):'0';return ctx.datasetIndex===0?('카테고리 전체: '+fmt(v)+'원'):('우리: '+fmt(v)+'원 (점유율 '+sh+'%)');}}}},
       scales:{
-        yCat:{position:"left",beginAtZero:true,title:{display:true,text:"카테고리 전체(억원)",font:{size:10}},ticks:{callback:v=>(v/100000000).toFixed(1)+"억",font:{size:11}}},
-        yOur:{position:"right",beginAtZero:true,grid:{drawOnChartArea:false},title:{display:true,text:"우리(만원)",font:{size:10}},ticks:{callback:v=>(v/10000)+"만",font:{size:11}}},
-        x:{ticks:{font:{size:11}}}
+        yCat:{position:'left',beginAtZero:true,title:{display:true,text:'카테고리 전체(억원)',font:{size:10}},ticks:{callback:v=>(v/100000000).toFixed(1)+'억',font:{size:11}}},
+        yOur:{position:'right',beginAtZero:true,grid:{drawOnChartArea:false},title:{display:true,text:'우리(만원)',font:{size:10}},ticks:{callback:v=>(v/10000)+'만',font:{size:11}}},
+        x:{ticks:{font:{size:10},maxRotation:45,minRotation:0}}
       }}
   });
-  const ourTot=rows.reduce((a,r)=>a+r.our_gmv,0);
-  const catTot=rows.reduce((a,r)=>a+r.cat_gmv,0);
-  const best=rows.slice().sort((a,b)=>(b.our_gmv/b.cat_gmv)-(a.our_gmv/a.cat_gmv))[0];
-  document.getElementById("mgOurTotal").textContent=(ourTot/10000).toFixed(0)+"만원";
-  document.getElementById("mgCatTotal").textContent=(catTot/100000000).toFixed(2)+"억원";
-  document.getElementById("mgShare").textContent=(ourTot/catTot*100).toFixed(2)+"%";
-  document.getElementById("mgBestMonth").textContent=parseInt(best.ym.slice(5))+"월 ("+(best.our_gmv/best.cat_gmv*100).toFixed(1)+"%)";
-  const tb=document.querySelector("#monthlyGmvTable tbody");tb.innerHTML="";
-  rows.forEach(r=>{
-    const sh=(r.our_gmv/r.cat_gmv*100).toFixed(2)+"%";
-    const tr=document.createElement("tr");
-    tr.innerHTML="<td>"+parseInt(r.ym.slice(5))+"월"+(r.partial?' <span style="color:#9ca3af;font-size:11px;">(부분)</span>':"")+"</td>"+
-      "<td>"+fmt(r.our_gmv)+"</td><td>"+fmt(r.our_qty)+"</td><td>"+fmt(r.cat_gmv)+"</td><td>"+fmt(r.cat_qty)+"</td>"+
-      '<td style="font-weight:700;color:#4f46e5;">'+sh+"</td>";
+  const st=document.getElementById('mgSubtitle'); if(st) st.textContent=subtitle;
+  const th=document.querySelector('#monthlyGmvTable thead th'); if(th) th.textContent=tableFirstCol;
+  const ourTot=buckets.reduce((a,g)=>a+g.o,0);
+  const catTot=buckets.reduce((a,g)=>a+g.c,0);
+  const best=buckets.slice().sort((a,b)=>(b.o/b.c)-(a.o/a.c))[0];
+  const setCard=(id,label,val)=>{const el=document.getElementById(id); if(el){el.textContent=val; if(el.previousElementSibling) el.previousElementSibling.textContent=label;}};
+  if(mgMode==='ALL'){
+    setCard('mgOurTotal','우리 누적 거래액',(ourTot/10000).toFixed(0)+'만원');
+    setCard('mgCatTotal','카테고리 전체 누적',(catTot/100000000).toFixed(2)+'억원');
+    setCard('mgShare','우리 점유율(누적)',(ourTot/catTot*100).toFixed(2)+'%');
+    setCard('mgBestMonth','최고 점유월', best?parseInt(best.key.slice(5))+'월 ('+(best.o/best.c*100).toFixed(1)+'%)':'-');
+  } else {
+    const mn=parseInt(mgMode.slice(5));
+    setCard('mgOurTotal','우리 '+mn+'월 거래액',(ourTot/10000).toFixed(0)+'만원');
+    setCard('mgCatTotal','카테고리 '+mn+'월 거래액',(catTot/100000000).toFixed(2)+'억원');
+    setCard('mgShare',mn+'월 점유율',(catTot?(ourTot/catTot*100).toFixed(2):'0')+'%');
+    const bl=best?(best.dmin.slice(5).replace('-','/')+'~'+best.dmax.slice(5).replace('-','/')+' ('+(best.o/best.c*100).toFixed(1)+'%)'):'-';
+    setCard('mgBestMonth','최고 점유주차',bl);
+  }
+  const tb=document.querySelector('#monthlyGmvTable tbody'); tb.innerHTML='';
+  buckets.forEach((g,i)=>{
+    const sh=g.c?(g.o/g.c*100).toFixed(2)+'%':'-';
+    let firstCol;
+    if(mgMode==='ALL'){const mn=parseInt(g.key.slice(5));const partial=(g.key===mgMonths[0]||g.key===mgMonths[mgMonths.length-1]);firstCol=mn+'월'+(partial?' <span style="color:#9ca3af;font-size:11px;">(부분)</span>':'');}
+    else {firstCol=labels[i]+' <span style="color:#9ca3af;font-size:11px;">'+g.key.slice(-3)+'</span>';}
+    const tr=document.createElement('tr');
+    tr.innerHTML='<td>'+firstCol+'</td><td>'+fmt(g.o)+'</td><td>'+fmt(g.oq)+'</td><td>'+fmt(g.c)+'</td><td>'+fmt(g.cq)+'</td><td style="font-weight:700;color:#4f46e5;">'+sh+'</td>';
     tb.appendChild(tr);
   });
 }
+function renderMonthlyGmv(){ mgRenderTabs(); mgRenderChart(); }
+
+
 
 initWeekTabs();
 renderAll('ALL');
