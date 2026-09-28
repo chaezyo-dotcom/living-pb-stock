@@ -96,7 +96,7 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
     <div class="subtitle">상품코드 4012257 · 3 colors (스카이블루 / 그린 / 핑크) · M / L 사이즈</div>
     <div class="meta">
       <span>판매시작 2026-04-24</span>
-      <span>리포트 기준 2026-09-22</span>
+      <span>리포트 기준 2026-09-27</span>
       <span>Source: finance_datahub.df_com_sales · ba_preserved.total_pdp_facts · ba_preserved.smba_daily_pdp_imps_v2 · ba_preserved.commerce_product_search_tb</span>
     </div>
   </div>
@@ -457,7 +457,7 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
   </div>
 
   <div class="footer">
-    데이터 기준일: 2026-09-22 KST · 결제: base_dt(KST) / PDP·노출: log_date(KST)
+    데이터 기준일: 2026-09-27 KST · 결제: base_dt(KST) / PDP·노출: log_date(KST)
   </div>
 </div>
 
@@ -1037,6 +1037,12 @@ const DAILY_OPTION = [
   {date:"2026-09-20",option_id:"30093902",color:"그린",size:"L",qty:1,gmv:22900,cancel_qty:0,cancel_gmv:0},
   {date:"2026-09-22",option_id:"30093900",color:"스카이블루",size:"L",qty:1,gmv:22900,cancel_qty:0,cancel_gmv:0},
   {date:"2026-09-22",option_id:"30093903",color:"핑크",size:"M",qty:1,gmv:19900,cancel_qty:0,cancel_gmv:0}
+,
+  {date:"2026-09-23", option_id:"30093900", color:"스카이블루", size:"L", qty:1, gmv:22900, cancel_qty:0, cancel_gmv:0},
+  {date:"2026-09-24", option_id:"30093903", color:"핑크", size:"M", qty:1, gmv:19900, cancel_qty:0, cancel_gmv:0},
+  {date:"2026-09-25", option_id:"30093900", color:"스카이블루", size:"L", qty:1, gmv:22900, cancel_qty:0, cancel_gmv:0},
+  {date:"2026-09-27", option_id:"30093901", color:"그린", size:"M", qty:2, gmv:39800, cancel_qty:0, cancel_gmv:0},
+  {date:"2026-09-27", option_id:"30093902", color:"그린", size:"L", qty:1, gmv:22900, cancel_qty:0, cancel_gmv:0}
 ];
 
 const DAILY_FUNNEL = [
@@ -1191,6 +1197,12 @@ const DAILY_FUNNEL = [
   {date:"2026-09-20", imp_uv:2151, imp_cnt:8292, pdp_pv:128, pdp_uv:40, buyers:3},
   {date:"2026-09-21", imp_uv:1614, imp_cnt:8983, pdp_pv:83, pdp_uv:34, buyers:0},
   {date:"2026-09-22", imp_uv:1557, imp_cnt:5109, pdp_pv:61, pdp_uv:27, buyers:1}
+,
+  {date:"2026-09-23", imp_uv:1563, imp_cnt:3575, pdp_pv:67, pdp_uv:26, buyers:1},
+  {date:"2026-09-24", imp_uv:1319, imp_cnt:3105, pdp_pv:108, pdp_uv:28, buyers:1},
+  {date:"2026-09-25", imp_uv:1693, imp_cnt:4183, pdp_pv:61, pdp_uv:37, buyers:1},
+  {date:"2026-09-26", imp_uv:1631, imp_cnt:4041, pdp_pv:81, pdp_uv:24, buyers:0},
+  {date:"2026-09-27", imp_uv:2445, imp_cnt:5787, pdp_pv:103, pdp_uv:44, buyers:1}
 ];
 
 const PATH_BY_DATE = [
@@ -2724,6 +2736,46 @@ const PATH_BY_DATE = [
   {date:"2026-09-22", channel:"store", imps:8},
   {date:"2026-09-22", channel:"home", imps:1},
   {date:"2026-09-22", channel:"ranks", imps:1}
+,
+  {date:"2026-09-23", channel:"category", imps:88},
+  {date:"2026-09-23", channel:"collection_books", imps:30},
+  {date:"2026-09-23", channel:"contents", imps:52},
+  {date:"2026-09-23", channel:"etc", imps:1969},
+  {date:"2026-09-23", channel:"pdp", imps:678},
+  {date:"2026-09-23", channel:"ranks", imps:1},
+  {date:"2026-09-23", channel:"search", imps:754},
+  {date:"2026-09-23", channel:"store", imps:3},
+  {date:"2026-09-24", channel:"category", imps:77},
+  {date:"2026-09-24", channel:"collection_books", imps:27},
+  {date:"2026-09-24", channel:"contents", imps:41},
+  {date:"2026-09-24", channel:"etc", imps:1408},
+  {date:"2026-09-24", channel:"exhibitions", imps:1},
+  {date:"2026-09-24", channel:"pdp", imps:741},
+  {date:"2026-09-24", channel:"search", imps:806},
+  {date:"2026-09-24", channel:"store", imps:4},
+  {date:"2026-09-25", channel:"category", imps:101},
+  {date:"2026-09-25", channel:"collection_books", imps:14},
+  {date:"2026-09-25", channel:"contents", imps:36},
+  {date:"2026-09-25", channel:"etc", imps:1527},
+  {date:"2026-09-25", channel:"pdp", imps:1431},
+  {date:"2026-09-25", channel:"search", imps:1070},
+  {date:"2026-09-25", channel:"store", imps:3},
+  {date:"2026-09-25", channel:"today_deals", imps:1},
+  {date:"2026-09-26", channel:"category", imps:126},
+  {date:"2026-09-26", channel:"collection_books", imps:25},
+  {date:"2026-09-26", channel:"contents", imps:64},
+  {date:"2026-09-26", channel:"etc", imps:1759},
+  {date:"2026-09-26", channel:"pdp", imps:1056},
+  {date:"2026-09-26", channel:"search", imps:1010},
+  {date:"2026-09-26", channel:"store", imps:1},
+  {date:"2026-09-27", channel:"category", imps:149},
+  {date:"2026-09-27", channel:"collection_books", imps:18},
+  {date:"2026-09-27", channel:"contents", imps:94},
+  {date:"2026-09-27", channel:"etc", imps:2648},
+  {date:"2026-09-27", channel:"home", imps:1},
+  {date:"2026-09-27", channel:"pdp", imps:1562},
+  {date:"2026-09-27", channel:"search", imps:1314},
+  {date:"2026-09-27", channel:"store", imps:1}
 ];
 
 const REFERRER_BY_DATE = [
@@ -3955,6 +4007,31 @@ const REFERRER_BY_DATE = [
   {date:"2026-09-22", type:"USERS", pv:2, uv:null},
   {date:"2026-09-22", type:"DETAIL", pv:1, uv:null},
   {date:"2026-09-22", type:"OGARDEN_GAME_HOME", pv:1, uv:null}
+,
+  {date:"2026-09-23", type:"PRODUCTIONS", pv:13, uv:null},
+  {date:"2026-09-23", type:"CARD_COLLECTIONS", pv:2, uv:null},
+  {date:"2026-09-23", type:"DIRECT", pv:51, uv:null},
+  {date:"2026-09-23", type:"DETAIL", pv:1, uv:null},
+  {date:"2026-09-24", type:"PRODUCTIONS", pv:4, uv:null},
+  {date:"2026-09-24", type:"USERS", pv:4, uv:null},
+  {date:"2026-09-24", type:"DIRECT", pv:96, uv:null},
+  {date:"2026-09-24", type:"CARD_COLLECTIONS", pv:1, uv:null},
+  {date:"2026-09-24", type:"BRANDS", pv:3, uv:null},
+  {date:"2026-09-25", type:"PRODUCTIONS", pv:3, uv:null},
+  {date:"2026-09-25", type:"DIRECT", pv:53, uv:null},
+  {date:"2026-09-25", type:"DETAIL", pv:3, uv:null},
+  {date:"2026-09-25", type:"BRANDS", pv:2, uv:null},
+  {date:"2026-09-26", type:"PRODUCTIONS", pv:8, uv:null},
+  {date:"2026-09-26", type:"BRANDS", pv:1, uv:null},
+  {date:"2026-09-26", type:"DETAIL", pv:1, uv:null},
+  {date:"2026-09-26", type:"DIRECT", pv:71, uv:null},
+  {date:"2026-09-27", type:"PRODUCTIONS", pv:9, uv:null},
+  {date:"2026-09-27", type:"BRANDS", pv:2, uv:null},
+  {date:"2026-09-27", type:"DETAIL", pv:2, uv:null},
+  {date:"2026-09-27", type:"OGARDEN_GAME_HOME", pv:1, uv:null},
+  {date:"2026-09-27", type:"ORDERS", pv:1, uv:null},
+  {date:"2026-09-27", type:"CARD_COLLECTIONS", pv:1, uv:null},
+  {date:"2026-09-27", type:"DIRECT", pv:87, uv:null}
 ];
 
 const SRP_KEYWORDS = [
@@ -4173,6 +4250,12 @@ const CATEGORY_RANK = [
   {date:"2026-09-20", our_rank:16, our_gmv:62700, our_qty:3, total:91, top_goods_id:"3424228", top_gmv:246000},
   {date:"2026-09-21", our_rank:null, our_gmv:0, our_qty:0, total:80, top_goods_id:"3995591", top_gmv:167700},
   {date:"2026-09-22", our_rank:16, our_gmv:42800, our_qty:2, total:57, top_goods_id:"3764743", top_gmv:164000}
+,
+  {date:"2026-09-23", our_rank:33, our_gmv:22900, our_qty:1, total:48, top_goods_id:"3424228", top_gmv:164000},
+  {date:"2026-09-24", our_rank:31, our_gmv:19900, our_qty:1, total:41, top_goods_id:"3424228", top_gmv:328000},
+  {date:"2026-09-25", our_rank:40, our_gmv:22900, our_qty:1, total:62, top_goods_id:"3518885", top_gmv:274200},
+  {date:"2026-09-26", our_rank:null, our_gmv:0, our_qty:0, total:58, top_goods_id:"4178580", top_gmv:119700},
+  {date:"2026-09-27", our_rank:17, our_gmv:62700, our_qty:3, total:74, top_goods_id:"4178580", top_gmv:119700}
 ];
 const COMPARE_BY_DATE = [
   {date:"2026-04-25", our_rank:17, our_gmv:49800, our_imp:346, our_ctr:6.1, our_cvr:4.8, comp_id:"3703917", comp_brand:"오셀픽", comp_name:"더 클래식 긴팔 파자마", comp_rank:1, comp_gmv:322600, comp_imp:1640, comp_ctr:4.5, comp_cvr:8.2},
@@ -4326,6 +4409,12 @@ const COMPARE_BY_DATE = [
   {date:"2026-09-20", our_rank:16, our_gmv:62700, our_imp:2151, our_ctr:1.9, our_cvr:7.5, comp_id:"3424228", comp_brand:"댄스온더플로어", comp_name:"Furless pajamas 퍼리스 긴팔파자마 - 스트라이프 (11color, 3size)", comp_rank:1, comp_gmv:246000, comp_imp:2561, comp_ctr:2.5, comp_cvr:3.1},
   {date:"2026-09-21", our_rank:null, our_gmv:0, our_imp:1614, our_ctr:2.1, our_cvr:0.0, comp_id:"3995591", comp_brand:null, comp_name:"숏 시에스타 파자마 스크런치 파우치 세트 (4색상)", comp_rank:1, comp_gmv:167700, comp_imp:45, comp_ctr:2.2, comp_cvr:100.0},
   {date:"2026-09-22", our_rank:16, our_gmv:42800, our_imp:1557, our_ctr:1.7, our_cvr:3.7, comp_id:"3764743", comp_brand:"댄스온더플로어", comp_name:"Furless pajamas 퍼리스 긴팔파자마 - 레오파드 (9color, 3size)", comp_rank:1, comp_gmv:164000, comp_imp:1316, comp_ctr:1.9, comp_cvr:4.0}
+,
+  {date:"2026-09-23", our_rank:33, our_gmv:22900, our_imp:1563, our_ctr:1.7, our_cvr:3.8, comp_id:"3424228", comp_brand:"댄스온더플로어", comp_name:"Furless pajamas 퍼리스 긴팔파자마 - 스트라이프 (11color, 3size)", comp_rank:1, comp_gmv:164000, comp_imp:1886, comp_ctr:2.1, comp_cvr:2.5},
+  {date:"2026-09-24", our_rank:31, our_gmv:19900, our_imp:1319, our_ctr:2.1, our_cvr:3.6, comp_id:"3424228", comp_brand:"댄스온더플로어", comp_name:"Furless pajamas 퍼리스 긴팔파자마 - 스트라이프 (11color, 3size)", comp_rank:1, comp_gmv:328000, comp_imp:2192, comp_ctr:2.1, comp_cvr:4.3},
+  {date:"2026-09-25", our_rank:40, our_gmv:22900, our_imp:1693, our_ctr:2.2, our_cvr:2.7, comp_id:"3518885", comp_brand:"오늘의집layer", comp_name:"refine / 소프트워싱 40수 면 반팔/긴팔 파자마 세트, 3colors, M/L", comp_rank:1, comp_gmv:274200, comp_imp:1041, comp_ctr:5.2, comp_cvr:5.6},
+  {date:"2026-09-26", our_rank:null, our_gmv:0, our_imp:1631, our_ctr:1.5, our_cvr:0, comp_id:"4178580", comp_brand:null, comp_name:"refine /고밀도 순면 퍼케일 긴팔 잠옷 파자마 세트,5colors,M/L", comp_rank:1, comp_gmv:119700, comp_imp:2753, comp_ctr:2.4, comp_cvr:1.5},
+  {date:"2026-09-27", our_rank:17, our_gmv:62700, our_imp:2445, our_ctr:1.8, our_cvr:2.3, comp_id:"4178580", comp_brand:null, comp_name:"refine /고밀도 순면 퍼케일 긴팔 잠옷 파자마 세트,5colors,M/L", comp_rank:1, comp_gmv:119700, comp_imp:1900, comp_ctr:3.2, comp_cvr:3.3}
 ];
 
 
@@ -5455,6 +5544,12 @@ const DAILY_CAT_GMV = [
   {d:"2026-09-20",o:62700,c:3755320,oq:3,cq:154},
   {d:"2026-09-21",o:0,c:3284677,oq:0,cq:120},
   {d:"2026-09-22",o:42800,c:2116200,oq:2,cq:77}
+,
+  {d:"2026-09-23", o:22900, c:1923679, oq:1, cq:83},
+  {d:"2026-09-24", o:19900, c:1718750, oq:1, cq:76},
+  {d:"2026-09-25", o:22900, c:2388707, oq:1, cq:91},
+  {d:"2026-09-26", o:0, c:2504905, oq:0, cq:110},
+  {d:"2026-09-27", o:62700, c:3193590, oq:3, cq:113}
 ];
 let monthlyGmvChart=null;
 let mgMode='ALL';
