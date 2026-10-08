@@ -96,7 +96,7 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
     <div class="subtitle">상품코드 4012257 · 3 colors (스카이블루 / 그린 / 핑크) · M / L 사이즈</div>
     <div class="meta">
       <span>판매시작 2026-04-24</span>
-      <span>리포트 기준 2026-10-06</span>
+      <span>리포트 기준 2026-10-07</span>
       <span>Source: finance_datahub.df_com_sales · ba_preserved.total_pdp_facts · ba_preserved.smba_daily_pdp_imps_v2 · ba_preserved.commerce_product_search_tb</span>
     </div>
   </div>
@@ -457,7 +457,7 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
   </div>
 
   <div class="footer">
-    데이터 기준일: 2026-10-06 KST · 결제: base_dt(KST) / PDP·노출: log_date(KST)
+    데이터 기준일: 2026-10-07 KST · 결제: base_dt(KST) / PDP·노출: log_date(KST)
   </div>
 </div>
 
@@ -1210,7 +1210,8 @@ const DAILY_FUNNEL = [
   {date:"2026-10-03", imp_uv:768, imp_cnt:1567, pdp_pv:30, pdp_uv:18, buyers:0},
   {date:"2026-10-04", imp_uv:777, imp_cnt:1601, pdp_pv:41, pdp_uv:15, buyers:0},
   {date:"2026-10-05", imp_uv:835, imp_cnt:1778, pdp_pv:23, pdp_uv:11, buyers:0},
-  {date:"2026-10-06", imp_uv:782, imp_cnt:1626, pdp_pv:33, pdp_uv:20, buyers:0}
+  {date:"2026-10-06", imp_uv:782, imp_cnt:1626, pdp_pv:33, pdp_uv:20, buyers:0},
+  {date:"2026-10-07", imp_uv:638, imp_cnt:1384, pdp_pv:30, pdp_uv:14, buyers:0}
 ];
 
 const PATH_BY_DATE = [
@@ -2848,7 +2849,14 @@ const PATH_BY_DATE = [
   {date:"2026-10-06", channel:"etc", imps:397},
   {date:"2026-10-06", channel:"exhibitions", imps:14},
   {date:"2026-10-06", channel:"pdp", imps:2},
-  {date:"2026-10-06", channel:"search", imps:983}
+  {date:"2026-10-06", channel:"search", imps:983},
+  {date:"2026-10-07", channel:"category", imps:100},
+  {date:"2026-10-07", channel:"collection_books", imps:18},
+  {date:"2026-10-07", channel:"contents", imps:56},
+  {date:"2026-10-07", channel:"etc", imps:388},
+  {date:"2026-10-07", channel:"exhibitions", imps:6},
+  {date:"2026-10-07", channel:"pdp", imps:4},
+  {date:"2026-10-07", channel:"search", imps:812}
 ];
 
 const REFERRER_BY_DATE = [
@@ -4153,7 +4161,12 @@ const REFERRER_BY_DATE = [
   {date:"2026-10-06", type:"OGARDEN_GAME_HOME", pv:1, uv:null},
   {date:"2026-10-06", type:"ORDERS", pv:1, uv:null},
   {date:"2026-10-06", type:"PRODUCTIONS", pv:4, uv:null},
-  {date:"2026-10-06", type:"USERS", pv:1, uv:null}
+  {date:"2026-10-06", type:"USERS", pv:1, uv:null},
+  {date:"2026-10-07", type:"BRANDS", pv:2, uv:null},
+  {date:"2026-10-07", type:"CARD_COLLECTIONS", pv:1, uv:null},
+  {date:"2026-10-07", type:"DIRECT", pv:22, uv:null},
+  {date:"2026-10-07", type:"OGARDEN_GAME_HOME", pv:1, uv:null},
+  {date:"2026-10-07", type:"PRODUCTIONS", pv:4, uv:null}
 ];
 
 const SRP_KEYWORDS = [
@@ -4174,7 +4187,7 @@ const SRP_KEYWORDS = [
   {keyword:"목욕가운", cat_sessions:107, imps:0, avg_rank:0.0},
   {keyword:"티세르", cat_sessions:107, imps:40, avg_rank:4.8},
   {keyword:"가운", cat_sessions:103, imps:0, avg_rank:0.0},
-  {keyword:"여름잠옷", cat_sessions:102, imps:744, avg_rank:1.7},
+  {keyword:"여름잠옷", cat_sessions:102, imps:746, avg_rank:1.7},
   {keyword:"남자잠옷", cat_sessions:95, imps:140, avg_rank:1.4},
   {keyword:"댄스온더플로어", cat_sessions:92, imps:0, avg_rank:0.0},
   {keyword:"키티", cat_sessions:86, imps:0, avg_rank:0.0},
@@ -4385,7 +4398,8 @@ const CATEGORY_RANK = [
   {date:"2026-10-03", our_rank:null, our_gmv:0, our_qty:0, total:78, top_goods_id:"3424228", top_gmv:492000},
   {date:"2026-10-04", our_rank:null, our_gmv:0, our_qty:0, total:106, top_goods_id:"3703917", top_gmv:233100},
   {date:"2026-10-05", our_rank:null, our_gmv:0, our_qty:0, total:109, top_goods_id:"3424228", top_gmv:328000},
-  {date:"2026-10-06", our_rank:null, our_gmv:0, our_qty:0, total:96, top_goods_id:"3518885", top_gmv:255500}
+  {date:"2026-10-06", our_rank:null, our_gmv:0, our_qty:0, total:96, top_goods_id:"3518885", top_gmv:255500},
+  {date:"2026-10-07", our_rank:null, our_gmv:0, our_qty:0, total:90, top_goods_id:"4203507", top_gmv:246000}
 ];
 const COMPARE_BY_DATE = [
   {date:"2026-04-25", our_rank:17, our_gmv:49800, our_imp:346, our_ctr:6.1, our_cvr:4.8, comp_id:"3703917", comp_brand:"오셀픽", comp_name:"더 클래식 긴팔 파자마", comp_rank:1, comp_gmv:322600, comp_imp:1640, comp_ctr:4.5, comp_cvr:8.2},
@@ -4552,7 +4566,8 @@ const COMPARE_BY_DATE = [
   {date:"2026-10-03", our_rank:null, our_gmv:0, our_imp:768, our_ctr:2.3, our_cvr:0.0, comp_id:"3424228", comp_brand:"댄스온더플로어", comp_name:"Furless pajamas 퍼리스 긴팔파자마 - 스트라이프 (11color, 3size)", comp_rank:1, comp_gmv:492000, comp_imp:3364, comp_ctr:1.6, comp_cvr:5.6},
   {date:"2026-10-04", our_rank:null, our_gmv:0, our_imp:777, our_ctr:1.9, our_cvr:0.0, comp_id:"3703917", comp_brand:"오셀픽", comp_name:"더 클래식 긴팔 파자마 세트 여성 남성 잠옷 커플 홈웨어 2color", comp_rank:1, comp_gmv:233100, comp_imp:2307, comp_ctr:6.0, comp_cvr:4.3},
   {date:"2026-10-05", our_rank:null, our_gmv:0, our_imp:835, our_ctr:1.3, our_cvr:0.0, comp_id:"3424228", comp_brand:"댄스온더플로어", comp_name:"Furless pajamas 퍼리스 긴팔파자마 - 스트라이프 (11color, 3size)", comp_rank:1, comp_gmv:328000, comp_imp:7605, comp_ctr:1.0, comp_cvr:2.7},
-  {date:"2026-10-06", our_rank:null, our_gmv:0, our_imp:782, our_ctr:2.6, our_cvr:0.0, comp_id:"3518885", comp_brand:"오늘의집layer", comp_name:"refine / 소프트워싱 40수 면 반팔/긴팔 파자마 세트, 3colors, M/L", comp_rank:1, comp_gmv:255500, comp_imp:1949, comp_ctr:4.2, comp_cvr:6.1}
+  {date:"2026-10-06", our_rank:null, our_gmv:0, our_imp:782, our_ctr:2.6, our_cvr:0.0, comp_id:"3518885", comp_brand:"오늘의집layer", comp_name:"refine / 소프트워싱 40수 면 반팔/긴팔 파자마 세트, 3colors, M/L", comp_rank:1, comp_gmv:255500, comp_imp:1949, comp_ctr:4.2, comp_cvr:6.1},
+  {date:"2026-10-07", our_rank:null, our_gmv:0, our_imp:638, our_ctr:2.2, our_cvr:0.0, comp_id:"4203507", comp_brand:"댄스온더플로어", comp_name:"Furless pajamas 퍼리스 긴팔파자마 - 도트&체크 (3Color, 4Size)", comp_rank:1, comp_gmv:246000, comp_imp:296, comp_ctr:5.1, comp_cvr:6.7}
 ];
 
 
@@ -5695,7 +5710,8 @@ const DAILY_CAT_GMV = [
   {d:"2026-10-03",o:0,c:4460800,oq:0,cq:150},
   {d:"2026-10-04",o:0,c:4596040,oq:0,cq:163},
   {d:"2026-10-05",o:0,c:5845620,oq:0,cq:228},
-  {d:"2026-10-06",o:0,c:5100828,oq:0,cq:200}
+  {d:"2026-10-06",o:0,c:5100828,oq:0,cq:200},
+  {d:"2026-10-07",o:0,c:4093510,oq:0,cq:143}
 ];
 let monthlyGmvChart=null;
 let mgMode='ALL';
