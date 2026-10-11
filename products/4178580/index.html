@@ -96,7 +96,7 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
     <div class="subtitle">상품코드 4178580 · 5 colors (블랙 스트라이프 / 블루 스트라이프 / 퓨어 올리브 / 코지 베이지 / 내추럴 브라운) · M / L 사이즈</div>
     <div class="meta">
       <span>판매시작 2026-08-18</span>
-      <span>리포트 기준 2026-10-07</span>
+      <span>리포트 기준 2026-10-10</span>
       <span>Source: finance_datahub.df_com_sales · ba_preserved.total_pdp_facts · ba_preserved.smba_daily_pdp_imps_v2 · ba_preserved.commerce_product_search_tb</span>
     </div>
   </div>
@@ -450,7 +450,7 @@ tr.total td{background:#eef2ff;font-weight:700;color:#312e81;font-size:14px;bord
   </div>
 
   <div class="footer">
-    데이터 기준일: 2026-10-07 KST · 결제: base_dt(KST) / PDP·노출: log_date(KST)
+    데이터 기준일: 2026-10-10 KST · 결제: base_dt(KST) / PDP·노출: log_date(KST)
   </div>
 </div>
 
@@ -552,7 +552,14 @@ const DAILY_OPTION = [
   {date:"2026-10-06",option_id:"31378291",color:"퓨어 올리브",size:"M",qty:1,gmv:39900,cancel_qty:0,cancel_gmv:0},
   {date:"2026-10-06",option_id:"31378292",color:"퓨어 올리브",size:"L",qty:0,gmv:0,cancel_qty:1,cancel_gmv:39900},
   {date:"2026-10-06",option_id:"31378296",color:"내추럴 브라운",size:"L",qty:2,gmv:79800,cancel_qty:0,cancel_gmv:0},
-  {date:"2026-10-07",option_id:"31378293",color:"코지 베이지",size:"M",qty:2,gmv:79800,cancel_qty:0,cancel_gmv:0}
+  {date:"2026-10-07",option_id:"31378293",color:"코지 베이지",size:"M",qty:2,gmv:79800,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-10-08",option_id:"31378293",color:"코지 베이지",size:"M",qty:2,gmv:79800,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-10-09",option_id:"31378288",color:"블랙 스트라이프",size:"L",qty:1,gmv:39900,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-10-09",option_id:"31378293",color:"코지 베이지",size:"M",qty:2,gmv:79800,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-10-09",option_id:"31378296",color:"내추럴 브라운",size:"L",qty:1,gmv:39900,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-10-10",option_id:"31378288",color:"블랙 스트라이프",size:"L",qty:1,gmv:39900,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-10-10",option_id:"31378289",color:"블루 스트라이프",size:"M",qty:2,gmv:79800,cancel_qty:0,cancel_gmv:0},
+  {date:"2026-10-10",option_id:"31378291",color:"퓨어 올리브",size:"M",qty:1,gmv:39900,cancel_qty:0,cancel_gmv:0}
 ];
 
 const DAILY_FUNNEL = [
@@ -606,7 +613,10 @@ const DAILY_FUNNEL = [
   {date:"2026-10-04", imp_uv:2426, imp_cnt:7462, pdp_pv:187, pdp_uv:70, buyers:0},
   {date:"2026-10-05", imp_uv:2611, imp_cnt:8389, pdp_pv:223, pdp_uv:88, buyers:2},
   {date:"2026-10-06", imp_uv:2569, imp_cnt:8189, pdp_pv:282, pdp_uv:84, buyers:3},
-  {date:"2026-10-07", imp_uv:2871, imp_cnt:8603, pdp_pv:220, pdp_uv:76, buyers:2}
+  {date:"2026-10-07", imp_uv:2871, imp_cnt:8603, pdp_pv:220, pdp_uv:76, buyers:2},
+  {date:"2026-10-08", imp_uv:2861, imp_cnt:7670, pdp_pv:269, pdp_uv:90, buyers:2},
+  {date:"2026-10-09", imp_uv:2829, imp_cnt:7868, pdp_pv:300, pdp_uv:107, buyers:3},
+  {date:"2026-10-10", imp_uv:31271, imp_cnt:44944, pdp_pv:668, pdp_uv:266, buyers:4}
 ];
 
 const PATH_BY_DATE = [
@@ -1000,7 +1010,34 @@ const PATH_BY_DATE = [
   {date:"2026-10-07", channel:"home", imps:1},
   {date:"2026-10-07", channel:"pdp", imps:2385},
   {date:"2026-10-07", channel:"search", imps:2330},
-  {date:"2026-10-07", channel:"store", imps:1}
+  {date:"2026-10-07", channel:"store", imps:1},
+  {date:"2026-10-08", channel:"category", imps:256},
+  {date:"2026-10-08", channel:"collection_books", imps:18},
+  {date:"2026-10-08", channel:"contents", imps:171},
+  {date:"2026-10-08", channel:"etc", imps:3569},
+  {date:"2026-10-08", channel:"exhibitions", imps:141},
+  {date:"2026-10-08", channel:"home", imps:3},
+  {date:"2026-10-08", channel:"pdp", imps:1801},
+  {date:"2026-10-08", channel:"search", imps:1710},
+  {date:"2026-10-08", channel:"styling_shot", imps:1},
+  {date:"2026-10-09", channel:"category", imps:228},
+  {date:"2026-10-09", channel:"collection_books", imps:23},
+  {date:"2026-10-09", channel:"contents", imps:78},
+  {date:"2026-10-09", channel:"etc", imps:3444},
+  {date:"2026-10-09", channel:"exhibitions", imps:133},
+  {date:"2026-10-09", channel:"home", imps:1},
+  {date:"2026-10-09", channel:"pdp", imps:2184},
+  {date:"2026-10-09", channel:"search", imps:1777},
+  {date:"2026-10-10", channel:"category", imps:258},
+  {date:"2026-10-10", channel:"collection_books", imps:26},
+  {date:"2026-10-10", channel:"contents", imps:84},
+  {date:"2026-10-10", channel:"etc", imps:9398},
+  {date:"2026-10-10", channel:"exhibitions", imps:172},
+  {date:"2026-10-10", channel:"pdp", imps:1396},
+  {date:"2026-10-10", channel:"ranks", imps:1},
+  {date:"2026-10-10", channel:"search", imps:1873},
+  {date:"2026-10-10", channel:"store", imps:4},
+  {date:"2026-10-10", channel:"today_deals", imps:31732}
 ];
 
 const REFERRER_BY_DATE = [
@@ -1326,14 +1363,37 @@ const REFERRER_BY_DATE = [
   {date:"2026-10-07", type:"OGARDEN_GAME_HOME", pv:5, uv:null},
   {date:"2026-10-07", type:"ORDERS", pv:2, uv:null},
   {date:"2026-10-07", type:"PRODUCTIONS", pv:23, uv:null},
-  {date:"2026-10-07", type:"USERS", pv:13, uv:null}
+  {date:"2026-10-07", type:"USERS", pv:13, uv:null},
+  {date:"2026-10-08", type:"BRANDS", pv:7, uv:null},
+  {date:"2026-10-08", type:"DIRECT", pv:224, uv:null},
+  {date:"2026-10-08", type:"EXHIBITIONS", pv:4, uv:null},
+  {date:"2026-10-08", type:"OGARDEN_GAME_HOME", pv:11, uv:null},
+  {date:"2026-10-08", type:"ORDERS", pv:3, uv:null},
+  {date:"2026-10-08", type:"PRODUCTIONS", pv:19, uv:null},
+  {date:"2026-10-08", type:"USERS", pv:1, uv:null},
+  {date:"2026-10-09", type:"BRANDS", pv:17, uv:null},
+  {date:"2026-10-09", type:"CARD_COLLECTIONS", pv:6, uv:null},
+  {date:"2026-10-09", type:"DIRECT", pv:212, uv:null},
+  {date:"2026-10-09", type:"EXHIBITIONS", pv:1, uv:null},
+  {date:"2026-10-09", type:"OGARDEN_GAME_HOME", pv:2, uv:null},
+  {date:"2026-10-09", type:"ORDERS", pv:7, uv:null},
+  {date:"2026-10-09", type:"PRODUCTIONS", pv:53, uv:null},
+  {date:"2026-10-09", type:"USERS", pv:2, uv:null},
+  {date:"2026-10-10", type:"BRANDS", pv:37, uv:null},
+  {date:"2026-10-10", type:"CARD_COLLECTIONS", pv:3, uv:null},
+  {date:"2026-10-10", type:"DIRECT", pv:552, uv:null},
+  {date:"2026-10-10", type:"EXHIBITIONS", pv:2, uv:null},
+  {date:"2026-10-10", type:"OGARDEN_GAME_HOME", pv:3, uv:null},
+  {date:"2026-10-10", type:"ORDERS", pv:23, uv:null},
+  {date:"2026-10-10", type:"PRODUCTIONS", pv:36, uv:null},
+  {date:"2026-10-10", type:"USERS", pv:12, uv:null}
 ];
 
 const SRP_KEYWORDS = [
-  {keyword:"잠옷", cat_sessions:1755, imps:133, avg_rank:16.7},
+  {keyword:"잠옷", cat_sessions:1755, imps:150, avg_rank:15.5},
   {keyword:"샤워가운", cat_sessions:576, imps:0, avg_rank:0.0},
-  {keyword:"커플잠옷", cat_sessions:527, imps:31, avg_rank:13.3},
-  {keyword:"파자마", cat_sessions:511, imps:107, avg_rank:6.5},
+  {keyword:"커플잠옷", cat_sessions:527, imps:32, avg_rank:13.3},
+  {keyword:"파자마", cat_sessions:511, imps:112, avg_rank:6.8},
   {keyword:"울랄라파자마", cat_sessions:445, imps:4, avg_rank:24.2},
   {keyword:"여성잠옷", cat_sessions:310, imps:13, avg_rank:18.2},
   {keyword:"양말", cat_sessions:267, imps:0, avg_rank:0.0},
@@ -1348,7 +1408,7 @@ const SRP_KEYWORDS = [
   {keyword:"티세르", cat_sessions:107, imps:1, avg_rank:30.0},
   {keyword:"가운", cat_sessions:103, imps:0, avg_rank:0.0},
   {keyword:"여름잠옷", cat_sessions:102, imps:0, avg_rank:0.0},
-  {keyword:"남자잠옷", cat_sessions:95, imps:25, avg_rank:6.6},
+  {keyword:"남자잠옷", cat_sessions:95, imps:26, avg_rank:6.4},
   {keyword:"댄스온더플로어", cat_sessions:92, imps:0, avg_rank:0.0},
   {keyword:"키티", cat_sessions:86, imps:0, avg_rank:0.0},
   {keyword:"수면잠옷", cat_sessions:79, imps:0, avg_rank:0.0},
@@ -1432,7 +1492,10 @@ const CATEGORY_RANK = [
   {date:"2026-10-04", our_rank:null, our_gmv:0, our_qty:0, total:106, top_goods_id:"3703917", top_gmv:233100},
   {date:"2026-10-05", our_rank:4, our_gmv:199500, our_qty:5, total:109, top_goods_id:"3424228", top_gmv:328000},
   {date:"2026-10-06", our_rank:10, our_gmv:119700, our_qty:3, total:96, top_goods_id:"3518885", top_gmv:255500},
-  {date:"2026-10-07", our_rank:10, our_gmv:79800, our_qty:2, total:90, top_goods_id:"4203507", top_gmv:246000}
+  {date:"2026-10-07", our_rank:10, our_gmv:79800, our_qty:2, total:90, top_goods_id:"4203507", top_gmv:246000},
+  {date:"2026-10-08", our_rank:11, our_gmv:79800, our_qty:2, total:69, top_goods_id:"3735572", top_gmv:179400},
+  {date:"2026-10-09", our_rank:4, our_gmv:159600, our_qty:4, total:82, top_goods_id:"3424228", top_gmv:328000},
+  {date:"2026-10-10", our_rank:3, our_gmv:159600, our_qty:4, total:80, top_goods_id:"3703917", top_gmv:181300}
 ];
 const COMPARE_BY_DATE = [
   {date:"2026-08-18", our_rank:null, our_gmv:0, our_imp:3, our_ctr:null, our_cvr:0, comp_id:"3518885", comp_brand:"오늘의집layer", comp_name:"refine / 소프트워싱 40수 면 반팔/긴팔 파자마 세트, 3colors, M/L", comp_rank:1, comp_gmv:301000, comp_imp:1658, comp_ctr:4.4, comp_cvr:8.2},
@@ -1485,7 +1548,10 @@ const COMPARE_BY_DATE = [
   {date:"2026-10-04", our_rank:null, our_gmv:0, our_imp:2426, our_ctr:2.9, our_cvr:0.0, comp_id:"3703917", comp_brand:"오셀픽", comp_name:"더 클래식 긴팔 파자마 세트 여성 남성 잠옷 커플 홈웨어 2color", comp_rank:1, comp_gmv:233100, comp_imp:2307, comp_ctr:6.0, comp_cvr:4.3},
   {date:"2026-10-05", our_rank:4, our_gmv:199500, our_imp:2611, our_ctr:3.4, our_cvr:2.3, comp_id:"3424228", comp_brand:"댄스온더플로어", comp_name:"Furless pajamas 퍼리스 긴팔파자마 - 스트라이프 (11color, 3size)", comp_rank:1, comp_gmv:328000, comp_imp:7605, comp_ctr:1.0, comp_cvr:2.7},
   {date:"2026-10-06", our_rank:10, our_gmv:119700, our_imp:2569, our_ctr:3.3, our_cvr:3.6, comp_id:"3518885", comp_brand:"오늘의집layer", comp_name:"refine / 소프트워싱 40수 면 반팔/긴팔 파자마 세트, 3colors, M/L", comp_rank:1, comp_gmv:255500, comp_imp:1949, comp_ctr:4.2, comp_cvr:6.1},
-  {date:"2026-10-07", our_rank:10, our_gmv:79800, our_imp:2871, our_ctr:2.6, our_cvr:2.6, comp_id:"4203507", comp_brand:"댄스온더플로어", comp_name:"Furless pajamas 퍼리스 긴팔파자마 - 도트&체크 (3Color, 4Size)", comp_rank:1, comp_gmv:246000, comp_imp:296, comp_ctr:5.1, comp_cvr:6.7}
+  {date:"2026-10-07", our_rank:10, our_gmv:79800, our_imp:2871, our_ctr:2.6, our_cvr:2.6, comp_id:"4203507", comp_brand:"댄스온더플로어", comp_name:"Furless pajamas 퍼리스 긴팔파자마 - 도트&체크 (3Color, 4Size)", comp_rank:1, comp_gmv:246000, comp_imp:296, comp_ctr:5.1, comp_cvr:6.7},
+  {date:"2026-10-08", our_rank:11, our_gmv:79800, our_imp:2861, our_ctr:3.1, our_cvr:2.2, comp_id:"3735572", comp_brand:"티세르", comp_name:"딥포레스트 피치기모 긴팔 상하의 세트(남녀공용)", comp_rank:1, comp_gmv:179400, comp_imp:237, comp_ctr:12.2, comp_cvr:13.8},
+  {date:"2026-10-09", our_rank:4, our_gmv:159600, our_imp:2829, our_ctr:3.8, our_cvr:2.8, comp_id:"3424228", comp_brand:"댄스온더플로어", comp_name:"Furless pajamas 퍼리스 긴팔파자마 - 스트라이프 (11color, 3size)", comp_rank:1, comp_gmv:328000, comp_imp:8462, comp_ctr:0.7, comp_cvr:4.8},
+  {date:"2026-10-10", our_rank:3, our_gmv:159600, our_imp:31271, our_ctr:0.9, our_cvr:1.5, comp_id:"3703917", comp_brand:"오셀픽", comp_name:"더 클래식 긴팔 파자마 세트 여성 남성 잠옷 커플 홈웨어 2color", comp_rank:1, comp_gmv:181300, comp_imp:1976, comp_ctr:4.9, comp_cvr:4.1}
 ];
 
 
@@ -2522,7 +2588,10 @@ const DAILY_CAT_GMV = [
   {d:"2026-10-04",o:0,c:4596040,oq:0,cq:163},
   {d:"2026-10-05",o:199500,c:5845620,oq:5,cq:228},
   {d:"2026-10-06",o:119700,c:5100828,oq:3,cq:200},
-  {d:"2026-10-07",o:79800,c:4093510,oq:2,cq:143}
+  {d:"2026-10-07",o:79800,c:4093510,oq:2,cq:143},
+  {d:"2026-10-08",o:79800,c:3360584,oq:2,cq:118},
+  {d:"2026-10-09",o:159600,c:4110570,oq:4,cq:140},
+  {d:"2026-10-10",o:159600,c:3243360,oq:4,cq:129}
 ];
 let monthlyGmvChart=null;
 let mgMode='ALL';
